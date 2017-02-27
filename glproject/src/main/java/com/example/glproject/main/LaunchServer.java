@@ -1,5 +1,7 @@
 package com.example.glproject.main;
 
+import java.util.ArrayList;
+
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
@@ -12,9 +14,21 @@ import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
+import com.example.glproject.businessobjects.GenericTask;
+import com.example.glproject.parsing.Parser;
+import com.example.glproject.parsing.SpreadsheetParser;
+
 public class LaunchServer {
 
 	public static void main(String[] args) {
+		Parser p = new SpreadsheetParser();
+		ArrayList<GenericTask> g = (ArrayList<GenericTask>) p.parse("/home/chris/test.xlsx");
+		
+		for(GenericTask gg : g) {
+			System.out.println(gg);
+		}
+		
+		
 		// Initialize the server
 		Server server = new Server();
 

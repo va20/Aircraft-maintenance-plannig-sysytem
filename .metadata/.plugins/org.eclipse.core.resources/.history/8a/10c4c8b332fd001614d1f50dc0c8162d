@@ -1,0 +1,10 @@
+package com.example.glproject.parsing;
+
+import java.util.List;
+
+import DAOImplement.GenericTask;
+
+public interface Parser {
+	
+	public List<GenericTask> parse(String file);
+}
