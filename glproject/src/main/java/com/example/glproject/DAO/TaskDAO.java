@@ -4,10 +4,7 @@ import java.util.List;
 
 import com.example.glproject.businessobjects.Task;
 
-/**
- * Created by info on 20/02/17.
- */
-public interface TaskDao {
+public interface TaskDAO {
 	boolean add(Task task);
 
 	boolean update(Task task);

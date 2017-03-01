@@ -1,39 +1,33 @@
 package com.example.glproject.resources;
 
-import java.util.Date;
-import java.util.List;
-
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-
-import com.example.glproject.businessobjects.Flight;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 @Path("/planes")
 public class PlaneResource {
-
 	
-	public boolean add(Flight flight) {
-		// TODO Auto-generated method stub
-		return false;
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getPlanes() {
+		return "all the planes";
 	}
 
-	public boolean update(Flight flight) {
-		// TODO Auto-generated method stub
-		return false;
+	@GET
+	@Path("/{type}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String getMPD(@PathParam("type") String type) {
+		return "mpd";
 	}
 
-	public boolean delete(Flight flight) {
-		// TODO Auto-generated method stub
-		return false;
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String createPlane(String s) {
+		return "flight created";
 	}
-
-	public List<Flight> getListFlight() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<Flight> getByDay(Date day) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

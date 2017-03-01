@@ -12,18 +12,17 @@ import javax.ws.rs.core.MediaType;
 public class FlightResource {
 
 	@GET
-	@Produces(MediaType.APPLICATION_JSON) // pour l'instant, apres ca sera JSON_APP
+	@Produces(MediaType.APPLICATION_JSON)
 	public String getFlights() {
 		return "all the flights";
 	}
-	
+
 	@GET
-	@Path("/{type}")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String getMPD(@PathParam("type") String type) {
-		return "mpd";
+	@Path("/{commercial}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getFlight(@PathParam("commercial") String commercial) {
+		return "commercial";
 	}
-	
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)

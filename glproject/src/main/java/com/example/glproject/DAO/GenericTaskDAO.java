@@ -4,10 +4,7 @@ import java.util.List;
 
 import com.example.glproject.businessobjects.GenericTask;
 
-/**
- * Created by info on 20/02/17.
- */
-public interface GenericTaskDao {
+public interface GenericTaskDAO {
 	boolean add(GenericTask g_task, String plane_type);
 
 	boolean update(GenericTask g_task);

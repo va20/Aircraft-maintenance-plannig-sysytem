@@ -1,7 +1,5 @@
 package com.example.glproject.main;
 
-import java.util.ArrayList;
-
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
@@ -14,21 +12,9 @@ import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
-import com.example.glproject.businessobjects.GenericTask;
-import com.example.glproject.parsing.Parser;
-import com.example.glproject.parsing.SpreadsheetParser;
-
 public class LaunchServer {
 
 	public static void main(String[] args) {
-		Parser p = new SpreadsheetParser();
-		ArrayList<GenericTask> g = (ArrayList<GenericTask>) p.parse("/home/chris/test.xlsx");
-		
-		for(GenericTask gg : g) {
-			System.out.println(gg);
-		}
-		
-		
 		// Initialize the server
 		Server server = new Server();
 
@@ -41,13 +27,13 @@ public class LaunchServer {
 
 		// Configure Jersey
 		ResourceConfig rc = new ResourceConfig();
-		rc.packages(true, "com.example.glproject.maintenance.resources");
+		rc.packages(true, "com.example.glproject.resources");
 		rc.register(LoggingFilter.class);
 
 		// Add a servlet handler for web services (/ws/*)
 		ServletHolder servletHolder = new ServletHolder(new ServletContainer(rc));
 		ServletContextHandler handlerWebServices = new ServletContextHandler(ServletContextHandler.SESSIONS);
-		handlerWebServices.setContextPath("/glproject/maintenance/");
+		handlerWebServices.setContextPath("/ws/maintenance/");
 		handlerWebServices.addServlet(servletHolder, "/*");
 
 		// Add a handler for resources (/*)

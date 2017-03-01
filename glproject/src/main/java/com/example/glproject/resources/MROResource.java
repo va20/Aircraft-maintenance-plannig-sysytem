@@ -2,7 +2,7 @@ package com.example.glproject.resources;
 
 import javax.ws.rs.Path;
 
-@Path("mros")
+@Path("planes")
 public class MROResource {
 
 }

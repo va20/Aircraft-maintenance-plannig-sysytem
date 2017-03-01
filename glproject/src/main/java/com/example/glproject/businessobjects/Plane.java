@@ -1,12 +1,10 @@
 package com.example.glproject.businessobjects;
 
-/**
- * Created by info on 20/02/17.
- */
 public class Plane {
 	private int id;
 	private String type;
 	private String MPD;
+	//liste de mro ?
 
 	public Plane(int id, String type, String mpd) {
 		this.id = id;

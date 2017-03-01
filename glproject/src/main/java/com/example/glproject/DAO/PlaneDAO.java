@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.example.glproject.businessobjects.Plane;
 
-public interface PlaneDao {
-	
+public interface PlaneDAO {
+
 	boolean add(Plane plane);
 
 	boolean update(int id);

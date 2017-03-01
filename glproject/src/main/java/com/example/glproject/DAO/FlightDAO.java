@@ -5,10 +5,7 @@ import java.util.List;
 
 import com.example.glproject.businessobjects.Flight;
 
-/**
- * Created by info on 20/02/17.
- */
-public interface FlightDao {
+public interface FlightDAO {
 	boolean add(Flight flight);
 
 	boolean update(Flight flight);

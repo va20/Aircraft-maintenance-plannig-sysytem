@@ -2,9 +2,6 @@ package com.example.glproject.businessobjects;
 
 import java.util.List;
 
-/**
- * Created by info on 20/02/17.
- */
 public class Mro {
 	private int id;
 	private List<Task> list_task;

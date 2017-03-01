@@ -2,9 +2,6 @@ package com.example.glproject.businessobjects;
 
 import java.util.Date;
 
-/**
- * Created by info on 20/02/17.
- */
 public class Task {
 
 	private int id;
