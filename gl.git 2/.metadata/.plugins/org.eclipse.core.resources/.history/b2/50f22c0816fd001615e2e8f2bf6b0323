@@ -1,0 +1,34 @@
+package com.example.glproject.resources;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+@Path("/flights")
+public class FlightResource {
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON) // pour l'instant, apres ca sera JSON_APP
+	public String getFlights() {
+		return "all the flights";
+	}
+	
+	@GET
+	@Path("/{type}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String getMPD(@PathParam("type") String type) {
+		return "mpd";
+	}
+	
+
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String createFlight(String s) {
+		return "flight created";
+	}
+}
