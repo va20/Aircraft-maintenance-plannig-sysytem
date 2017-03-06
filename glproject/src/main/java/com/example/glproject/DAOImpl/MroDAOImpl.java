@@ -3,7 +3,7 @@ package com.example.glproject.DAOImpl;
 import com.example.glproject.DAO.MroDao;
 import com.example.glproject.businessobjects.Mro;
 
-public class MroDAOImpl implements MroDao{
+public class MroDAOImpl implements MroDao {
 
 	public boolean add(Mro mro) {
 		// TODO Auto-generated method stub
