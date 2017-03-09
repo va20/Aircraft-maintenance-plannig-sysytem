@@ -7,34 +7,38 @@ import com.example.glproject.businessobjects.Task;
 
 public class TaskDAOImpl implements TaskDAO {
 
-	public boolean add(Task task) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean update(Task task) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public List<Task> getByMROId(int MRO_id) {
+	public List<Task> getTasks() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Task get(int id) {
+	public Task getTask(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Task getByPlaneId(int Plane_id) {
+	public void addTask(long id) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void update(long id) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void delete(long id) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public List<Task> getTasksByMRO(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	public List<Task> getTasksByPlane(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

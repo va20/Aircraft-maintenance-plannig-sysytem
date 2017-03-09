@@ -6,14 +6,12 @@ import java.util.List;
 import com.example.glproject.businessobjects.Flight;
 
 public interface FlightDAO {
-	boolean add(Flight flight);
 
-	boolean update(Flight flight);
+	Flight getFlight(String commercial);
 
-	boolean delete(Flight flight);
+	List<Flight> getFlights();
 
-	List<Flight> getListFlight();// lists of flight
+	void add(Flight flight);
 
-	List<Flight> getByDay(Date day);// Returns list of flights corresponding to
-									// a "day"
+	List<Flight> getByDay(Date day);
 }

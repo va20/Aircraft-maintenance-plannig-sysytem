@@ -8,24 +8,18 @@ import com.example.glproject.businessobjects.Flight;
 
 public class FlightDAOImpl implements FlightDAO {
 
-	public boolean add(Flight flight) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean update(Flight flight) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean delete(Flight flight) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public List<Flight> getListFlight() {
+	public Flight getFlight(String commercial) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public List<Flight> getFlights() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void add(Flight flight) {
+		// TODO Auto-generated method stub
 	}
 
 	public List<Flight> getByDay(Date day) {

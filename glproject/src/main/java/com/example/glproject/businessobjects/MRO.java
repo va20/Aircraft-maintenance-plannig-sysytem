@@ -2,16 +2,16 @@ package com.example.glproject.businessobjects;
 
 import java.util.List;
 
-public class Mro {
-	private int id;
+public class MRO {
+	private long id;
 	private List<Task> list_task;
 
-	public Mro(int id, List<Task> list_task) {
+	public MRO(long id, List<Task> list_task) {
 		this.id = id;
 		this.list_task = list_task;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 

@@ -5,16 +5,18 @@ import java.util.List;
 import com.example.glproject.businessobjects.Task;
 
 public interface TaskDAO {
-	boolean add(Task task);
 
-	boolean update(Task task);
+	List<Task> getTasks();
 
-	boolean delete(int id);
+	Task getTask(long id);
 
-	List<Task> getByMROId(int MRO_id);// Returns a list Task by MRO_id
+	void addTask(long id);
 
-	Task get(int id);// Return task corresponding the id of the task
+	void update(long id);
 
-	Task getByPlaneId(int Plane_id);// Return detail of task corresponding the
-									// id of the plane
+	void delete(long id);
+
+	List<Task> getTasksByMRO(long id);
+
+	List<Task> getTasksByPlane(long id);
 }

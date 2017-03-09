@@ -6,12 +6,13 @@ import com.example.glproject.businessobjects.Plane;
 
 public interface PlaneDAO {
 
-	boolean add(Plane plane);
+	Plane getPlane(long id);
 
-	boolean update(int id);
+	List<Plane> getPlanes();
 
-	boolean delete(int id);
+	void add(Plane plane);
 
-	List<Plane> getAllPlanes();
-	// List<Plane> ByDay(Date date);
+	void updatePlane(long id);
+
+	void deletePlane(long id);
 }

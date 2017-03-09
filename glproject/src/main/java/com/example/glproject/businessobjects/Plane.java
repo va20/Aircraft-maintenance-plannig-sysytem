@@ -1,22 +1,24 @@
 package com.example.glproject.businessobjects;
 
 public class Plane {
-	private int id;
+	private long id;
 	private String type;
 	private String MPD;
-	//liste de mro ?
 
-	public Plane(int id, String type, String mpd) {
+	public Plane() {
+	}
+
+	public Plane(long id, String type, String mpd) {
 		this.id = id;
 		this.type = type;
 		this.MPD = mpd;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

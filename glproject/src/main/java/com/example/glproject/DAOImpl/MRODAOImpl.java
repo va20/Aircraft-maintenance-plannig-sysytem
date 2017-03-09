@@ -1,11 +1,11 @@
 package com.example.glproject.DAOImpl;
 
-import com.example.glproject.DAO.MroDao;
-import com.example.glproject.businessobjects.Mro;
+import com.example.glproject.DAO.MRODao;
+import com.example.glproject.businessobjects.MRO;
 
-public class MroDAOImpl implements MroDao {
+public class MRODAOImpl implements MRODao {
 
-	public boolean add(Mro mro) {
+	public boolean add(MRO mro) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -15,7 +15,7 @@ public class MroDAOImpl implements MroDao {
 		return false;
 	}
 
-	public Mro getByid(int id) {
+	public MRO getByid(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

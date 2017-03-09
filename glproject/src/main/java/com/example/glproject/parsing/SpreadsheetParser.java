@@ -37,6 +37,7 @@ public class SpreadsheetParser implements Parser {
 					Cell cell = cellIterator.next();
 					int column = cell.getColumnIndex();
 
+					// A MODIFIER
 					switch (column) {
 					case 0:
 						gt.setTaskNumber(cell.getStringCellValue());
@@ -48,24 +49,25 @@ public class SpreadsheetParser implements Parser {
 						gt.setDescr(cell.getStringCellValue());
 						break;
 					case 3:
-						gt.setThresholdInterval(cell.getStringCellValue());
+						// gt.setThresholdInterval(cell.getStringCellValue());
 						break;
 					case 4:
-						gt.setSource(cell.getStringCellValue());
+						// gt.setSource(cell.getStringCellValue());
 						break;
 					case 5:
-						gt.setRef(cell.getStringCellValue());
+						// gt.setRef(cell.getStringCellValue());
 						break;
 					case 6:
 						gt.setMen((int) cell.getNumericCellValue());
 						break;
 					case 7:
-						gt.setmPerH(cell.getStringCellValue());
+						// gt.setmPerH(cell.getStringCellValue());
 						break;
 					case 8:
 						gt.setApplicability(cell.getStringCellValue());
 						break;
 					}
+					// A MODIFIER
 				}
 
 				list.add(gt);

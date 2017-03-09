@@ -4,27 +4,25 @@ public class GenericTask {
 	private String taskNumber;
 	private int zone;
 	private String descr;
-	private String thresholdInterval;
-	private String source;
-	private String ref;
+	private long periodicity;
+	private boolean hangar;
+	private long duration;
 	private int men;
-	private String mPerH;
 	private String applicability;
 
 	public GenericTask() {
 	}
 
-	public GenericTask(String taskNumber, int zone, String descr, String thresholdInterval, String source, String ref,
-			int men, String mPerH, String applicability) {
+	public GenericTask(String taskNumber, int zone, String descr, long periodicity, boolean hangar, long duration,
+			int men, String applicability) {
 		super();
 		this.taskNumber = taskNumber;
 		this.zone = zone;
 		this.descr = descr;
-		this.thresholdInterval = thresholdInterval;
-		this.source = source;
-		this.ref = ref;
+		this.periodicity = periodicity;
+		this.hangar = hangar;
+		this.duration = duration;
 		this.men = men;
-		this.mPerH = mPerH;
 		this.applicability = applicability;
 	}
 
@@ -52,28 +50,28 @@ public class GenericTask {
 		this.descr = descr;
 	}
 
-	public String getThresholdInterval() {
-		return thresholdInterval;
+	public long getPeriodicity() {
+		return periodicity;
 	}
 
-	public void setThresholdInterval(String thresholdInterval) {
-		this.thresholdInterval = thresholdInterval;
+	public void setPeriodicity(long periodicity) {
+		this.periodicity = periodicity;
 	}
 
-	public String getSource() {
-		return source;
+	public boolean isHangar() {
+		return hangar;
 	}
 
-	public void setSource(String source) {
-		this.source = source;
+	public void setHangar(boolean hangar) {
+		this.hangar = hangar;
 	}
 
-	public String getRef() {
-		return ref;
+	public long getDuration() {
+		return duration;
 	}
 
-	public void setRef(String ref) {
-		this.ref = ref;
+	public void setDuration(long duration) {
+		this.duration = duration;
 	}
 
 	public int getMen() {
@@ -84,26 +82,11 @@ public class GenericTask {
 		this.men = men;
 	}
 
-	public String getmPerH() {
-		return mPerH;
-	}
-
-	public void setmPerH(String mPerH) {
-		this.mPerH = mPerH;
-	}
-
 	public String getApplicability() {
 		return applicability;
 	}
 
 	public void setApplicability(String applicability) {
 		this.applicability = applicability;
-	}
-
-	@Override
-	public String toString() {
-		return "GenericTask [taskNumber=" + taskNumber + ", zone=" + zone + ", descr=" + descr + ", thresholdInterval="
-				+ thresholdInterval + ", source=" + source + ", ref=" + ref + ", men=" + men + ", mPerH=" + mPerH
-				+ ", applicability=" + applicability + "]";
 	}
 }
