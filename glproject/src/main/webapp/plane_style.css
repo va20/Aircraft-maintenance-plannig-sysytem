@@ -1,0 +1,116 @@
+body{
+	background-color: #FFFFFF;
+}
+
+
+.bouton
+{
+	float: right;
+	margin: 0 10px 10px 0;
+	font-family: Arial,sans-serif;
+	width: 100px;
+	height: 20px;
+	padding: 3px;
+	text-align: center;
+	vertical-align: middle;
+    background: linear-gradient(#EEEEEE, #00C3B6);
+    border-radius: 5px;
+    text-shadow: 0px 1px 0px rgba( 255, 255, 255, 0.2);
+}
+
+.bouton a
+{
+	text-decoration: none;
+	color: #1f1f1f;
+	font-weight: bold;
+	text-shadow: 1px 0 1px rgba(255, 255, 255, .5);
+}
+
+.bouton:active{
+     color: #000;
+     background: linear-gradient(orangered, orange);
+     box-shadow:	1px 1px 5px black inset,
+					0 1px 0 rgba( 255, 255, 255, 0.4);
+}
+
+.orange {
+	background-color: #FFFF9D;
+}
+
+.rouge{
+	background-color: #FF6138;
+}
+
+ul
+{
+	display: table;
+	width: 100%;
+	padding: 0;
+	font-size: 25px;
+	font-family: "Times New Roman", serif;
+
+
+}
+
+ul li
+{
+
+	display: table-cell;
+	text-align: center;
+	padding: 10px 0 10px 0;
+	background: #00A388;
+	text-shadow: 1px 0 1px rgba(255, 255, 255, .9);
+	border-radius: 1px;
+}
+
+ul li bla
+{
+	display: block;
+	background: #00A388;
+	color: #EEEEEE;
+	text-shadow: 1px 0 1px rgba(255, 255, 255, .9);
+}
+
+ul li a
+{
+	display: block;
+	border-radius: 3px;
+	background:#00A388;
+	text-decoration: none;
+	color: #EEEEEE;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .9);
+}
+
+ul li a:active
+{
+	display: block;
+	background: linear-gradient(darkgrey, beige);
+	color: #1F1F1F;
+	text-shadow: 1px 0 1px rgba(255, 255, 255, .9);
+}
+
+table
+{
+	width: 90%;
+	border: 2px solid black;
+    border-collapse: collapse;
+}
+
+
+tr
+{
+    border: 1px solid black;
+}
+
+th
+{
+	text-align: left;
+}
+
+td
+{
+	text-align: center;
+	width: 300px;
+	height: 50px;
+	border: 2px solid black;
+}
