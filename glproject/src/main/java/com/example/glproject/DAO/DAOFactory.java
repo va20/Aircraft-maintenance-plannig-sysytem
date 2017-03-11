@@ -4,6 +4,7 @@ import com.example.glproject.DAOImpl.FlightDAOImpl;
 import com.example.glproject.DAOImpl.GenericTaskDAOImpl;
 import com.example.glproject.DAOImpl.MRODAOImpl;
 import com.example.glproject.DAOImpl.PlaneDAOImpl;
+import com.example.glproject.DAOImpl.StaffDAOImpl;
 import com.example.glproject.DAOImpl.TaskDAOImpl;
 
 public class DAOFactory {
@@ -26,5 +27,9 @@ public class DAOFactory {
 
 	public static TaskDAO getTaskDAO() {
 		return new TaskDAOImpl();
+	}
+	
+	public static StaffDAO getStaffDAO() {
+		return new StaffDAOImpl();
 	}
 }
