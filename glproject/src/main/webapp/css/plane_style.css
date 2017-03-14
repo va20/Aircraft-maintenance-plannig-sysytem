@@ -1,7 +1,6 @@
 body{
-	background-color: #FFFFFF;
+	background: url("../img/background.jpg") no-repeat center center fixed;
 }
-
 
 .bouton
 {
@@ -27,10 +26,10 @@ body{
 }
 
 .bouton:active{
-     color: #000;
-     background: linear-gradient(orangered, orange);
-     box-shadow:	1px 1px 5px black inset,
-					0 1px 0 rgba( 255, 255, 255, 0.4);
+	color: #000;
+	background: linear-gradient(#00C3B6, #EEEEEE);
+	box-shadow:	1px 1px 5px black inset,
+				0 1px 0 rgba( 255, 255, 255, 0.4);
 }
 
 .orange {
@@ -49,15 +48,12 @@ ul
 	font-size: 25px;
 	font-family: "Times New Roman", serif;
 
-
 }
 
 ul li
 {
-
 	display: table-cell;
 	text-align: center;
-	padding: 10px 0 10px 0;
 	background: #00A388;
 	text-shadow: 1px 0 1px rgba(255, 255, 255, .9);
 	border-radius: 1px;
@@ -65,14 +61,16 @@ ul li
 
 ul li bla
 {
+	padding: 10px 0 10px 0;
 	display: block;
 	background: #00A388;
 	color: #EEEEEE;
-	text-shadow: 1px 0 1px rgba(255, 255, 255, .9);
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .9);
 }
 
 ul li a
 {
+	padding: 10px 0 10px 0;
 	display: block;
 	border-radius: 3px;
 	background:#00A388;
@@ -84,8 +82,8 @@ ul li a
 ul li a:active
 {
 	display: block;
-	background: linear-gradient(darkgrey, beige);
-	color: #1F1F1F;
+	background:#009388;
+	color: #DDDDDD;
 	text-shadow: 1px 0 1px rgba(255, 255, 255, .9);
 }
 
