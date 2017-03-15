@@ -21,16 +21,16 @@ $(function() {
 				url : "ws/login/"+login+"/"+password,
 				type : "POST",
 				dataType : "json",
+
 				success : function(data) {
 					if(data) {
 						$("#span_con").html("Correct data");
 						console.log("ouiii");
-						//startSession(login);
-						//location.href="/list.html";
 					} else {
 						$("#span_con").html("Incorrect data");
 					}
 				},
+
 				error : function(resultat, statut, erreur) {
 							alert("Error");
 						}

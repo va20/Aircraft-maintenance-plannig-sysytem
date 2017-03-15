@@ -16,6 +16,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.example.glproject.businessobjects.GenericTask;
 
+//try catch a mettre
 public class SpreadsheetParser implements Parser {
 
 	public List<GenericTask> parse(String file) {
@@ -25,7 +26,7 @@ public class SpreadsheetParser implements Parser {
 		try {
 			input = new FileInputStream(new File(file));
 			Workbook workbook = new XSSFWorkbook(input);
-			Sheet firstSheet = workbook.getSheetAt(0);
+			Sheet firstSheet = workbook.getSheetAt(0); //verifier que pas null
 			Iterator<Row> iterator = firstSheet.iterator();
 
 			while (iterator.hasNext()) {
