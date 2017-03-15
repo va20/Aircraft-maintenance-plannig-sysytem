@@ -5,6 +5,11 @@
 	<artifactId>glproject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
+	<properties>
+		<!-- Use the latest version whenever possible. -->
+		<jackson.version>2.7.0</jackson.version>
+	</properties>
+
 	<dependencies>
 
 		<!-- Jetty -->
@@ -46,7 +51,7 @@
 			<version>2.3</version>
 		</dependency>
 
-		<!-- -->
+		<!-- Apache POI -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
@@ -73,5 +78,4 @@
 		</dependency>
 
 	</dependencies>
-
 </project>

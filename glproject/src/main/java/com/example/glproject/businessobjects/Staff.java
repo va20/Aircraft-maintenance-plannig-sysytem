@@ -2,8 +2,8 @@ package com.example.glproject.businessobjects;
 
 public class Staff {
 	private long id;
-	private String login;
-	private String password;
+	private String firstname, lastname;
+	private String login, password;
 
 	public Staff() {
 	}
@@ -17,6 +17,22 @@ public class Staff {
 
 	public long getId() {
 		return id;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 	public void setId(long id) {
