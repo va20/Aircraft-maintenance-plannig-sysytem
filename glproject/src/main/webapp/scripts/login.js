@@ -28,4 +28,5 @@ $(function() {
 		} else {
 			console.log("remplir les champs svp");
 		}
+	});
 });
