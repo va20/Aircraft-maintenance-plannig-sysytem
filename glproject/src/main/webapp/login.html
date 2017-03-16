@@ -43,7 +43,7 @@
 				var login = $('#username').val();
 				var pass = $('#password').val();
 				$.ajax({
-					url : 'ws/login/'+login+'/'+pass,
+					url : 'ws/login/'+login+'/'+password,
 					type : 'POST',
 					dataType : 'json',
 					success : function(data) {
