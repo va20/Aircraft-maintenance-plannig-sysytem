@@ -18,7 +18,7 @@ public class PlaneDAOImpl implements PlaneDAO {
 	}
 
 	public void add(Plane plane) {
-		// TODO Auto-generated method stub
+		
 	}
 
 	public void updatePlane(long id) {
