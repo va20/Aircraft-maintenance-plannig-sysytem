@@ -55,6 +55,7 @@ public class LaunchServer {
 		// Start server
 		try {
 			server.start();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

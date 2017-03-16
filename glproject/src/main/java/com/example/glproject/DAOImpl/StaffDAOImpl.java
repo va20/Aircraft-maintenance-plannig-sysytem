@@ -4,14 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.ObjectWriter;
-import org.elasticsearch.action.get.GetResponse;
-import org.elasticsearch.action.get.MultiGetItemResponse;
-import org.elasticsearch.action.get.MultiGetResponse;
-import org.elasticsearch.action.index.IndexRequestBuilder;
-import org.elasticsearch.action.support.WriteRequest.RefreshPolicy;
+import org.elasticsearch.action.search.SearchRequestBuilder;
+import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.search.SearchHit;
 
 import com.example.glproject.DAO.StaffDAO;
 import com.example.glproject.businessobjects.Staff;
@@ -27,16 +25,27 @@ public class StaffDAOImpl implements StaffDAO {
 
 	public List<Staff> getStaffMembers() {
 		List<Staff> staffs = new ArrayList<Staff>();
+		ObjectMapper mapper = new ObjectMapper();
 
-		MultiGetResponse multiGetItemResponses = ElasticSearchClient.getClient().prepareMultiGet().add("gl", "staff")
-				.get();
+		// query
+		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("staff");
+		SearchResponse searchResponse = requestBuilder.get();
+		SearchHit[] searchHits = searchResponse.getHits().getHits();
 
-		for (MultiGetItemResponse itemResponse : multiGetItemResponses) {
-			GetResponse response = itemResponse.getResponse();
-			if (response.isExists()) {
-				String json = response.getSourceAsString();
-				// ajouter member dans la liste
-				System.out.println(json);
+		for (SearchHit sh : searchHits) {
+			Staff staff = null;
+
+			try {
+				// JSON to Staff
+				staff = mapper.readValue(sh.sourceAsString(), Staff.class);
+				staffs.add(staff);
+
+			} catch (JsonParseException e) {
+				e.printStackTrace();
+			} catch (JsonMappingException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 
@@ -44,10 +53,12 @@ public class StaffDAOImpl implements StaffDAO {
 	}
 
 	public void addStaff(Staff s) {
-		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		ObjectMapper mapper = new ObjectMapper();
 		String json = null;
+
 		try {
-			json = ow.writeValueAsString(s);
+			json = mapper.writeValueAsString(s);
+
 		} catch (JsonGenerationException e) {
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
@@ -56,13 +67,7 @@ public class StaffDAOImpl implements StaffDAO {
 			e.printStackTrace();
 		}
 
-		IndexRequestBuilder indexRequest = ElasticSearchClient.getClient().prepareIndex("gl", "staff")
-				.setId(Long.toString(s.getId())).setSource(json);
-		/*
-		 * IndexResponse response =
-		 * ElasticSearchClient.getClient().prepareIndex("staff", "chris")
-		 * .setSource(json) .get();
-		 */
-		indexRequest.setRefreshPolicy(RefreshPolicy.IMMEDIATE).execute().actionGet();
+		// indexing
+		esc.getClient().prepareIndex("gl", "staff").setSource(json).get();
 	}
 }

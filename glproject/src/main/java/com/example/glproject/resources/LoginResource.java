@@ -18,16 +18,17 @@ public class LoginResource {
 	@POST
 	@Path("/{login}/{password}")
 	public boolean signIn(@PathParam("login") String login, @PathParam("password") String password) {
-		List<Staff> staffMembers = DAOFactory.getStaffDAO().getStaffMembers();
+		List<Staff> staffs = DAOFactory.getStaffDAO().getStaffMembers();
 
-		for (Staff s : staffMembers) {
-			if (s.getLogin().equals(login) && s.getPassword().equals(password))
+		for (Staff s : staffs) {
+			if (s.getLogin().equals(login) && s.getPassword().equals(password)) {
 				return true;
+			}
 		}
-		
-		return true;
+
+		return false;
 	}
-	
+
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addStaff(Staff s) {

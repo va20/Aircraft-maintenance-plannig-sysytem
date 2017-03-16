@@ -10,12 +10,13 @@ import org.elasticsearch.common.transport.TransportAddress;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
 public class ElasticSearchClient {
-	private static Client client;
+	private Client client;
 
 	private ElasticSearchClient() {
 		try {
 			TransportAddress address = new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300);
 			client = new PreBuiltTransportClient(Settings.EMPTY).addTransportAddress(address);
+
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
@@ -25,7 +26,7 @@ public class ElasticSearchClient {
 		private static final ElasticSearchClient INSTANCE = new ElasticSearchClient();
 	}
 
-	public static Client getClient() {
+	public Client getClient() {
 		return client;
 	}
 
