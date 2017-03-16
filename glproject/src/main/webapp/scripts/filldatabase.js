@@ -1,4 +1,4 @@
-var firstMember = {id : 0, firstname : "Chris", lastname : "Dionisio", login : "chris", password : "pwd", type : "staff"}
+var firstMember = {id : 0, firstname : "Chris", lastname : "Dionisio", login : "chris", password : "pwd"}
 $.ajax({
 	url : "ws/login",
 	type : "PUT",
