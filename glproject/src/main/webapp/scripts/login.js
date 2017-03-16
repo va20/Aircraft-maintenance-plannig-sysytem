@@ -4,6 +4,7 @@ $('#username, #password').on('input', function() {
 		// + COLORIER CHAMPS NON REMPLIS EN ROUGE PAR EXEMPLE
 	else 
 		$('#submit').prop("disabled", false);
+});
 
 
 $('#submit').click(function() {
