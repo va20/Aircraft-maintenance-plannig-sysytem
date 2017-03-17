@@ -23,7 +23,7 @@ public class StaffDAOImpl implements StaffDAO {
 		return null;
 	}
 
-	public List<Staff> getStaffMembers() {
+	public List<Staff> getStaffs() {
 		List<Staff> staffs = new ArrayList<Staff>();
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -69,5 +69,15 @@ public class StaffDAOImpl implements StaffDAO {
 
 		// indexing
 		esc.getClient().prepareIndex("gl", "staff").setSource(json).get();
+	}
+
+	public void deleteStaffs() {
+		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("staff");
+		SearchResponse searchResponse = requestBuilder.get();
+		SearchHit[] searchHits = searchResponse.getHits().getHits();
+
+		for (SearchHit sh : searchHits)
+			//deleting one by one
+			esc.getClient().prepareDelete(sh.getIndex(), sh.getType(), sh.getId()).get();
 	}
 }

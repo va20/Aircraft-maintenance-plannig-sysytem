@@ -15,4 +15,6 @@ public interface PlaneDAO {
 	void updatePlane(long id);
 
 	void deletePlane(long id);
+	
+	void deletePlanes();
 }

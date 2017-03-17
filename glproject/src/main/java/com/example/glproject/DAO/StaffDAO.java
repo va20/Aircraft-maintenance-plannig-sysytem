@@ -8,7 +8,9 @@ public interface StaffDAO {
 
 	Staff getStaff(long id);
 
-	List<Staff> getStaffMembers();
+	List<Staff> getStaffs();
 
 	void addStaff(Staff s);
+	
+	void deleteStaffs();
 }

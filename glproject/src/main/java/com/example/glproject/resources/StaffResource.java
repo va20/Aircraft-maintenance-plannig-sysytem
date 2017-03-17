@@ -3,6 +3,7 @@ package com.example.glproject.resources;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -12,13 +13,13 @@ import javax.ws.rs.core.MediaType;
 import com.example.glproject.DAO.DAOFactory;
 import com.example.glproject.businessobjects.Staff;
 
-@Path("/login")
-public class LoginResource {
+@Path("/staff")
+public class StaffResource {
 
 	@POST
 	@Path("/{login}/{password}")
 	public boolean signIn(@PathParam("login") String login, @PathParam("password") String password) {
-		List<Staff> staffs = DAOFactory.getStaffDAO().getStaffMembers();
+		List<Staff> staffs = DAOFactory.getStaffDAO().getStaffs();
 
 		for (Staff s : staffs) {
 			if (s.getLogin().equals(login) && s.getPassword().equals(password)) {
@@ -33,5 +34,11 @@ public class LoginResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addStaff(Staff s) {
 		DAOFactory.getStaffDAO().addStaff(s);
+	}
+	
+	@DELETE
+	public void deleteStaffs() {
+		System.out.println("je suis la");
+		DAOFactory.getStaffDAO().deleteStaffs();
 	}
 }

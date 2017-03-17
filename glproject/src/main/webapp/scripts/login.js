@@ -12,23 +12,20 @@ $('#submit').click(function() {
 	var password = $('#password').val();
 
 	$.ajax({
-		url : "ws/login/"+login+'/'+password,
+		url : "ws/staff/"+login+'/'+password,
 		type : "POST",
 		dataType : "json",
 
 		success : function(data) {
 			if(data) {
-				alert(data);
-				$("#span_con").html("good!!");
-				console.log("ouii");
-			} else {
-				alert(data);
-				console.log("noon");
-			}
+				$.cookie('name', login);
+				location.href = "/plane_list.html";
+			} else
+				$("#span_con").html("ERREUR CHAMPS!!");			
 		},
 
 		error : function(resultat, statut, erreur) {
-			alert("Can't contact servor ");
+			alert("ERROR !!!");
 		}
 	});
 });
