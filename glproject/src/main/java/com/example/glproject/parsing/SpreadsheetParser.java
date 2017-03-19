@@ -1,12 +1,9 @@
 package com.example.glproject.parsing;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.InputStream;
 import java.util.Iterator;
-import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -14,23 +11,28 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.example.glproject.DAO.DAOFactory;
 import com.example.glproject.businessobjects.GenericTask;
+import com.example.glproject.persistence.ElasticSearchClient;
 
 //try catch a mettre
 public class SpreadsheetParser implements Parser {
+	ElasticSearchClient esc = ElasticSearchClient.getInstance();
 
-	public List<GenericTask> parse(String file) {
-		List<GenericTask> list = new ArrayList<GenericTask>();
-		FileInputStream input = null;
-
+	public void importFile(InputStream mpd) {
 		try {
-			input = new FileInputStream(new File(file));
-			Workbook workbook = new XSSFWorkbook(input);
-			Sheet firstSheet = workbook.getSheetAt(0); //verifier que pas null
+			Workbook workbook = new XSSFWorkbook(mpd);
+			Sheet firstSheet = workbook.getSheetAt(0);
+			if (firstSheet == null)
+				return;
+
 			Iterator<Row> iterator = firstSheet.iterator();
 
 			while (iterator.hasNext()) {
 				Row nextRow = iterator.next();
+				if (nextRow.getRowNum() == 0)
+					nextRow = iterator.next();
+
 				Iterator<Cell> cellIterator = nextRow.cellIterator();
 				GenericTask gt = new GenericTask();
 
@@ -38,7 +40,6 @@ public class SpreadsheetParser implements Parser {
 					Cell cell = cellIterator.next();
 					int column = cell.getColumnIndex();
 
-					// A MODIFIER
 					switch (column) {
 					case 0:
 						gt.setTaskNumber(cell.getStringCellValue());
@@ -50,38 +51,33 @@ public class SpreadsheetParser implements Parser {
 						gt.setDescr(cell.getStringCellValue());
 						break;
 					case 3:
-						// gt.setThresholdInterval(cell.getStringCellValue());
+						gt.setPeriodicity((long) cell.getNumericCellValue());
 						break;
 					case 4:
-						// gt.setSource(cell.getStringCellValue());
+						gt.setHangar(cell.getBooleanCellValue());
 						break;
 					case 5:
-						// gt.setRef(cell.getStringCellValue());
+						gt.setDuration((long) cell.getNumericCellValue());
 						break;
 					case 6:
 						gt.setMen((int) cell.getNumericCellValue());
 						break;
 					case 7:
-						// gt.setmPerH(cell.getStringCellValue());
-						break;
-					case 8:
 						gt.setApplicability(cell.getStringCellValue());
 						break;
 					}
-					// A MODIFIER
 				}
-
-				list.add(gt);
+				
+				//add generictask to database
+				DAOFactory.getGenericTaskDAO().add(gt);
 			}
 
-			input.close();
+			mpd.close();
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		return list;
 	}
 }

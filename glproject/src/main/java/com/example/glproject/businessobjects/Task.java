@@ -2,22 +2,22 @@ package com.example.glproject.businessobjects;
 
 import java.util.Date;
 
-public class Task extends GenericTask {
+public class Task {
 	private long id;
 	private long idPlane;
 	private MRO mro;
 	private Date deadline;
+	private GenericTask genericTask;
 
 	public Task() {
 	}
 
-	public Task(String taskNumber, int zone, String descr, long periodicity, boolean hangar, long duration, int men,
-			String applicability, int id, long idPlane, MRO mro, Date deadline) {
-		super(taskNumber, zone, descr, periodicity, hangar, duration, men, applicability);
+	public Task(long id, long idPlane, MRO mro, Date deadline, GenericTask gt) {
 		this.id = id;
 		this.idPlane = idPlane;
 		this.mro = mro;
 		this.deadline = deadline;
+		this.genericTask = gt;
 	}
 
 	public long getId() {
@@ -50,5 +50,13 @@ public class Task extends GenericTask {
 
 	public void setDeadline(Date deadline) {
 		this.deadline = deadline;
+	}
+
+	public GenericTask getGenericTask() {
+		return genericTask;
+	}
+
+	public void setGenericTask(GenericTask genericTask) {
+		this.genericTask = genericTask;
 	}
 }

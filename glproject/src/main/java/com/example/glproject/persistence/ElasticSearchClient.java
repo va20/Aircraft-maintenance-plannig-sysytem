@@ -15,8 +15,8 @@ public class ElasticSearchClient {
 	private ElasticSearchClient() {
 		try {
 			TransportAddress address = new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300);
-			client = new PreBuiltTransportClient(Settings.EMPTY).addTransportAddress(address);
-
+			client = new PreBuiltTransportClient(Settings.builder().put("cluster.name", "elasticsearch").build())
+					.addTransportAddress(address);
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}

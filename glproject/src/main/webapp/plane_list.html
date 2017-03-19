@@ -25,7 +25,7 @@
        	   <option value="Jour">Jour</option>
            <option value="Semaine">Semaine</option>
            <option value="Mois">Mois</option>
-           <option value="Annee">AnnÃ©e</option>
+           <option value="Annee">Année</option>
        </select>
    </p>
 </form>
@@ -37,36 +37,21 @@
 
 			<center>
 					<tr>
-						<td><a href="#">Avion 1</a></td>
-						<td class="orange"><a href="#">Avion 2</a></td>
-						<td><a href="#">Avion 3</a></td>
-						<td><a href="#">Avion 4</a></td>
+						<td id="col"><a href="#"></a></td>
 					</tr>
-
-					<tr>
-						<td><a href="#">Avion 5</a></td>
-						<td><a href="#">Avion 6</a></td>
-						<td><a href="#">Avion 7</a></td>
-						<td><a href="#">Avion 8</a></td>
-					</tr>
-
-					<tr>
-						<td><a href="#">Avion 9</a></td>
-						<td><a href="#">Avion 10</a></td>
-						<td class="rouge"><a href="#">Avion 11</a></td>
-						<td><a href="#">Avion 12</a></td>
-					</tr>
-
-					<tr>
-						<td class="orange"><a href="#">Avion 13</a></td>
-						<td><a href="#">Avion 14</a></td>
-						<td><a href="#">Avion 15</a></td>
-						<td><a href="#">Avion 16</a></td>
-					</tr>
-
-
-
 			</center>
-
+			
+			<script type="text/html" id="list_planes">
+		          <tr> 
+		          		<% _.each(item, function(item) { %> 			      
+		                	<td><a href="#"><%= item.type %></a></td > 
+		                <% });%>			                    
+		          </tr>
+			</script>
+			
+		<script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="scripts/jquery.cookie.js"></script>
+	    <script type="text/javascript" src="scripts/underscore-min.js"></script>
+	    <script type="text/javascript" src="scripts/planes.js"></script>	   
 	</body>
 </html>

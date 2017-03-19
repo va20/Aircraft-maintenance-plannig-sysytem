@@ -8,7 +8,7 @@ public class GenericTask {
 	private boolean hangar;
 	private long duration;
 	private int men;
-	private String applicability;
+	private String applicability; //type avion
 
 	public GenericTask() {
 	}
@@ -88,5 +88,12 @@ public class GenericTask {
 
 	public void setApplicability(String applicability) {
 		this.applicability = applicability;
+	}
+
+	@Override
+	public String toString() {
+		return "GenericTask [taskNumber=" + taskNumber + ", zone=" + zone + ", descr=" + descr + ", periodicity="
+				+ periodicity + ", hangar=" + hangar + ", duration=" + duration + ", men=" + men + ", applicability="
+				+ applicability + "]";
 	}
 }
