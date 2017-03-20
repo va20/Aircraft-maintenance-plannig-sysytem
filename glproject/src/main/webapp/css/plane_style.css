@@ -1,51 +1,31 @@
 body{
-	background: url("../img/background.jpg") no-repeat center center fixed;
-}
+	background: url("../img/background.jpg");
 
-.bouton
-{
-	float: right;
-	margin: 0 10px 10px 0;
-	font-family: Arial,sans-serif;
-	width: 100px;
-	height: 20px;
-	padding: 3px;
-	text-align: center;
-	vertical-align: middle;
-    background: linear-gradient(#EEEEEE, #00C3B6);
-    border-radius: 5px;
-    text-shadow: 0px 1px 0px rgba( 255, 255, 255, 0.2);
 }
 
 .bouton a
 {
-	text-decoration: none;
-	color: #1f1f1f;
-	font-weight: bold;
-	text-shadow: 1px 0 1px rgba(255, 255, 255, .5);
+	margin-top: 0px;
+	border: 0;
+	border-radius: 200px;
+	color: white;
+	padding: 10px;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 0.7em;
+	letter-spacing: 1px;
+	background-color: #665851;
+	cursor:pointer;
+	outline: none;
 }
 
-.bouton:active{
-	color: #000;
-	background: linear-gradient(#00C3B6, #EEEEEE);
-	box-shadow:	1px 1px 5px black inset,
-				0 1px 0 rgba( 255, 255, 255, 0.4);
-}
-
-.orange {
-	background-color: #FFFF9D;
-}
-
-.rouge{
-	background-color: #FF6138;
-}
 
 ul
 {
 	display: table;
-	width: 100%;
+	width: 90%;
 	padding: 0;
-	font-size: 25px;
+	font-size: 15px;
 	font-family: "Times New Roman", serif;
 
 }
@@ -57,6 +37,7 @@ ul li
 	background: #00A388;
 	text-shadow: 1px 0 1px rgba(255, 255, 255, .9);
 	border-radius: 1px;
+	border: 3px white outset;
 }
 
 ul li bla
@@ -73,7 +54,7 @@ ul li a
 	padding: 10px 0 10px 0;
 	display: block;
 	border-radius: 3px;
-	background:#00A388;
+	background:#C0C0C0;
 	text-decoration: none;
 	color: #EEEEEE;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, .9);

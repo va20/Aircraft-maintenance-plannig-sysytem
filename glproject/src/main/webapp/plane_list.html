@@ -9,23 +9,23 @@
 	<body>
 
 		<div class="bouton">
-			<a href="#">Disconnect</a>
+			<a href="login.html">Disconnect</a>
 		</div>
 
 		<ul>
-			<li><bla>Planes list<bla></li>
+			<li><a href="plane_list.html">Planes list</a></li>
 			<li><a href="flight_list.html">Flights list</a></li>
 		</ul>
 
 
-<form method="post" action="traitement.php">
+<form>
    <p>
 
        <select name="pays" id="pays">
        	   <option value="Jour">Jour</option>
            <option value="Semaine">Semaine</option>
            <option value="Mois">Mois</option>
-           <option value="Annee">Année</option>
+           <option value="Annee">Annï¿½e</option>
        </select>
    </p>
 </form>
@@ -40,18 +40,18 @@
 						<td id="col"><a href="#"></a></td>
 					</tr>
 			</center>
-			
+
 			<script type="text/html" id="list_planes">
-		          <tr> 
-		          		<% _.each(item, function(item) { %> 			      
-		                	<td><a href="#"><%= item.type %></a></td > 
-		                <% });%>			                    
+		          <tr>
+		          		<% _.each(item, function(item) { %>
+		                	<td><a href="#"><%= item.type %></a></td >
+		                <% });%>
 		          </tr>
 			</script>
-			
+
 		<script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
 		<script type="text/javascript" src="scripts/jquery.cookie.js"></script>
 	    <script type="text/javascript" src="scripts/underscore-min.js"></script>
-	    <script type="text/javascript" src="scripts/planes.js"></script>	   
+	    <script type="text/javascript" src="scripts/planes.js"></script>
 	</body>
 </html>

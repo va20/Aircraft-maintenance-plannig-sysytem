@@ -28,8 +28,26 @@ body{
 .bouton:active{
 	color: #000;
 	background: linear-gradient(#00C3B6, #EEEEEE);
-	box-shadow:	1px 1px 5px black inset, 
+	box-shadow:	1px 1px 5px black inset,
 				0 1px 0 rgba( 255, 255, 255, 0.4);
+}
+
+.bouton1 {
+	border:none;
+	padding:6px 0 6px 0;
+	border-radius:8px;
+	background:#d34836;
+	font:bold 13px Arial;
+	color:#fff;
+}
+
+.bouton2 {
+	border:none;
+	padding:6px 0 6px 0;
+	border-radius:8px;
+	background:#d34836;
+	font:bold 13px Arial;
+	color:#fff;
 }
 
 ul
