@@ -38,7 +38,6 @@ public class StaffResource {
 	
 	@DELETE
 	public void deleteStaffs() {
-		System.out.println("je suis la");
 		DAOFactory.getStaffDAO().deleteStaffs();
 	}
 }
