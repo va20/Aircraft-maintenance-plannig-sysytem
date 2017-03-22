@@ -2,36 +2,100 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/add_task.css" />
+		<link href="http://fonts.googleapis.com/css?family=Arimo:400" rel="stylesheet">
+		<link href="css/bootstrap-3.3.4.css" rel="stylesheet" type="text/css">
+		<link rel="icon" href="img/avion.ico" />
 		<title>Add tasks</title>
 	</head>
 
 	<body>
 
-		<div class="bouton">
-			<a href="#">Disconnect</a>
-		</div>
+		<!--betulsenger.com @betdream-->
+<!--http://getbootstrap.com/components/#navbar-->
+<div class="body-wrap">
+	<div class="container">
+		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">MCC</a>
+				</div>
 
-		<ul>
-			<li><a href="plane_list.html">Planes list</a></li>
-			<li><a href="flight_list.html">Flights list</a></li>
-		</ul>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li><a href="plane_list.html">Planes List</a></li>
+						<li><a href="flight_list.html">Flight List</a></li>
+						<li class="active"><a href="add_task.html">Add task</a></li>
+					</ul>
 
-		<form method="post" action="traitement.php">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="login.html">Disconnect</a></li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+	</div>
+</div>
 
-			<p>	<label for="task">Task name</label> : <input type="text" name="task" id="task" /> </p>
-			<p>	<label for="mro">Mro</label> : <input type="text" name="mro" id="mro" /> </p>
-			<p>	<label for="deadline">Deadline</label> : <input type="date" name="deadline" id="deadline" /> </p>
+        <script src="http://mymaplist.com/js/vendor/TweenLite.min.js"></script>
+        <body>
+            <div class="container">
+                <div class="row vertical-offset-100">
+                    <div class="col-md-4 col-md-offset-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row-fluid user-row">
+                                    <img src="http://s11.postimg.org/7kzgji28v/logo_sm_2_mr_1.png" class="img-responsive" alt="Conxole Admin"/>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <form accept-charset="UTF-8" role="form" class="form-signin">
+                                    <fieldset>
+                                        <label class="panel-login">
+                                            <div class="login_result"></div>
+                                        </label>
+                                        <input class="form-control" placeholder="Task name" id="Task_name" type="text">
+                                        <input class="form-control" placeholder="Mro" id="Mro" type="text">
+																				<input class="form-control" placeholder="Deadline" id="Deadline" type="date">
+																				<label for="default" class="btn btn-default">In Line <input type="checkbox" id="default" class="badgebox"><span class="badge">&check;</span></label>
+																				<label for="primary" class="btn btn-primary">In Base <input type="checkbox" id="primary" class="badgebox"><span class="badge">&check;</span></label>
 
-			<p>
-				Type de traitement
-    			<input type="radio" name="type" value="line" id="line" /> <label for="line">In line</label>
-    			<input type="radio" name="type" value="base" id="base" /> <label for="base">In base</label>
-       		</p>
 
-			<p></div><input type="submit" value="Add" /> </p>
-
-		</form>
+                                        <br></br>
+                                        <input class="btn btn-lg btn-success btn-block" type="submit" id="Add" value="Add >>">
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+            </div>
 
 	</body>
 </html>
+
+<script>
+$(document).ready(function() {
+    $(document).mousemove(function(event) {
+        TweenLite.to($("body"),
+        .5, {
+            css: {
+                backgroundPosition: "" + parseInt(event.pageX / 8) + "px " + parseInt(event.pageY / '12') + "px, " + parseInt(event.pageX / '15') + "px " + parseInt(event.pageY / '15') + "px, " + parseInt(event.pageX / '30') + "px " + parseInt(event.pageY / '30') + "px",
+            	"background-position": parseInt(event.pageX / 8) + "px " + parseInt(event.pageY / 12) + "px, " + parseInt(event.pageX / 15) + "px " + parseInt(event.pageY / 15) + "px, " + parseInt(event.pageX / 30) + "px " + parseInt(event.pageY / 30) + "px"
+            }
+        })
+    })
+})
+</script>
