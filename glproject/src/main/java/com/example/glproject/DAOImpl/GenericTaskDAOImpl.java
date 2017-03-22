@@ -7,7 +7,6 @@ import java.util.List;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.xcontent.XContentFactory;
@@ -122,8 +121,29 @@ public class GenericTaskDAOImpl implements GenericTaskDAO {
 	}
 
 	public GenericTask getGenericTask(String reference) {
-		GetResponse response = esc.getClient().prepareGet("gl", "mpd", reference).get();
-		System.out.println(response.getSourceAsString());
+		ObjectMapper mapper = new ObjectMapper();
+
+		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("mpd");
+		SearchResponse searchResponse = requestBuilder.get();
+		SearchHit[] searchHits = searchResponse.getHits().getHits();
+
+		for (SearchHit sh : searchHits) {
+			GenericTask genericTask = null;
+
+			try {				
+				genericTask = mapper.readValue(sh.sourceAsString(), GenericTask.class);
+				if(genericTask.getTaskNumber().equals(reference))
+					return genericTask;
+
+			} catch (JsonParseException e) {
+				e.printStackTrace();
+			} catch (JsonMappingException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
 		return null;
 	}
 

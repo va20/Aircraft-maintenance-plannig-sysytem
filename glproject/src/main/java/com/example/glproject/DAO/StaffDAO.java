@@ -12,5 +12,7 @@ public interface StaffDAO {
 
 	void addStaff(Staff s);
 	
+	void update(Staff s);
+	
 	void deleteStaffs();
 }

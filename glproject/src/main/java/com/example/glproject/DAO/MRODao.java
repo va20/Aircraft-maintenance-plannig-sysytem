@@ -6,9 +6,11 @@ import com.example.glproject.businessobjects.MRO;
  * Created by info on 20/02/17.
  */
 public interface MRODao {
-	boolean add(MRO mro);
+	void add(MRO mro);
 
-	boolean delete(int id);
+	void delete(long id);
 
-	MRO getByid(int id);
+	void update(MRO mro);
+	
+	MRO getByid(long id);
 }

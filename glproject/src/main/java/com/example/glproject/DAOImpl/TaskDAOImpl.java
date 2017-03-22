@@ -63,8 +63,29 @@ public class TaskDAOImpl implements TaskDAO {
 
 
 	public Task getTask(long id) {
-		GetResponse response = esc.getClient().prepareGet("gl", "task", Long.toString(id)).get();
-		System.out.println(response.getSourceAsString());
+		ObjectMapper mapper = new ObjectMapper();
+
+		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("task");
+		SearchResponse searchResponse = requestBuilder.get();
+		SearchHit[] searchHits = searchResponse.getHits().getHits();
+
+		for (SearchHit sh : searchHits) {
+			Task task = null;
+
+			try {
+				task = mapper.readValue(sh.sourceAsString(), Task.class);
+				
+				if(task.getId()==id){
+					return task;
+				}
+			} catch (JsonParseException e) {
+				e.printStackTrace();
+			} catch (JsonMappingException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		return null;
 	}
 	
