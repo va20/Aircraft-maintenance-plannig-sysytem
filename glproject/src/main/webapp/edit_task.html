@@ -2,50 +2,104 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/edit_task.css" />
+		<link href="http://fonts.googleapis.com/css?family=Arimo:400" rel="stylesheet">
+		<link href="css/bootstrap-3.3.4.css" rel="stylesheet" type="text/css">
+		<link rel="icon" href="img/avion.ico" />
 		<title>Edit task</title>
 	</head>
 
 	<body>
 
-		<div class="bouton">
-			<a href="#">Disconnect</a>
+		<div class="body-wrap">
+		  <div class="container">
+		    <nav class="navbar navbar-inverse" role="navigation">
+		      <div class="container-fluid">
+		        <!-- Brand and toggle get grouped for better mobile display -->
+		        <div class="navbar-header">
+		          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		          </button>
+		          <a class="navbar-brand" href="#">MCC</a>
+		        </div>
+
+		        <!-- Collect the nav links, forms, and other content for toggling -->
+		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		          <ul class="nav navbar-nav">
+		            <li><a href="plane_list.html">Planes List</a></li>
+		            <li><a href="flight_list.html">Flight List</a></li>
+								<li><a href="add_task.html">Add task</a></li>
+								<li class="active"><a href="edit_task.html">Edit task</a></li>
+								<li><a href="maintenanceplan.html">Maintenance Planning</a></li>
+		          </ul>
+
+		          <ul class="nav navbar-nav navbar-right">
+		            <li><a href="login.html">Disconnect</a></li>
+		          </ul>
+		        </div>
+		        <!-- /.navbar-collapse -->
+		      </div>
+		      <!-- /.container-fluid -->
+		    </nav>
+		  </div>
 		</div>
 
-		<ul>
-			<li><a href="plane_list.html">Planes list</a></li>
-			<li><a href="flight_list.html">Flights list</a></li>
-		</ul>
-
-		<div class="bouton">
-			<a href="add_task.html">Add task</a>
+		<div class="container">
+		    <div class="row col-md-6 col-md-offset-2 custyle">
+		    <table class="table table-striped custab">
+		    <thead>
+		    <a href="add_task.html" class="btn btn-primary btn-xs pull-right"><b>+</b> Add task</a>
+		        <tr>
+		            <th>Task</th>
+		            <th>MRO</th>
+		            <th>Deadline</th>
+								<th>Length</th>
+								<th>Type</th>
+		            <th class="text-center">State</th>
+		        </tr>
+		    </thead>
+		            <tr>
+		                <td>Task 1</td>
+		                <td>MRO 1</td>
+		                <td>23/03</td>
+										<td>8h - 10h </td>
+										<td>Line</td>
+		                <td class="text-center"><a class='btn btn-info btn-xs' href="#">Edit</a> <a href="#" class="btn btn-danger btn-xs">Del</a></td>
+		            </tr>
+		            <tr>
+									<td>Task 2</td>
+									<td>MRO 1</td>
+									<td>23/03</td>
+									<td>16h20 - 16h50 </td>
+									<td>Line</td>
+		                <td class="text-center"><a class='btn btn-info btn-xs' href="#">Edit</a> <a href="#" class="btn btn-danger btn-xs">Del</a></td>
+		            </tr>
+		            <tr>
+									<td>Task 3</td>
+									<td>MRO 6</td>
+									<td>14/04</td>
+									<td>23h - 05h </td>
+									<td>Base</td>
+		                <td class="text-center"><a class='btn btn-info btn-xs' href="#">Edit</a> <a href="#" class="btn btn-danger btn-xs">Del</a></td>
+		            </tr>
+								<tr>
+									<td>Task 4</td>
+									<td>MRO 7</td>
+									<td>23/03</td>
+									<td>05h - 08h </td>
+									<td>Done</td>
+		                <td class="text-center"><a class='btn btn-info btn-xs' href="#">Edit</a> <a href="#" class="btn btn-danger btn-xs">Del</a></td>
+		            </tr>
+		    </table>
+		    </div>
 		</div>
-
-		<br />
-		<br />
-
-		<table border="1" align="center">
-
-			<tr>
-				<th>Tasks</th>
-				<th>MRO</th>
-				<th>Deadline</th>
-				<th>Type/state</th>
-			</tr>
-			<tr>
-				<td>Task 1</td>
-				<td>MRO 3</td>
-				<td>21/02</td>
-				<td> </td>
-			</tr>
-			<tr>
-				<td>Task 2</td>
-				<td>MRO 1</td>
-				<td>23/02</td>
-				<td> </td>
-			</tr>
-
-		</table>
 
 	</body>
 </html>
+
+<script>
+
+</script>

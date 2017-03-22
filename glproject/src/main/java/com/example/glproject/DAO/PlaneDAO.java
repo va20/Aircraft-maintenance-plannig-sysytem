@@ -12,7 +12,7 @@ public interface PlaneDAO {
 
 	void add(Plane plane);
 
-	void updatePlane(long id);
+	void updatePlane(Plane plane);
 
 	void deletePlane(long id);
 	

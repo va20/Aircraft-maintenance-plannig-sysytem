@@ -192,3 +192,71 @@ body,html {
 .forgot-password:focus{
     color: rgb(12, 97, 33);
 }
+
+}
+ .form-signin input[type="text"] {
+     margin-bottom: 5px;
+     border-bottom-left-radius: 0;
+     border-bottom-right-radius: 0;
+ }
+ .form-signin input[type="password"] {
+     margin-bottom: 10px;
+     border-top-left-radius: 0;
+     border-top-right-radius: 0;
+ }
+ .form-signin .form-control {
+     position: relative;
+     font-size: 16px;
+     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+     height: auto;
+     padding: 10px;
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     box-sizing: border-box;
+ }
+ .vertical-offset-100 {
+     padding-top: 100px;
+ }
+ .img-responsive {
+ display: block;
+ max-width: 100%;
+ height: auto;
+ margin: auto;
+ }
+ .panel {
+ margin-bottom: 20px;
+ background-color: rgba(255, 255, 255, 0.75);
+ border: 1px solid transparent;
+ border-radius: 4px;
+ -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+ box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+ }
+
+ .badgebox
+ {
+     opacity: 0;
+ }
+
+ .badgebox + .badge
+ {
+     /* Move the check mark away when unchecked */
+     text-indent: -999999px;
+     /* Makes the badge's width stay the same checked and unchecked */
+ 	width: 27px;
+ }
+
+ .badgebox:focus + .badge
+ {
+     /* Set something to make the badge looks focused */
+     /* This really depends on the application, in my case it was: */
+
+     /* Adding a light border */
+     box-shadow: inset 0px 0px 5px;
+     /* Taking the difference out of the padding */
+ }
+
+ .badgebox:checked + .badge
+ {
+     /* Move the check mark back when checked */
+ 	text-indent: 0;
+ }
