@@ -1,5 +1,6 @@
 package com.example.glproject.DAO;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.example.glproject.businessobjects.Task;
@@ -10,9 +11,9 @@ public interface TaskDAO {
 
 	Task getTask(long id);
 
-	void addTask(long id);
+	void addTask(Task task);
 
-	void update(long id);
+	void update(Task task) throws IOException;
 
 	void delete(long id);
 
