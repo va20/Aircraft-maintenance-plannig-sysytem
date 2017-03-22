@@ -19,7 +19,7 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 
 public class GenericTaskDAOImpl implements GenericTaskDAO {
 	private ElasticSearchClient esc = ElasticSearchClient.getInstance();
-	
+
 	public List<GenericTask> getGenericTasks() {
 		List<GenericTask> genericTasks = new ArrayList<GenericTask>();
 		ObjectMapper mapper = new ObjectMapper();
@@ -32,7 +32,7 @@ public class GenericTaskDAOImpl implements GenericTaskDAO {
 			GenericTask genericTask = null;
 
 			try {
-				
+
 				genericTask = mapper.readValue(sh.sourceAsString(), GenericTask.class);
 				genericTasks.add(genericTask);
 
@@ -48,7 +48,6 @@ public class GenericTaskDAOImpl implements GenericTaskDAO {
 		return genericTasks;
 	}
 
-	
 	public void add(GenericTask gt) {
 		ObjectMapper mapper = new ObjectMapper();
 		String json = null;
@@ -66,32 +65,24 @@ public class GenericTaskDAOImpl implements GenericTaskDAO {
 		esc.getClient().prepareIndex("gl", "mpd").setSource(json).get();
 	}
 
-	
 	public void update(GenericTask gt) throws IOException {
-		esc.getClient().prepareUpdate("gl","mpd", gt.getTaskNumber())
-				.setDoc(XContentFactory.jsonBuilder()
-			    .startObject()
-			    .field("applicability", gt.getApplicability())
-			    .field("descr", gt.getDescr())
-			    .field("duration", gt.getDuration())
-			    .field("hangar" , gt.isHangar())
-			    .field("men" , gt.getMen())
-			    .field("periodicity" , gt.getPeriodicity())
-			    .field("zone" , gt.getZone())
-			    .endObject()).get();
+		esc.getClient().prepareUpdate("gl", "mpd", gt.getTaskNumber())
+				.setDoc(XContentFactory.jsonBuilder().startObject().field("applicability", gt.getApplicability())
+						.field("descr", gt.getDescr()).field("duration", gt.getDuration())
+						.field("hangar", gt.isHangar()).field("men", gt.getMen())
+						.field("periodicity", gt.getPeriodicity()).field("zone", gt.getZone()).endObject())
+				.get();
 	}
 
-	
 	public void delete(String reference) {
 		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("mpd");
 		SearchResponse searchResponse = requestBuilder.get();
 		SearchHit[] searchHits = searchResponse.getHits().getHits();
 
-		for (SearchHit sh : searchHits)			
+		for (SearchHit sh : searchHits)
 			esc.getClient().prepareDelete(sh.getIndex(), sh.getType(), reference).get();
 	}
 
-	
 	public List<GenericTask> getByType(int type) {
 		List<GenericTask> genericTasks = new ArrayList<GenericTask>();
 		ObjectMapper mapper = new ObjectMapper();
@@ -103,9 +94,9 @@ public class GenericTaskDAOImpl implements GenericTaskDAO {
 		for (SearchHit sh : searchHits) {
 			GenericTask genericTask = null;
 
-			try {				
+			try {
 				genericTask = mapper.readValue(sh.sourceAsString(), GenericTask.class);
-				//if(genericTask.getType == type)
+				// if(genericTask.getType == type)
 				genericTasks.add(genericTask);
 
 			} catch (JsonParseException e) {
@@ -130,9 +121,9 @@ public class GenericTaskDAOImpl implements GenericTaskDAO {
 		for (SearchHit sh : searchHits) {
 			GenericTask genericTask = null;
 
-			try {				
+			try {
 				genericTask = mapper.readValue(sh.sourceAsString(), GenericTask.class);
-				if(genericTask.getTaskNumber().equals(reference))
+				if (genericTask.getTaskNumber().equals(reference))
 					return genericTask;
 
 			} catch (JsonParseException e) {
@@ -147,5 +138,4 @@ public class GenericTaskDAOImpl implements GenericTaskDAO {
 		return null;
 	}
 
-	
 }

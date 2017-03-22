@@ -11,6 +11,6 @@ public interface MRODao {
 	void delete(long id);
 
 	void update(MRO mro);
-	
+
 	MRO getByid(long id);
 }
