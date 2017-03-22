@@ -35,22 +35,18 @@ public class FlightDAOImpl implements FlightDAO {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 		esc.getClient().prepareIndex("gl", "flight").setSource(json).get();
 	}
 
-
 	public void update(Flight flight) {
 		try {
-			esc.getClient().prepareUpdate("gl","flight", Long.toString(flight.getIdPlane()))
-			.setDoc(XContentFactory.jsonBuilder()
-			.startObject()
-			.field("arrAirport" , flight.getArrAirport())
-			.field("arrTime", flight.getArrTime())
-			.field("commercial", flight.getCommercial())
-			.field("depAirport", flight.getDepAirport())
-			.field("depTime", flight.getDepTime())
-			.field("idPlane", flight.getIdPlane())
-			.endObject()).get();
+			esc.getClient().prepareUpdate("gl", "flight", Long.toString(flight.getIdPlane()))
+					.setDoc(XContentFactory.jsonBuilder().startObject().field("arrAirport", flight.getArrAirport())
+							.field("arrTime", flight.getArrTime()).field("commercial", flight.getCommercial())
+							.field("depAirport", flight.getDepAirport()).field("depTime", flight.getDepTime())
+							.field("idPlane", flight.getIdPlane()).endObject())
+					.get();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -62,10 +58,9 @@ public class FlightDAOImpl implements FlightDAO {
 		SearchResponse searchResponse = requestBuilder.get();
 		SearchHit[] searchHits = searchResponse.getHits().getHits();
 
-		for (SearchHit sh : searchHits)			
+		for (SearchHit sh : searchHits)
 			esc.getClient().prepareDelete(sh.getIndex(), sh.getType(), Long.toString(idPlane)).get();
 	}
-
 
 	public Flight getFlight(String commercial) {
 		ObjectMapper mapper = new ObjectMapper();
@@ -79,8 +74,8 @@ public class FlightDAOImpl implements FlightDAO {
 
 			try {
 				flight = mapper.readValue(sh.sourceAsString(), Flight.class);
-				
-				if(flight.getCommercial().equals(commercial)){
+
+				if (flight.getCommercial().equals(commercial)) {
 					return flight;
 				}
 			} catch (JsonParseException e) {
@@ -130,7 +125,7 @@ public class FlightDAOImpl implements FlightDAO {
 
 			try {
 				flight = mapper.readValue(sh.sourceAsString(), Flight.class);
-				if(flight.getDepTime()==day)
+				if (flight.getDepTime() == day)
 					flights.add(flight);
 			} catch (JsonParseException e) {
 				e.printStackTrace();
@@ -155,7 +150,7 @@ public class FlightDAOImpl implements FlightDAO {
 
 			try {
 				flight = mapper.readValue(sh.sourceAsString(), Flight.class);
-				if(flight.getArrTime()==day)
+				if (flight.getArrTime() == day)
 					flights.add(flight);
 			} catch (JsonParseException e) {
 				e.printStackTrace();

@@ -12,12 +12,12 @@ public interface FlightDAO {
 	List<Flight> getFlights();
 
 	void add(Flight flight);
-	
+
 	void update(Flight flight);
-	
+
 	void delete(long idPlane);
 
 	List<Flight> getByDayArr(Date day);
-	
+
 	List<Flight> getByDayDep(Date day);
 }

@@ -11,8 +11,8 @@ public interface StaffDAO {
 	List<Staff> getStaffs();
 
 	void addStaff(Staff s);
-	
+
 	void update(Staff s);
-	
+
 	void deleteStaffs();
 }
