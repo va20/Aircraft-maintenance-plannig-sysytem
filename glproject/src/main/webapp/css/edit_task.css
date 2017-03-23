@@ -3,7 +3,7 @@ body,html {
   font-family: 'Open Sans', 'sans-serif';
    height: 100%;
     background-repeat: no-repeat;
-    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+    background-image: linear-gradient(rgb(90, 121, 127),#BABEC4);
 }
 .mega-dropdown {
   position: static !important;
