@@ -1,23 +1,18 @@
 package com.example.glproject.DAO;
 
-import java.util.Date;
 import java.util.List;
+
+import org.joda.time.DateTime;
 
 import com.example.glproject.businessobjects.Flight;
 
-public interface FlightDAO {
+public interface FlightDAO extends DAO<Flight> {
 
 	Flight getFlight(String commercial);
-
-	List<Flight> getFlights();
-
-	void add(Flight flight);
-
+	
 	void update(Flight flight);
 
-	void delete(long idPlane);
+	List<Flight> getByDayArr(DateTime day);
 
-	List<Flight> getByDayArr(Date day);
-
-	List<Flight> getByDayDep(Date day);
+	List<Flight> getByDayDep(DateTime day);
 }

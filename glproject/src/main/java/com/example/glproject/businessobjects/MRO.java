@@ -1,29 +1,33 @@
-package com.example.glproject.businessobjects;
 
-import java.util.List;
+package com.example.glproject.businessobjects;
 
 public class MRO {
 	private long id;
-	private List<Task> list_task;
+	private long idPlane;
+	
+	public MRO() {
+	}
 
-	public MRO(long id, List<Task> list_task) {
+	public MRO(long id, long idPlane) {
+		super();
 		this.id = id;
-		this.list_task = list_task;
+		this.idPlane = idPlane;
 	}
 
 	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	public List<Task> getList_task() {
-		return list_task;
+	public long getIdPlane() {
+		return idPlane;
 	}
 
-	public void setList_task(List<Task> list_task) {
-		this.list_task = list_task;
+	public void setIdPlane(long idPlane) {
+		this.idPlane = idPlane;
 	}
+
 }

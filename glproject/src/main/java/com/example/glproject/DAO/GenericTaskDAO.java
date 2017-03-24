@@ -1,24 +1,14 @@
 package com.example.glproject.DAO;
 
-import java.io.IOException;
 import java.util.List;
 
 import com.example.glproject.businessobjects.GenericTask;
 
-public interface GenericTaskDAO {
+public interface GenericTaskDAO extends DAO<GenericTask> {
 
+	void update(GenericTask gt);
 
-	List<GenericTask> getGenericTasks();
+	List<GenericTask> getByType(String type);
 
-	void add(GenericTask gt);
-
-	void update(GenericTask gt) throws IOException;
-
-	void delete(String reference);
-
-	List<GenericTask> getByType(int type);// Returns a list GenericTask by
-											// Plane_type
-
-	GenericTask getGenericTask(String reference);// Return generictask corresponding the
-										// reference
+	GenericTask getGenericTask(String reference);
 }

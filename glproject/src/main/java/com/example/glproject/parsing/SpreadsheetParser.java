@@ -11,7 +11,9 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.example.glproject.DAO.DAOFactory;
+import com.example.glproject.DAO.AbstractDAOFactory;
+import com.example.glproject.DAO.Factory;
+import com.example.glproject.DAOImpl.GenericTaskDAOImpl;
 import com.example.glproject.businessobjects.GenericTask;
 import com.example.glproject.persistence.ElasticSearchClient;
 
@@ -67,9 +69,9 @@ public class SpreadsheetParser implements Parser {
 						break;
 					}
 				}
-				
-				//add generictask to database
-				DAOFactory.getGenericTaskDAO().add(gt);
+
+				((GenericTaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO()).add(gt,
+						"mpd");
 			}
 
 			mpd.close();

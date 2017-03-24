@@ -1,16 +1,8 @@
 package com.example.glproject.DAO;
 
-import java.util.List;
-
 import com.example.glproject.businessobjects.Staff;
 
-public interface StaffDAO {
-
-	Staff getStaff(long id);
-
-	List<Staff> getStaffs();
-
-	void addStaff(Staff s);
+public interface StaffDAO extends DAO<Staff> {
 
 	void update(Staff s);
 

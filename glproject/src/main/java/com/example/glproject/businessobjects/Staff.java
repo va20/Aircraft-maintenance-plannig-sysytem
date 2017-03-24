@@ -54,4 +54,10 @@ public class Staff {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	@Override
+	public String toString() {
+		return "Staff [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", login=" + login
+				+ ", password=" + password + "]";
+	}
 }

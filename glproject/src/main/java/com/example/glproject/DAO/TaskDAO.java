@@ -1,21 +1,12 @@
 package com.example.glproject.DAO;
 
-import java.io.IOException;
 import java.util.List;
 
 import com.example.glproject.businessobjects.Task;
 
-public interface TaskDAO {
+public interface TaskDAO extends DAO<Task> {
 
-	List<Task> getTasks();
-
-	Task getTask(long id);
-
-	void addTask(Task task);
-
-	void update(Task task) throws IOException;
-
-	void delete(long id);
+	void update(Task task);
 
 	List<Task> getTasksByMRO(long id);
 

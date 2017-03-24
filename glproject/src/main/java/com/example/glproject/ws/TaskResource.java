@@ -1,4 +1,4 @@
-package com.example.glproject.resources;
+package com.example.glproject.ws;
 
 import javax.ws.rs.Path;
 
