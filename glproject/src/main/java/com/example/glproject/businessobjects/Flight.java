@@ -66,7 +66,7 @@ public class Flight {
 		return arrTime;
 	}
 
-	public void setArrTime(Date arrTime) {
+	public void setArrTime(DateTime arrTime) {
 		this.arrTime = arrTime;
 	}
 }

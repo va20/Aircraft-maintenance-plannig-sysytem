@@ -2,6 +2,7 @@ package com.example.glproject.DAOImpl;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.codehaus.jackson.JsonParseException;
@@ -11,16 +12,28 @@ import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.search.SearchHit;
-import org.joda.time.DateTime;
 
-import com.example.glproject.DAO.DAOImpl;
 import com.example.glproject.DAO.FlightDAO;
 import com.example.glproject.businessobjects.Flight;
+import com.example.glproject.persistence.ElasticSearchClient;
+import com.fasterxml.jackson.core.JsonGenerationException;
 
-public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
+public class FlightDAOImpl implements FlightDAO {
+	private static final Logger logger = Logger.getLogger(FlightDAOImpl.class.getSimpleName());
+	private ElasticSearchClient esc = ElasticSearchClient.getInstance();
 
-	public FlightDAOImpl(Class<Flight> typeT) {
-		super(typeT);
+	public void add(Flight flight) {
+		ObjectMapper mapper = new ObjectMapper();
+		String json = null;
+
+		try {
+			json = mapper.writeValueAsString(flight);
+
+		} catch (Exception e) {
+			logger.error("Unable to convert Flight to JSON object",e);
+		}
+
+		esc.getClient().prepareIndex("gl", "flight").setSource(json).get();
 	}
 
 	public void update(Flight flight) {
@@ -73,7 +86,7 @@ public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
 		return null;
 	}
 
-	public List<Flight> getByDayDep(DateTime day) {
+	public List<Flight> getFlights() {
 		ObjectMapper mapper = new ObjectMapper();
 		List<Flight> flights = new ArrayList<Flight>();
 		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("flight");
@@ -85,8 +98,7 @@ public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
 
 			try {
 				flight = mapper.readValue(sh.sourceAsString(), Flight.class);
-				// if (flight.getDepTime() == day)
-				// flights.add(flight);
+				flights.add(flight);
 			} catch (JsonParseException e) {
 				e.printStackTrace();
 			} catch (JsonMappingException e) {
@@ -98,7 +110,7 @@ public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
 		return flights;
 	}
 
-	public List<Flight> getByDayArr(DateTime day) {
+	public List<Flight> getByDayDep(Date day) {
 		ObjectMapper mapper = new ObjectMapper();
 		List<Flight> flights = new ArrayList<Flight>();
 		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("flight");
@@ -110,8 +122,8 @@ public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
 
 			try {
 				flight = mapper.readValue(sh.sourceAsString(), Flight.class);
-				// if (flight.getArrTime() == day)
-				// flights.add(flight);
+				if (flight.getDepTime() == day)
+					flights.add(flight);
 			} catch (JsonParseException e) {
 				e.printStackTrace();
 			} catch (JsonMappingException e) {
@@ -122,4 +134,30 @@ public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
 		}
 		return flights;
 	}
+
+	public List<Flight> getByDayArr(Date day) {
+		ObjectMapper mapper = new ObjectMapper();
+		List<Flight> flights = new ArrayList<Flight>();
+		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("flight");
+		SearchResponse searchResponse = requestBuilder.get();
+		SearchHit[] searchHits = searchResponse.getHits().getHits();
+
+		for (SearchHit sh : searchHits) {
+			Flight flight = null;
+
+			try {
+				flight = mapper.readValue(sh.sourceAsString(), Flight.class);
+				if (flight.getArrTime() == day)
+					flights.add(flight);
+			} catch (JsonParseException e) {
+				e.printStackTrace();
+			} catch (JsonMappingException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return flights;
+	}
+
 }

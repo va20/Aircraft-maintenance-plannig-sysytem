@@ -14,4 +14,6 @@ function setPlanes(data) {
 	$("#col").append(plane);
 }
 
-getPlanes();
+$(document).ready(function(){
+    getPlanes();
+});

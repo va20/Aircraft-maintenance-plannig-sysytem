@@ -1,19 +1,13 @@
-package com.example.glproject.ws;
+package com.example.glproject.resources;
 
-import java.util.List;
-
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.core.MediaType;
-
-import com.example.glproject.DAO.AbstractDAOFactory;
-import com.example.glproject.DAO.Factory;
-import com.example.glproject.DAOImpl.StaffDAOImpl;
+import com.example.glproject.DAO.DAOFactory;
 import com.example.glproject.businessobjects.Staff;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.eclipse.jetty.util.security.Credential;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("/staff")
 public class StaffResource {
@@ -21,15 +15,12 @@ public class StaffResource {
 	@POST
 	@Path("/{login}/{password}")
 	public boolean signIn(@PathParam("login") String login, @PathParam("password") String password) {
-		List<Staff> staffs = ((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO())
-				.getAll("staffs");
+		byte[] hashedPasword = DigestUtils.sha512(password);
 
-		for (Staff s : staffs) {
-			System.out.println(s.toString());
-			if (s.getLogin().equals(login) && s.getPassword().equals(password)) {
+		Staff staff = DAOFactory.getStaffDAO().isValid(login, hashedPassword);
+		if (s.getPassword().equals(password)) {
 				return true;
 			}
-		}
 
 		return false;
 	}
@@ -37,12 +28,11 @@ public class StaffResource {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addStaff(Staff s) {
-		((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).add(s, "staffs");
+		DAOFactory.getStaffDAO().addStaff(s);
 	}
-
+	
 	@DELETE
 	public void deleteStaffs() {
-		// ((StaffDAOImpl)
-		// AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).delete("staffs");
+		DAOFactory.getStaffDAO().deleteStaffs();
 	}
 }
