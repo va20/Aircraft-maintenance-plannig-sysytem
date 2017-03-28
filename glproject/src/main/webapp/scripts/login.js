@@ -10,13 +10,16 @@ $('#username, #password').on('input', function() {
 $('#submit').click(function() {
 	var login = $('#username').val();
 	var password = $('#password').val();
-
+	console.log(login+" "+password);
+	
 	$.ajax({
 		url : "ws/staff/"+login+'/'+password,
 		type : "POST",
 		dataType : "json",
 
 		success : function(data) {
+			console.log(data);
+			
 			if(data) {
 				$.cookie('name', login);
 				location.href = "/plane_list.html";

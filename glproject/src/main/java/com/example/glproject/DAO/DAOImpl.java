@@ -63,6 +63,7 @@ public class DAOImpl<T> implements DAO<T> {
 
 		try {
 			json = mapper.writeValueAsString(obj);
+			System.out.println(json);
 
 		} catch (JsonGenerationException e) {
 			e.printStackTrace();

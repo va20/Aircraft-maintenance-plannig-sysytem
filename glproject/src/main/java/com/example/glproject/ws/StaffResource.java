@@ -26,6 +26,7 @@ public class StaffResource {
 
 		for (Staff s : staffs) {
 			System.out.println(s.toString());
+			
 			if (s.getLogin().equals(login) && s.getPassword().equals(password)) {
 				return true;
 			}

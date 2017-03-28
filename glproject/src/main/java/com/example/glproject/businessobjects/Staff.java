@@ -8,9 +8,11 @@ public class Staff {
 	public Staff() {
 	}
 
-	public Staff(long id, String login, String password) {
+	public Staff(long id, String firstname, String lastname, String login, String password) {
 		super();
 		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.login = login;
 		this.password = password;
 	}

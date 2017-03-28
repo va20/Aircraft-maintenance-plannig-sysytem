@@ -13,11 +13,10 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
-
 //TODO : 
-//lancer database avant serveur
 //ajouter logger a la place des printstackstrace
 //hash mot de passe
+
 public class LaunchServer {
 
 	public static void main(String[] args) {
@@ -57,22 +56,8 @@ public class LaunchServer {
 		contexts.setHandlers(new Handler[] { handlerWebServices, handlerPortalCtx });
 		server.setHandler(contexts);
 
-		// ScriptEngineManager factory = new ScriptEngineManager();
-		// ScriptEngine engine = factory.getEngineByName("JavaScript");
+		FillDatabase.fill();
 
-		// try {
-		// engine.eval(new
-		// FileReader("src/main/webapp/scripts/filldatabase.js"));
-		// System.out.println("FILLDATABASE MON FRERE");
-		// } catch (FileNotFoundException e1) {
-		// e1.printStackTrace();
-		// } catch (ScriptException e1) {
-		// e1.printStackTrace();
-		// }
-		//
-
-		// Start server
-		
 		try {
 			server.start();
 

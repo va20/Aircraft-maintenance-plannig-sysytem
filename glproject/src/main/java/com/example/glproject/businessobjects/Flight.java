@@ -1,19 +1,19 @@
 package com.example.glproject.businessobjects;
 
-import java.util.Date;
+import org.joda.time.DateTime;
 
 public class Flight {
 	private long idPlane;
 	private String commercial;
 	private String depAirport;
 	private String arrAirport;
-	private Date depTime;
-	private Date arrTime;
+	private DateTime depTime;
+	private DateTime arrTime;
 
 	public Flight() {
 	}
 
-	public Flight(long idPlane, String commercial, String depAirport, String arrAirport, Date depTime, Date arrTime) {
+	public Flight(long idPlane, String commercial, String depAirport, String arrAirport, DateTime depTime, DateTime arrTime) {
 		this.idPlane = idPlane;
 		this.arrAirport = arrAirport;
 		this.arrTime = arrTime;
@@ -54,19 +54,19 @@ public class Flight {
 		this.arrAirport = arrAirport;
 	}
 
-	public Date getDepTime() {
+	public DateTime getDepTime() {
 		return depTime;
 	}
 
-	public void setDepTime(Date depTime) {
+	public void setDepTime(DateTime depTime) {
 		this.depTime = depTime;
 	}
 
-	public Date getArrTime() {
+	public DateTime getArrTime() {
 		return arrTime;
 	}
 
-	public void setArrTime(Date arrTime) {
+	public void setArrTime(DateTime arrTime) {
 		this.arrTime = arrTime;
 	}
 }
