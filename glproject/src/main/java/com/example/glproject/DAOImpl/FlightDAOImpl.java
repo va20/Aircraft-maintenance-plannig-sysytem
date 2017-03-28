@@ -1,26 +1,32 @@
 package com.example.glproject.DAOImpl;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
+import com.example.glproject.DAO.DAOImpl;
+import com.example.glproject.DAO.FlightDAO;
+import com.example.glproject.businessobjects.Flight;
+import com.example.glproject.persistence.ElasticSearchClient;
+import org.apache.log4j.Logger;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.search.SearchHit;
+import org.joda.time.DateTime;
 
-import com.example.glproject.DAO.FlightDAO;
-import com.example.glproject.businessobjects.Flight;
-import com.example.glproject.persistence.ElasticSearchClient;
-import com.fasterxml.jackson.core.JsonGenerationException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class FlightDAOImpl implements FlightDAO {
-	private static final Logger logger = Logger.getLogger(FlightDAOImpl.class.getSimpleName());
+public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
+	private static final Logger logger = Logger.getLogger(FlightDAOImpl.class);
 	private ElasticSearchClient esc = ElasticSearchClient.getInstance();
+
+	public FlightDAOImpl(Class<Flight> flightClass) {
+		super(flightClass);
+	}
+
 
 	public void add(Flight flight) {
 		ObjectMapper mapper = new ObjectMapper();
@@ -49,6 +55,7 @@ public class FlightDAOImpl implements FlightDAO {
 			e.printStackTrace();
 		}
 	}
+
 
 	public void delete(long idPlane) {
 		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("flight");
@@ -110,7 +117,7 @@ public class FlightDAOImpl implements FlightDAO {
 		return flights;
 	}
 
-	public List<Flight> getByDayDep(Date day) {
+	public List<Flight> getByDayDep(DateTime day) {
 		ObjectMapper mapper = new ObjectMapper();
 		List<Flight> flights = new ArrayList<Flight>();
 		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("flight");
@@ -135,7 +142,7 @@ public class FlightDAOImpl implements FlightDAO {
 		return flights;
 	}
 
-	public List<Flight> getByDayArr(Date day) {
+	public List<Flight> getByDayArr(DateTime day) {
 		ObjectMapper mapper = new ObjectMapper();
 		List<Flight> flights = new ArrayList<Flight>();
 		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("flight");
@@ -160,4 +167,23 @@ public class FlightDAOImpl implements FlightDAO {
 		return flights;
 	}
 
+	public Flight get(long id, String type) {
+		return null;
+	}
+
+	public void add(Flight obj, String type) {
+
+	}
+
+	public void update(UpdateRequest updateReq) {
+
+	}
+
+	public void delete(long id, String type) {
+
+	}
+
+	public List<Flight> getAll(String type) {
+		return null;
+	}
 }

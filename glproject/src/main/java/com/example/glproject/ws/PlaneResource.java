@@ -1,4 +1,4 @@
-package com.example.glproject.resources;
+package com.example.glproject.ws;
 
 import com.example.glproject.DAO.DAOFactory;
 import com.example.glproject.businessobjects.Plane;

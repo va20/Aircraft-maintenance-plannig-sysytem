@@ -1,5 +1,6 @@
 package com.example.glproject.DAOImpl;
 
+import com.example.glproject.DAO.DAOImpl;
 import com.example.glproject.DAO.StaffDAO;
 import com.example.glproject.businessobjects.Staff;
 import com.example.glproject.persistence.ElasticSearchClient;
@@ -9,14 +10,20 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.search.SearchHit;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StaffDAOImpl implements StaffDAO {
+public class StaffDAOImpl extends DAOImpl<Staff> implements StaffDAO {
 	private ElasticSearchClient esc = ElasticSearchClient.getInstance();
+
+	public StaffDAOImpl(Class<Staff> staffClass) {
+		super(staffClass);
+	}
+
 
 	public Staff getStaff(long id) {
 		return null;
@@ -82,5 +89,25 @@ public class StaffDAOImpl implements StaffDAO {
 		for (SearchHit sh : searchHits)
 			//deleting one by one
 			esc.getClient().prepareDelete(sh.getIndex(), sh.getType(), sh.getId()).get();
+	}
+
+	public Staff get(long id, String type) {
+		return null;
+	}
+
+	public void add(Staff obj, String type) {
+
+	}
+
+	public void update(UpdateRequest updateReq) {
+
+	}
+
+	public void delete(long id, String type) {
+
+	}
+
+	public List<Staff> getAll(String type) {
+		return null;
 	}
 }

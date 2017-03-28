@@ -1,8 +1,9 @@
 package com.example.glproject.DAO;
 
-import java.util.List;
-
+import com.example.glproject.businessobjects.Flight;
 import org.elasticsearch.action.update.UpdateRequest;
+
+import java.util.List;
 
 public interface DAO<T> {
 
@@ -15,4 +16,8 @@ public interface DAO<T> {
 	public abstract void delete(long id, String type);
 	
 	public abstract List<T> getAll(String type);
+
+    public abstract Flight getFlight(String commercial);
+
+    public abstract List<Flight> getFlights();
 }

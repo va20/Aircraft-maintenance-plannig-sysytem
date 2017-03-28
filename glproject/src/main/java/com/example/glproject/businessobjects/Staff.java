@@ -1,5 +1,7 @@
 package com.example.glproject.businessobjects;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 public class Staff {
 	private long id;
 	private String firstname, lastname;
@@ -12,7 +14,8 @@ public class Staff {
 		super();
 		this.id = id;
 		this.login = login;
-		this.password = password;
+
+		this.password = hash_pass(password);
 	}
 
 	public long getId() {
@@ -53,6 +56,14 @@ public class Staff {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String hash_pass(String pass){
+		String pass_tmp= DigestUtils.sha512Hex(pass);
+		for(int i=0;i<10000;i++){
+			pass_tmp=DigestUtils.sha512Hex(pass);
+		}
+		return pass_tmp;
 	}
 
 	@Override
