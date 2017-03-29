@@ -17,7 +17,6 @@ import java.security.NoSuchAlgorithmException;
 
 //TODO : 
 //ajouter logger a la place des printstackstrace
-//hash mot de passe
 
 public class LaunchServer {
 
