@@ -2,6 +2,7 @@ package com.example.glproject.DAOImpl;
 
 import com.example.glproject.DAO.DAOImpl;
 import com.example.glproject.DAO.StaffDAO;
+import com.example.glproject.businessobjects.Flight;
 import com.example.glproject.businessobjects.Staff;
 import com.example.glproject.persistence.ElasticSearchClient;
 import com.fasterxml.jackson.core.JsonGenerationException;
@@ -108,6 +109,14 @@ public class StaffDAOImpl extends DAOImpl<Staff> implements StaffDAO {
 	}
 
 	public List<Staff> getAll(String type) {
+		return null;
+	}
+
+	public Flight getFlight(String commercial) {
+		return null;
+	}
+
+	public List<Flight> getFlights() {
 		return null;
 	}
 }

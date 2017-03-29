@@ -1,10 +1,8 @@
 package com.example.glproject.DAO;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-
+import com.example.glproject.businessobjects.Flight;
+import com.example.glproject.persistence.ElasticSearchClient;
+import com.fasterxml.jackson.core.JsonGenerationException;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -14,8 +12,10 @@ import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.search.SearchHit;
 
-import com.example.glproject.persistence.ElasticSearchClient;
-import com.fasterxml.jackson.core.JsonGenerationException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class DAOImpl<T> implements DAO<T> {
 	protected ElasticSearchClient esc = ElasticSearchClient.getInstance();
@@ -115,5 +115,13 @@ public class DAOImpl<T> implements DAO<T> {
 		}
 
 		return list;
+	}
+
+	public Flight getFlight(String commercial) {
+		return null;
+	}
+
+	public List<Flight> getFlights() {
+		return null;
 	}
 }

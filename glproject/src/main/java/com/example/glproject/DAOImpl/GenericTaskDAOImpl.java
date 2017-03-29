@@ -1,9 +1,9 @@
 package com.example.glproject.DAOImpl;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.example.glproject.DAO.DAOImpl;
+import com.example.glproject.DAO.GenericTaskDAO;
+import com.example.glproject.businessobjects.Flight;
+import com.example.glproject.businessobjects.GenericTask;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -12,9 +12,9 @@ import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.search.SearchHit;
 
-import com.example.glproject.DAO.DAOImpl;
-import com.example.glproject.DAO.GenericTaskDAO;
-import com.example.glproject.businessobjects.GenericTask;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GenericTaskDAOImpl extends DAOImpl<GenericTask> implements GenericTaskDAO {
 
@@ -87,6 +87,14 @@ public class GenericTaskDAOImpl extends DAOImpl<GenericTask> implements GenericT
 			}
 		}
 
+		return null;
+	}
+
+	public Flight getFlight(String commercial) {
+		return null;
+	}
+
+	public List<Flight> getFlights() {
 		return null;
 	}
 }

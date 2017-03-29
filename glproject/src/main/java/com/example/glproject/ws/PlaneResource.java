@@ -1,6 +1,8 @@
 package com.example.glproject.ws;
 
-import com.example.glproject.DAO.DAOFactory;
+import com.example.glproject.DAO.AbstractDAOFactory;
+import com.example.glproject.DAO.Factory;
+import com.example.glproject.DAOImpl.PlaneDAOImpl;
 import com.example.glproject.businessobjects.Plane;
 
 import javax.ws.rs.*;
@@ -13,19 +15,21 @@ public class PlaneResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Plane> getPlanes() {
-		return DAOFactory.getPlaneDAO().getPlanes();
+		return ((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).getAll("planes");
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{id}")
 	public Plane getPlane(@PathParam("id") long id) {
-		return DAOFactory.getPlaneDAO().getPlane(id);
+		return ((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).get(id,"planes");
+
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addPlane(Plane plane) {
-		DAOFactory.getPlaneDAO().add(plane);
+		((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).add(plane,"planes");
+
 	}
 }

@@ -1,19 +1,13 @@
 package com.example.glproject.ws;
 
-import java.util.List;
-
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.core.MediaType;
-
 import com.example.glproject.DAO.AbstractDAOFactory;
 import com.example.glproject.DAO.Factory;
 import com.example.glproject.DAOImpl.StaffDAOImpl;
 import com.example.glproject.businessobjects.Staff;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("/staff")
 public class StaffResource {
@@ -26,7 +20,8 @@ public class StaffResource {
 
 		for (Staff s : staffs) {
 			System.out.println(s.toString());
-			if (s.getLogin().equals(login) && s.getPassword().equals(password)) {
+			String hash_password=s.hash_pass(password);
+			if (s.getLogin().equals(login) && s.getPassword().equals(hash_password)) {
 				return true;
 			}
 		}
