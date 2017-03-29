@@ -13,13 +13,15 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
+import java.security.NoSuchAlgorithmException;
+
 //TODO : 
 //ajouter logger a la place des printstackstrace
 //hash mot de passe
 
 public class LaunchServer {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NoSuchAlgorithmException {
 		// Initialize the server
 		Server server = new Server();
 
