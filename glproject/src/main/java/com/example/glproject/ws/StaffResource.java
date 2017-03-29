@@ -32,12 +32,13 @@ public class StaffResource {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addStaff(Staff s) {
-		((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).add(s, "staffs");
+		((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).add(s, "staffs",
+				String.valueOf(s.getId()));
 	}
 
 	@DELETE
-	public void deleteStaffs() {
-		// ((StaffDAOImpl)
-		// AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).delete("staffs");
+	public void deleteStaffs(@PathParam("id") long id) {
+		((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).delete("staffs",
+				String.valueOf(id));
 	}
 }

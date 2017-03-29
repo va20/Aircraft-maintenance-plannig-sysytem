@@ -27,33 +27,6 @@ public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
 		super(flightClass);
 	}
 
-	public Flight getFlight(String commercial) {
-		ObjectMapper mapper = new ObjectMapper();
-
-		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("flight");
-		SearchResponse searchResponse = requestBuilder.get();
-		SearchHit[] searchHits = searchResponse.getHits().getHits();
-
-		for (SearchHit sh : searchHits) {
-			Flight flight = null;
-
-			try {
-				flight = mapper.readValue(sh.sourceAsString(), Flight.class);
-
-				if (flight.getCommercial().equals(commercial)) {
-					return flight;
-				}
-			} catch (JsonParseException e) {
-				e.printStackTrace();
-			} catch (JsonMappingException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
-
 	public void update(Flight flight) {
 		try {
 			esc.getClient().prepareUpdate("gl", "flight", Long.toString(flight.getIdPlane()))
@@ -89,6 +62,7 @@ public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
 				e.printStackTrace();
 			}
 		}
+		
 		return flights;
 	}
 
@@ -114,17 +88,7 @@ public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
 				e.printStackTrace();
 			}
 		}
+
 		return flights;
 	}
-
-	// public void delete(long idPlane) {
-	// SearchRequestBuilder requestBuilder =
-	// esc.getClient().prepareSearch("gl").setTypes("flight");
-	// SearchResponse searchResponse = requestBuilder.get();
-	// SearchHit[] searchHits = searchResponse.getHits().getHits();
-	//
-	// for (SearchHit sh : searchHits)
-	// esc.getClient().prepareDelete(sh.getIndex(), sh.getType(),
-	// Long.toString(idPlane)).get();
-	// }
 }

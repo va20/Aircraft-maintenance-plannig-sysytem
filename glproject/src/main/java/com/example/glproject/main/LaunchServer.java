@@ -57,6 +57,7 @@ public class LaunchServer {
 		server.setHandler(contexts);
 
 		FillDatabase.fill();
+		// FillDatabase.deleteAll();
 
 		try {
 			server.start();

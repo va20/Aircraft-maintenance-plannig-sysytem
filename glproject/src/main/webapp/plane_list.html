@@ -1,77 +1,82 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" href="css/plane_style.css" />
-		<link href="http://fonts.googleapis.com/css?family=Arimo:400" rel="stylesheet">
-		<link href="css/bootstrap-3.3.4.css" rel="stylesheet" type="text/css">
-		<link rel="icon" href="img/avion.ico" />
-		<title>Flights list</title>
-	</head>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="css/plane_style.css" />
+<link href="http://fonts.googleapis.com/css?family=Arimo:400"
+	rel="stylesheet">
+<link href="css/bootstrap-3.3.4.css" rel="stylesheet" type="text/css">
+<link rel="icon" href="img/avion.ico" />
+<title>Flights list</title>
+</head>
 
-	<body>
+<body>
 
-<div class="body-wrap">
-  <div class="container">
-    <nav class="navbar navbar-inverse" role="navigation">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">MCC</a>
-        </div>
+	<div class="body-wrap">
+		<div class="container">
+			<nav class="navbar navbar-inverse" role="navigation">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">MCC</a>
+					</div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="plane_list.html">Planes List</a></li>
-            <li><a href="flight_list.html">Flight List</a></li>
-						<li><a href="add_task.html">Add task</a></li>
-						<li><a href="edit_task.html">Edit task</a></li>
-						<li><a href="maintenanceplan.html">Maintenance Planning</a></li>
-          </ul>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse"
+						id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="plane_list.html">Planes List</a></li>
+							<li><a href="flight_list.html">Flight List</a></li>
+							<li><a href="add_task.html">Add task</a></li>
+							<li><a href="edit_task.html">Edit task</a></li>
+							<li><a href="maintenanceplan.html">Maintenance Planning</a></li>
+						</ul>
 
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="login.html">Disconnect</a></li>
-          </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-      </div>
-      <!-- /.container-fluid -->
-    </nav>
-  </div>
-</div>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="login.html">Disconnect</a></li>
+						</ul>
+					</div>
+					<!-- /.navbar-collapse -->
+				</div>
+				<!-- /.container-fluid -->
+			</nav>
+		</div>
+	</div>
 
+	<form>
+		<p>
 
+			<select name="pays" id="pays">
+				<option value="Jour">Jour</option>
+				<option value="Semaine">Semaine</option>
+				<option value="Mois">Mois</option>
+				<option value="Annee">Année</option>
+			</select>
+		</p>
+	</form>
 
-<form>
-   <p>
+	<table>
+		<tbody id="planes">
+		</tbody>
+	</table>
 
-       <select name="pays" id="pays">
-       	   <option value="Jour">Jour</option>
-           <option value="Semaine">Semaine</option>
-           <option value="Mois">Mois</option>
-           <option value="Annee">Ann�e</option>
-       </select>
-   </p>
-</form>
+	<script type="text/html" id="list_planes">
+      <tr>
+	<% _.each(item, function(item) { %>
+	<td><a href="#"><%= item.tailNumber %></a></td>
+	<% });%>
+      </tr>
+    </script>
 
-			<script type="text/html" id="list_planes">
-		          <tr>
-		          		<% _.each(item, function(item) { %>
-		                	<td><a href="#"><%= item.type %></a></td >
-		                <% });%>
-		          </tr>
-			</script>
-
-		<script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
-		<script type="text/javascript" src="scripts/jquery.cookie.js"></script>
-	    <script type="text/javascript" src="scripts/underscore-min.js"></script>
-	    <script type="text/javascript" src="scripts/planes.js"></script>
-	</body>
+	<script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="scripts/jquery.cookie.js"></script>
+	<script type="text/javascript" src="scripts/underscore-min.js"></script>
+	<script type="text/javascript" src="scripts/planes.js"></script>
+</body>
 </html>

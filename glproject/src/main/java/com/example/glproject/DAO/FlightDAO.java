@@ -7,7 +7,7 @@ import org.joda.time.DateTime;
 import com.example.glproject.businessobjects.Flight;
 
 public interface FlightDAO extends DAO<Flight> {
-	
+
 	void update(Flight flight);
 
 	List<Flight> getByDayArr(DateTime day);

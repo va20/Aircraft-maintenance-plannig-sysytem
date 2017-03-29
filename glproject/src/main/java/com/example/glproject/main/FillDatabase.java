@@ -22,6 +22,12 @@ public class FillDatabase {
 		addFlights();
 	}
 
+	public static void deleteAll() {
+		((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).deleteAll("staffs");
+		((FlightDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getFlightDAO()).deleteAll("flights");
+		((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).deleteAll("planes");
+	}
+
 	public static void addStaffs() {
 		List<Staff> list = new ArrayList<Staff>();
 		Staff staff1 = new Staff(1, "chris", "dionisio", "chris", "pwd");
@@ -46,7 +52,7 @@ public class FillDatabase {
 
 		for (int i = 0; i < 9; i++) {
 			((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).add(list.get(i),
-					"staffs");
+					"staffs", String.valueOf(list.get(i).getId()));
 		}
 	}
 
@@ -68,7 +74,7 @@ public class FillDatabase {
 
 		for (int i = 0; i < 6; i++) {
 			((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).add(list.get(i),
-					"planes");
+					"planes", String.valueOf(list.get(i).getId()));
 		}
 	}
 
@@ -90,7 +96,7 @@ public class FillDatabase {
 
 		for (int i = 0; i < 6; i++) {
 			((FlightDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getFlightDAO()).add(list.get(i),
-					"flights");
+					"flights", String.valueOf(list.get(i).getCommercial()));
 		}
 	}
 }
