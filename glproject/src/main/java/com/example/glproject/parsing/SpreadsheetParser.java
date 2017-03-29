@@ -70,8 +70,9 @@ public class SpreadsheetParser implements Parser {
 					}
 				}
 
-				((GenericTaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO()).add(gt,
-						"mpd");
+				// ((GenericTaskDAOImpl)
+				// AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO()).add(gt,
+				// "mpd", );
 			}
 
 			mpd.close();

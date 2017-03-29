@@ -1,5 +1,10 @@
 package com.example.glproject.main;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.joda.time.DateTime;
+
 import com.example.glproject.DAO.AbstractDAOFactory;
 import com.example.glproject.DAO.Factory;
 import com.example.glproject.DAOImpl.FlightDAOImpl;
@@ -8,21 +13,16 @@ import com.example.glproject.DAOImpl.StaffDAOImpl;
 import com.example.glproject.businessobjects.Flight;
 import com.example.glproject.businessobjects.Plane;
 import com.example.glproject.businessobjects.Staff;
-import org.joda.time.DateTime;
-
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FillDatabase {
 
-	public static void fill() throws NoSuchAlgorithmException {
+	public static void fill() {
 		addStaffs();
 		addPlanes();
 		addFlights();
 	}
 
-	public static void addStaffs() throws NoSuchAlgorithmException {
+	public static void addStaffs() {
 		List<Staff> list = new ArrayList<Staff>();
 		Staff staff1 = new Staff(1, "chris", "dionisio", "chris", "pwd");
 		Staff staff2 = new Staff(2, "ptitprince", "ali", "ali", "pwd");
