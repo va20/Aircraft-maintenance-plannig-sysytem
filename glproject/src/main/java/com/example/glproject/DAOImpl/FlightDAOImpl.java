@@ -10,7 +10,6 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.search.SearchHit;
 import org.joda.time.DateTime;
@@ -167,23 +166,4 @@ public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
 		return flights;
 	}
 
-	public Flight get(long id, String type) {
-		return null;
-	}
-
-	public void add(Flight obj, String type) {
-
-	}
-
-	public void update(UpdateRequest updateReq) {
-
-	}
-
-	public void delete(long id, String type) {
-
-	}
-
-	public List<Flight> getAll(String type) {
-		return null;
-	}
 }

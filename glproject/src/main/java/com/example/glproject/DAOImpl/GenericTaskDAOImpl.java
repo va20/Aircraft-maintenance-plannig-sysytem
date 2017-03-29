@@ -2,7 +2,6 @@ package com.example.glproject.DAOImpl;
 
 import com.example.glproject.DAO.DAOImpl;
 import com.example.glproject.DAO.GenericTaskDAO;
-import com.example.glproject.businessobjects.Flight;
 import com.example.glproject.businessobjects.GenericTask;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -90,11 +89,4 @@ public class GenericTaskDAOImpl extends DAOImpl<GenericTask> implements GenericT
 		return null;
 	}
 
-	public Flight getFlight(String commercial) {
-		return null;
-	}
-
-	public List<Flight> getFlights() {
-		return null;
-	}
 }

@@ -2,7 +2,6 @@ package com.example.glproject.DAOImpl;
 
 import com.example.glproject.DAO.DAOImpl;
 import com.example.glproject.DAO.TaskDAO;
-import com.example.glproject.businessobjects.Flight;
 import com.example.glproject.businessobjects.Task;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -87,13 +86,5 @@ public class TaskDAOImpl extends DAOImpl<Task> implements TaskDAO {
 			}
 		}
 		return tasks;
-	}
-
-	public Flight getFlight(String commercial) {
-		return null;
-	}
-
-	public List<Flight> getFlights() {
-		return null;
 	}
 }

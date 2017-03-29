@@ -1,6 +1,5 @@
 package com.example.glproject.DAO;
 
-import com.example.glproject.businessobjects.Flight;
 import com.example.glproject.persistence.ElasticSearchClient;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import org.codehaus.jackson.JsonParseException;
@@ -115,13 +114,5 @@ public class DAOImpl<T> implements DAO<T> {
 		}
 
 		return list;
-	}
-
-	public Flight getFlight(String commercial) {
-		return null;
-	}
-
-	public List<Flight> getFlights() {
-		return null;
 	}
 }
