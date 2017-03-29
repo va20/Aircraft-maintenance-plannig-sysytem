@@ -15,7 +15,6 @@ public class StaffDAOImpl extends DAOImpl<Staff> implements StaffDAO {
 		super(staffClass);
 	}
 
-
 	public void update(Staff s) {
 
 	}
@@ -26,8 +25,7 @@ public class StaffDAOImpl extends DAOImpl<Staff> implements StaffDAO {
 		SearchHit[] searchHits = searchResponse.getHits().getHits();
 
 		for (SearchHit sh : searchHits)
-			//deleting one by one
+			// deleting one by one
 			esc.getClient().prepareDelete(sh.getIndex(), sh.getType(), sh.getId()).get();
 	}
-
 }

@@ -4,5 +4,5 @@ import com.example.glproject.businessobjects.Plane;
 
 public interface PlaneDAO extends DAO<Plane> {
 
-	void updatePlane(Plane plane);
+	void update(Plane plane);
 }

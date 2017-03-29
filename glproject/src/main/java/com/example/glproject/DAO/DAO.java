@@ -13,8 +13,6 @@ public interface DAO<T> {
 	public abstract void update(UpdateRequest updateReq);
 
 	public abstract void delete(long id, String type);
-	
+
 	public abstract List<T> getAll(String type);
-
-
 }

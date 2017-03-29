@@ -10,5 +10,5 @@ public interface GenericTaskDAO extends DAO<GenericTask> {
 
 	List<GenericTask> getByType(String type);
 
-	GenericTask getGenericTask(String reference);
+	GenericTask get(String reference);
 }

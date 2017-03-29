@@ -19,50 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
-	private static final Logger logger = Logger.getLogger(FlightDAOImpl.class);
+	// private static final Logger logger =
+	// Logger.getLogger(FlightDAOImpl.class);
 	private ElasticSearchClient esc = ElasticSearchClient.getInstance();
 
 	public FlightDAOImpl(Class<Flight> flightClass) {
 		super(flightClass);
-	}
-
-
-	public void add(Flight flight) {
-		ObjectMapper mapper = new ObjectMapper();
-		String json = null;
-
-		try {
-			json = mapper.writeValueAsString(flight);
-
-		} catch (Exception e) {
-			logger.error("Unable to convert Flight to JSON object",e);
-		}
-
-		esc.getClient().prepareIndex("gl", "flight").setSource(json).get();
-	}
-
-	public void update(Flight flight) {
-		try {
-			esc.getClient().prepareUpdate("gl", "flight", Long.toString(flight.getIdPlane()))
-					.setDoc(XContentFactory.jsonBuilder().startObject().field("arrAirport", flight.getArrAirport())
-							.field("arrTime", flight.getArrTime()).field("commercial", flight.getCommercial())
-							.field("depAirport", flight.getDepAirport()).field("depTime", flight.getDepTime())
-							.field("idPlane", flight.getIdPlane()).endObject())
-					.get();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-
-	public void delete(long idPlane) {
-		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("flight");
-		SearchResponse searchResponse = requestBuilder.get();
-		SearchHit[] searchHits = searchResponse.getHits().getHits();
-
-		for (SearchHit sh : searchHits)
-			esc.getClient().prepareDelete(sh.getIndex(), sh.getType(), Long.toString(idPlane)).get();
 	}
 
 	public Flight getFlight(String commercial) {
@@ -92,28 +54,17 @@ public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
 		return null;
 	}
 
-	public List<Flight> getFlights() {
-		ObjectMapper mapper = new ObjectMapper();
-		List<Flight> flights = new ArrayList<Flight>();
-		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("flight");
-		SearchResponse searchResponse = requestBuilder.get();
-		SearchHit[] searchHits = searchResponse.getHits().getHits();
-
-		for (SearchHit sh : searchHits) {
-			Flight flight = null;
-
-			try {
-				flight = mapper.readValue(sh.sourceAsString(), Flight.class);
-				flights.add(flight);
-			} catch (JsonParseException e) {
-				e.printStackTrace();
-			} catch (JsonMappingException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+	public void update(Flight flight) {
+		try {
+			esc.getClient().prepareUpdate("gl", "flight", Long.toString(flight.getIdPlane()))
+					.setDoc(XContentFactory.jsonBuilder().startObject().field("arrAirport", flight.getArrAirport())
+							.field("arrTime", flight.getArrTime()).field("commercial", flight.getCommercial())
+							.field("depAirport", flight.getDepAirport()).field("depTime", flight.getDepTime())
+							.field("idPlane", flight.getIdPlane()).endObject())
+					.get();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		return flights;
 	}
 
 	public List<Flight> getByDayDep(DateTime day) {
@@ -166,4 +117,14 @@ public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
 		return flights;
 	}
 
+	// public void delete(long idPlane) {
+	// SearchRequestBuilder requestBuilder =
+	// esc.getClient().prepareSearch("gl").setTypes("flight");
+	// SearchResponse searchResponse = requestBuilder.get();
+	// SearchHit[] searchHits = searchResponse.getHits().getHits();
+	//
+	// for (SearchHit sh : searchHits)
+	// esc.getClient().prepareDelete(sh.getIndex(), sh.getType(),
+	// Long.toString(idPlane)).get();
+	// }
 }

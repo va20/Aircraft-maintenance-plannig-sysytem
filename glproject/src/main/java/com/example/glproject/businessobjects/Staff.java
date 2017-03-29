@@ -60,10 +60,10 @@ public class Staff {
 		this.password = password;
 	}
 
-	public String hash_pass(String pass){
-		String pass_tmp= DigestUtils.sha512Hex(pass);
-		for(int i=0;i<10000;i++){
-			pass_tmp=DigestUtils.sha512Hex(pass);
+	public String hash_pass(String pass) {
+		String pass_tmp = DigestUtils.sha512Hex(pass);
+		for (int i = 0; i < 10000; i++) {
+			pass_tmp = DigestUtils.sha512Hex(pass);
 		}
 		return pass_tmp;
 	}

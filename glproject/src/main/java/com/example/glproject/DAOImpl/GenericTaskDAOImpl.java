@@ -21,6 +21,33 @@ public class GenericTaskDAOImpl extends DAOImpl<GenericTask> implements GenericT
 		super(typeT);
 	}
 
+	public GenericTask get(String reference) {
+		ObjectMapper mapper = new ObjectMapper();
+
+		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("mpd");
+		SearchResponse searchResponse = requestBuilder.get();
+		SearchHit[] searchHits = searchResponse.getHits().getHits();
+
+		for (SearchHit sh : searchHits) {
+			GenericTask genericTask = null;
+
+			try {
+				genericTask = mapper.readValue(sh.sourceAsString(), GenericTask.class);
+				if (genericTask.getTaskNumber().equals(reference))
+					return genericTask;
+
+			} catch (JsonParseException e) {
+				e.printStackTrace();
+			} catch (JsonMappingException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return null;
+	}
+
 	public void update(GenericTask gt) {
 		try {
 			esc.getClient().prepareUpdate("gl", "mpd", gt.getTaskNumber())
@@ -61,32 +88,4 @@ public class GenericTaskDAOImpl extends DAOImpl<GenericTask> implements GenericT
 
 		return genericTasks;
 	}
-
-	public GenericTask getGenericTask(String reference) {
-		ObjectMapper mapper = new ObjectMapper();
-
-		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("mpd");
-		SearchResponse searchResponse = requestBuilder.get();
-		SearchHit[] searchHits = searchResponse.getHits().getHits();
-
-		for (SearchHit sh : searchHits) {
-			GenericTask genericTask = null;
-
-			try {
-				genericTask = mapper.readValue(sh.sourceAsString(), GenericTask.class);
-				if (genericTask.getTaskNumber().equals(reference))
-					return genericTask;
-
-			} catch (JsonParseException e) {
-				e.printStackTrace();
-			} catch (JsonMappingException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-
-		return null;
-	}
-
 }

@@ -7,8 +7,6 @@ import org.joda.time.DateTime;
 import com.example.glproject.businessobjects.Flight;
 
 public interface FlightDAO extends DAO<Flight> {
-
-	Flight getFlight(String commercial);
 	
 	void update(Flight flight);
 

@@ -15,20 +15,21 @@ public class FlightResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Flight> getFlights() {
-		return ((FlightDAOImpl)AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getFlightDAO()).getAll("flights");
+		return ((FlightDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getFlightDAO()).getAll("flights");
 	}
 
 	@GET
 	@Path("/{commercial}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Flight getFlight(@PathParam("commercial") String commercial) {
-		return ((FlightDAOImpl)AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getFlightDAO()).getFlight(commercial);
+		return ((FlightDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getFlightDAO())
+				.getFlight(commercial);
 
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addFlight(Flight flight) {
-		((FlightDAOImpl)AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getFlightDAO()).add(flight,"flights");
+		((FlightDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getFlightDAO()).add(flight, "flights");
 	}
 }

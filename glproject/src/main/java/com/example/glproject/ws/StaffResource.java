@@ -20,7 +20,7 @@ public class StaffResource {
 
 		for (Staff s : staffs) {
 			System.out.println(s.toString());
-			String hash_password=s.hash_pass(password);
+			String hash_password = s.hash_pass(password);
 			if (s.getLogin().equals(login) && s.getPassword().equals(hash_password)) {
 				return true;
 			}

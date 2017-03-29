@@ -13,7 +13,7 @@ public class PlaneDAOImpl extends DAOImpl<Plane> implements PlaneDAO {
 		super(typeT);
 	}
 
-	public void updatePlane(Plane plane) {
+	public void update(Plane plane) {
 		try {
 			esc.getClient().prepareUpdate("gl", "plane", Long.toString(plane.getId())).setDoc(XContentFactory
 					.jsonBuilder().startObject().field("id", plane.getId()).field("type", plane.getType()).endObject())

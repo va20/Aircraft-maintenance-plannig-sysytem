@@ -22,14 +22,14 @@ public class PlaneResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{id}")
 	public Plane getPlane(@PathParam("id") long id) {
-		return ((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).get(id,"planes");
+		return ((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).get(id, "planes");
 
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addPlane(Plane plane) {
-		((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).add(plane,"planes");
+		((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).add(plane, "planes");
 
 	}
 }
