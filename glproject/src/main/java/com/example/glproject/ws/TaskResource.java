@@ -2,7 +2,7 @@ package com.example.glproject.ws;
 
 import javax.ws.rs.Path;
 
-@Path("/task")
+@Path("/tasks")
 public class TaskResource {
 
 }

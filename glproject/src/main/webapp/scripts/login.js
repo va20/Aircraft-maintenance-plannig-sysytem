@@ -13,7 +13,7 @@ $('#submit').click(function() {
 	console.log(login+" "+password);
 	
 	$.ajax({
-		url : "ws/staff/"+login+'/'+password,
+		url : "ws/staffs/"+login+'/'+password,
 		type : "POST",
 		dataType : "json",
 
