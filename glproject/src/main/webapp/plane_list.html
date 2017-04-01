@@ -2,16 +2,16 @@
 <html>
 <head>
 <meta charset="utf-8" />
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/planes_list.css" rel="stylesheet">
 <link rel="stylesheet" href="css/plane_style.css" />
 <link href="http://fonts.googleapis.com/css?family=Arimo:400"
 	rel="stylesheet">
-<link href="css/bootstrap-3.3.4.css" rel="stylesheet" type="text/css">
 <link rel="icon" href="img/avion.ico" />
-<title>Flights list</title>
+<title>Planes</title>
 </head>
 
 <body>
-
 	<div class="body-wrap">
 		<div class="container">
 			<nav class="navbar navbar-inverse" role="navigation">
@@ -31,8 +31,8 @@
 					<div class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="plane_list.html">Planes List</a></li>
-							<li><a href="flight_list.html">Flight List</a></li>
+							<li class="active"><a href="plane_list.html">Planes</a></li>
+							<li><a href="flight_list.html">Flights</a></li>
 							<li><a href="add_task.html">Add task</a></li>
 							<li><a href="edit_task.html">Edit task</a></li>
 							<li><a href="maintenanceplan.html">Maintenance Planning</a></li>
@@ -49,32 +49,35 @@
 		</div>
 	</div>
 
-	<form>
-		<p>
+	<div class="container">
+		<div class="onl_login" id="planes">
+			<div class="row onl_row-sm-offset-3">
+				<script id="list_planes" type="text/html">
+						<% _.each(item, function(item, index) { %>
+							<% if(index % 4 == 0) { %>
+								<div class="row onl_row-sm-offset-3">
+							<% } %>
+							
+							<div class="col-xs-2 col-sm-2">
+								<a class="btn btn-lg btn-primary btn-block"> <i
+								class="glyphicon glyphicon-plane pull-left"></i><span>
+								<%= item.tailNumber %>
+							<br> 
+								<small><%= item.type %>
+								</small></span></a>
+							</div>
 
-			<select name="pays" id="pays">
-				<option value="Jour">Jour</option>
-				<option value="Semaine">Semaine</option>
-				<option value="Mois">Mois</option>
-				<option value="Annee">Année</option>
-			</select>
-		</p>
-	</form>
-
-	<table>
-		<tbody id="planes">
-		</tbody>
-	</table>
-
-	<script type="text/html" id="list_planes">
-      <tr>
-	<% _.each(item, function(item) { %>
-	<td><a href="#"><%= item.tailNumber %></a></td>
-	<% });%>
-      </tr>
-    </script>
+							<% if(index % 4 == 3) { %>
+                				</div><br>
+            				<% } %>
+						<% }); %>
+				</script>
+			</div>
+		</div>
+	</div>
 
 	<script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="scripts/jquery.cookie.js"></script>
 	<script type="text/javascript" src="scripts/underscore-min.js"></script>
 	<script type="text/javascript" src="scripts/planes.js"></script>

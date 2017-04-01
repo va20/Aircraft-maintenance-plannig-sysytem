@@ -8,19 +8,20 @@ import java.security.SecureRandom;
 public class Staff {
 	private long id;
 	private String firstname, lastname;
-	private String login, password,salt;
+	private String login, password, salt;
 
 	public Staff() {
 	}
 
-	public Staff(long id, String firstname, String lastname, String login, String password) throws NoSuchAlgorithmException {
+	public Staff(long id, String firstname, String lastname, String login, String password)
+			throws NoSuchAlgorithmException {
 		super();
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.login = login;
-		this.salt=generate_salt();
-		this.password = hash_pass(password+salt);
+		this.salt = generateSalt();
+		this.password = hashPass(password + salt);
 	}
 
 	public long getId() {
@@ -63,33 +64,35 @@ public class Staff {
 		this.password = password;
 	}
 
-	public String getSalt(){
+	public String getSalt() {
 		return this.salt;
 	}
 
-	public String hash_pass(String pass) {
-		String pass_tmp = DigestUtils.sha512Hex(pass);
+	public String hashPass(String pass) {
+		String passTmp = DigestUtils.sha512Hex(pass);
 		for (int i = 0; i < 10000; i++) {
-			pass_tmp = DigestUtils.sha512Hex(pass);
+			passTmp = DigestUtils.sha512Hex(pass);
 		}
-		return pass_tmp;
+
+		return passTmp;
 	}
 
-	public String generate_salt() throws NoSuchAlgorithmException {
-		//Always use a SecureRandom generator
+	public String generateSalt() throws NoSuchAlgorithmException {
+		// Always use a SecureRandom generator
 		SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
-		//Create array for salt
-		byte[] salt_byte = new byte[32];
-		String salt=null;
-		//Get a random salt
-		sr.nextBytes(salt_byte);
-		StringBuilder salt_stringB=new StringBuilder();
-		for(int i=0; i< salt_byte.length ;i++) {
-                salt_stringB.append(Integer.toString((salt_byte[i] & 0xff) + 0x100, 16).substring(1));
-		}
-		salt=salt_stringB.toString();
-		return salt;
+		// Create array for salt
+		byte[] saltByte = new byte[32];
+		String salt = null;
+		// Get a random salt
+		sr.nextBytes(saltByte);
+		StringBuilder saltStringB = new StringBuilder();
 
+		for (int i = 0; i < saltByte.length; i++)
+			saltStringB.append(Integer.toString((saltByte[i] & 0xff) + 0x100, 16).substring(1));
+
+		salt = saltStringB.toString();
+
+		return salt;
 	}
 
 	@Override
