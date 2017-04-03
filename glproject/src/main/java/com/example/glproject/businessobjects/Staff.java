@@ -76,12 +76,12 @@ public class Staff {
 	}
 
 	public String generate_salt() throws NoSuchAlgorithmException {
-		//Always use a SecureRandom generator
+		//SecureRandom generator with SHAPRNG algorithm
 		SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
-		//Create array for salt
+		//Create array of byte
 		byte[] salt_byte = new byte[32];
 		String salt=null;
-		//Get a random salt
+		//Get a random bytes
 		sr.nextBytes(salt_byte);
 		StringBuilder salt_stringB=new StringBuilder();
 		for(int i=0; i< salt_byte.length ;i++) {

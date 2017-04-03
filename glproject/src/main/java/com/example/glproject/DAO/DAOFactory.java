@@ -27,7 +27,6 @@ public class DAOFactory extends AbstractDAOFactory {
 	public DAO getFlightDAO() {
 		return DAOHolder.FLIGHT_DAO;
 	}
-
 	@Override
 	public DAO getPlaneDAO() {
 		return DAOHolder.PLANE_DAO;

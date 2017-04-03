@@ -37,7 +37,7 @@ public class FlightResource {
 
 	@DELETE
 	@Path("/{commercial}")
-	public void deletePlane(@PathParam("id") String commercial) {
+	public void deletePlane(@PathParam("commercial") String commercial) {
 		((FlightDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).delete("flights",
 				commercial);
 	}
