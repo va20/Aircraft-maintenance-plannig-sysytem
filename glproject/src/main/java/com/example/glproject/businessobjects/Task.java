@@ -1,56 +1,69 @@
 package com.example.glproject.businessobjects;
 
-import java.util.Date;
+import org.joda.time.DateTime;
 
 public class Task {
 	private long id;
 	private long idPlane;
 	private long idMRO;
-	private Date deadline;
-	private GenericTask genericTask;
-	
-	public Task() {		
+	private DateTime deadline;
+	private String taskNumber;
+
+	public Task() {
 	}
-	
-	public Task(long id, long idPlane, long idMRO, Date deadline, GenericTask genericTask) {
+
+	public Task(long id, long idPlane, long idMRO, DateTime deadline, String taskNumber) {
 		super();
 		this.id = id;
 		this.idPlane = idPlane;
 		this.idMRO = idMRO;
 		this.deadline = deadline;
-		this.genericTask = genericTask;
+		this.taskNumber = taskNumber;
 	}
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public long getIdPlane() {
 		return idPlane;
 	}
+
 	public void setIdPlane(long idPlane) {
 		this.idPlane = idPlane;
 	}
+
 	public long getIdMRO() {
 		return idMRO;
 	}
+
 	public void setIdMRO(long idMRO) {
 		this.idMRO = idMRO;
 	}
-	public Date getDeadline() {
+
+	public DateTime getDeadline() {
 		return deadline;
 	}
-	public void setDeadline(Date deadline) {
+
+	public void setDeadline(DateTime deadline) {
 		this.deadline = deadline;
 	}
-	public GenericTask getGenericTask() {
-		return genericTask;
-	}
-	public void setGenericTask(GenericTask genericTask) {
-		this.genericTask = genericTask;
+
+	public String getTaskNumber() {
+		return taskNumber;
 	}
 
-	
-	
+	public void setTaskNumber(String taskNumber) {
+		this.taskNumber = taskNumber;
+	}
+
+	@Override
+	public String toString() {
+		return "Task [id=" + id + ", idPlane=" + idPlane + ", idMRO=" + idMRO + ", deadline=" + deadline
+				+ ", taskNumber=" + taskNumber + "]";
+	}
 }

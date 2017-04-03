@@ -4,15 +4,13 @@
 <meta charset="utf-8" />
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="css/flight_list.css" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css" />
 <link href="http://fonts.googleapis.com/css?family=Arimo:400"
 	rel="stylesheet">
 <link rel="icon" href="img/avion.ico" />
-<title>Flights list</title>
+<title>Flights</title>
 </head>
 
 <body>
-
 	<div class="body-wrap">
 		<div class="container">
 			<nav class="navbar navbar-inverse" role="navigation">
@@ -34,8 +32,6 @@
 						<ul class="nav navbar-nav">
 							<li><a href="plane_list.html">Planes</a></li>
 							<li class="active"><a href="flight_list.html">Flights</a></li>
-							<li><a href="add_task.html">Add task</a></li>
-							<li><a href="edit_task.html">Edit task</a></li>
 							<li><a href="maintenanceplan.html">Maintenance Planning</a></li>
 						</ul>
 
@@ -50,8 +46,13 @@
 		</div>
 	</div>
 
+
 	<div class="container">
-		<hr>
+		<div class="jumbotron jumbotron-fluid">
+			<div class="container">
+				<h1 class="display-3 text-center">Flights</h1>
+			</div>
+		</div>
 		<div class="row">
 			<div class="panel panel-primary filterable">
 				<div class="panel-heading">
@@ -99,6 +100,7 @@
 	</div>
 
 	<script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="scripts/jquery.cookie.js"></script>
 	<script type="text/javascript" src="scripts/underscore-min.js"></script>
 	<script type="text/javascript" src="scripts/flights.js"></script>

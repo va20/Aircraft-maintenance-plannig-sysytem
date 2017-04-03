@@ -1,11 +1,10 @@
 html, body {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 body {
-	
-background-image: linear-gradient(rgb(90, 121, 127),#BABEC4);
+	background-image: linear-gradient(rgb(90, 121, 127), #BABEC4);
 	background-size: cover;
 	font-size: 16px;
 	font-family: 'Lato', sans-serif;
@@ -14,7 +13,10 @@ background-image: linear-gradient(rgb(90, 121, 127),#BABEC4);
 	padding: 0;
 	margin: 0;
 	height: 100%;
-	font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: Frutiger, "Frutiger Linotype", Univers, Calibri,
+		"Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad,
+		"DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma,
+		Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* Typography */
@@ -23,7 +25,7 @@ h1#title {
 	font-weight: 300;
 	font-size: 3.2em;
 	color: white;
-	text-shadow: 0 0 10px rgba(0,0,0,0.8);
+	text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 	margin: 0 auto;
 	padding-top: 180px;
 	max-width: 500px;
@@ -59,7 +61,6 @@ p.small {
 	margin: 20px 0 0;
 }
 
-
 /* Layout */
 .container {
 	margin: 0;
@@ -69,7 +70,7 @@ p.small {
 	margin: 0;
 	padding: 0;
 	width: 100%;
-  background-color: grey;
+	background-color: grey;
 }
 
 .login-box {
@@ -80,7 +81,7 @@ p.small {
 	top: 80px;
 	padding-bottom: 30px;
 	border-radius: 5px;
-	box-shadow: 0 5px 50px rgba(0,0,0,0.4);
+	box-shadow: 0 5px 50px rgba(0, 0, 0, 0.4);
 	text-align: center;
 }
 
@@ -126,7 +127,7 @@ p.small {
 	font-size: 0.7em;
 	letter-spacing: 1px;
 	background-color: #665851;
-	cursor:pointer;
+	cursor: pointer;
 	outline: none;
 }
 
@@ -135,19 +136,18 @@ p.small {
 	transition: 0.5s;
 }
 
-
 .selected {
-	color: #665851!important;
+	color: #665851 !important;
 	transition: 0.5s;
 }
 
 /* Animation Delay */
 #logo {
-  -webkit-animation-duration: 1s;
-  -webkit-animation-delay: 2s;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-delay: 2s;
 }
 
 .login-box {
-  -webkit-animation-duration: 1s;
-  -webkit-animation-delay: 1s;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-delay: 1s;
 }

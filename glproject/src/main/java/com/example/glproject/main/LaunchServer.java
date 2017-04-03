@@ -1,5 +1,7 @@
 package com.example.glproject.main;
 
+import java.security.NoSuchAlgorithmException;
+
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
@@ -12,8 +14,6 @@ import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
-
-import java.security.NoSuchAlgorithmException;
 
 //TODO : 
 //ajouter logger a la place des printstackstrace

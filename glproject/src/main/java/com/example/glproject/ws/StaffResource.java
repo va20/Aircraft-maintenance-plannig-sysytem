@@ -15,6 +15,7 @@ public class StaffResource {
 	@POST
 	@Path("/{login}/{password}")
 	public boolean signIn(@PathParam("login") String login, @PathParam("password") String password) {
+		System.out.println(password);
 		List<Staff> staffs = ((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO())
 				.getAll("staffs");
 

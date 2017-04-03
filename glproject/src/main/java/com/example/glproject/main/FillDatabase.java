@@ -1,18 +1,24 @@
 package com.example.glproject.main;
 
-import com.example.glproject.DAO.AbstractDAOFactory;
-import com.example.glproject.DAO.Factory;
-import com.example.glproject.DAOImpl.FlightDAOImpl;
-import com.example.glproject.DAOImpl.PlaneDAOImpl;
-import com.example.glproject.DAOImpl.StaffDAOImpl;
-import com.example.glproject.businessobjects.Flight;
-import com.example.glproject.businessobjects.Plane;
-import com.example.glproject.businessobjects.Staff;
-import org.joda.time.DateTime;
-
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.joda.time.DateTime;
+
+import com.example.glproject.DAO.AbstractDAOFactory;
+import com.example.glproject.DAO.Factory;
+import com.example.glproject.DAOImpl.FlightDAOImpl;
+import com.example.glproject.DAOImpl.GenericTaskDAOImpl;
+import com.example.glproject.DAOImpl.PlaneDAOImpl;
+import com.example.glproject.DAOImpl.StaffDAOImpl;
+import com.example.glproject.DAOImpl.TaskDAOImpl;
+import com.example.glproject.businessobjects.Flight;
+import com.example.glproject.businessobjects.GenericTask;
+import com.example.glproject.businessobjects.MRO;
+import com.example.glproject.businessobjects.Plane;
+import com.example.glproject.businessobjects.Staff;
+import com.example.glproject.businessobjects.Task;
 
 public class FillDatabase {
 
@@ -98,5 +104,40 @@ public class FillDatabase {
 			((FlightDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getFlightDAO()).add(list.get(i),
 					"flights", String.valueOf(list.get(i).getCommercial()));
 		}
+	}
+
+	public static void addGenericTasks() {
+		List<GenericTask> list = new ArrayList<GenericTask>();
+		GenericTask gt1 = new GenericTask("12-33-02-001", 131, "Aileron Centering Mechanism Assembly", 100, false, 20,
+				2, "Airbus A320");
+		GenericTask gt2 = new GenericTask("12-33-02-002", 454, "Quadrant - Spoiler Control, Shaft Assembly", 20, true,
+				50, 2, "Airbus A320");
+
+		list.add(gt1);
+		list.add(gt2);
+
+		for (int i = 0; i < 2; i++) {
+			((GenericTaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO()).add(list.get(i),
+					"mpd", String.valueOf(list.get(i).getTaskNumber()));
+		}
+	}
+
+	public static void addTasks() {
+		List<Task> list = new ArrayList<Task>();
+		Task t1 = new Task(1, 2, 1, new DateTime(), "12-33-02-001");
+		Task t2 = new Task(2, 1, 1, new DateTime(), "12-33-02-002");
+
+		list.add(t1);
+		list.add(t2);
+
+		for (int i = 0; i < 2; i++) {
+			((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).add(list.get(i),
+					"tasks", String.valueOf(list.get(i).getId()));
+		}
+	}
+
+	public static void addMROs() {
+		List<MRO> list = new ArrayList<MRO>();
+		// MRO m1 = new MRO(1, );
 	}
 }

@@ -1,104 +1,104 @@
-@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic);
-body,html {
-  font-family: 'Open Sans', 'sans-serif';
-   height: 100%;
-    background-repeat: no-repeat;
-    background-image: linear-gradient(rgb(90, 121, 127),#BABEC4);
+@import
+	url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic)
+	;
+
+body, html {
+	font-family: 'Open Sans', 'sans-serif';
+	height: 100%;
+	background-repeat: no-repeat;
+	background-image: linear-gradient(rgb(90, 121, 127), #BABEC4);
 }
 
+#custom-search-input {
+	margin: 0;
+	margin-top: 5px;
+	padding: 0;
+}
 
+#custom-search-input .search-query {
+	padding-right: 3px;
+	padding-right: 4px \9;
+	padding-left: 3px;
+	padding-left: 4px \9;
+	/* IE7-8 doesn't have border-radius, so don't indent the padding */
+	margin-bottom: 0;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
 
-  #custom-search-input {
-          margin:0;
-          margin-top: 5px;
-          padding: 0;
-      }
+#custom-search-input button {
+	border: 0;
+	background: none;
+	/** belows styles are working good */
+	padding: 2px 5px;
+	margin-top: 2px;
+	position: relative;
+	left: -28px;
+	/* IE7-8 doesn't have border-radius, so don't indent the padding */
+	margin-bottom: 0;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	color: #18E042;
+}
 
-      #custom-search-input .search-query {
-          padding-right: 3px;
-          padding-right: 4px \9;
-          padding-left: 3px;
-          padding-left: 4px \9;
-          /* IE7-8 doesn't have border-radius, so don't indent the padding */
+input.search-query {
+	color: #08CF3D;
+	font-weight: bold;
+}
 
-          margin-bottom: 0;
-          -webkit-border-radius: 3px;
-          -moz-border-radius: 3px;
-          border-radius: 3px;
-      }
+.search-query:focus+button {
+	z-index: 3;
+}
 
-      #custom-search-input button {
-          border: 0;
-          background: none;
-          /** belows styles are working good */
-          padding: 2px 5px;
-          margin-top: 2px;
-          position: relative;
-          left: -28px;
-          /* IE7-8 doesn't have border-radius, so don't indent the padding */
-          margin-bottom: 0;
-          -webkit-border-radius: 3px;
-          -moz-border-radius: 3px;
-          border-radius: 3px;
-          color:#18E042;
-      }
-  	input.search-query {
-      color:#08CF3D;
-  	font-weight:bold;
-  }
+.demo {
+	padding: 0em;
+}
 
-      .search-query:focus + button {
-          z-index: 3;
-      }
-      .demo {
-          padding: 0em;
-      }
+.dropdown-toggle {
+	border: 1px solid #3498DB;
+	background-color: #3498DB;
+	color: #fff;
+	margin: 0 .5em;
+	transition: background-color .2s;
+	border-radius: 0 !important;
+}
 
+.nav>li>a:hover, .nav>li>a:focus {
+	text-decoration: nonea;
+	background-color: #34495E;
+	color: #2980B9;
+}
 
-      .dropdown-toggle {
-          border: 1px solid #3498DB;
-          background-color: #3498DB;
-          color: #fff;
-          margin: 0 .5em;
-          transition: background-color .2s;
-          border-radius: 0 !important;
-      }
+.nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
+	background-color: #1ABC9C;
+	border-color: #2980B9;
+}
 
-      .nav>li>a:hover,
-      .nav>li>a:focus {
-          text-decoration: nonea;
-          background-color: #34495E;
-          color: #2980B9;
-      }
+.dropdown-menu {
+	font-size: 1.1em;
+}
 
-      .nav .open > a,
-      .nav .open > a:hover,
-      .nav .open > a:focus {
-          background-color: #1ABC9C;
-          border-color: #2980B9;
-      }
+.dropdown:hover .dropdown-menu {
+	display: block;
+	margin-top: 0;
+	left: .5em;
+	border-radius: 0;
+}
 
-      .dropdown-menu {
-          font-size: 1.1em;
-      }
-
-      .dropdown:hover .dropdown-menu {
-          display: block;
-          margin-top: 0;
-          left: .5em;
-          border-radius: 0;
-       }
 table :hover {
-
-background-color:  #3498DB
-
+	background-color: #3498DB
 }
 
 .fuc {
-    margin-top: 60px;
-
+	margin-top: 60px;
 }
-.imag{
 
-  margin-top: 10px
+.imag {
+	margin-top: 10px
+}
+
+.jumbotron {
+	background-color: transparent !important;
 }

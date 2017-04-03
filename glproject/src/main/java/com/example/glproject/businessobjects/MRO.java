@@ -4,7 +4,7 @@ package com.example.glproject.businessobjects;
 public class MRO {
 	private long id;
 	private long idPlane;
-	
+
 	public MRO() {
 	}
 
@@ -29,5 +29,4 @@ public class MRO {
 	public void setIdPlane(long idPlane) {
 		this.idPlane = idPlane;
 	}
-
 }
