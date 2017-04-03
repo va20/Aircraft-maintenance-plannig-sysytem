@@ -10,13 +10,16 @@ import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.search.SearchHit;
+//import org.glassfish.hk2.utilities.reflection.Logger;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GenericTaskDAOImpl extends DAOImpl<GenericTask> implements GenericTaskDAO {
-
+	
+	private static final Logger logger = Logger.getLogger(GenericTaskDAOImpl.class);
 	public GenericTaskDAOImpl(Class<GenericTask> typeT) {
 		super(typeT);
 	}
@@ -37,11 +40,11 @@ public class GenericTaskDAOImpl extends DAOImpl<GenericTask> implements GenericT
 					return genericTask;
 
 			} catch (JsonParseException e) {
-				e.printStackTrace();
+				logger.error("Error"+ e.toString());
 			} catch (JsonMappingException e) {
-				e.printStackTrace();
+				logger.error("Error"+ e.toString());
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.error("Error"+ e.toString());
 			}
 		}
 
@@ -57,7 +60,7 @@ public class GenericTaskDAOImpl extends DAOImpl<GenericTask> implements GenericT
 							.field("periodicity", gt.getPeriodicity()).field("zone", gt.getZone()).endObject())
 					.get();
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("Error"+ e.toString());
 		}
 	}
 
@@ -78,11 +81,11 @@ public class GenericTaskDAOImpl extends DAOImpl<GenericTask> implements GenericT
 				genericTasks.add(genericTask);
 
 			} catch (JsonParseException e) {
-				e.printStackTrace();
+				logger.error("Error"+ e.toString());
 			} catch (JsonMappingException e) {
-				e.printStackTrace();
+				logger.error("Error"+ e.toString());
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.error("Error"+ e.toString());
 			}
 		}
 

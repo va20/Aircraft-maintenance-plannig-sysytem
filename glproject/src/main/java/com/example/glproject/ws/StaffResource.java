@@ -9,7 +9,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/staff")
+@Path("/staffs")
 public class StaffResource {
 
 	@POST
@@ -20,8 +20,8 @@ public class StaffResource {
 
 		for (Staff s : staffs) {
 			System.out.println(s.toString());
-			if(s.getLogin().equals(login)){
-				String hash_password = s.hash_pass(password+s.getSalt());
+			if (s.getLogin().equals(login)) {
+				String hash_password = s.hashPass(password + s.getSalt());
 				if (s.getPassword().equals(hash_password)) {
 					return true;
 				}

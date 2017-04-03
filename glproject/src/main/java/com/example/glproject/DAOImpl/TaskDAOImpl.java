@@ -3,6 +3,8 @@ package com.example.glproject.DAOImpl;
 import com.example.glproject.DAO.DAOImpl;
 import com.example.glproject.DAO.TaskDAO;
 import com.example.glproject.businessobjects.Task;
+
+import org.apache.log4j.Logger;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -15,7 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskDAOImpl extends DAOImpl<Task> implements TaskDAO {
-
+	
+	private final static Logger logger= Logger.getLogger(TaskDAOImpl.class);
 	public TaskDAOImpl(Class<Task> typeT) {
 		super(typeT);
 	}
@@ -79,11 +82,11 @@ public class TaskDAOImpl extends DAOImpl<Task> implements TaskDAO {
 					tasks.add(task);
 				}
 			} catch (JsonParseException e) {
-				e.printStackTrace();
+				logger.error("Error"+ e.toString());
 			} catch (JsonMappingException e) {
-				e.printStackTrace();
+				logger.error("Error"+ e.toString());
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.error("Error"+ e.toString());
 			}
 		}
 		return tasks;

@@ -1,85 +1,106 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" href="css/style.css" />
-		<link href="http://fonts.googleapis.com/css?family=Arimo:400" rel="stylesheet">
-		<link href="css/bootstrap-3.3.4.css" rel="stylesheet" type="text/css">
-		<link rel="icon" href="img/avion.ico" />
-		<title>Flights list</title>
-	</head>
+<head>
+<meta charset="utf-8" />
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/flight_list.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<link href="http://fonts.googleapis.com/css?family=Arimo:400"
+	rel="stylesheet">
+<link rel="icon" href="img/avion.ico" />
+<title>Flights list</title>
+</head>
 
-	<body>
+<body>
 
-		<div class="body-wrap">
-		  <div class="container">
-		    <nav class="navbar navbar-inverse" role="navigation">
-		      <div class="container-fluid">
-		        <!-- Brand and toggle get grouped for better mobile display -->
-		        <div class="navbar-header">
-		          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		            <span class="sr-only">Toggle navigation</span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		          </button>
-		          <a class="navbar-brand" href="#">MCC</a>
-		        </div>
+	<div class="body-wrap">
+		<div class="container">
+			<nav class="navbar navbar-inverse" role="navigation">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">MCC</a>
+					</div>
 
-		        <!-- Collect the nav links, forms, and other content for toggling -->
-		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		          <ul class="nav navbar-nav">
-		            <li><a href="plane_list.html">Planes List</a></li>
-		            <li class="active"><a href="flight_list.html">Flight List</a></li>
-								<li><a href="add_task.html">Add task</a></li>
-								<li><a href="edit_task.html">Edit task</a></li>
-								<li><a href="maintenanceplan.html">Maintenance Planning</a></li>
-		          </ul>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse"
+						id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li><a href="plane_list.html">Planes</a></li>
+							<li class="active"><a href="flight_list.html">Flights</a></li>
+							<li><a href="add_task.html">Add task</a></li>
+							<li><a href="edit_task.html">Edit task</a></li>
+							<li><a href="maintenanceplan.html">Maintenance Planning</a></li>
+						</ul>
 
-		          <ul class="nav navbar-nav navbar-right">
-		            <li><a href="login.html">Disconnect</a></li>
-		          </ul>
-		        </div>
-		        <!-- /.navbar-collapse -->
-		      </div>
-		      <!-- /.container-fluid -->
-		    </nav>
-		  </div>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="login.html">Disconnect</a></li>
+						</ul>
+					</div>
+					<!-- /.navbar-collapse -->
+				</div>
+				<!-- /.container-fluid -->
+			</nav>
 		</div>
+	</div>
 
-		<table border="1" rules="groups" align="center">
+	<div class="container">
+		<hr>
+		<div class="row">
+			<div class="panel panel-primary filterable">
+				<div class="panel-heading">
+					<h3 class="panel-title">Users</h3>
+					<div class="pull-right">
+						<button class="btn btn-default btn-xs btn-filter">
+							<span class="glyphicon glyphicon-filter"></span> Filter
+						</button>
+					</div>
+				</div>
+				<table class="table">
+					<thead>
+						<tr class="filters">
+							<th><input type="text" class="form-control"
+								placeholder="Commercial Number" disabled></th>
+							<th><input type="text" class="form-control"
+								placeholder="Plane" disabled></th>
+							<th><input type="text" class="form-control"
+								placeholder="Departure Airport" disabled></th>
+							<th><input type="text" class="form-control"
+								placeholder="Arrival Airport" disabled></th>
+							<th><input type="text" class="form-control"
+								placeholder="Departure Time" disabled></th>
+							<th><input type="text" class="form-control"
+								placeholder="Arrival Time" disabled></th>
+						</tr>
+					</thead>
+					<tbody id="flights">
+						<script id="list_flights" type="text/html">
+							<% _.each(item, function(item) { %>
+                    			<tr>
+                        			<td><%= item.commercial %></td>
+                        			<td><%= item.idPlane %></td>
+                        			<td><%= item.depAirport %></td>
+                        			<td><%= item.arrAirport %></td>
+                        			<td><%= item.depTime %></td>
+                        			<td><%= item.arrTime %></td>
+                   		 		</tr>
+							<% }); %>
+						</script>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 
-			<colgroup align="left"/>
-			<colgroup span="5" align="center"/>
-
-			<thead>
-				<td>Airplane</td>
-				<td>00h</td>
-				<td>06h</td>
-				<td>12h</td>
-				<td>18h</td>
-				<td>24h</td>
-			</thead>
-			<tbody>
-				<tr>
-					<th>A490</th>
-					<td> </td>
-					<td>A380</td>
-					<td> </td>
-					<td> </td>
-					<td> </td>
-				</tr>
-				<tr>
-					<th>Boeing</th>
-					<td>737</td>
-					<td> </td>
-					<td> </td>
-					<td> </td>
-					<td> </td>
-				</tr>
-			</tbody>
-
-		</table>
-
-	</body>
+	<script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="scripts/jquery.cookie.js"></script>
+	<script type="text/javascript" src="scripts/underscore-min.js"></script>
+	<script type="text/javascript" src="scripts/flights.js"></script>
+</body>
 </html>

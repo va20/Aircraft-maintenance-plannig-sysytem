@@ -19,8 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
-	// private static final Logger logger =
-	// Logger.getLogger(FlightDAOImpl.class);
+	
+	private static final Logger logger = Logger.getLogger(FlightDAOImpl.class);
 	private ElasticSearchClient esc = ElasticSearchClient.getInstance();
 
 	public FlightDAOImpl(Class<Flight> flightClass) {
@@ -36,7 +36,7 @@ public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
 							.field("idPlane", flight.getIdPlane()).endObject())
 					.get();
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("Error"+e.toString());;
 		}
 	}
 
@@ -55,11 +55,11 @@ public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
 				if (flight.getDepTime() == day)
 					flights.add(flight);
 			} catch (JsonParseException e) {
-				e.printStackTrace();
+				logger.error("Error" + e.toString());
 			} catch (JsonMappingException e) {
-				e.printStackTrace();
+				logger.error("Error"+ e.toString());
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.error("Error"+ e.toString());;
 			}
 		}
 		
@@ -67,6 +67,7 @@ public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
 	}
 
 	public List<Flight> getByDayArr(DateTime day) {
+		
 		ObjectMapper mapper = new ObjectMapper();
 		List<Flight> flights = new ArrayList<Flight>();
 		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("flight");
@@ -81,11 +82,12 @@ public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
 				if (flight.getArrTime() == day)
 					flights.add(flight);
 			} catch (JsonParseException e) {
-				e.printStackTrace();
+				//logger.warn("");
+				logger.error("Error"+e.getMessage());
 			} catch (JsonMappingException e) {
-				e.printStackTrace();
+				logger.error("Error"+e.toString());
 			} catch (IOException e) {
-				e.printStackTrace();
+				logger.error("Error"+e.toString());
 			}
 		}
 

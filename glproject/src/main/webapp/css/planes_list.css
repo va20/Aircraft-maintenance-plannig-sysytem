@@ -1,0 +1,17 @@
+.btn-primary {
+	position: relative;
+	padding: 10px 20px;
+	font-size: 15px;
+	border-radius: 10px;
+	padding-bottom: 50px;
+}
+
+@media ( min-width : 768px) {
+	.onl_row-sm-offset-3 div:first-child[class*="col-"] {
+		margin-left: 25%;
+	}
+}
+
+body {
+	font-family: 'Titillium Web', sans-serif;
+}

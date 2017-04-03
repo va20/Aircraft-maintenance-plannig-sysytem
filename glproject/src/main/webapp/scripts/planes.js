@@ -4,16 +4,16 @@ function getPlanes() {
 		type : "GET",
 		dataType : "json"
 	}).done(function(data) {
-		setPlanes(data);
+		printPlanes(data);
 	});
 }
 
-function setPlanes(data) {
+function printPlanes(data) {
 	var template = _.template($("#list_planes").html());
 	var plane = template({
 		"item" : data
 	});
-	
+
 	$("#planes").append(plane);
 }
 
