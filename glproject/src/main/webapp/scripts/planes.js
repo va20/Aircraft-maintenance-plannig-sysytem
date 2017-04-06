@@ -14,7 +14,6 @@ function printPlanes(data) {
 		"item" : data
 	});
 
-	console.log(plane);
 	$("#planes").append(plane);
 }
 

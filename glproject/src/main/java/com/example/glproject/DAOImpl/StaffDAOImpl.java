@@ -9,7 +9,6 @@ import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.search.SearchHit;
 
 public class StaffDAOImpl extends DAOImpl<Staff> implements StaffDAO {
-	private ElasticSearchClient esc = ElasticSearchClient.getInstance();
 
 	public StaffDAOImpl(Class<Staff> staffClass) {
 		super(staffClass);

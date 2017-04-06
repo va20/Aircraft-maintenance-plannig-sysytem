@@ -18,37 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GenericTaskDAOImpl extends DAOImpl<GenericTask> implements GenericTaskDAO {
-	
 	private static final Logger logger = Logger.getLogger(GenericTaskDAOImpl.class);
+
 	public GenericTaskDAOImpl(Class<GenericTask> typeT) {
 		super(typeT);
-	}
-
-	public GenericTask get(String reference) {
-		ObjectMapper mapper = new ObjectMapper();
-
-		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("mpd");
-		SearchResponse searchResponse = requestBuilder.get();
-		SearchHit[] searchHits = searchResponse.getHits().getHits();
-
-		for (SearchHit sh : searchHits) {
-			GenericTask genericTask = null;
-
-			try {
-				genericTask = mapper.readValue(sh.sourceAsString(), GenericTask.class);
-				if (genericTask.getTaskNumber().equals(reference))
-					return genericTask;
-
-			} catch (JsonParseException e) {
-				logger.error("Error"+ e.toString());
-			} catch (JsonMappingException e) {
-				logger.error("Error"+ e.toString());
-			} catch (IOException e) {
-				logger.error("Error"+ e.toString());
-			}
-		}
-
-		return null;
 	}
 
 	public void update(GenericTask gt) {
@@ -59,8 +32,9 @@ public class GenericTaskDAOImpl extends DAOImpl<GenericTask> implements GenericT
 							.field("hangar", gt.isHangar()).field("men", gt.getMen())
 							.field("periodicity", gt.getPeriodicity()).field("zone", gt.getZone()).endObject())
 					.get();
+
 		} catch (IOException e) {
-			logger.error("Error"+ e.toString());
+			logger.error("Error" + e.toString());
 		}
 	}
 
@@ -81,11 +55,11 @@ public class GenericTaskDAOImpl extends DAOImpl<GenericTask> implements GenericT
 				genericTasks.add(genericTask);
 
 			} catch (JsonParseException e) {
-				logger.error("Error"+ e.toString());
+				logger.error("Error" + e.toString());
 			} catch (JsonMappingException e) {
-				logger.error("Error"+ e.toString());
+				logger.error("Error" + e.toString());
 			} catch (IOException e) {
-				logger.error("Error"+ e.toString());
+				logger.error("Error" + e.toString());
 			}
 		}
 

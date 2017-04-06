@@ -26,6 +26,8 @@ public class FillDatabase {
 		addStaffs();
 		addPlanes();
 		addFlights();
+		addGenericTasks();
+		addTasks();
 	}
 
 	public static void deleteAll() {
@@ -125,7 +127,7 @@ public class FillDatabase {
 	public static void addTasks() {
 		List<Task> list = new ArrayList<Task>();
 		Task t1 = new Task(1, 2, 1, new DateTime(), "12-33-02-001");
-		Task t2 = new Task(2, 1, 1, new DateTime(), "12-33-02-002");
+		Task t2 = new Task(2, 2, 1, new DateTime(), "12-33-02-002");
 
 		list.add(t1);
 		list.add(t2);

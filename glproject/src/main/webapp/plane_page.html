@@ -81,25 +81,20 @@
 								<th class="text-center">Action</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>Site Wireframes</td>
-								<td>John Smith</td>
-								<td>in progress</td>
-								<td>in progress</td>
-								<td class="text-center"><a class='btn btn-info btn-xs'
-									href="#">Edit</a> <a href="#" class="btn btn-danger btn-xs">Delete</a></td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>Site Wireframes</td>
-								<td>John Smith</td>
-								<td>in progress</td>
-								<td>in progress</td>
-								<td class="text-center"><a class='btn btn-info btn-xs'
-									href="#">Edit</a> <a href="#" class="btn btn-danger btn-xs">Delete</a></td>
-							</tr>
+						<tbody id="tasks">
+							<script id="list_tasks" type="text/html">
+								<% _.each(item, function(item) { %>
+                    				<tr>
+                        				<td><%= item.id %></td>
+                        				<td><%= item.idPlane %></td>
+                        				<td><%= item.idMRO %></td>
+                        				<td><%= item.deadline %></td>
+                        				<td><%= item.taskNumber %></td>
+										<td class="text-center"><a class='btn btn-info btn-xs'
+										href="#">Edit</a> <a href="#" class="btn btn-danger btn-xs">Delete</a></td>
+                   		 			</tr>
+								<% }); %>
+							</script>
 						</tbody>
 					</table>
 				</div>

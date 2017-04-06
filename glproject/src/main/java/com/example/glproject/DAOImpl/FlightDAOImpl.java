@@ -1,9 +1,9 @@
 package com.example.glproject.DAOImpl;
 
-import com.example.glproject.DAO.DAOImpl;
-import com.example.glproject.DAO.FlightDAO;
-import com.example.glproject.businessobjects.Flight;
-import com.example.glproject.persistence.ElasticSearchClient;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -14,14 +14,13 @@ import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.search.SearchHit;
 import org.joda.time.DateTime;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import com.example.glproject.DAO.DAOImpl;
+import com.example.glproject.DAO.FlightDAO;
+import com.example.glproject.businessobjects.Flight;
 
 public class FlightDAOImpl extends DAOImpl<Flight> implements FlightDAO {
 	
 	private static final Logger logger = Logger.getLogger(FlightDAOImpl.class);
-	private ElasticSearchClient esc = ElasticSearchClient.getInstance();
 
 	public FlightDAOImpl(Class<Flight> flightClass) {
 		super(flightClass);

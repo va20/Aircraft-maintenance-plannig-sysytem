@@ -17,24 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskDAOImpl extends DAOImpl<Task> implements TaskDAO {
-	
-	private final static Logger logger= Logger.getLogger(TaskDAOImpl.class);
+	private final static Logger logger = Logger.getLogger(TaskDAOImpl.class);
+
 	public TaskDAOImpl(Class<Task> typeT) {
 		super(typeT);
-	}
-
-	public void update(Task task) {
-		// try {
-		// esc.getClient().prepareUpdate("gl", "task",
-		// Long.toString(task.getId()))
-		// .setDoc(XContentFactory.jsonBuilder().startObject().field("idPlane",
-		// task.getIdPlane())
-		// .field("mro", task.getMro()).field("deadline", task.getDeadline())
-		// .field("genericTask", task.getGenericTask()).endObject())
-		// .get();
-		// } catch (IOException e) {
-		// e.printStackTrace();
-		// }
 	}
 
 	public List<Task> getTasksByMRO(long id) {
@@ -65,11 +51,11 @@ public class TaskDAOImpl extends DAOImpl<Task> implements TaskDAO {
 		return tasks;
 	}
 
-	public List<Task> getTasksByPlane(long id) {
+	public List<Task> getTasksByPlane(String idPlane, String type) {
 		List<Task> tasks = new ArrayList<Task>();
 		ObjectMapper mapper = new ObjectMapper();
 
-		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("task");
+		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes(type);
 		SearchResponse searchResponse = requestBuilder.get();
 		SearchHit[] searchHits = searchResponse.getHits().getHits();
 
@@ -78,17 +64,18 @@ public class TaskDAOImpl extends DAOImpl<Task> implements TaskDAO {
 
 			try {
 				task = mapper.readValue(sh.sourceAsString(), Task.class);
-				if (task.getIdPlane() == id) {
+				if (String.valueOf(task.getIdPlane()).equals(idPlane))
 					tasks.add(task);
-				}
+
 			} catch (JsonParseException e) {
-				logger.error("Error"+ e.toString());
+				logger.error("Error" + e.toString());
 			} catch (JsonMappingException e) {
-				logger.error("Error"+ e.toString());
+				logger.error("Error" + e.toString());
 			} catch (IOException e) {
-				logger.error("Error"+ e.toString());
+				logger.error("Error" + e.toString());
 			}
 		}
+
 		return tasks;
 	}
 }

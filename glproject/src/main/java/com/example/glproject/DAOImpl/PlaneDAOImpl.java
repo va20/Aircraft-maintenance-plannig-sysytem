@@ -12,6 +12,7 @@ import java.io.IOException;
 public class PlaneDAOImpl extends DAOImpl<Plane> implements PlaneDAO {
 
 	private final static Logger logger = Logger.getLogger(PlaneDAOImpl.class);
+	
 	public PlaneDAOImpl(Class<Plane> typeT) {
 		super(typeT);
 	}
