@@ -1,3 +1,18 @@
+/*
+body, html {
+	font-family: 'Open Sans', 'sans-serif';
+	background-repeat: no-repeat;
+	background-image: linear-gradient(rgb(90, 121, 127), #BABEC4);
+	text-align: center;
+}
+*/
+body, html {
+	margin: 0;
+	padding: 0;
+	background: url(Images/sky.jpg) no-repeat center fixed;
+	background-size: cover; /* version standardisée */
+}
+
 .filterable {
 	margin-top: 15px;
 }
@@ -28,5 +43,5 @@
 }
 
 .jumbotron {
-    background-color:transparent !important; 
+	background-color: transparent !important;
 }
