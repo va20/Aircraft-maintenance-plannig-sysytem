@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="css/flight_list.css" rel="stylesheet">
+<link href="css/plane_page.css" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Arimo:400"
 	rel="stylesheet">
 <link rel="icon" href="img/avion.ico" />
-<title>Flights</title>
+<title>Planes</title>
 </head>
 
 <body>
@@ -55,51 +55,54 @@
 	<div class="container">
 		<div class="jumbotron jumbotron-fluid">
 			<div class="container">
-				<h1 class="display-3 text-center">Flights</h1>
+				<h1 id="plane_number" class="display-3 text-center">Flights</h1>
 			</div>
 		</div>
 		<div class="row">
-			<div class="panel panel-primary filterable">
-				<div class="panel-heading">
-					<h3 class="panel-title">Users</h3>
-					<div class="pull-right">
-						<button class="btn btn-default btn-xs btn-filter">
-							<span class="glyphicon glyphicon-filter"></span> Filter
-						</button>
+			<div class="col-md-6">
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						<h3 class="panel-title">Tasks</h3>
+						<div class="pull-right">
+							<span class="clickable filter" data-toggle="tooltip"
+								title="Toggle table filter" data-container="body"> <i
+								class="glyphicon glyphicon-filter"></i>
+							</span>
+						</div>
 					</div>
+					<div class="panel-body">
+						<input type="text" class="form-control" id="task-table-filter"
+							data-action="filter" data-filters="#task-table"
+							placeholder="Filter Tasks" />
+					</div>
+					<table class="table table-hover text-center" id="task-table">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>MRO</th>
+								<th>Deadline</th>
+								<th>Type</th>
+								<th>Description</th>
+								<th class="text-center">Action</th>
+							</tr>
+						</thead>
+						<tbody id="tasks">
+							<script id="list_tasks" type="text/html">
+								<% _.each(item, function(item) { %>
+                    				<tr>
+                        				<td><%= item.id %></td>
+                        				<td><%= item.idPlane %></td>
+                        				<td><%= item.idMRO %></td>
+                        				<td><%= item.deadline %></td>
+                        				<td><%= item.taskNumber %></td>
+										<td class="text-center"><a class='btn btn-info btn-xs'
+										href="#">Edit</a> <a href="#" class="btn btn-danger btn-xs">Delete</a></td>
+                   		 			</tr>
+								<% }); %>
+							</script>
+						</tbody>
+					</table>
 				</div>
-				<table class="table">
-					<thead>
-						<tr class="filters">
-							<th><input type="text" class="form-control"
-								placeholder="Commercial Number" disabled></th>
-							<th><input type="text" class="form-control"
-								placeholder="Plane" disabled></th>
-							<th><input type="text" class="form-control"
-								placeholder="Departure Airport" disabled></th>
-							<th><input type="text" class="form-control"
-								placeholder="Arrival Airport" disabled></th>
-							<th><input type="text" class="form-control"
-								placeholder="Departure Time" disabled></th>
-							<th><input type="text" class="form-control"
-								placeholder="Arrival Time" disabled></th>
-						</tr>
-					</thead>
-					<tbody id="flights">
-						<script id="list_flights" type="text/html">
-							<% _.each(item, function(item) { %>
-                    			<tr>
-                        			<td><%= item.commercial %></td>
-                        			<td><%= item.idPlane %></td>
-                        			<td><%= item.depAirport %></td>
-                        			<td><%= item.arrAirport %></td>
-                        			<td><%= item.depTime %></td>
-                        			<td><%= item.arrTime %></td>
-                   		 		</tr>
-							<% }); %>
-						</script>
-					</tbody>
-				</table>
 			</div>
 		</div>
 	</div>
@@ -109,6 +112,6 @@
 	<script type="text/javascript" src="scripts/jquery.cookie.js"></script>
 	<script type="text/javascript" src="scripts/underscore-min.js"></script>
 	<script type="text/javascript" src="scripts/menu.js"></script>
-	<script type="text/javascript" src="scripts/flights.js"></script>
+	<script type="text/javascript" src="scripts/plane_page.js"></script>
 </body>
 </html>

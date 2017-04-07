@@ -4,7 +4,6 @@
 <meta charset="utf-8" />
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="css/planes_list.css" rel="stylesheet">
-<link rel="stylesheet" href="css/plane_style.css" />
 <link href="http://fonts.googleapis.com/css?family=Arimo:400"
 	rel="stylesheet">
 <link rel="icon" href="img/avion.ico" />
@@ -33,13 +32,16 @@
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="plane_list.html">Planes</a></li>
 							<li><a href="flight_list.html">Flights</a></li>
-							<li><a href="add_task.html">Add task</a></li>
-							<li><a href="edit_task.html">Edit task</a></li>
 							<li><a href="maintenanceplan.html">Maintenance Planning</a></li>
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+								data-toggle="dropdown">Import <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><input type="file" id="upload" style="display: none" /><a
+										href="" id="import">MPD</a></li>
+								</ul></li>
 						</ul>
-
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="login.html">Disconnect</a></li>
+							<li><a href="login.html">Logout</a></li>
 						</ul>
 					</div>
 					<!-- /.navbar-collapse -->
@@ -50,21 +52,26 @@
 	</div>
 
 	<div class="container">
-		<div class="onl_login" id="planes">
-			<div class="row onl_row-sm-offset-3">
-				<script id="list_planes" type="text/html">
+		<div class="jumbotron jumbotron-fluid">
+			<div class="container">
+				<h1 class="display-3 text-center">Planes</h1>
+			</div>
+		</div>
+		<div id="planes">
+			<script id="list_planes" type="text/html">
 						<% _.each(item, function(item, index) { %>
 							<% if(index % 4 == 0) { %>
-								<div class="row onl_row-sm-offset-3">
+								<div class="row row-centered">
 							<% } %>
 							
-							<div class="col-xs-2 col-sm-2">
-								<a class="btn btn-lg btn-primary btn-block"> <i
+							<div class="col-lg-3 col-lg-3 col-centered">
+								<a id="<%= item.tailNumber %>"class="btn btn-lg btn-primary btn-block"> <i
 								class="glyphicon glyphicon-plane pull-left"></i><span>
-								<%= item.tailNumber %>
+								<%= item.tailNumber %><%= item.id%></span>
+								
 							<br> 
 								<small><%= item.type %>
-								</small></span></a>
+								</small></a>
 							</div>
 
 							<% if(index % 4 == 3) { %>
@@ -72,7 +79,6 @@
             				<% } %>
 						<% }); %>
 				</script>
-			</div>
 		</div>
 	</div>
 
@@ -80,6 +86,7 @@
 	<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="scripts/jquery.cookie.js"></script>
 	<script type="text/javascript" src="scripts/underscore-min.js"></script>
+	<script type="text/javascript" src="scripts/menu.js"></script>
 	<script type="text/javascript" src="scripts/planes.js"></script>
 </body>
 </html>

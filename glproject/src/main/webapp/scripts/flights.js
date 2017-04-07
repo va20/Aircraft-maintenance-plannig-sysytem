@@ -14,7 +14,6 @@ function printFlights(data) {
 		"item" : data
 	});
 	
-	console.log(flight);
 	$("#flights").append(flight);
 }
 

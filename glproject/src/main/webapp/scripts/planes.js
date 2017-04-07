@@ -19,4 +19,10 @@ function printPlanes(data) {
 
 $(document).ready(function() {
 	getPlanes();
+
+	$("div").on("click", "a.btn", function(e) {
+		var tailNumber =  $(this).attr("id");
+		console.log(tailNumber);
+		location.href = "plane_page.html?plane=" + tailNumber;
+	});
 });
