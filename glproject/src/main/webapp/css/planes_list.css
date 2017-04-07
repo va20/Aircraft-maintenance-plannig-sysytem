@@ -1,3 +1,27 @@
+/*
+body {
+	font-family: 'Open Sans', 'sans-serif';
+	height: auto;
+	min-height: 100%;
+	width: auto;
+	min-width: 100%;
+	background-repeat: no-repeat;
+	background: #6DB4F2;
+	text-align: center;
+}
+*/
+body, html {
+	margin:0;
+	padding:0;
+	background: url(Images/sky.jpg) no-repeat center fixed;
+	background-size: cover; /* version standardisée */
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: transparent !important;
+    border-color: white;
+}
+
 .row-centered {
 	text-align: center;
 }
@@ -26,5 +50,5 @@
 }
 
 .jumbotron {
-    background-color:transparent !important; 
+    background-color:transparent !important;
 }

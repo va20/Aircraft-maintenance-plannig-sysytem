@@ -1,14 +1,19 @@
 @import
 	url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic)
 	;
-
+/*
 body, html {
 	font-family: 'Open Sans', 'sans-serif';
-	height: 100%;
-	width: 100%;
 	background-repeat: no-repeat;
 	background-image: linear-gradient(rgb(90, 121, 127), #BABEC4);
 	text-align: center;
+}
+*/
+body, html {
+	margin:0;
+	padding:0;
+	background: url(Images/sky.jpg) no-repeat center fixed;
+	background-size: cover; /* version standardisée */
 }
 
 .nav .open>a, .nav .open>a:focus, .nav  .open>a:hover {
