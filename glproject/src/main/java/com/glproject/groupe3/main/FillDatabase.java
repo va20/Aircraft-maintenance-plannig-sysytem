@@ -109,19 +109,19 @@ public class FillDatabase {
 	}
 
 	public static void addGenericTasks() {
-		List<GenericTask> list = new ArrayList<GenericTask>();
-		GenericTask gt1 = new GenericTask("12-33-02-001", "Airbus A320", 131, "Aileron Centering Mechanism Assembly",
-				100, false, 2, "Airbus A320");
-		GenericTask gt2 = new GenericTask("12-33-02-002", "Airbus A320", 454,
-				"Quadrant - Spoiler Control, Shaft Assembly", 20, true, 2, "Airbus A320");
+//		List<GenericTask> list = new ArrayList<GenericTask>();
+//		GenericTask gt1 = new GenericTask("12-33-02-001", "Airbus A320", "131", "Aileron Centering Mechanism Assembly",
+//				100, false, 2, "Airbus A320");
+//		GenericTask gt2 = new GenericTask("12-33-02-002", "Airbus A320", "454",
+//				"Quadrant - Spoiler Control, Shaft Assembly", 20, true, 2, "Airbus A320");
 
-		list.add(gt1);
-		list.add(gt2);
-
-		for (int i = 0; i < 2; i++) {
-			((GenericTaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO())
-					.add(list.get(i), "mpd", String.valueOf(list.get(i).getTaskNumber()));
-		}
+//		list.add(gt1);
+//		list.add(gt2);
+//
+//		for (int i = 0; i < 2; i++) {
+//			((GenericTaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO())
+//					.add(list.get(i), "mpd", String.valueOf(list.get(i).getTaskNumber()));
+//		}
 	}
 
 	public static void addTasks() {
