@@ -7,8 +7,8 @@ body, html {
 }
 */
 body, html {
-	margin:0;
-	padding:0;
+	margin: 0;
+	padding: 0;
 	background: url(Images/sky.jpg) no-repeat center fixed;
 	background-size: cover; /* version standardisée */
 }
@@ -43,5 +43,5 @@ body, html {
 }
 
 .jumbotron {
-    background-color:transparent !important; 
+	background-color: transparent !important;
 }
