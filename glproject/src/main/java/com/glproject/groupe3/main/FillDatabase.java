@@ -109,19 +109,33 @@ public class FillDatabase {
 	}
 
 	public static void addGenericTasks() {
-//		List<GenericTask> list = new ArrayList<GenericTask>();
-//		GenericTask gt1 = new GenericTask("12-33-02-001", "Airbus A320", "131", "Aileron Centering Mechanism Assembly",
-//				100, false, 2, "Airbus A320");
-//		GenericTask gt2 = new GenericTask("12-33-02-002", "Airbus A320", "454",
-//				"Quadrant - Spoiler Control, Shaft Assembly", 20, true, 2, "Airbus A320");
+		List<GenericTask> list = new ArrayList<GenericTask>();
+		GenericTask gt1 = new GenericTask("200001-01-1", "Airbus A320", 571,
+				"HIRF/LIGHTNING PROTECTION-WING, CHECK BONDING MEASUREMENT OF CLAMPS WITH A LOOP MRB REFERENCE : TESTER FROM FUSELAGE TO RIB 9",
+				null, "true", 1, "PRE 24943, (57-1086)");
+		GenericTask gt2 = new GenericTask("200001-02-1", "Airbus A320", 571,
+				"CHECK THAT THE CONNECTOR IS CORRECTLY TIGHTENED BY MEASUREMENT OF THE RESISTANCE WITH A LOOP TESTER: - 4005VC, 4007VC, 4009VC, 4011VC, LH SIDE - 4013VC, 4015VC, 4017VC, 4019VC, LH SIDE - 4006VC, 4008VC, 4010VC, 4012VC, RH SIDE - 4014VC, 4016VC, 4018VC, 4020VC, RH SIDE - ACCESS: 521EB 521GB 522AB",
+				null, "true", 1, "ALL");
+		GenericTask gt3 = new GenericTask("200002-01-1", "Airbus A320", 334,
+				"GENERAL VISUAL INSPECTION OF ELEMENTS FITTED ON THE FOLLOWING HARNESSES: - 405VB, 406VB, 407VB, 408VB, 409VB, LH SIDE - - 400VB, 401VB, 402VB, 403VB, 404VB, RH SIDE - ACCESS: 334AB 334BB 334CB 334DB 334EB",
+				null, "true", 1, "ALL");
+		GenericTask gt4 = new GenericTask("200003-01-1", "Airbus A320", 321,
+				"HIRF/LIGHTNING PROTECTION-VERTICAL FIN, GENERAL VISUAL INSPECTION OF ELEMENTS FITTED ON THE FOLLOWING HARNESSES: - 4202VB, 4204VB - ACCESS: 321AL",
+				null, "true", 1, "ALL");
+		GenericTask gt5 = new GenericTask("200003-03-1", "Airbus A320", 324,
+				"HIRF/LIGHTNING PROTECTION-VERTICAL FIN, GENERAL VISUAL INSPECTION OF ELEMENTS FITTED ON THE FOLLOWING HARNESSES: - 4202VB, 4204VB - ACCESS: 324AT",
+				null, "true", 1, "ALL");
 
-//		list.add(gt1);
-//		list.add(gt2);
-//
-//		for (int i = 0; i < 2; i++) {
-//			((GenericTaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO())
-//					.add(list.get(i), "mpd", String.valueOf(list.get(i).getTaskNumber()));
-//		}
+		list.add(gt1);
+		list.add(gt2);
+		list.add(gt3);
+		list.add(gt4);
+		list.add(gt5);
+
+		for (int i = 0; i < 5; i++) {
+			((GenericTaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO())
+					.add(list.get(i), "mpd", String.valueOf(list.get(i).getTaskNumber()));
+		}
 	}
 
 	public static void addTasks() {

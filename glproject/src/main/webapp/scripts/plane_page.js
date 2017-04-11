@@ -22,8 +22,6 @@ function getTasks(data) {
 		return item.tailNumber == getURLParam("plane");
 	});
 
-	console.log(plane);
-	console.log(JSON.stringify(plane));
 	$.ajax({
 		url : "ws/tasks/" + plane[0].id,
 		type : "GET",

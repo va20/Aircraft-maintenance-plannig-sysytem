@@ -1,20 +1,6 @@
 @import
 	url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic)
 	;
-/*
-body, html {
-	font-family: 'Open Sans', 'sans-serif';
-	background-repeat: no-repeat;
-	background-image: linear-gradient(rgb(90, 121, 127), #BABEC4);
-	text-align: center;
-}
-*/
-body, html {
-	margin:0;
-	padding:0;
-	background: url(Images/sky.jpg) no-repeat center fixed;
-	background-size: cover; /* version standardisée */
-}
 
 .nav .open>a, .nav .open>a:focus, .nav  .open>a:hover {
 	background-color: #fff;
@@ -56,9 +42,6 @@ body, html {
 }
 
 .btn.btn-signin {
-	/*background-color: #4d90fe; */
-	/* background-color: rgb(104, 145, 162);*/
-	/* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
 	padding: 0px;
 	font-weight: 700;
 	font-size: 14px;
@@ -101,8 +84,4 @@ body, html {
 
 .panel-body {
 	display: none;
-}
-
-.jumbotron {
-	background-color: transparent !important;
 }

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="css/flight_list.css" rel="stylesheet">
 <link href="css/base.css" rel="stylesheet">
+<link href="css/flight_list.css" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Arimo:400"
 	rel="stylesheet">
 <link rel="icon" href="img/avion.ico" />
@@ -16,7 +16,6 @@
 		<div class="container">
 			<nav class="navbar navbar-inverse" role="navigation">
 				<div class="container-fluid">
-					<!-- Brand and toggle get grouped for better mobile display -->
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse"
 							data-target="#bs-example-navbar-collapse-1">
@@ -27,11 +26,10 @@
 						<a class="navbar-brand" href="#">MCC</a>
 					</div>
 
-					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="plane_list.html">Planes</a></li>
+							<li><a href="plane_list.html">Planes</a></li>
 							<li><a href="flight_list.html">Flights</a></li>
 							<li><a href="maintenanceplan.html">Maintenance Planning</a></li>
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -46,51 +44,41 @@
 							<li><a href="login.html">Logout</a></li>
 						</ul>
 					</div>
-					<!-- /.navbar-collapse -->
 				</div>
-				<!-- /.container-fluid -->
 			</nav>
 		</div>
 	</div>
 
 
 	<div class="container">
-		<div class="jumbotron jumbotron-fluid">
-			<div class="container">
-				<h1 class="display-3 text-center">Flights</h1>
+		<div class="w3-half">
+			<div class="w3-panel w3-border x">
+				<h1>Flights</h1>
 			</div>
 		</div>
-		<div class="row">
-			<div class="panel panel-primary filterable">
-				<div class="panel-heading">
-					<h3 class="panel-title">Users</h3>
-					<div class="pull-right">
-						<button class="btn btn-default btn-xs btn-filter">
-							<span class="glyphicon glyphicon-filter"></span> Filter
-						</button>
-					</div>
-				</div>
-				<table class="table">
-					<thead>
-						<tr class="filters">
-							<th><input type="text" class="form-control"
-								placeholder="Commercial Number" disabled></th>
-							<th><input type="text" class="form-control"
-								placeholder="Plane" disabled></th>
-							<th><input type="text" class="form-control"
-								placeholder="Departure Airport" disabled></th>
-							<th><input type="text" class="form-control"
-								placeholder="Arrival Airport" disabled></th>
-							<th><input type="text" class="form-control"
-								placeholder="Departure Time" disabled></th>
-							<th><input type="text" class="form-control"
-								placeholder="Arrival Time" disabled></th>
-						</tr>
-					</thead>
-					<tbody id="flights">
-						<script id="list_flights" type="text/html">
-							<% _.each(item, function(item) { %>
-                    			<tr>
+		<p>
+			<input class="w3-input w3-border w3-padding searchbar" type="text"
+				placeholder="Search..."
+				onkeyup="w3.filterHTML('#table_flights', '.flights', this.value)">
+		</p>
+		<div class="table-responsive">
+			<table class="table" id="table_flights">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Commercial Number</th>
+						<th>Plane</th>
+						<th>Departure Airport</th>
+						<th>Arrival Airporty</th>
+						<th>Departure Time</th>
+						<th>Arrival Time</th>
+					</tr>
+				</thead>
+				<tbody id="flights">
+					<script id="list_flights" type="text/html">
+							<% _.each(item, function(item, i) { %>
+                    			<tr class="flights">
+									<td><%= i %></td>
                         			<td><%= item.commercial %></td>
                         			<td><%= item.idPlane %></td>
                         			<td><%= item.depAirport %></td>
@@ -99,10 +87,9 @@
                         			<td><%= item.arrTime %></td>
                    		 		</tr>
 							<% }); %>
-						</script>
-					</tbody>
-				</table>
-			</div>
+					</script>
+				</tbody>
+			</table>
 		</div>
 	</div>
 
@@ -110,6 +97,7 @@
 	<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="scripts/jquery.cookie.js"></script>
 	<script type="text/javascript" src="scripts/underscore-min.js"></script>
+	<script type="text/javascript" src="scripts/w3.js"></script>
 	<script type="text/javascript" src="scripts/menu.js"></script>
 	<script type="text/javascript" src="scripts/flights.js"></script>
 </body>

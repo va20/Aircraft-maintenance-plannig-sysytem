@@ -2,13 +2,6 @@
 	url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic)
 	;
 
-body, html {
-	font-family: 'Open Sans', 'sans-serif';
-	height: 100%;
-	background-repeat: no-repeat;
-	background-image: linear-gradient(rgb(90, 121, 127), #BABEC4);
-}
-
 .mega-dropdown {
 	position: static !important;
 }
