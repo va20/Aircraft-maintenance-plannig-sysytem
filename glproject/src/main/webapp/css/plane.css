@@ -1,0 +1,43 @@
+.btn {
+	font-weight: 700;
+	height: 36px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	cursor: default;
+}
+
+.row {
+	margin-top: 40px;
+	margin: 0 auto;
+}
+
+table {
+	border-collapse: collapse;
+	width: 94%;
+	margin: auto;
+}
+
+td, th {
+	text-align: center;
+	padding: 5px;
+}
+
+#rcorners {
+	color: #665851;
+	border-radius: 7px;
+	background-color: #FFFFFF;
+	padding: 20px;
+	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	position: relative;
+	z-index: 2;
+}
+
+#thead_row {
+	color: white;
+	opacity: 0.8;
+	background-color: #333;
+	opacity: 0.8;
+}

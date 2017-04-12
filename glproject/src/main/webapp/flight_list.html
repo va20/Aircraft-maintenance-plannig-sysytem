@@ -4,9 +4,7 @@
 <meta charset="utf-8" />
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="css/base.css" rel="stylesheet">
-<link href="css/flight_list.css" rel="stylesheet">
-<link href="http://fonts.googleapis.com/css?family=Arimo:400"
-	rel="stylesheet">
+<link href="css/flights.css" rel="stylesheet">
 <link rel="icon" href="img/avion.ico" />
 <title>Flights</title>
 </head>
@@ -56,37 +54,42 @@
 				<h1>Flights</h1>
 			</div>
 		</div>
-		<p>
-			<input class="w3-input w3-border w3-padding searchbar" type="text"
+	</div>
+
+	<div id="rcorners" class="container">
+		<div class="form-group has-feedback">
+			<input class="form-control searchbar" type="text"
 				placeholder="Search..."
-				onkeyup="w3.filterHTML('#table_flights', '.flights', this.value)">
-		</p>
+				onkeyup="w3.filterHTML('#table_flights', '.flights', this.value)"><i
+				class="glyphicon glyphicon-filter form-control-feedback"></i>
+		</div>
+
 		<div class="table-responsive">
 			<table class="table" id="table_flights">
 				<thead>
-					<tr>
+					<tr id="thead_row">
 						<th>#</th>
 						<th>Commercial Number</th>
 						<th>Plane</th>
 						<th>Departure Airport</th>
-						<th>Arrival Airporty</th>
+						<th>Arrival Airport</th>
 						<th>Departure Time</th>
 						<th>Arrival Time</th>
 					</tr>
 				</thead>
 				<tbody id="flights">
 					<script id="list_flights" type="text/html">
-							<% _.each(item, function(item, i) { %>
-                    			<tr class="flights">
-									<td><%= i %></td>
-                        			<td><%= item.commercial %></td>
-                        			<td><%= item.idPlane %></td>
-                        			<td><%= item.depAirport %></td>
-                        			<td><%= item.arrAirport %></td>
-                        			<td><%= item.depTime %></td>
-                        			<td><%= item.arrTime %></td>
-                   		 		</tr>
-							<% }); %>
+						<% _.each(item, function(item, i) { %>
+                    		<tr class="flights">
+								<td><strong><%= i %></strong></td>
+                        		<td><%= item.commercial %></td>
+                        		<td><%= item.idPlane %></td>
+                        		<td><%= item.depAirport %></td>
+                        		<td><%= item.arrAirport %></td>
+                        		<td><%= moment(item.depTime).toISOString() %></td>
+                        		<td><%= moment(item.arrTime).toISOString() %></td>
+                   		 	</tr>
+						<% }); %>
 					</script>
 				</tbody>
 			</table>
@@ -97,6 +100,7 @@
 	<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="scripts/jquery.cookie.js"></script>
 	<script type="text/javascript" src="scripts/underscore-min.js"></script>
+	<script type="text/javascript" src="scripts/moment.js"></script>
 	<script type="text/javascript" src="scripts/w3.js"></script>
 	<script type="text/javascript" src="scripts/menu.js"></script>
 	<script type="text/javascript" src="scripts/flights.js"></script>
