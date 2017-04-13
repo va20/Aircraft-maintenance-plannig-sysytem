@@ -43,10 +43,31 @@ function printTasks(data) {
 	$("#tasks").append(task);
 }
 
+function deleteTask(id_task){
+	alert(id_task);
+	$.ajax({
+		url: "ws/tasks/"+id_task,
+		type: "DELETE",
+		dataType : "json",
+		success : function (data) {
+			getTasks(data);
+        }
+	})
+}
+
+
 $(document).ready(function() {
 	document.getElementById("plane_number").innerHTML = getURLParam("plane");
 	getPlane();
-
+	$("#tasks").on("click","a.btn-danger",function () {
+		var id_task=$(this).attr("id");
+		console.log(id_task);
+		deleteTask(id_task);
+		alert("Are you sure?");
+    });
+    $("#tasks").on("click","#edit_btn",function () {
+        alert("what?");
+    });
 	//	
 	// (function(){
 	// 'use strict';
