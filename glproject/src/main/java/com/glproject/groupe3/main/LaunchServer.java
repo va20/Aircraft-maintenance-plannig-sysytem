@@ -1,6 +1,5 @@
 package com.glproject.groupe3.main;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.security.NoSuchAlgorithmException;
 
@@ -18,18 +17,20 @@ import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
-import com.glproject.groupe3.parsing.Parser;
-import com.glproject.groupe3.parsing.SpreadsheetParser;
-
 //TODO : 
 //ajouter logger a la place des printstackstrace
 //fichier de configuration database
+//import mpd
+//add task
 
 public class LaunchServer {
 
 	public static void main(String[] args) throws NoSuchAlgorithmException, FileNotFoundException {
 		// Initialize the server
 		Server server = new Server();
+
+		// new SpreadsheetParser().importFile(new
+		// FileInputStream("src/main/resources/Airbus A320.xlsx"));
 
 		// Add a connector
 		ServerConnector connector = new ServerConnector(server);

@@ -5,15 +5,15 @@ public class GenericTask {
 	private String type;
 	private int zone;
 	private String descr;
-	private long periodicity;
-	private boolean hangar;
+	private String periodicity;
+	private String hangar;
 	private int men;
 	private String applicability;
 
 	public GenericTask() {
 	}
 
-	public GenericTask(String taskNumber, String type, int zone, String descr, long periodicity, boolean hangar,
+	public GenericTask(String taskNumber, String type, int zone, String descr, String periodicity, String hangar,
 			int men, String applicability) {
 		super();
 		this.taskNumber = taskNumber;
@@ -58,19 +58,19 @@ public class GenericTask {
 		this.descr = descr;
 	}
 
-	public long getPeriodicity() {
+	public String getPeriodicity() {
 		return periodicity;
 	}
 
-	public void setPeriodicity(long periodicity) {
+	public void setPeriodicity(String periodicity) {
 		this.periodicity = periodicity;
 	}
 
-	public boolean isHangar() {
+	public String isHangar() {
 		return hangar;
 	}
 
-	public void setHangar(boolean hangar) {
+	public void setHangar(String hangar) {
 		this.hangar = hangar;
 	}
 

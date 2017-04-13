@@ -4,10 +4,9 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="css/Style.css">
-<link href="http://fonts.googleapis.com/css?family=Arimo:400"
-	rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/base.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/Style.css">
 <link rel="icon" href="img/avion.ico" />
 <title>Maintenance Planning</title>
 <link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet"
@@ -36,13 +35,14 @@
 					<div class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="plane_list.html">Planes</a></li>
+							<li><a href="plane_list.html">Planes</a></li>
 							<li><a href="flight_list.html">Flights</a></li>
 							<li><a href="maintenanceplan.html">Maintenance Planning</a></li>
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown">Import <b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="#">MPD</a></li>
+									<li><input type="file" id="upload" style="display: none" /><a
+										href="" id="import">MPD</a></li>
 								</ul></li>
 						</ul>
 
@@ -56,10 +56,9 @@
 	</div>
 
 	<div class="container ">
-		<div class="jumbotron jumbotron-fluid">
-			<div class="container">
-				<h1 id="plane_number" class="display-3 text-center">Maintenance
-					planning</h1>
+		<div class="w3-half">
+			<div class="w3-panel w3-border x">
+				<h1>Maintenance planning</h1>
 			</div>
 		</div>
 		<div class="row">

@@ -54,11 +54,11 @@ public class SpreadsheetParser implements Parser {
 					case 3:
 						gt.setDescr(cell.getStringCellValue());
 						break;
-					case 4:
-						gt.setPeriodicity((long) cell.getNumericCellValue());
-						break;
+//					case 4:
+//						gt.setPeriodicity(cell.getStringCellValue());
+//						break;
 					case 5:
-						gt.setHangar(cell.getBooleanCellValue());
+						gt.setHangar(cell.getStringCellValue());
 						break;
 					case 6:
 						gt.setMen((int) cell.getNumericCellValue());

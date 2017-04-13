@@ -1,0 +1,36 @@
+.btn {
+	position: relative;
+	padding: 10px 20px;
+	font-size: 15px;
+	border-radius: 7px;
+	padding-bottom: 50px;
+	background-color: white;
+	color: white;
+	border: 2px solid #4b7daf;
+	background-color: transparent !important;
+	border-color: white;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+}
+
+.btn:hover {
+	background-color: blue;
+	color: white;
+}
+
+.row-centered {
+	text-align: center;
+}
+
+.col-centered {
+	display: inline-block;
+	float: none;
+	text-align: left;
+	margin-right: -4px;
+}
+
+@media ( min-width : 768px) {
+	.onl_row-sm-offset-3 div:first-child[class*="col-"] {
+		margin-left: 25%;
+	}
+}
