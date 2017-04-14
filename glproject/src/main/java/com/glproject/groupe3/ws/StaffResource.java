@@ -22,7 +22,7 @@ public class StaffResource {
 		for (Staff s : staffs) {
 			System.out.println(s.toString());
 			if (s.getLogin().equals(login)) {
-				String hash_password = s.hashPass(password + s.getSalt());
+				String hash_password = s.hash_pass(password + s.getSalt());
 				if (s.getPassword().equals(hash_password)) {
 					return true;
 				}
@@ -40,6 +40,7 @@ public class StaffResource {
 	}
 
 	@DELETE
+	@Path("/{id}")
 	public void deleteStaffs(@PathParam("id") long id) {
 		((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).delete("staffs",
 				String.valueOf(id));
