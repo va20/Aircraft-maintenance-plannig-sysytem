@@ -29,7 +29,6 @@ public class TaskResource {
 	public List<Task> getTasksByPlane(@PathParam("idPlane") long idPlane) {
 		return ((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO())
 				.getTasksByPlane(String.valueOf(idPlane), "tasks");
-
 	}
 
 	@DELETE
