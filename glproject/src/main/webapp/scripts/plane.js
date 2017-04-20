@@ -28,7 +28,7 @@ function getTasks(data) {
 		dataType : "json"
 	}).done(function(data) {
 		if (data.length == 0) {
-			$("#table_tasks").hide();
+			$("#tableTasks").hide();
 			$("#search").hide();
 			$("#info").show();
 		} else {
@@ -47,7 +47,26 @@ function printTasks(data) {
 	$("#tasks").append(task);
 }
 
+function deleteTask(idTask) {
+	$.ajax({
+		url : "ws/tasks/" + idTask,
+		type : "DELETE",
+		dataType : "json",
+
+		success : function(data) {
+			getTasks(data);
+		}
+	});
+}
+
 $(document).ready(function() {
 	document.getElementById("plane_number").innerHTML = getURLParam("plane");
 	getPlaneTasks();
+
+	$("#tasks").on("click", "a.btn-danger", function() {
+		var idTask = $(this).attr("id");
+		deleteTask(idTask);
+		alert("Are you sure?");
+		location.reload();
+	});
 });

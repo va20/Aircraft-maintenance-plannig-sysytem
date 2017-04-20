@@ -2,6 +2,7 @@ package com.glproject.groupe3.ws;
 
 import java.util.List;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -31,12 +32,10 @@ public class TaskResource {
 
 	}
 
-	// @PUT
-	// @Consumes(MediaType.APPLICATION_JSON)
-	// public void addFlight(Flight flight) {
-	// ((FlightDAOImpl)
-	// AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getFlightDAO()).add(flight,
-	// "flights",
-	// flight.getCommercial());
-	// }
+	@DELETE
+	@Path("/{id}")
+	public void deleteTask(@PathParam("id") long id) {
+		((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).delete("tasks",
+				String.valueOf(id));
+	}
 }

@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>MCC</title>
-		<link rel="stylesheet" href="css/login.css">
-		<link rel="stylesheet" href="css/animate.css">
-	</head>
+<head>
+<meta charset="utf-8">
+<title>MCC</title>
+<link href="css/base.css" rel="stylesheet">
+<link href="css/login.css" rel="stylesheet">
+<link href="css/animate.css" rel="stylesheet">
+</head>
 
-	<body>
-		<div class="container">
-			<div class="top">
-				<h1 id="title" class="hidden"><span id="logo"><span>MCC</span></span></h1>
-			</div>
-			<div class="login-box animated fadeInUp">
-				<div class="box-header">
-					<h2>Login</h2>
-				</div>
-				<label for="username">Username</label>
-				<br/>
-				<input type="text" id="username">
-				<br/>
-				<label for="password">Password</label>
-				<br/>
-				<input type="password" id="password">
-				<br/>
-				<button id="submit">Connection</button>
-				<br/>
-			</div>
+<body>
+	<div class="container">
+		<div class="top">
+			<h1 id="title" class="hidden">
+				<span id="logo"><span>MCC</span></span>
+			</h1>
 		</div>
-		
-		<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-		<script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
-		<script type="text/javascript" src="scripts/jquery.cookie.js"></script>
-		<script type="text/javascript" src="scripts/login.js"></script>
-	</body>
+		<div class="login-box animated fadeInUp">
+			<div class="box-header">
+				<h2>Login</h2>
+			</div>
+			<label for="username">Username</label> <br />
+			<div class="form-group has-feedback">
+				<input type="text" id="username"><i
+					class="glyphicon glyphicon-user"></i>
+			</div>
+			<br /> <label for="password">Password</label> <br /> <input
+				type="password" id="password"> <br />
+			<button id="submit">Connection</button>
+			<br />
+		</div>
+	</div>
+
+	<script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/jquery.cookie.js"></script>
+	<script type="text/javascript" src="scripts/login.js"></script>
+</body>
 </html>
