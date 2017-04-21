@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="css/jquery-ui.min.css" rel="stylesheet" />
+<link href="css/bootstrap-select.min.css" rel="stylesheet">
 <link href="css/base.css" rel="stylesheet">
 <link href="css/form.css" rel="stylesheet">
 <link href="img/avion.ico" rel="icon" />
@@ -30,7 +31,8 @@
 						<ul class="nav navbar-nav">
 							<li><a href="plane_list.html">Planes</a></li>
 							<li><a href="flight_list.html">Flights</a></li>
-							<li><a href="maintenanceplan.html">Maintenance Planning</a></li>
+							<li><a href="maintenance_planning.html">Maintenance
+									Planning</a></li>
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown">Import <b class="caret"></b></a>
 								<ul class="dropdown-menu">
@@ -38,7 +40,6 @@
 										href="" id="import">MPD</a></li>
 								</ul></li>
 						</ul>
-
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="login.html">Logout</a></li>
 						</ul>
@@ -48,32 +49,47 @@
 		</div>
 	</div>
 
+	<div class="container">
+		<div class="w3-half">
+			<div class="w3-panel w3-border x">
+				<h1 id="plane_number">Adding</h1>
+			</div>
+		</div>
+	</div>
+
 	<form id="msform">
 		<fieldset>
-			<h2 class="fs-title">Add a task</h2>
-			<input type="text" name="tasknumber" id="task_number"
-				placeholder="Task number (MPD)" /> <input type="text" name="mro"
-				id="mro" placeholder="MRO" /> <input type="datetime-local"
-				name="date" id="deadline" placeholder="Deadline" /> <label>
-				<input type="radio" name="editList" value="always" />Line
+			<select id="planes" class="selectpicker" data-live-search="true"
+				title="Select a plane">
+				<script id="list_planes" type="text/html">
+					<% _.each(item, function(item) { %>
+						<option data-subtext="<%= item.type %>"><%= item.tailNumber %></option>
+					<% }); %>
+				</script>
+			</select> <input type="text" name="tasknumber" id="task_number"
+				placeholder="Task number (MPD)" /> <input type="text" name="airport"
+				id="airport" placeholder="Airport" /><input type="text" name="mro" id="mro"
+				placeholder="MRO" /> <input type="datetime-local" name="date"
+				id="deadline" placeholder="Deadline" /> <label> <input
+				type="radio" name="editList" value="always" />Line
 			</label> <label><input type="radio" name="editList" value="never" />Base
 			</label> <br>
-			<button id="add" class="btn btn-large btn-primary" data-toggle="confirmation"
-				data-btn-ok-label="Continue"
+			<button id="add" class="btn btn-large btn-primary"
+				data-toggle="confirmation" data-btn-ok-label="Continue"
 				data-btn-ok-icon="glyphicon glyphicon-share-alt"
 				data-btn-ok-class="btn-success" data-btn-cancel-label="Stoooop!"
 				data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
 				data-btn-cancel-class="btn-danger" data-title="Are you sure?"
 				data-content="This might be dangerous">Done</button>
 		</fieldset>
-	</form>
 
+	</form>
 	<script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-	<script type="text/javascript" src="scripts/jquery.cookie.js"></script>
 	<script type="text/javascript" src="scripts/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/bootstrap-select.min.js"></script>
 	<script type="text/javascript" src="scripts/underscore-min.js"></script>
 	<script type="text/javascript" src="scripts/menu.js"></script>
-
+	<script type="text/javascript" src="scripts/add.js"></script>
 </body>
 </html>

@@ -12,6 +12,8 @@ public abstract class AbstractDAOFactory {
 
 	public abstract DAO getTaskDAO();
 
+	public abstract DAO getMRODAO();
+
 	public static AbstractDAOFactory getFactory(Factory type) {
 		if (type.equals(Factory.ES_DAO_FACTORY))
 			return new DAOFactory();

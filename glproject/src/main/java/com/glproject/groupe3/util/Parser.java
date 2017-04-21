@@ -1,4 +1,4 @@
-package com.glproject.groupe3.parsing;
+package com.glproject.groupe3.util;
 
 import java.io.InputStream;
 

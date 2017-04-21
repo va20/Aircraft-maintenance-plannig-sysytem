@@ -15,35 +15,37 @@ import com.glproject.groupe3.DAO.AbstractDAOFactory;
 import com.glproject.groupe3.DAO.Factory;
 import com.glproject.groupe3.DAOImpl.PlaneDAOImpl;
 import com.glproject.groupe3.businessobjects.Plane;
+import com.glproject.groupe3.util.Constants;
 
-@Path("/planes")
+@Path("/" + Constants.PLANES)
 public class PlaneResource {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Plane> getPlanes() {
-		return ((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).getAll("planes");
+		return ((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO())
+				.getAll(Constants.PLANES);
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{id}")
 	public Plane getPlane(@PathParam("id") long id) {
-		return ((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).get("planes",
-				String.valueOf(id));
+		return ((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO())
+				.get(Constants.PLANES, String.valueOf(id));
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addPlane(Plane plane) {
-		((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).add(plane, "planes",
-				String.valueOf(plane.getId()));
+		((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).add(plane,
+				Constants.PLANES, String.valueOf(plane.getId()));
 	}
 
 	@DELETE
 	@Path("/{id}")
 	public void deletePlane(@PathParam("id") long id) {
-		((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).delete("planes",
+		((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).delete(Constants.PLANES,
 				String.valueOf(id));
 	}
 }

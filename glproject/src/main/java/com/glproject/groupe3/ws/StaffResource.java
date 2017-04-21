@@ -4,12 +4,13 @@ import com.glproject.groupe3.DAO.AbstractDAOFactory;
 import com.glproject.groupe3.DAO.Factory;
 import com.glproject.groupe3.DAOImpl.StaffDAOImpl;
 import com.glproject.groupe3.businessobjects.Staff;
+import com.glproject.groupe3.util.Constants;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/staffs")
+@Path("/" + Constants.STAFFS)
 public class StaffResource {
 
 	@POST
@@ -17,7 +18,7 @@ public class StaffResource {
 	public boolean signIn(@PathParam("login") String login, @PathParam("password") String password) {
 		System.out.println(password);
 		List<Staff> staffs = ((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO())
-				.getAll("staffs");
+				.getAll(Constants.STAFFS);
 
 		for (Staff s : staffs) {
 			System.out.println(s.toString());
@@ -35,13 +36,13 @@ public class StaffResource {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addStaff(Staff s) {
-		((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).add(s, "staffs",
+		((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).add(s, Constants.STAFFS,
 				String.valueOf(s.getId()));
 	}
 
 	@DELETE
 	public void deleteStaffs(@PathParam("id") long id) {
-		((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).delete("staffs",
+		((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).delete(Constants.STAFFS,
 				String.valueOf(id));
 	}
 }

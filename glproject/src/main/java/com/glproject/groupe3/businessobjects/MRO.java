@@ -5,15 +5,17 @@ public class MRO {
 	private long id;
 	private long idPlane;
 	private String airport;
+	private String name;
 
 	public MRO() {
 	}
 
-	public MRO(long id, long idPlane, String airport) {
+	public MRO(long id, long idPlane, String airport, String name) {
 		super();
 		this.id = id;
 		this.idPlane = idPlane;
 		this.airport = airport;
+		this.name = name;
 	}
 
 	public long getId() {
@@ -38,5 +40,13 @@ public class MRO {
 
 	public void setAirport(String airport) {
 		this.airport = airport;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

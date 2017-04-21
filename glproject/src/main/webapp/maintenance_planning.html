@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="css/base.css" rel="stylesheet">
-<link href="css/tasks.css" rel="stylesheet">
+<link href="css/planning.css" rel="stylesheet">
 <link rel="icon" href="img/avion.ico" />
 <title>Maintenance Planning</title>
 </head>
@@ -28,7 +28,8 @@
 						<ul class="nav navbar-nav">
 							<li><a href="plane_list.html">Planes</a></li>
 							<li><a href="flight_list.html">Flights</a></li>
-							<li><a href="maintenanceplan.html">Maintenance Planning</a></li>
+							<li><a href="maintenance_planning.html">Maintenance
+									Planning</a></li>
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown">Import <b class="caret"></b></a>
 								<ul class="dropdown-menu">
@@ -62,33 +63,46 @@
 		</div>
 
 		<div class="table-responsive">
-			<table class="table" id="table_tasks">
+			<table class="table table-hover" id="table_tasks">
 				<thead>
 					<tr id="thead_row">
 						<th>#</th>
+						<th>Plane</th>
 						<th>Task number</th>
+						<th>Airport</th>
 						<th>MRO</th>
 						<th>Deadline</th>
-						<th>Duration</th>
+						<th>Type</th>
+						<th class="text-center">Action</th>
 					</tr>
 				</thead>
 				<tbody id="tasks">
 					<script id="list_tasks" type="text/html">
 						<% _.each(item, function(item, i) { %>
                     		<tr class="tasks">
-								<td><strong><%= i %></strong></td>
+								<td><strong><%= item.id %></strong></td>
+								<td><%= item.idPlane %></td>
                         		<td><%= item.taskNumber %></td>
+								<td><%= item.airport %></td>
                         		<td><%= item.idMRO %></td>
                         		<td><%= moment(item.deadline).toISOString() %></td>
-                        		<td><%= item.taskNumber %></td>
+                        		<td><%= item.type %></td>
+								<td class="text-center">
+								<a class="btn btn-info btn-xs" href="#">
+								<span class="glyphicon glyphicon-edit"></a>
+								<a href="" id="<%= item.id %>" class="btn btn-danger btn-xs">
+								<span class="glyphicon glyphicon-remove"></a>
+								</td>
                    		 	</tr>
 						<% }); %>
 					</script>
 				</tbody>
 			</table>
 		</div>
+		<button id="add" class="btn btn-success" type="button">
+			<span class="glyphicon glyphicon-plus"></span>
+		</button>
 	</div>
-
 
 	<script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="scripts/jquery.cookie.js"></script>
@@ -96,6 +110,6 @@
 	<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="scripts/moment.js"></script>
 	<script type="text/javascript" src="scripts/menu.js"></script>
-	<script type="text/javascript" src="scripts/tasks.js"></script>
+	<script type="text/javascript" src="scripts/planning.js"></script>
 </body>
 </html>

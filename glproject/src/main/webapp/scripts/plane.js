@@ -66,7 +66,11 @@ $(document).ready(function() {
 	$("#tasks").on("click", "a.btn-danger", function() {
 		var idTask = $(this).attr("id");
 		deleteTask(idTask);
-		alert("Are you sure?");
-		location.reload();
+		if (confirm("Are you sure ?"))
+			location.reload();
+	});
+
+	$("#add").click(function() {
+		location.href = "add_task.html?plane=" + getURLParam("plane");
 	});
 });

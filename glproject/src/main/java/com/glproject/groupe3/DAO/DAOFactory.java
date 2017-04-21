@@ -47,4 +47,9 @@ public class DAOFactory extends AbstractDAOFactory {
 	public DAO getTaskDAO() {
 		return DAOHolder.TASK_DAO;
 	}
+
+	@Override
+	public DAO getMRODAO() {
+		return DAOHolder.MRO_DAO;
+	}
 }

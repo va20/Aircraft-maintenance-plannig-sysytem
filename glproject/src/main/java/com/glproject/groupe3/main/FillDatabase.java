@@ -10,6 +10,7 @@ import com.glproject.groupe3.DAO.AbstractDAOFactory;
 import com.glproject.groupe3.DAO.Factory;
 import com.glproject.groupe3.DAOImpl.FlightDAOImpl;
 import com.glproject.groupe3.DAOImpl.GenericTaskDAOImpl;
+import com.glproject.groupe3.DAOImpl.MRODAOImpl;
 import com.glproject.groupe3.DAOImpl.PlaneDAOImpl;
 import com.glproject.groupe3.DAOImpl.StaffDAOImpl;
 import com.glproject.groupe3.DAOImpl.TaskDAOImpl;
@@ -19,6 +20,7 @@ import com.glproject.groupe3.businessobjects.MRO;
 import com.glproject.groupe3.businessobjects.Plane;
 import com.glproject.groupe3.businessobjects.Staff;
 import com.glproject.groupe3.businessobjects.Task;
+import com.glproject.groupe3.util.Constants;
 
 public class FillDatabase {
 
@@ -28,6 +30,7 @@ public class FillDatabase {
 		addFlights();
 		addGenericTasks();
 		addTasks();
+		addMROs();
 	}
 
 	public static void deleteAll() {
@@ -60,7 +63,7 @@ public class FillDatabase {
 
 		for (int i = 0; i < 9; i++) {
 			((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).add(list.get(i),
-					"staffs", String.valueOf(list.get(i).getId()));
+					Constants.STAFFS, String.valueOf(list.get(i).getId()));
 		}
 	}
 
@@ -82,7 +85,7 @@ public class FillDatabase {
 
 		for (int i = 0; i < 6; i++) {
 			((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).add(list.get(i),
-					"planes", String.valueOf(list.get(i).getId()));
+					Constants.PLANES, String.valueOf(list.get(i).getId()));
 		}
 	}
 
@@ -104,7 +107,7 @@ public class FillDatabase {
 
 		for (int i = 0; i < 6; i++) {
 			((FlightDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getFlightDAO()).add(list.get(i),
-					"flights", String.valueOf(list.get(i).getCommercial()));
+					Constants.FLIGHTS, String.valueOf(list.get(i).getCommercial()));
 		}
 	}
 
@@ -134,26 +137,45 @@ public class FillDatabase {
 
 		for (int i = 0; i < 5; i++) {
 			((GenericTaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO())
-					.add(list.get(i), "mpd", String.valueOf(list.get(i).getTaskNumber()));
+					.add(list.get(i), Constants.GENERIC_TASKS, String.valueOf(list.get(i).getTaskNumber()));
 		}
 	}
 
 	public static void addTasks() {
 		List<Task> list = new ArrayList<Task>();
-		Task t1 = new Task(1, 2, 1, new DateTime(), "12-33-02-001");
-		Task t2 = new Task(2, 2, 1, new DateTime(), "12-33-02-002");
+		Task t1 = new Task(1, 2, "LFPA", 2, new DateTime(), "12-33-02-001", "base");
+		Task t2 = new Task(2, 2, "LFPO", 3, new DateTime(), "12-33-02-002", "inline");
+		Task t3 = new Task(3, 3, "LPPO", 1, new DateTime(), "12-33-02-002", "inline");
+		Task t4 = new Task(4, 3, "MLPO", 2, new DateTime(), "12-33-02-002", "base");
+		Task t5 = new Task(5, 5, "LKPO", 1, new DateTime(), "12-33-02-002", "inline");
 
 		list.add(t1);
 		list.add(t2);
+		list.add(t3);
+		list.add(t4);
+		list.add(t5);
 
-		for (int i = 0; i < 2; i++) {
-			((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).add(list.get(i), "tasks",
-					String.valueOf(list.get(i).getId()));
+		for (int i = 0; i < 5; i++) {
+			((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).add(list.get(i),
+					Constants.TASKS, String.valueOf(list.get(i).getId()));
 		}
 	}
 
 	public static void addMROs() {
 		List<MRO> list = new ArrayList<MRO>();
-		// MRO m1 = new MRO(1, );
+		MRO mro1 = new MRO(1, 2, "LFPO", "MRO1");
+		MRO mro2 = new MRO(2, 3, "LFPO", "MRO2");
+		MRO mro3 = new MRO(3, 1, "LFPA", "MRO3");
+		MRO mro4 = new MRO(4, 4, "MLPO", "MRO4");
+
+		list.add(mro1);
+		list.add(mro2);
+		list.add(mro3);
+		list.add(mro4);
+
+		for (int i = 0; i < 4; i++) {
+			((MRODAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getMRODAO()).add(list.get(i),
+					Constants.MRO, String.valueOf(list.get(i).getId()));
+		}
 	}
 }

@@ -13,14 +13,16 @@ import com.glproject.groupe3.DAO.AbstractDAOFactory;
 import com.glproject.groupe3.DAO.Factory;
 import com.glproject.groupe3.DAOImpl.TaskDAOImpl;
 import com.glproject.groupe3.businessobjects.Task;
+import com.glproject.groupe3.util.Constants;
 
-@Path("/tasks")
+@Path("/" + Constants.TASKS)
 public class TaskResource {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Task> getTasks() {
-		return ((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).getAll("tasks");
+		return ((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO())
+				.getAll(Constants.TASKS);
 	}
 
 	@GET
@@ -28,13 +30,13 @@ public class TaskResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Task> getTasksByPlane(@PathParam("idPlane") long idPlane) {
 		return ((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO())
-				.getTasksByPlane(String.valueOf(idPlane), "tasks");
+				.getTasksByPlane(String.valueOf(idPlane), Constants.TASKS);
 	}
 
 	@DELETE
 	@Path("/{id}")
 	public void deleteTask(@PathParam("id") long id) {
-		((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).delete("tasks",
+		((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).delete(Constants.TASKS,
 				String.valueOf(id));
 	}
 }

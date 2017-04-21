@@ -1,4 +1,4 @@
-package com.glproject.groupe3.parsing;
+package com.glproject.groupe3.util;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -54,9 +54,9 @@ public class SpreadsheetParser implements Parser {
 					case 3:
 						gt.setDescr(cell.getStringCellValue());
 						break;
-//					case 4:
-//						gt.setPeriodicity(cell.getStringCellValue());
-//						break;
+					// case 4:
+					// gt.setPeriodicity(cell.getStringCellValue());
+					// break;
 					case 5:
 						gt.setHangar(cell.getStringCellValue());
 						break;
@@ -70,7 +70,7 @@ public class SpreadsheetParser implements Parser {
 				}
 
 				((GenericTaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO()).add(gt,
-						"mpd", gt.getTaskNumber());
+						Constants.GENERIC_TASKS, gt.getTaskNumber());
 				System.out.println(gt.toString());
 			}
 

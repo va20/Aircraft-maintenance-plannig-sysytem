@@ -16,6 +16,7 @@ import org.elasticsearch.search.SearchHit;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.glproject.groupe3.persistence.ElasticSearchClient;
+import com.glproject.groupe3.util.Constants;
 
 public class DAOImpl<T> implements DAO<T> {
 	protected ElasticSearchClient esc = ElasticSearchClient.getInstance();
@@ -27,7 +28,7 @@ public class DAOImpl<T> implements DAO<T> {
 
 	public T get(String type, String id) {
 		ObjectMapper mapper = new ObjectMapper();
-		GetResponse response = esc.getClient().prepareGet("gl", type, id).get();
+		GetResponse response = esc.getClient().prepareGet(Constants.GL, type, id).get();
 
 		T t = null;
 
@@ -61,7 +62,7 @@ public class DAOImpl<T> implements DAO<T> {
 			e.printStackTrace();
 		}
 
-		esc.getClient().prepareIndex("gl", type, id).setSource(json).get();
+		esc.getClient().prepareIndex(Constants.GL, type, id).setSource(json).get();
 	}
 
 	public void update(UpdateRequest updateReq) {
@@ -76,14 +77,14 @@ public class DAOImpl<T> implements DAO<T> {
 	}
 
 	public void delete(String type, String id) {
-		esc.getClient().prepareDelete("gl", type, id).get();
+		esc.getClient().prepareDelete(Constants.GL, type, id).get();
 	}
 
 	public List<T> getAll(String type) {
 		List<T> list = new ArrayList<T>();
 		ObjectMapper mapper = new ObjectMapper();
 
-		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes(type);
+		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch(Constants.GL).setTypes(type);
 		SearchResponse searchResponse = requestBuilder.get();
 		SearchHit[] searchHits = searchResponse.getHits().getHits();
 
@@ -108,7 +109,7 @@ public class DAOImpl<T> implements DAO<T> {
 	}
 
 	public void deleteAll(String type) {
-		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes(type);
+		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch(Constants.GL).setTypes(type);
 		SearchResponse searchResponse = requestBuilder.get();
 		SearchHit[] searchHits = searchResponse.getHits().getHits();
 

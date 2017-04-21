@@ -9,15 +9,15 @@ import javax.ws.rs.core.MediaType;
 
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
-import com.glproject.groupe3.parsing.SpreadsheetParser;
+import com.glproject.groupe3.util.Constants;
+import com.glproject.groupe3.util.SpreadsheetParser;
 
-@Path("/mpd")
+@Path("/" + Constants.GENERIC_TASKS)
 public class GenericTaskResource {
 
 	@POST
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	public void importMPD(@FormDataParam("input") InputStream input) {
-		System.out.println("staif");
 		new SpreadsheetParser().importFile(input);
 	}
 }

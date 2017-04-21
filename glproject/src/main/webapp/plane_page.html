@@ -29,7 +29,8 @@
 						<ul class="nav navbar-nav">
 							<li><a href="plane_list.html">Planes</a></li>
 							<li><a href="flight_list.html">Flights</a></li>
-							<li><a href="maintenanceplan.html">Maintenance Planning</a></li>
+							<li><a href="maintenance_planning.html">Maintenance
+									Planning</a></li>
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-toggle="dropdown">Import <b class="caret"></b></a>
 								<ul class="dropdown-menu">
@@ -60,7 +61,7 @@
 		<div id="search" class="form-group has-feedback">
 			<input class="form-control searchbar" type="text"
 				placeholder="Search..."
-				onkeyup="w3.filterHTML('#table_tasks', '.tasks', this.value)"><i
+				onkeyup="w3.filterHTML('#tableTasks', '.tasks', this.value)"><i
 				class="glyphicon glyphicon-filter form-control-feedback"></i>
 		</div>
 
@@ -73,10 +74,12 @@
 				<thead>
 					<tr id="thead_row">
 						<th>#</th>
+						<th>Task number</th>
+						<th>Plane</th>
+						<th>Airport</th>
 						<th>MRO</th>
 						<th>Deadline</th>
 						<th>Type</th>
-						<th>Description</th>
 						<th class="text-center">Action</th>
 					</tr>
 				</thead>
@@ -85,26 +88,31 @@
 						<% _.each(item, function(item, i) { %>
                     		<tr class="tasks">
                         		<td><input type="checkbox"></td>
-                        		<td><%= item.idPlane %></td>
+                         		<td><%= item.taskNumber %></td>
+								<td><%= item.idPlane %></td>
+								<td><%= item.airport %></td>
                         		<td><%= item.idMRO %></td>
                         		<td><%= moment(item.deadline).toISOString() %></td>
-                        		<td><%= item.taskNumber %></td>
-								<td class="text-center"><a class='btn btn-info btn-xs'
-								href="#">Edit</a><a href="#" id="<%= item.id %>" class="btn btn-danger btn-xs">Delete
-								</a></td>
+                        		<td><%= item.type %></td>
+								<td class="text-center">
+								<a class="btn btn-info btn-xs" href="#">
+								<span class="glyphicon glyphicon-edit"></a>
+								<a href="" id="<%= item.id %>" class="btn btn-danger btn-xs">
+								<span class="glyphicon glyphicon-remove"></a>
+								</td>
                    		 	</tr>
 						<% }); %>
 					</script>
 				</tbody>
 			</table>
 		</div>
-		<a href="add_task.html" class="btn btn-primary btn-lg active"
-			role="button">Add</a>
+		<button id="add" class="btn btn-primary" type="button">
+			<span class="glyphicon glyphicon-plus-sign"></span>
+		</button>
 	</div>
 
 	<script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-	<script type="text/javascript" src="scripts/jquery.cookie.js"></script>
 	<script type="text/javascript" src="scripts/underscore-min.js"></script>
 	<script type="text/javascript" src="scripts/moment.js"></script>
 	<script type="text/javascript" src="scripts/w3.js"></script>
