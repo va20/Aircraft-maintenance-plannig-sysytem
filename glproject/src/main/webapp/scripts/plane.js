@@ -69,8 +69,8 @@ $(document).ready(function() {
 		if (confirm("Are you sure ?"))
 			location.reload();
 	});
-
-	$("#add").click(function() {
-		location.href = "add_task.html?plane=" + getURLParam("plane");
-	});
+	//
+	// $("#add").click(function() {
+	// location.href = "add_task.html?plane=" + getURLParam("plane");
+	// });
 });

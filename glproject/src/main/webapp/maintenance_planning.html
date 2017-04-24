@@ -58,12 +58,12 @@
 		<div class="form-group has-feedback">
 			<input class="form-control searchbar" type="text"
 				placeholder="Search..."
-				onkeyup="w3.filterHTML('#table_tasks', '.tasks', this.value)"><i
+				onkeyup="w3.filterHTML('#tableTasks', '.tasks', this.value)"><i
 				class="glyphicon glyphicon-filter form-control-feedback"></i>
 		</div>
 
 		<div class="table-responsive">
-			<table class="table table-hover" id="table_tasks">
+			<table class="table table-hover" id="tableTasks">
 				<thead>
 					<tr id="thead_row">
 						<th>#</th>
@@ -79,7 +79,7 @@
 				<tbody id="tasks">
 					<script id="list_tasks" type="text/html">
 						<% _.each(item, function(item, i) { %>
-                    		<tr class="tasks">
+                    		<tr class="tasks" data-toggle="modal" data-target="#genericTaskInfo">
 								<td><strong><%= item.id %></strong></td>
 								<td><%= item.idPlane %></td>
                         		<td><%= item.taskNumber %></td>
@@ -98,16 +98,40 @@
 					</script>
 				</tbody>
 			</table>
+
 		</div>
 		<button id="add" class="btn btn-success" type="button">
 			<span class="glyphicon glyphicon-plus"></span>
 		</button>
 	</div>
 
+	<!-- Modal -->
+	<div class="modal fade" id="genericTaskInfo" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;
+					</button>
+					<h4 class="modal-title">More info</h4>
+				</div>
+				<div id="genericTaskListInfo" class="modal-body">
+					<ul class="list-group">
+						<script id="genericTaskModal" type="text/html">
+							<% _.each(item, function(item) { %>
+								<li class="list-group-item"><%= item %><span class="badge">item</span></li>
+							<% }); %>
+						</script>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="scripts/jquery.cookie.js"></script>
-	<script type="text/javascript" src="scripts/underscore-min.js"></script>
+	<script type="text/javascript" src="scripts/jquery.modal.min.js"></script>
 	<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/underscore-min.js"></script>
+	<script type="text/javascript" src="scripts/w3.js"></script>
 	<script type="text/javascript" src="scripts/moment.js"></script>
 	<script type="text/javascript" src="scripts/menu.js"></script>
 	<script type="text/javascript" src="scripts/planning.js"></script>

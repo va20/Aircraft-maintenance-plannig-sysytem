@@ -115,19 +115,19 @@ public class FillDatabase {
 		List<GenericTask> list = new ArrayList<GenericTask>();
 		GenericTask gt1 = new GenericTask("200001-01-1", "Airbus A320", 571,
 				"HIRF/LIGHTNING PROTECTION-WING, CHECK BONDING MEASUREMENT OF CLAMPS WITH A LOOP MRB REFERENCE : TESTER FROM FUSELAGE TO RIB 9",
-				null, "true", 1, "PRE 24943, (57-1086)");
+				null, "truee", 1, "PRE 24943, (57-1086)");
 		GenericTask gt2 = new GenericTask("200001-02-1", "Airbus A320", 571,
 				"CHECK THAT THE CONNECTOR IS CORRECTLY TIGHTENED BY MEASUREMENT OF THE RESISTANCE WITH A LOOP TESTER: - 4005VC, 4007VC, 4009VC, 4011VC, LH SIDE - 4013VC, 4015VC, 4017VC, 4019VC, LH SIDE - 4006VC, 4008VC, 4010VC, 4012VC, RH SIDE - 4014VC, 4016VC, 4018VC, 4020VC, RH SIDE - ACCESS: 521EB 521GB 522AB",
-				null, "true", 1, "ALL");
+				null, "truee", 1, "ALL");
 		GenericTask gt3 = new GenericTask("200002-01-1", "Airbus A320", 334,
 				"GENERAL VISUAL INSPECTION OF ELEMENTS FITTED ON THE FOLLOWING HARNESSES: - 405VB, 406VB, 407VB, 408VB, 409VB, LH SIDE - - 400VB, 401VB, 402VB, 403VB, 404VB, RH SIDE - ACCESS: 334AB 334BB 334CB 334DB 334EB",
-				null, "true", 1, "ALL");
+				null, "truee", 1, "ALL");
 		GenericTask gt4 = new GenericTask("200003-01-1", "Airbus A320", 321,
 				"HIRF/LIGHTNING PROTECTION-VERTICAL FIN, GENERAL VISUAL INSPECTION OF ELEMENTS FITTED ON THE FOLLOWING HARNESSES: - 4202VB, 4204VB - ACCESS: 321AL",
-				null, "true", 1, "ALL");
+				null, "truee", 1, "ALL");
 		GenericTask gt5 = new GenericTask("200003-03-1", "Airbus A320", 324,
 				"HIRF/LIGHTNING PROTECTION-VERTICAL FIN, GENERAL VISUAL INSPECTION OF ELEMENTS FITTED ON THE FOLLOWING HARNESSES: - 4202VB, 4204VB - ACCESS: 324AT",
-				null, "true", 1, "ALL");
+				null, "truee", 1, "ALL");
 
 		list.add(gt1);
 		list.add(gt2);
@@ -143,11 +143,11 @@ public class FillDatabase {
 
 	public static void addTasks() {
 		List<Task> list = new ArrayList<Task>();
-		Task t1 = new Task(1, 2, "LFPA", 2, new DateTime(), "12-33-02-001", "base");
-		Task t2 = new Task(2, 2, "LFPO", 3, new DateTime(), "12-33-02-002", "inline");
-		Task t3 = new Task(3, 3, "LPPO", 1, new DateTime(), "12-33-02-002", "inline");
-		Task t4 = new Task(4, 3, "MLPO", 2, new DateTime(), "12-33-02-002", "base");
-		Task t5 = new Task(5, 5, "LKPO", 1, new DateTime(), "12-33-02-002", "inline");
+		Task t1 = new Task(1, 2, "LFPA", 2, new DateTime(), "200001-01-1", "base");
+		Task t2 = new Task(2, 2, "LFPO", 3, new DateTime(), "200001-02-1", "inline");
+		Task t3 = new Task(3, 3, "LPPO", 1, new DateTime(), "200002-01-1", "inline");
+		Task t4 = new Task(4, 3, "MLPO", 2, new DateTime(), "200003-01-1", "base");
+		Task t5 = new Task(5, 5, "LKPO", 1, new DateTime(), "200003-03-1", "inline");
 
 		list.add(t1);
 		list.add(t2);
