@@ -70,6 +70,11 @@ $(document).ready(function() {
 			location.reload();
 	});
 
+	$("#tasks").on("click","a.btn-info",function () {
+        location.href = "add_task.html?plane=" + getURLParam("plane");
+    });
+
+
 	$("#add").click(function() {
 		location.href = "add_task.html?plane=" + getURLParam("plane");
 	});

@@ -1,3 +1,10 @@
+function getURLParam(param) {
+    var pageURL = window.location.search.substring(1);
+    var variablesURL = pageURL.split('=');
+
+    return variablesURL[1];
+}
+
 function getPlanes() {
 	$.ajax({
 		url : "ws/planes",
@@ -21,5 +28,6 @@ function printPlanes(data) {
 }
 
 $(document).ready(function() {
+
 	getPlanes();
 });
