@@ -18,26 +18,25 @@ function printTasks(data) {
 }
 
 function deleteTask(idTask) {
-	$.ajax({
+    $.ajax({
 		url : "ws/tasks/" + idTask,
 		type : "DELETE",
 		dataType : "json",
 
 		success : function(data) {
-			getTasks(data);
-		}
+            location.reload();
+        }
 	});
 }
 
 $(document).ready(function() {
 	getTasks();
-
-	$("#tasks").on("click", "a.btn-danger", function() {
-		var idTask = $(this).attr("id");
-		if (confirm("Are you sure ?")) {
-			deleteTask(idTask);
-			location.reload();
-		}
+    $("#tasks").on("click", "a.btn-danger", function() {
+        var idTask = $(this).attr("id");
+        if (confirm("Are you sure ?")) {
+            deleteTask(idTask);
+            //idTask.remove();
+        }
 	});
 
 	$("#add").click(function() {
