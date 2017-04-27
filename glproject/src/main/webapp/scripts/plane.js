@@ -33,6 +33,7 @@ function getTasks(data) {
 			$("#info").show();
 		} else {
 			$("#info").hide();
+
 			printTasks(data);
 		}
 	});
@@ -71,7 +72,9 @@ $(document).ready(function() {
 	});
 
 	$("#tasks").on("click","a.btn-info",function () {
-        location.href = "add_task.html?plane=" + getURLParam("plane");
+        var task_number =  $(this).attr("id");
+        console.log(task_number);
+        location.href = "add_task.html?plane="+ getURLParam("plane")+""+ task_number;
     });
 
 

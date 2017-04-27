@@ -67,15 +67,14 @@
 					<% }); %>
 				</script>
 			</select>
-
-			<input type="text" name="tasknumber" id="task_number"
-				placeholder="Task number (MPD)" /> <input type="text" name="airport"
-				id="airport" placeholder="Airport" /><input type="text" name="mro" id="mro"
-				placeholder="MRO" /> <input type="datetime-local" name="date"
-				id="deadline" placeholder="Deadline" /> <label> <input
-				type="radio" name="editList" value="always" />Line
-			</label> <label><input type="radio" name="editList" value="never" />Base
-			</label> <br>
+			<div id="tasks">
+                    <input type="text" name="tasknumber" id="task_number" placeholder="Task number (MPD)"/>
+                    <input type="text" name="airport" id="airport" placeholder="Airport" />
+                    <input type="text" name="mro" id="mro" placeholder="MRO" />
+                    <input type="datetime-local" name="date" id="deadline" placeholder="Deadline" />
+                    <label> <input type="radio" name="editList" value="always" />Line</label>
+                    <label><input type="radio" name="editList" value="never" />Base</label>
+			</div> <br>
 			<button id="add" class="btn btn-large btn-primary"
 				data-toggle="confirmation" data-btn-ok-label="Continue"
 				data-btn-ok-icon="glyphicon glyphicon-share-alt"

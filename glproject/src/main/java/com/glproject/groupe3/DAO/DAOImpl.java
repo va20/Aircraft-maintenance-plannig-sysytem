@@ -1,10 +1,8 @@
 package com.glproject.groupe3.DAO;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.glproject.groupe3.persistence.ElasticSearchClient;
+import com.glproject.groupe3.util.Constants;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -14,9 +12,11 @@ import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.search.SearchHit;
 
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.glproject.groupe3.persistence.ElasticSearchClient;
-import com.glproject.groupe3.util.Constants;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
 
 public class DAOImpl<T> implements DAO<T> {
 	protected ElasticSearchClient esc = ElasticSearchClient.getInstance();

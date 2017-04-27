@@ -34,10 +34,18 @@ public class TaskResource {
 		((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).delete(Constants.TASKS,
 				String.valueOf(id));
 	}
-	@POST
+
+	/*@POST
 	@Path("/{id_task}")
 	public void updateTask(@PathParam("id_task") long id){
-		((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).update(Constants.TASKS,
+		((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).add(Constants.TASKS,
 				String.valueOf(id));
+	}*/
+	@GET
+	@Path("/{idPlane}/{id_task}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Task getTask(@PathParam("id_task") long id) {
+		return ((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO())
+				.get(Constants.TASKS, String.valueOf(id));
 	}
 }
