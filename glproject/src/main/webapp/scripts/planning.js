@@ -36,6 +36,7 @@ $(document).ready(function() {
 		var idTask = $(this).attr("id");
 		if (confirm("Are you sure ?")) {
 			deleteTask(idTask);
+			location.reload();
 		}
 	});
 

@@ -66,10 +66,11 @@ $(document).ready(function() {
 
 	$("#tasks").on("click", "a.btn-danger", function() {
 		var idTask = $(this).attr("id");
-		deleteTask(idTask);
-		if (confirm("Are you sure ?"))
-			location.reload();
-	});
+		if (confirm("Are you sure ?")) {
+            deleteTask(idTask);
+            location.reload();
+        }
+    });
 
 	$("#tasks").on("click","a.btn-info",function () {
         var task_number =  $(this).attr("id");
