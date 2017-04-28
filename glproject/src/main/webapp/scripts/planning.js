@@ -13,7 +13,6 @@ function printTasks(data) {
 	var task = template({
 		"item" : data
 	});
-
 	$("#tasks").append(task);
 }
 
@@ -21,12 +20,10 @@ function deleteTask(idTask) {
     $.ajax({
 		url : "ws/tasks/" + idTask,
 		type : "DELETE",
-		dataType : "json",
-
-		success : function(data) {
-            location.reload();
-        }
-	});
+		dataType : "json"
+	}).done(function() {
+        location.reload(true);
+    });
 }
 
 $(document).ready(function() {
@@ -35,7 +32,6 @@ $(document).ready(function() {
         var idTask = $(this).attr("id");
         if (confirm("Are you sure ?")) {
             deleteTask(idTask);
-            //idTask.remove();
         }
 	});
 

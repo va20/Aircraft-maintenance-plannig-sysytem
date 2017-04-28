@@ -49,28 +49,26 @@ function printTasks(data) {
 }
 
 function deleteTask(idTask) {
-	$.ajax({
-		url : "ws/tasks/" + idTask,
-		type : "DELETE",
-		dataType : "json",
 
-		success : function(data) {
-			getTasks(data);
-		}
-	});
+    $.ajax({
+        url: "ws/tasks/" + idTask,
+        type: "DELETE",
+        dataType: "json"
+    }).done(function() {
+        location.reload(true);
+    });
 }
 
 $(document).ready(function() {
-	document.getElementById("plane_number").innerHTML = getURLParam("plane");
-	getPlaneTasks();
-
+    document.getElementById("plane_number").innerHTML = getURLParam("plane");
+    getPlaneTasks();
 	$("#tasks").on("click", "a.btn-danger", function() {
 		var idTask = $(this).attr("id");
 		if (confirm("Are you sure ?")) {
             deleteTask(idTask);
-            location.reload();
         }
     });
+
 
 	$("#tasks").on("click","a.btn-info",function () {
         var task_number =  $(this).attr("id");
