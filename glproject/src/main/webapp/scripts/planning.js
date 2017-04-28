@@ -13,20 +13,17 @@ function printTasks(data) {
 	var task = template({
 		"item" : data
 	});
-
 	$("#tasks").append(task);
 }
 
 function deleteTask(idTask) {
-	$.ajax({
+    $.ajax({
 		url : "ws/tasks/" + idTask,
 		type : "DELETE",
-		dataType : "json",
-
-		success : function(data) {
-			getTasks(data);
-		}
-	});
+		dataType : "json"
+	}).done(function() {
+        location.reload(true);
+    });
 }
 
 function getGenericTask(taskNumber) {
@@ -51,7 +48,6 @@ function printGenericTask(data) {
 
 $(document).ready(function() {
 	getTasks();
-
 	// retrieve taskNumber
 	$("#tableTasks").on("click", "tr", function() {
 		getGenericTask($(this.cells[2]).text());
@@ -63,11 +59,11 @@ $(document).ready(function() {
 	})
 
 	// confirm delete
-	$("#tasks").on("click", "a.btn-danger", function() {
-		var idTask = $(this).attr("id");
-		if (confirm("Are you sure ?")) {
-			deleteTask(idTask);
-		}
+    $("#tasks").on("click", "a.btn-danger", function() {
+        var idTask = $(this).attr("id");
+        if (confirm("Are you sure ?")) {
+            deleteTask(idTask);
+        }
 	});
 
 	// modal settings

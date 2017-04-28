@@ -33,6 +33,7 @@ function getTasks(data) {
 			$("#info").show();
 		} else {
 			$("#info").hide();
+
 			printTasks(data);
 		}
 	});
@@ -48,29 +49,35 @@ function printTasks(data) {
 }
 
 function deleteTask(idTask) {
-	$.ajax({
-		url : "ws/tasks/" + idTask,
-		type : "DELETE",
-		dataType : "json",
 
-		success : function(data) {
-			getTasks(data);
-		}
-	});
+    $.ajax({
+        url: "ws/tasks/" + idTask,
+        type: "DELETE",
+        dataType: "json"
+    }).done(function() {
+        location.reload(true);
+    });
 }
 
 $(document).ready(function() {
-	document.getElementById("plane_number").innerHTML = getURLParam("plane");
-	getPlaneTasks();
-
+    document.getElementById("plane_number").innerHTML = getURLParam("plane");
+    getPlaneTasks();
 	$("#tasks").on("click", "a.btn-danger", function() {
 		var idTask = $(this).attr("id");
-		deleteTask(idTask);
-		if (confirm("Are you sure ?"))
-			location.reload();
+		if (confirm("Are you sure ?")) {
+            deleteTask(idTask);
+        }
+    });
+
+
+	$("#tasks").on("click","a.btn-info",function () {
+        var task_number =  $(this).attr("id");
+        console.log(task_number);
+        location.href = "add_task.html?plane="+ getURLParam("plane")+""+ task_number;
+    });
+
+
+	$("#add").click(function() {
+		location.href = "add_task.html?plane=" + getURLParam("plane");
 	});
-	//
-	// $("#add").click(function() {
-	// location.href = "add_task.html?plane=" + getURLParam("plane");
-	// });
 });
