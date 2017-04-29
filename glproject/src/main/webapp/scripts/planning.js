@@ -37,10 +37,9 @@ function deleteTask(idTask) {
 	$.ajax({
 		url : "ws/tasks/" + idTask,
 		type : "DELETE",
-		dataType : "json",
-
-		success : function(data) {
-		}
+		dataType : "json"
+	}).done(function() {
+		location.reload(true);
 	});
 }
 
@@ -81,7 +80,6 @@ $(document).ready(function() {
 		var idTask = $(this).attr("id");
 		if (confirm("Are you sure to delete this task ?")) {
 			deleteTask(idTask);
-			$(this).closest('tr').remove();
 		}
 	});
 

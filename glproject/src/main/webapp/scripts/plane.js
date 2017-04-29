@@ -51,11 +51,9 @@ function deleteTask(idTask) {
 	$.ajax({
 		url : "ws/tasks/" + idTask,
 		type : "DELETE",
-		dataType : "json",
-
-		success : function(data) {
-			getTasks(data);
-		}
+		dataType : "json"
+	}).done(function() {
+		location.reload(true);
 	});
 }
 
@@ -65,12 +63,18 @@ $(document).ready(function() {
 
 	$("#tasks").on("click", "a.btn-danger", function() {
 		var idTask = $(this).attr("id");
-		deleteTask(idTask);
-		if (confirm("Are you sure ?"))
-			location.reload();
+		if (confirm("Are you sure ?")) {
+            deleteTask(idTask);
+        }
+    });
+
+	$("#tasks").on("click", "a.btn-info", function () {
+        var taskNumber =  $(this).attr("id");
+        console.log(taskNumber);
+        location.href = "add_task.html?plane="+ getURLParam("plane")+"&taskNumber="+ taskNumber;
+    });
+
+	$("#add").click(function() {
+		location.href = "add_task.html?plane=" + getURLParam("plane");
 	});
-	//
-	// $("#add").click(function() {
-	// location.href = "add_task.html?plane=" + getURLParam("plane");
-	// });
 });

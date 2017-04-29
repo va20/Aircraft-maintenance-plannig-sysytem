@@ -41,6 +41,7 @@ public class StaffResource {
 	}
 
 	@DELETE
+	@Path("/{id}")
 	public void deleteStaffs(@PathParam("id") long id) {
 		((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).delete(Constants.STAFFS,
 				String.valueOf(id));

@@ -48,4 +48,12 @@ public class TaskResource {
 		((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).add(task, Constants.TASKS,
 				String.valueOf(task.getId()));
 	}
+
+	@GET
+	@Path("/{idPlane}/{idTask}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Task getTask(@PathParam("idTask") long id) {
+		return ((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).get(Constants.TASKS,
+				String.valueOf(id));
+	}
 }
