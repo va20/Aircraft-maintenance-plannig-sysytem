@@ -3,13 +3,9 @@
 	padding: 0;
 }
 
-html {
-	height: 100%;
-}
-
 #msform {
 	width: 400px;
-	margin: 50px auto;
+	margin: auto;
 	text-align: center;
 	position: relative;
 }
@@ -26,156 +22,27 @@ html {
 	position: relative;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:not
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(
-:first-of-type
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-)
-{
-display
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-none
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;
-}
 #msform input, #msform textarea {
 	padding: 15px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
-	margin-bottom: 10px;
+	margin: 0 -15px 15px;
 	width: 100%;
 	box-sizing: border-box;
 	font-family: montserrat;
 	color: #2C3E50;
 	font-size: 13px;
+}
+
+bs-docs-example {
+	position: relative;
+	padding: 45px 15px 15px;
+	margin: 0 -18px 18px;
+	border-color: #e5e5e5 #eee #eee;
+	border-style: solid;
+	border-width: 1px 0;
+	-webkit-box-shadow: inset 0 3px 6px rgba(0, 0, 0, .05);
+	box-shadow: inset 0 3px 6px rgba(0, 0, 0, .05);
 }
 
 #msform .action-button {
@@ -201,4 +68,183 @@ none
 	text-transform: uppercase;
 	color: #665851;
 	margin-bottom: 10px;
+}
+
+.custom-control-input {
+	position: absolute;
+	z-index: -1;
+	opacity: 0
+}
+
+.custom-control-input:checked ~.custom-control-indicator {
+	color: #fff;
+	background-color: #0275d8
+}
+
+.custom-control-input:focus ~.custom-control-indicator {
+	-webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 3px #0275d8;
+	box-shadow: 0 0 0 1px #fff, 0 0 0 3px #0275d8
+}
+
+.custom-control-input:active ~.custom-control-indicator {
+	color: #fff;
+	background-color: #8fcafe
+}
+
+.custom-control-input:disabled ~.custom-control-indicator {
+	cursor: not-allowed;
+	background-color: #eceeef
+}
+
+.custom-control-input:disabled ~.custom-control-description {
+	color: #636c72;
+	cursor: not-allowed
+}
+
+.custom-control-indicator {
+	position: absolute;
+	top: .25rem;
+	left: 0;
+	display: block;
+	width: 1rem;
+	height: 1rem;
+	pointer-events: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-color: #ddd;
+	background-repeat: no-repeat;
+	background-position: center center;
+	-webkit-background-size: 50% 50%;
+	background-size: 50% 50%
+}
+
+.custom-checkbox .custom-control-indicator {
+	border-radius: .25rem
+}
+
+.custom-checkbox .custom-control-input:checked ~.custom-control-indicator
+	{
+	background-image:
+		url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E")
+}
+
+.custom-checkbox .custom-control-input:indeterminate ~.custom-control-indicator
+	{
+	background-color: #0275d8;
+	background-image:
+		url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='%23fff' d='M0 2h4'/%3E%3C/svg%3E")
+}
+
+.custom-radio .custom-control-indicator {
+	border-radius: 50%
+}
+
+.custom-radio .custom-control-input:checked ~.custom-control-indicator {
+	background-image:
+		url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23fff'/%3E%3C/svg%3E")
+}
+
+.custom-control-indicator {
+	position: static;
+	display: inline-block;
+	margin-right: .25rem;
+	vertical-align: text-bottom
+}
+
+.custom-control {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	padding-left: 0
+}
+
+.form-inline .custom-control-indicator {
+	position: static;
+	display: inline-block;
+	margin-right: .25rem;
+	vertical-align: text-bottom
+}
+
+.form-inline {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center
+}
+
+.form-inline .form-check {
+	width: 100%
+}
+
+.form-inline .form-control {
+	display: inline-block;
+	width: auto;
+	vertical-align: middle
+}
+
+.form-inline .form-control-static {
+	display: inline-block
+}
+
+.form-inline .input-group {
+	width: auto
+}
+
+.form-inline .form-control-label {
+	margin-bottom: 0;
+	vertical-align: middle
+}
+
+.form-inline .form-check {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	width: auto;
+	margin-top: 0;
+	margin-bottom: 0
+}
+
+.form-inline .form-check-label {
+	padding-left: 0
+}
+
+.form-inline .form-check-input {
+	position: relative;
+	margin-top: 0;
+	margin-right: .25rem;
+	margin-left: 0
+}
+
+.form-inline .custom-control-indicator {
+	position: static;
+	display: inline-block;
+	margin-right: .25rem;
+	vertical-align: text-bottom
 }

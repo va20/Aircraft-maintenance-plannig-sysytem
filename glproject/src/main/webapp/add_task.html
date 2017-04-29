@@ -8,7 +8,7 @@
 <link href="css/base.css" rel="stylesheet">
 <link href="css/form.css" rel="stylesheet">
 <link href="img/avion.ico" rel="icon" />
-<title>Adding task</title>
+<title>Adding</title>
 </head>
 
 <body>
@@ -59,36 +59,68 @@
 
 	<form id="msform">
 		<fieldset>
-			<select id="planes" class="selectpicker" data-live-search="true"
-				title="Select a plane">
-				<script id="list_planes" type="text/html">
-					<% _.each(item, function(item) { %>
-						<option data-subtext="<%= item.type %>"><%= item.tailNumber %></option>
-					<% }); %>
-				</script>
-			</select> <input type="text" name="tasknumber" id="task_number"
-				placeholder="Task number (MPD)" /> <input type="text" name="airport"
-				id="airport" placeholder="Airport" /><input type="text" name="mro" id="mro"
-				placeholder="MRO" /> <input type="datetime-local" name="date"
-				id="deadline" placeholder="Deadline" /> <label> <input
-				type="radio" name="editList" value="always" />Line
-			</label> <label><input type="radio" name="editList" value="never" />Base
-			</label> <br>
-			<button id="add" class="btn btn-large btn-primary"
-				data-toggle="confirmation" data-btn-ok-label="Continue"
-				data-btn-ok-icon="glyphicon glyphicon-share-alt"
-				data-btn-ok-class="btn-success" data-btn-cancel-label="Stoooop!"
-				data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
-				data-btn-cancel-class="btn-danger" data-title="Are you sure?"
-				data-content="This might be dangerous">Done</button>
+			<div class="bs-docs-example">
+				<div class="form-group">
+					<select id="planes" class="selectpicker show-tick"
+						data-width="100%" title="Select a plane" data-live-search="true">
+						<script id="listPlanes" type="text/html">
+							<% _.each(item, function(item) { %>
+							<option value="<%= item.id %>" data-subtext="<%= item.type %>"><%= item.tailNumber %></option>
+							<% }); %>
+						</script>
+					</select>
+				</div>
+			</div>
+			<div class="bs-docs-example">
+				<div class="form-group">
+					<select id="tasks" class="selectpicker show-tick" data-width="100%"
+						title="Select a task" data-live-search="true">
+						<script id="listTasks" type="text/html">
+							<% _.each(item, function(item) { %>
+							<option><%= item.taskNumber %></option>
+							<% }); %>
+						</script>
+					</select>
+				</div>
+			</div>
+			<div class="bs-docs-example">
+				<div class="form-group">
+					<select id="mros" class="selectpicker show-tick" data-width="100%"
+						title="Select a MRO" data-live-search="true">
+						<script id="listMROs" type="text/html">
+							<% _.each(item, function(item) { %>
+								<option value="<%= item.id %>"><%= item.name %></option>
+							<% }); %>
+						</script>
+					</select>
+				</div>
+			</div>
+			<input type="datetime-local" name="date" id="deadline"
+				placeholder="Deadline" />
+			<div class="form-inline">
+				<label class="custom-control custom-radio"> <input
+					id="radio1" name="radio" type="radio" class="custom-control-input">
+					<span class="custom-control-indicator"></span> <span
+					class="custom-control-description">Line</span>
+				</label>
+			</div>
+			<div class="form-inline">
+				<label class="custom-control custom-radio"> <input
+					id="radio2" name="radio" type="radio" class="custom-control-input">
+					<span class="custom-control-indicator"></span> <span
+					class="custom-control-description">Base</span>
+				</label>
+			</div>
+			<button id="add" type="button" class="btn">Basic</button>
 		</fieldset>
-
 	</form>
+
 	<script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="scripts/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 	<script type="text/javascript" src="scripts/bootstrap-select.min.js"></script>
 	<script type="text/javascript" src="scripts/underscore-min.js"></script>
+	<script type="text/javascript" src="scripts/moment.js"></script>
 	<script type="text/javascript" src="scripts/menu.js"></script>
 	<script type="text/javascript" src="scripts/add.js"></script>
 </body>

@@ -1,3 +1,14 @@
+function getPlane(id) {
+	$.ajax({
+		url : "ws/planes/" + id,
+		type : "GET",
+		dataType : "json"
+	}).done(function(data) {
+		console.log(data.tailNumber);
+		$("#" + id).html(data.tailNumber);
+	});
+}
+
 function getTasks() {
 	$.ajax({
 		url : "ws/tasks",
@@ -14,6 +25,11 @@ function printTasks(data) {
 		"item" : data
 	});
 
+	_.each(data, function(item) {
+		console.log(item.idPlane);
+		getPlane(item.idPlane);
+	});
+
 	$("#tasks").append(task);
 }
 
@@ -24,7 +40,6 @@ function deleteTask(idTask) {
 		dataType : "json",
 
 		success : function(data) {
-			getTasks(data);
 		}
 	});
 }
@@ -40,7 +55,6 @@ function getGenericTask(taskNumber) {
 }
 
 function printGenericTask(data) {
-	console.log(JSON.stringify(data));
 	var template = _.template($("#genericTaskModal").html());
 	var genericTask = template({
 		"item" : data
@@ -54,7 +68,7 @@ $(document).ready(function() {
 
 	// retrieve taskNumber
 	$("#tableTasks").on("click", "tr", function() {
-		getGenericTask($(this.cells[2]).text());
+		getGenericTask($(this.cells[1]).text());
 	});
 
 	// remove <li> in modal when hidden
@@ -65,8 +79,9 @@ $(document).ready(function() {
 	// confirm delete
 	$("#tasks").on("click", "a.btn-danger", function() {
 		var idTask = $(this).attr("id");
-		if (confirm("Are you sure ?")) {
+		if (confirm("Are you sure to delete this task ?")) {
 			deleteTask(idTask);
+			$(this).closest('tr').remove();
 		}
 	});
 

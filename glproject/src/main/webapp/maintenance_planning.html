@@ -66,7 +66,6 @@
 			<table class="table table-hover" id="tableTasks">
 				<thead>
 					<tr id="thead_row">
-						<th>#</th>
 						<th>Plane</th>
 						<th>Task number</th>
 						<th>Airport</th>
@@ -80,8 +79,7 @@
 					<script id="list_tasks" type="text/html">
 						<% _.each(item, function(item, i) { %>
                     		<tr class="tasks" data-toggle="modal" data-target="#genericTaskInfo">
-								<td><strong><%= item.id %></strong></td>
-								<td><%= item.idPlane %></td>
+								<td id="<%= item.idPlane %>"></td>
                         		<td><%= item.taskNumber %></td>
 								<td><%= item.airport %></td>
                         		<td><%= item.idMRO %></td>
