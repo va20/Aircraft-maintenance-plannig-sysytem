@@ -64,7 +64,6 @@ function printGenericTask(data) {
 
 $(document).ready(function() {
 	getTasks();
-
 	// retrieve taskNumber
 	$("#tableTasks").on("click", "tr", function() {
 		getGenericTask($(this.cells[1]).text());
@@ -78,7 +77,7 @@ $(document).ready(function() {
 	// confirm delete
 	$("#tasks").on("click", "a.btn-danger", function() {
 		var idTask = $(this).attr("id");
-		if (confirm("Are you sure to delete this task ?")) {
+		if (confirm("Are you sure ?")) {
 			deleteTask(idTask);
 		}
 	});
