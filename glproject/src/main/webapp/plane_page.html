@@ -10,6 +10,11 @@
 </head>
 
 <body>
+	<script>
+    	if(localStorage.length==0){
+    	    location.href="/login.html"
+    	}
+	</script>
 	<div class="body-wrap">
 		<div class="container">
 			<nav class="navbar navbar-inverse" role="navigation">
@@ -40,7 +45,7 @@
 						</ul>
 
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="login.html">Logout</a></li>
+							<li><a href="logout.html">Logout</a></li>
 						</ul>
 					</div>
 				</div>
