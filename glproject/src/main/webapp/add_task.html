@@ -77,7 +77,7 @@
 						title="Select a task" data-live-search="true">
 						<script id="listTasks" type="text/html">
 							<% _.each(item, function(item) { %>
-							<option><%= item.taskNumber %></option>
+							<option value="<%= item.taskNumber %>"><%= item.taskNumber %></option>
 							<% }); %>
 						</script>
 					</select>
@@ -96,7 +96,7 @@
 				</div>
 			</div>
 			<input type="datetime-local" name="date" id="deadline"
-				placeholder="Deadline" />
+				placeholder="Deadline"/>
 			<div class="form-inline">
 				<label class="custom-control custom-radio"> <input
 					id="radio1" name="radio" type="radio" class="custom-control-input">
