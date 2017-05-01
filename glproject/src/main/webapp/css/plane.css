@@ -1,21 +1,26 @@
-.btn {
-	font-weight: 700;
-	height: 36px;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
-	cursor: default;
-}
-
-.row {
-	margin-top: 40px;
-	margin: 0 auto;
-}
-
 table {
 	border-collapse: collapse;
 	width: 94%;
 	margin: auto;
+}
+
+.modal {
+	text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+	.modal:before {
+		display: inline-block;
+		vertical-align: middle;
+		content: " ";
+		height: 100%;
+	}
+}
+
+.modal-dialog {
+	display: inline-block;
+	text-align: left;
+	vertical-align: middle;
 }
 
 td, th {
@@ -41,14 +46,4 @@ td, th {
 	opacity: 0.8;
 	background-color: #333;
 	opacity: 0.8;
-}
-
-#tableTasks thead>tr>th.detail, #tableTasks tbody>tr:not (.detail-view )
-	>td:first-of-type {
-	display: none;
-}
-
-#tableTasks thead>tr>th:nth-child(2), #tableTasks tbody>tr:not (.detail-view
-	) >td:nth-child(2) {
-	border-left: none !important;
 }

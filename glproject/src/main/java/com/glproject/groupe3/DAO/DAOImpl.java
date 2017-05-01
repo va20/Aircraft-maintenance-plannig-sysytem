@@ -10,13 +10,13 @@ import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.update.UpdateRequest;
+import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.search.SearchHit;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-
 
 public class DAOImpl<T> implements DAO<T> {
 	protected ElasticSearchClient esc = ElasticSearchClient.getInstance();
@@ -84,7 +84,9 @@ public class DAOImpl<T> implements DAO<T> {
 		List<T> list = new ArrayList<T>();
 		ObjectMapper mapper = new ObjectMapper();
 
-		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch(Constants.GL).setTypes(type);
+		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch(Constants.GL).setTypes(type)
+				.setScroll(new TimeValue(60000)).setSize(100);
+
 		SearchResponse searchResponse = requestBuilder.get();
 		SearchHit[] searchHits = searchResponse.getHits().getHits();
 

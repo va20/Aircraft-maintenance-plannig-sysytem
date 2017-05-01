@@ -4,8 +4,17 @@ function getPlane(id) {
 		type : "GET",
 		dataType : "json"
 	}).done(function(data) {
-		console.log(data.tailNumber);
-		$("#" + id).html(data.tailNumber);
+		$("." + id).html(data.tailNumber);
+	});
+}
+
+function getMRO(id) {
+	$.ajax({
+		url : "ws/mro/" + id,
+		type : "GET",
+		dataType : "json"
+	}).done(function(data) {
+		$("." + id).html(data.name);
 	});
 }
 
@@ -14,9 +23,27 @@ function getTasks() {
 		url : "ws/tasks",
 		type : "GET",
 		dataType : "json"
-	}).done(function(data) {
-		printTasks(data);
-	});
+	}).done(
+			function(data) {
+				printTasks(data);
+
+				// pagination
+				Pagination("#tablePaging",
+						{
+							itemsCount : data.length,
+							onPageChange : function(paging) {
+								var start = paging.pageSize
+										* (paging.currentPage - 1), end = start
+										+ paging.pageSize, $rows = $(
+										"#tableTasks").find(".tasks");
+
+								$rows.hide();
+
+								for (var i = start; i < end; i++)
+									$rows.eq(i).show();
+							}
+						});
+			});
 }
 
 function printTasks(data) {
@@ -25,9 +52,14 @@ function printTasks(data) {
 		"item" : data
 	});
 
+	// Plane tailNumber
 	_.each(data, function(item) {
-		console.log(item.idPlane);
 		getPlane(item.idPlane);
+	});
+
+	// MRO name
+	_.each(data, function(item) {
+		getMRO(item.idMRO);
 	});
 
 	$("#tasks").append(task);
@@ -62,10 +94,56 @@ function printGenericTask(data) {
 	$("#genericTaskListInfo").append(genericTask);
 }
 
+function filters() {
+	$.ajax({
+		url : "ws/planes",
+		type : "GET",
+		dataType : "json"
+	}).done(function(data) {
+		var tab = _.uniq(_.map(data, function(item) {
+			return item.tailNumber;
+		}));
+
+		var template = _.template($("#listPlanes").html());
+		var plane = template({
+			"item" : tab
+		});
+
+		$("#selectPlanes").append(plane);
+		$(".selectpicker").selectpicker('refresh');
+	});
+}
+
 $(document).ready(function() {
 	getTasks();
+
+	filters();
+	$("#selectPlanes").change(function() {
+		var $rows = $("#tableTasks").children('tbody').children('tr');
+
+		if ($("#selectPlanes option:selected").val() == "default") {
+			$.each($rows, function() {
+				$(this).show();
+			});
+
+		} else {
+			$.each($rows, function() {
+				var match = false;
+				$(this).children('td').each(function() {
+					if ($(this).text() == $("#selectPlanes").val())
+						match = true;
+				});
+
+				if (match)
+					$(this).show();
+				else
+					$(this).hide();
+			});
+		}
+	});
+
 	// retrieve taskNumber
-	$("#tableTasks").on("click", "tr", function() {
+	$("#tableTasks").on("click", "tr.tasks", function() {
 		getGenericTask($(this.cells[1]).text());
 	});
 
@@ -74,22 +152,17 @@ $(document).ready(function() {
 		$(".modal-body > li").remove();
 	})
 
+	// edit page
+	$("#tasks").on("click", "a.btn-info", function() {
+		location.href = "edit_task.html";
+	});
+
 	// confirm delete
 	$("#tasks").on("click", "a.btn-danger", function() {
 		var idTask = $(this).attr("id");
 		if (confirm("Are you sure ?")) {
 			deleteTask(idTask);
 		}
-	});
-
-	// modal settings
-	$("#genericTaskInfo").modal({
-		escapeClose : true,
-		clickClose : true,
-		fadeDuration : 30,
-		showClose : true,
-		keyboard : true,
-		show : false
 	});
 
 	// add button

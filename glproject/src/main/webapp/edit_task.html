@@ -1,105 +1,127 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" href="css/edit_task.css" />
-		<link href="http://fonts.googleapis.com/css?family=Arimo:400" rel="stylesheet">
-		<link href="css/bootstrap-3.3.4.css" rel="stylesheet" type="text/css">
-		<link rel="icon" href="img/avion.ico" />
-		<title>Edit task</title>
-	</head>
+<head>
+<meta charset="utf-8" />
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/jquery-ui.min.css" rel="stylesheet" />
+<link href="css/bootstrap-select.min.css" rel="stylesheet">
+<link href="css/base.css" rel="stylesheet">
+<link href="css/form.css" rel="stylesheet">
+<link href="img/avion.ico" rel="icon" />
+<title>Editing</title>
+</head>
 
-	<body>
-
-		<div class="body-wrap">
-		  <div class="container">
-		    <nav class="navbar navbar-inverse" role="navigation">
-		      <div class="container-fluid">
-		        <!-- Brand and toggle get grouped for better mobile display -->
-		        <div class="navbar-header">
-		          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		            <span class="sr-only">Toggle navigation</span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		          </button>
-		          <a class="navbar-brand" href="#">MCC</a>
-		        </div>
-
-		        <!-- Collect the nav links, forms, and other content for toggling -->
-		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		          <ul class="nav navbar-nav">
-		            <li><a href="plane_list.html">Planes List</a></li>
-		            <li><a href="flight_list.html">Flight List</a></li>
-								<li><a href="add_task.html">Add task</a></li>
-								<li class="active"><a href="edit_task.html">Edit task</a></li>
-								<li><a href="maintenanceplan.html">Maintenance Planning</a></li>
-		          </ul>
-
-		          <ul class="nav navbar-nav navbar-right">
-		            <li><a href="login.html">Disconnect</a></li>
-		          </ul>
-		        </div>
-		        <!-- /.navbar-collapse -->
-		      </div>
-		      <!-- /.container-fluid -->
-		    </nav>
-		  </div>
-		</div>
-
+<body>
+	<div class="body-wrap">
 		<div class="container">
-		    <div class="row col-md-6 col-md-offset-2 custyle">
-		    <table class="table table-striped custab">
-		    <thead>
-		    <a href="add_task.html" class="btn btn-primary btn-xs pull-right"><b>+</b> Add task</a>
-		        <tr>
-		            <th>Task</th>
-		            <th>MRO</th>
-		            <th>Deadline</th>
-								<th>Length</th>
-								<th>Type</th>
-		            <th class="text-center">State</th>
-		        </tr>
-		    </thead>
-		            <tr>
-		                <td>Task 1</td>
-		                <td>MRO 1</td>
-		                <td>23/03</td>
-										<td>8h - 10h </td>
-										<td>Line</td>
-		                <td class="text-center"><a class='btn btn-info btn-xs' href="#">Edit</a> <a href="#" class="btn btn-danger btn-xs">Del</a></td>
-		            </tr>
-		            <tr>
-									<td>Task 2</td>
-									<td>MRO 1</td>
-									<td>23/03</td>
-									<td>16h20 - 16h50 </td>
-									<td>Line</td>
-		                <td class="text-center"><a class='btn btn-info btn-xs' href="#">Edit</a> <a href="#" class="btn btn-danger btn-xs">Del</a></td>
-		            </tr>
-		            <tr>
-									<td>Task 3</td>
-									<td>MRO 6</td>
-									<td>14/04</td>
-									<td>23h - 05h </td>
-									<td>Base</td>
-		                <td class="text-center"><a class='btn btn-info btn-xs' href="#">Edit</a> <a href="#" class="btn btn-danger btn-xs">Del</a></td>
-		            </tr>
-								<tr>
-									<td>Task 4</td>
-									<td>MRO 7</td>
-									<td>23/03</td>
-									<td>05h - 08h </td>
-									<td>Done</td>
-		                <td class="text-center"><a class='btn btn-info btn-xs' href="#">Edit</a> <a href="#" class="btn btn-danger btn-xs">Del</a></td>
-		            </tr>
-		    </table>
-		    </div>
+			<nav class="navbar navbar-inverse" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">MCC</a>
+					</div>
+
+					<div class="collapse navbar-collapse"
+						id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li><a href="plane_list.html">Planes</a></li>
+							<li><a href="flight_list.html">Flights</a></li>
+							<li><a href="maintenance_planning.html">Maintenance
+									Planning</a></li>
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+								data-toggle="dropdown">Import <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><input type="file" id="upload" style="display: none" /><a
+										href="" id="import">MPD</a></li>
+								</ul></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="login.html">Logout</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
 		</div>
+	</div>
 
-	</body>
+	<div class="container">
+		<div class="w3-half">
+			<div class="w3-panel w3-border x">
+				<h1 id="planeNumber"></h1>
+			</div>
+		</div>
+	</div>
+
+	<form id="msform">
+		<fieldset>
+			<div class="bs-docs-example">
+				<div class="form-group">
+					<select id="planes" class="selectpicker show-tick"
+						data-width="100%" title="Select a plane" data-live-search="true">
+						<script id="listPlanes" type="text/html">
+							<% _.each(item, function(item) { %>
+							<option value="<%= item.id %>" data-subtext="<%= item.type %>"><%= item.tailNumber %></option>
+							<% }); %>
+						</script>
+					</select>
+				</div>
+			</div>
+			<div class="bs-docs-example">
+				<div class="form-group">
+					<select id="tasks" class="selectpicker show-tick" data-width="100%"
+						title="Select a task" data-live-search="true">
+						<script id="listTasks" type="text/html">
+							<% _.each(item, function(item) { %>
+							<option><%= item.taskNumber %></option>
+							<% }); %>
+						</script>
+					</select>
+				</div>
+			</div>
+			<div class="bs-docs-example">
+				<div class="form-group">
+					<select id="mros" class="selectpicker show-tick" data-width="100%"
+						title="Select a MRO" data-live-search="true">
+						<script id="listMROs" type="text/html">
+							<% _.each(item, function(item) { %>
+								<option value="<%= item.id %>"><%= item.name %></option>
+							<% }); %>
+						</script>
+					</select>
+				</div>
+			</div>
+			<input type="datetime-local" name="date" id="deadline"
+				placeholder="Deadline" />
+			<div class="form-inline">
+				<label class="custom-control custom-radio"> <input
+					id="radio1" name="radio" type="radio" class="custom-control-input">
+					<span class="custom-control-indicator"></span> <span
+					class="custom-control-description">Line</span>
+				</label>
+			</div>
+			<div class="form-inline">
+				<label class="custom-control custom-radio"> <input
+					id="radio2" name="radio" type="radio" class="custom-control-input">
+					<span class="custom-control-indicator"></span> <span
+					class="custom-control-description">Base</span>
+				</label>
+			</div>
+			<button id="edit" type="button" class="btn">Edit</button>
+		</fieldset>
+	</form>
+
+	<script src="scripts/jquery-3.1.1.min.js"></script>
+	<script src="scripts/jquery-ui.min.js"></script>
+	<script src="scripts/bootstrap.min.js"></script>
+	<script src="scripts/bootstrap-select.min.js"></script>
+	<script src="scripts/underscore-min.js"></script>
+	<script src="scripts/moment.js"></script>
+	<script src="scripts/menu.js"></script>
+	<script src="scripts/edit.js"></script>
+</body>
 </html>
-
-<script>
-
-</script>

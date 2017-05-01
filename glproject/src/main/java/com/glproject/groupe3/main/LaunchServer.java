@@ -20,8 +20,6 @@ import org.glassfish.jersey.servlet.ServletContainer;
 //TODO : 
 //ajouter logger a la place des printstackstrace
 //fichier de configuration database
-//import mpd
-//add task
 
 public class LaunchServer {
 

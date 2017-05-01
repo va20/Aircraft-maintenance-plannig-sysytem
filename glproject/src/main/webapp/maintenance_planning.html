@@ -4,6 +4,8 @@
 <meta charset="utf-8" />
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="css/base.css" rel="stylesheet">
+<link href="css/bootstrap-select.min.css" rel="stylesheet">
+<link href="css/pagination.css" rel="stylesheet">
 <link href="css/planning.css" rel="stylesheet">
 <link rel="icon" href="img/avion.ico" />
 <title>Maintenance Planning</title>
@@ -46,7 +48,7 @@
 		</div>
 	</div>
 
-	<div class="container ">
+	<div class="container">
 		<div class="w3-half">
 			<div class="w3-panel w3-border x">
 				<h1>Maintenance planning</h1>
@@ -54,14 +56,30 @@
 		</div>
 	</div>
 
+
 	<div id="rcorners" class="container">
+		<div class="mx-auto">
+			<select id="selectPlanes" class="selectpicker" title="Planes"
+				data-size="auto">
+				<option value="default">All</option>
+				<script id="listPlanes" type="text/html">
+				<% _.each(item, function(item) { %>
+					<option value="<%= item %>"><%= item %></option>
+				<% }); %>
+			</script>
+			</select>
+		</div>
 		<div class="form-group has-feedback">
 			<input class="form-control searchbar" type="text"
 				placeholder="Search..."
 				onkeyup="w3.filterHTML('#tableTasks', '.tasks', this.value)"><i
 				class="glyphicon glyphicon-filter form-control-feedback"></i>
 		</div>
+	</div>
 
+	<br>
+
+	<div id="rcorners" class="container">
 		<div class="table-responsive">
 			<table class="table table-hover" id="tableTasks">
 				<thead>
@@ -79,28 +97,30 @@
 					<script id="list_tasks" type="text/html">
 						<% _.each(item, function(item, i) { %>
                     		<tr class="tasks" data-toggle="modal" data-target="#genericTaskInfo">
-								<td id="<%= item.idPlane %>"></td>
+								<td class="<%= item.idPlane %>"></td>
                         		<td><%= item.taskNumber %></td>
 								<td><%= item.airport %></td>
-                        		<td><%= item.idMRO %></td>
+                        		<td class="<%= item.idMRO %>"><%= item.idMRO %></td>
                         		<td><%= moment(item.deadline).toISOString() %></td>
                         		<td><%= item.type %></td>
 								<td class="text-center">
-								<a class="btn btn-info btn-xs" href="#">
+								<a class="btn btn-info btn-xs">
 								<span class="glyphicon glyphicon-edit"></a>
-								<a href="" id="<%= item.id %>" class="btn btn-danger btn-xs">
-								<span class="glyphicon glyphicon-remove"></a>
+								<a id="<%= item.id %>" class="btn btn-danger btn-xs">
+								<span class="glyphicon glyphicon-trash"></a>
 								</td>
                    		 	</tr>
 						<% }); %>
 					</script>
 				</tbody>
 			</table>
-
+			<div class="center">
+				<div class="paging-container pagination" id="tablePaging"></div>
+				<button id="add" class="btn btn-success" type="button">
+					<span class="glyphicon glyphicon-plus"></span>
+				</button>
+			</div>
 		</div>
-		<button id="add" class="btn btn-success" type="button">
-			<span class="glyphicon glyphicon-plus"></span>
-		</button>
 	</div>
 
 	<!-- Modal -->
@@ -125,13 +145,16 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="scripts/jquery.modal.min.js"></script>
-	<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-	<script type="text/javascript" src="scripts/underscore-min.js"></script>
-	<script type="text/javascript" src="scripts/w3.js"></script>
-	<script type="text/javascript" src="scripts/moment.js"></script>
-	<script type="text/javascript" src="scripts/menu.js"></script>
-	<script type="text/javascript" src="scripts/planning.js"></script>
+	<script src="scripts/jquery-3.1.1.min.js"></script>
+	<script src="scripts/bootstrap.min.js"></script>
+	<script src="scripts/bootstrap-select.min.js"></script>
+	<script src="scripts/underscore-min.js"></script>
+	<script src="scripts/jquery.modal.min.js"></script>
+	<script src="scripts/w3.js"></script>
+	<script src="scripts/pagination.js"></script>
+	<script src="scripts/moment.js"></script>
+	<script src="scripts/ddtf.js"></script>
+	<script src="scripts/menu.js"></script>
+	<script src="scripts/planning.js"></script>
 </body>
 </html>

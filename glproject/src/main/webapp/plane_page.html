@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="css/base.css" rel="stylesheet">
 <link href="css/plane.css" rel="stylesheet">
 <link rel="icon" href="img/avion.ico" />
@@ -23,7 +24,6 @@
 						</button>
 						<a class="navbar-brand" href="#">MCC</a>
 					</div>
-
 					<div class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
@@ -38,7 +38,6 @@
 										href="" id="import">MPD</a></li>
 								</ul></li>
 						</ul>
-
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="login.html">Logout</a></li>
 						</ul>
@@ -73,9 +72,7 @@
 				data-detail-view="true" data-detail-formatter="detailFormatter">
 				<thead>
 					<tr id="thead_row">
-						<th>#</th>
 						<th>Task number</th>
-						<th>Plane</th>
 						<th>Airport</th>
 						<th>MRO</th>
 						<th>Deadline</th>
@@ -87,11 +84,9 @@
 					<script id="list_tasks" type="text/html">
 						<% _.each(item, function(item, i) { %>
                     		<tr class="tasks">
-                        		<td><input type="checkbox"></td>
                          		<td><%= item.taskNumber %></td>
-								<td><%= item.idPlane %></td>
 								<td><%= item.airport %></td>
-                        		<td><%= item.idMRO %></td>
+                        		<td class="<%= item.idMRO %>"><%= item.idMRO %></td>
                         		<td><%= moment(item.deadline).toISOString() %></td>
                         		<td><%= item.type %></td>
 								<td class="text-center">
@@ -111,12 +106,12 @@
 		</button>
 	</div>
 
-	<script type="text/javascript" src="scripts/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-	<script type="text/javascript" src="scripts/underscore-min.js"></script>
-	<script type="text/javascript" src="scripts/moment.js"></script>
-	<script type="text/javascript" src="scripts/w3.js"></script>
-	<script type="text/javascript" src="scripts/menu.js"></script>
-	<script type="text/javascript" src="scripts/plane.js"></script>
+	<script src="scripts/jquery-3.1.1.min.js"></script>
+	<script src="scripts/bootstrap.min.js"></script>
+	<script src="scripts/underscore-min.js"></script>
+	<script src="scripts/moment.js"></script>
+	<script src="scripts/w3.js"></script>
+	<script src="scripts/menu.js"></script>
+	<script src="scripts/plane.js"></script>
 </body>
 </html>

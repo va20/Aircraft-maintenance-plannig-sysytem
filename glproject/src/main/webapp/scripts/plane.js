@@ -5,6 +5,16 @@ function getURLParam(param) {
 	return variablesURL[1];
 }
 
+function getMRO(id) {
+	$.ajax({
+		url : "ws/mro/" + id,
+		type : "GET",
+		dataType : "json"
+	}).done(function(data) {
+		$("." + id).html(data.name);
+	});
+}
+
 function getPlaneTasks() {
 	$.ajax({
 		url : "ws/planes",
@@ -45,36 +55,50 @@ function printTasks(data) {
 		"item" : data
 	});
 
+	// MRO name
+	_.each(data, function(item) {
+		getMRO(item.idMRO);
+	});
+
 	$("#tasks").append(task);
 }
 
 function deleteTask(idTask) {
-    $.ajax({
-        url: "ws/tasks/" + idTask,
-        type: "DELETE",
-        dataType: "json"
-    }).done(function() {
-        location.reload(true);
-    });
+	$.ajax({
+		url : "ws/tasks/" + idTask,
+		type : "DELETE",
+		dataType : "json"
+	}).done(function() {
+		location.reload(true);
+	});
 }
 
-$(document).ready(function() {
-    document.getElementById("plane_number").innerHTML = getURLParam("plane");
-    getPlaneTasks();
-	$("#tasks").on("click", "a.btn-danger", function() {
-		var idTask = $(this).attr("id");
-		if (confirm("Are you sure ?")) {
-            deleteTask(idTask);
-        }
-    });
+$(document)
+		.ready(
+				function() {
+					document.getElementById("plane_number").innerHTML = getURLParam("plane");
+					getPlaneTasks();
+					$("#tasks").on("click", "a.btn-danger", function() {
+						var idTask = $(this).attr("id");
+						if (confirm("Are you sure ?")) {
+							deleteTask(idTask);
+						}
+					});
 
-	$("#tasks").on("click", "a.btn-info", function () {
-        var taskNumber =  $(this).attr("id");
-        console.log(taskNumber);
-        location.href = "add_task.html?plane="+ getURLParam("plane")+"&taskNumber="+ taskNumber;
-    });
+					$("#tasks").on(
+							"click",
+							"a.btn-info",
+							function() {
+								var taskNumber = $(this).attr("id");
+								console.log(taskNumber);
+								location.href = "add_task.html?plane="
+										+ getURLParam("plane") + "&taskNumber="
+										+ taskNumber;
+							});
 
-	$("#add").click(function() {
-		location.href = "add_task.html?plane=" + getURLParam("plane");
-	});
-});
+					$("#add").click(
+							function() {
+								location.href = "add_task.html?plane="
+										+ getURLParam("plane");
+							});
+				});

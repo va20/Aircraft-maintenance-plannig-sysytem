@@ -143,11 +143,20 @@ public class FillDatabase {
 
 	public static void addTasks() {
 		List<Task> list = new ArrayList<Task>();
-		Task t1 = new Task(1, 2, "LFPA", 2, new DateTime(), "200001-01-1", "base");
-		Task t2 = new Task(2, 2, "LFPO", 3, new DateTime(), "200001-02-1", "inline");
-		Task t3 = new Task(3, 3, "LPPO", 1, new DateTime(), "200002-01-1", "inline");
-		Task t4 = new Task(4, 3, "MLPO", 2, new DateTime(), "200003-01-1", "base");
-		Task t5 = new Task(5, 5, "LKPO", 1, new DateTime(), "200003-03-1", "inline");
+		Task t1 = new Task(1, 2, "LFPA", 10, new DateTime(), "200001-01-1", "base");
+		Task t2 = new Task(2, 2, "LFPO", 11, new DateTime(), "200001-02-1", "inline");
+		Task t3 = new Task(3, 3, "LPPO", 11, new DateTime(), "200002-01-1", "inline");
+		Task t4 = new Task(4, 3, "MLPO", 13, new DateTime(), "200003-01-1", "base");
+		Task t5 = new Task(5, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline");
+
+		Task t6 = new Task(6, 2, "LFPA", 10, new DateTime(), "200001-01-1", "base");
+		Task t7 = new Task(7, 2, "LFPO", 11, new DateTime(), "200001-02-1", "inline");
+		Task t8 = new Task(8, 3, "LPPO", 11, new DateTime(), "200002-01-1", "inline");
+		Task t9 = new Task(9, 3, "MLPO", 13, new DateTime(), "200003-01-1", "base");
+		Task t10 = new Task(10, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline");
+
+		Task t11 = new Task(11, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline");
+		Task t12 = new Task(12, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline");
 
 		list.add(t1);
 		list.add(t2);
@@ -155,7 +164,17 @@ public class FillDatabase {
 		list.add(t4);
 		list.add(t5);
 
-		for (int i = 0; i < 5; i++) {
+		// TEST PAGINATION //
+		list.add(t6);
+		list.add(t7);
+		list.add(t8);
+		list.add(t9);
+		list.add(t10);
+
+		list.add(t11);
+		list.add(t12);
+
+		for (int i = 0; i < list.size(); i++) {
 			((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).add(list.get(i),
 					Constants.TASKS, String.valueOf(list.get(i).getId()));
 		}
@@ -163,10 +182,10 @@ public class FillDatabase {
 
 	public static void addMROs() {
 		List<MRO> list = new ArrayList<MRO>();
-		MRO mro1 = new MRO(1, 2, "LFPO", "MRO1");
-		MRO mro2 = new MRO(2, 3, "LFPO", "MRO2");
-		MRO mro3 = new MRO(3, 1, "LFPA", "MRO3");
-		MRO mro4 = new MRO(4, 4, "MLPO", "MRO4");
+		MRO mro1 = new MRO(10, 2, "LFPO", "MRO1");
+		MRO mro2 = new MRO(11, 3, "LFPO", "MRO2");
+		MRO mro3 = new MRO(12, 1, "LFPA", "MRO3");
+		MRO mro4 = new MRO(13, 4, "MLPO", "MRO4");
 
 		list.add(mro1);
 		list.add(mro2);
