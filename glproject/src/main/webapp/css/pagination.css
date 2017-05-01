@@ -1,0 +1,12 @@
+.paging-container select {
+	float: right;
+	margin: 20px 0 20px 10px;
+	padding: 7px 3px;
+	border-color: #ddd;
+	border-radius: 4px;
+}
+
+.center {
+	text-align: center;
+	margin: auto;
+}
