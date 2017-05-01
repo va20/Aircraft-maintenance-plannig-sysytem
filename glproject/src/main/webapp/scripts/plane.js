@@ -1,7 +1,6 @@
 function getURLParam(param) {
 	var pageURL = window.location.search.substring(1);
 	var variablesURL = pageURL.split('=');
-
 	return variablesURL[1];
 }
 
@@ -43,7 +42,6 @@ function getTasks(data) {
 			$("#info").show();
 		} else {
 			$("#info").hide();
-
 			printTasks(data);
 		}
 	});

@@ -1,3 +1,5 @@
+localStorage.clear();
+
 $('#username, #password').on('input', function() {
 	if ($('#username').val() == "" || $('#password').val() == "")
 		$('#submit').prop("disabled", true);
@@ -18,9 +20,10 @@ $('#submit').click(function() {
 
 		success : function(data) {
 			console.log(data);
-
-			if (data) {
+			
+			if(data) {
 				$.cookie('name', login);
+				localStorage.setItem(login,password);
 				location.href = "/plane_list.html";
 			} else
 				$("#span_con").html("ERREUR CHAMPS!!");
