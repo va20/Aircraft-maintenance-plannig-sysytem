@@ -161,20 +161,20 @@ public class FillDatabase {
 		list.add(t1);
 		list.add(t2);
 		list.add(t3);
-		// list.add(t4);
-		// list.add(t5);
-		//
-		// // TEST PAGINATION //
-		// list.add(t6);
-		// list.add(t7);
-		// list.add(t8);
-		// list.add(t9);
-		// list.add(t10);
-		//
-		// list.add(t11);
-		// list.add(t12);
+		list.add(t4);
+		list.add(t5);
 
-		for (int i = 0; i < 3; i++) {
+		// TEST PAGINATION //
+		list.add(t6);
+		list.add(t7);
+		list.add(t8);
+		list.add(t9);
+		list.add(t10);
+
+		list.add(t11);
+		list.add(t12);
+
+		for (int i = 0; i < list.size(); i++) {
 			((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).add(list.get(i),
 					Constants.TASKS, String.valueOf(list.get(i).getId()));
 		}
