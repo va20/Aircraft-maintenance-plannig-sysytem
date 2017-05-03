@@ -12,11 +12,6 @@
 </head>
 
 <body>
-	<script>
-        if(localStorage.length==0){
-            location.href="/login.html"
-        }
-    </script>
 	<div class="body-wrap">
 		<div class="container">
 			<nav class="navbar navbar-inverse" role="navigation">
@@ -57,7 +52,7 @@
 	<div class="container">
 		<div class="w3-half">
 			<div class="w3-panel w3-border x">
-				<h1>Adding</h1>
+				<h1>Adding new task</h1>
 			</div>
 		</div>
 	</div>
@@ -67,7 +62,9 @@
 			<div class="bs-docs-example">
 				<div class="form-group">
 					<select id="planes" class="selectpicker show-tick"
-						data-width="100%" title="Select a plane" data-live-search="true">
+						data-width="100%" title="Select a plane" data-live-search="true"
+						disabled>
+						<option value="default"></option>
 						<script id="listPlanes" type="text/html">
 							<% _.each(item, function(item) { %>
 							<option value="<%= item.id %>" data-subtext="<%= item.type %>"><%= item.tailNumber %></option>
@@ -120,6 +117,10 @@
 		</fieldset>
 	</form>
 
+	<script>
+		if (localStorage.length == 0)
+			location.href = "/login.html"
+	</script>
 	<script src="scripts/jquery-3.1.1.min.js"></script>
 	<script src="scripts/jquery-ui.min.js"></script>
 	<script src="scripts/bootstrap.min.js"></script>

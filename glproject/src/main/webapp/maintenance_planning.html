@@ -12,11 +12,6 @@
 </head>
 
 <body>
-    <script>
-        if(localStorage.length==0){
-            location.href="/login.html"
-        }
-    </script>
 	<div class="body-wrap">
 		<div class="container">
 			<nav class="navbar navbar-inverse" role="navigation">
@@ -61,17 +56,24 @@
 		</div>
 	</div>
 
-
 	<div id="rcorners" class="container">
-		<div class="mx-auto">
-			<select id="selectPlanes" class="selectpicker" title="Planes"
-				data-size="auto">
-				<option value="default">All</option>
+		<div class="text-center">
+			<span><strong>Plane</strong></span> <select id="plane-filter"
+				class="selectpicker" data-size="auto">
+				<option value="default">Any</option>
 				<script id="listPlanes" type="text/html">
-				<% _.each(item, function(item) { %>
-					<option value="<%= item %>"><%= item %></option>
-				<% }); %>
-			</script>
+								<% _.each(item, function(item) { %>
+									<option value="<%= item %>"><%= item %></option>
+								<% }); %>
+							</script>
+			</select> <span><strong>MRO</strong></span> <select id="mro-filter"
+				class="selectpicker" data-size="auto">
+				<option value="default">Any</option>
+				<script id="listMROs" type="text/html">
+								<% _.each(item, function(item) { %>
+									<option value="<%= item %>"><%= item %></option>
+								<% }); %>
+							</script>
 			</select>
 		</div>
 		<div class="form-group has-feedback">
@@ -101,7 +103,10 @@
 				<tbody id="tasks">
 					<script id="list_tasks" type="text/html">
 						<% _.each(item, function(item, i) { %>
-                    		<tr class="tasks" data-toggle="modal" data-target="#genericTaskInfo">
+                    		<tr class="tasks" data-toggle="modal" data-target="#genericTaskInfo"
+								data-task-id="<%= i %>"
+              					data-plane="<%= item.idPlane %>"
+              					data-mro="<%= item.idMRO %>">
 								<td class="<%= item.idPlane %>"></td>
                         		<td><%= item.taskNumber %></td>
 								<td><%= item.airport %></td>
@@ -150,6 +155,15 @@
 		</div>
 	</div>
 
+	<form action="add_task.html">
+		<input type="hidden" name="plane" value="" /> <input
+			type="submit" value="Envoyer les données">
+	</form>
+
+	<script>
+		if (localStorage.length == 0)
+			location.href = "/login.html"
+	</script>
 	<script src="scripts/jquery-3.1.1.min.js"></script>
 	<script src="scripts/bootstrap.min.js"></script>
 	<script src="scripts/bootstrap-select.min.js"></script>
@@ -158,8 +172,8 @@
 	<script src="scripts/w3.js"></script>
 	<script src="scripts/pagination.js"></script>
 	<script src="scripts/moment.js"></script>
-	<script src="scripts/ddtf.js"></script>
 	<script src="scripts/menu.js"></script>
 	<script src="scripts/planning.js"></script>
+	<script src="scripts/modal.js"></script>
 </body>
 </html>

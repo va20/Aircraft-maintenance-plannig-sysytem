@@ -41,15 +41,15 @@ public class FillDatabase {
 
 	public static void addStaffs() throws NoSuchAlgorithmException {
 		List<Staff> list = new ArrayList<Staff>();
-		Staff staff1 = new Staff(1, "chris", "dionisio", "chris", "pwd");
-		Staff staff2 = new Staff(2, "ptitprince", "ali", "ali", "pwd");
-		Staff staff3 = new Staff(3, "sisi", "sisi", "sisi", "pwd");
-		Staff staff4 = new Staff(4, "saif", "al-qazweny", "saif", "pwd");
-		Staff staff5 = new Staff(5, "hugues", "le lann", "ug", "pwd");
-		Staff staff6 = new Staff(6, "wang", "pin", "wang", "pwd");
-		Staff staff7 = new Staff(7, "vianel", "ebourefe", "vianel", "pwd");
-		Staff staff8 = new Staff(8, "arnaud", "duhamel", "arnaud", "pwd");
-		Staff staff9 = new Staff(9, "rayane", "mouaatarif", "rayane", "pwd");
+		Staff staff1 = new Staff("chris", "dionisio", "chris", "pwd");
+		Staff staff2 = new Staff("ptitprince", "ali", "ali", "pwd");
+		Staff staff3 = new Staff("sisi", "sisi", "sisi", "pwd");
+		Staff staff4 = new Staff("saif", "al-qazweny", "saif", "pwd");
+		Staff staff5 = new Staff("hugues", "le lann", "ug", "pwd");
+		Staff staff6 = new Staff("wang", "pin", "wang", "pwd");
+		Staff staff7 = new Staff("vianel", "ebourefe", "vianel", "pwd");
+		Staff staff8 = new Staff("arnaud", "duhamel", "arnaud", "pwd");
+		Staff staff9 = new Staff("rayane", "mouaatarif", "rayane", "pwd");
 
 		list.add(staff1);
 		list.add(staff2);
@@ -63,7 +63,7 @@ public class FillDatabase {
 
 		for (int i = 0; i < 9; i++) {
 			((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).add(list.get(i),
-					Constants.STAFFS, String.valueOf(list.get(i).getId()));
+					Constants.STAFFS, String.valueOf(list.get(i).getLogin()));
 		}
 	}
 
@@ -161,20 +161,20 @@ public class FillDatabase {
 		list.add(t1);
 		list.add(t2);
 		list.add(t3);
-		list.add(t4);
-		list.add(t5);
+		// list.add(t4);
+		// list.add(t5);
+		//
+		// // TEST PAGINATION //
+		// list.add(t6);
+		// list.add(t7);
+		// list.add(t8);
+		// list.add(t9);
+		// list.add(t10);
+		//
+		// list.add(t11);
+		// list.add(t12);
 
-		// TEST PAGINATION //
-		list.add(t6);
-		list.add(t7);
-		list.add(t8);
-		list.add(t9);
-		list.add(t10);
-
-		list.add(t11);
-		list.add(t12);
-
-		for (int i = 0; i < list.size(); i++) {
+		for (int i = 0; i < 3; i++) {
 			((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).add(list.get(i),
 					Constants.TASKS, String.valueOf(list.get(i).getId()));
 		}

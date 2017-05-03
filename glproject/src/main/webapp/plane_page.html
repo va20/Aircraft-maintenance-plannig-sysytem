@@ -12,9 +12,9 @@
 
 <body>
 	<script>
-    	if(localStorage.length==0){
-    	    location.href="/login.html"
-    	}
+		if (localStorage.length == 0) {
+			location.href = "/login.html"
+		}
 	</script>
 	<div class="body-wrap">
 		<div class="container">
@@ -88,16 +88,17 @@
 				<tbody id="tasks">
 					<script id="list_tasks" type="text/html">
 						<% _.each(item, function(item, i) { %>
-                    		<tr class="tasks">
+                    		<tr class="tasks" data-toggle="modal" data-target="#genericTaskInfo">
+                         		<td class="planeId" style="display: none;"><%= item.idPlane %></td>
                          		<td><%= item.taskNumber %></td>
 								<td><%= item.airport %></td>
                         		<td class="<%= item.idMRO %>"><%= item.idMRO %></td>
                         		<td><%= moment(item.deadline).toISOString() %></td>
                         		<td><%= item.type %></td>
 								<td class="text-center">
-								<a class="btn btn-info btn-xs" href="#" id="<%= item.id %>">
+								<a id="<%= item.id %>" class="btn btn-info btn-xs">
 								<span class="glyphicon glyphicon-edit"></a>
-								<a href="" id="<%= item.id %>" class="btn btn-danger btn-xs">
+								<a id="<%= item.id %>" class="btn btn-danger btn-xs">
 								<span class="glyphicon glyphicon-remove"></a>
 								</td>
                    		 	</tr>
@@ -111,6 +112,28 @@
 		</button>
 	</div>
 
+	<!-- Modal -->
+	<div class="modal fade" id="genericTaskInfo" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;
+					</button>
+					<h4 class="modal-title">More info</h4>
+				</div>
+				<div id="genericTaskListInfo" class="modal-body">
+					<ul class="list-group">
+						<script id="genericTaskModal" type="text/html">
+							<% _.each(item, function(item) { %>
+								<li class="list-group-item"><%= item %><span class="badge">item</span></li>
+							<% }); %>
+						</script>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<script src="scripts/jquery-3.1.1.min.js"></script>
 	<script src="scripts/bootstrap.min.js"></script>
 	<script src="scripts/underscore-min.js"></script>
@@ -118,5 +141,6 @@
 	<script src="scripts/w3.js"></script>
 	<script src="scripts/menu.js"></script>
 	<script src="scripts/plane.js"></script>
+	<script src="scripts/modal.js"></script>
 </body>
 </html>

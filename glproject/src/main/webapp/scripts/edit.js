@@ -1,8 +1,41 @@
 function getURLParam(param) {
 	var pageURL = window.location.search.substring(1);
-	var variablesURL = pageURL.split('=');
+	var variablesURL = pageURL.split('&');
 
-	return variablesURL[1];
+	if (param == "planeTailNumber")
+		return variablesURL[0].split('=')[1];
+	else if (param == "planeId")
+		return variablesURL[1].split('=')[1];
+
+	return variablesURL[2].split('=')[1];
+}
+
+function fillFields() {
+	var tailNumber = getURLParam("planeTailNumber");
+	var planeId = getURLParam("planeId");
+	var taskId = getURLParam("task");
+
+	$.ajax({
+		url : "ws/tasks/" + planeId + "/" + taskId,
+		type : "GET",
+		dataType : "json"
+	}).done(function(data) {
+		console.log(tailNumber);
+		// A MODIFIER CAR NE MARCHE PAS
+		$('select[name=test]').val(1);
+		$('select[name=test]').change();
+		
+		$("#planes").val(tailNumber).change();
+		$("#tasks").text(data.taskNumber);
+		$("#mros").val(data.idMRO).change();
+		$("#deadline").val(data.deadline).change();
+
+		if (data.type == "base")
+			$("#radio2").prop('checked', true);
+		else if (data.type == "inline")
+			$("#radio1").prop('checked', true);
+
+	});
 }
 
 function retrieveData(ws) {
@@ -51,40 +84,41 @@ function printMROs(data) {
 }
 
 $(document).ready(function() {
-	$("#planeNumber").html(getURLParam("plane"));
+	$("#plane_number").html(getURLParam("planeTailNumber"));
 
-	retrieveData("ws/planes");
+	fillFields();
+
 	retrieveData("ws/mpd");
-	retrieveData("ws/mro");
+//	retrieveData("ws/mro");
 
 	// **** UPDATE AU LIEU DE ADD ICI **** //
 
-	// $("#add").click(function() {
-	// var task = {
-	// id : new Date().getUTCMilliseconds(),
-	// idPlane : $("#planes option:selected").val(),
-	// idMRO : $("#mros option:selected").val(),
-	// deadline : moment($("#deadline").val()),
-	// taskNumber : $("#tasks option:selected").text(),
-	// type : $('input[name="radio"]:checked').val()
-	// };
-	//
-	// console.log(JSON.stringify(task));
-	//
-	// $.ajax({
-	// url : "ws/tasks",
-	// type : "PUT",
-	// contentType : "application/json",
-	// dataType : "json",
-	// data : JSON.stringify(task),
-	//
-	// success : function(data) {
-	// var tailNumber = $("#planes option:selected").text();
-	// location.href = "plane_page.html?plane=" + tailNumber;
-	// },
-	// error : function(res, stat, err) {
-	// alert("ERROR PUT TASK");
-	// }
-	// });
-	// });
+	$("#add").click(function() {
+		var task = {
+			id : new Date().getUTCMilliseconds(),
+			idPlane : $("#planes option:selected").val(),
+			idMRO : $("#mros option:selected").val(),
+			deadline : moment($("#deadline").val()),
+			taskNumber : $("#tasks option:selected").text(),
+			type : $('input[name="radio"]:checked').val()
+		};
+
+		console.log(JSON.stringify(task));
+
+		$.ajax({
+			url : "ws/tasks",
+			type : "POST",
+			contentType : "application/json",
+			dataType : "json",
+			data : JSON.stringify(task),
+
+			success : function(data) {
+				var tailNumber = $("#planes option:selected").text();
+				location.href = "plane_page.html?plane=" + tailNumber;
+			},
+			error : function(res, stat, err) {
+				alert("ERROR PUT TASK");
+			}
+		});
+	});
 });

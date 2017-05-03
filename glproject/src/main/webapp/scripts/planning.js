@@ -1,3 +1,36 @@
+//filtering = (function() {
+//	var filters = {
+//		plane : null,
+//		mro : null,
+//	};
+//
+//	function updateFilters() {
+//		$('.tasks').hide().filter(function() {
+//			var self = $(this), result = true;
+//			Object.keys(filters).forEach(function(filter) {
+//				console.log(filter);
+//				if (filters[filter] && (filters[filter] != "Any")) {
+//					result = result && filters[filter] === self.data(filter);
+//					console.log(filters);
+//				}
+//			});
+//
+//			return result;
+//		}).show();
+//	}
+//
+//	function bindDropdownFilters() {
+//		Object.keys(filters).forEach(function(filterName) {
+//			$('#' + filterName + "-filter").on("change", function() {
+//				filters[filterName] = this.value;
+//				updateFilters();
+//			});
+//		});
+//	}
+//
+//	bindDropdownFilters();
+//});
+
 function getPlane(id) {
 	$.ajax({
 		url : "ws/planes/" + id,
@@ -5,6 +38,9 @@ function getPlane(id) {
 		dataType : "json"
 	}).done(function(data) {
 		$("." + id).html(data.tailNumber);
+
+		//for plane filter
+		$(".tasks").attr("data-plane", data.tailNumber);
 	});
 }
 
@@ -15,6 +51,9 @@ function getMRO(id) {
 		dataType : "json"
 	}).done(function(data) {
 		$("." + id).html(data.name);
+
+		//for mro filter
+		$(".tasks").attr("data-mro", data.name);
 	});
 }
 
@@ -75,26 +114,33 @@ function deleteTask(idTask) {
 	});
 }
 
-function getGenericTask(taskNumber) {
-	$.ajax({
-		url : "ws/mpd/" + taskNumber,
-		type : "GET",
-		dataType : "json"
-	}).done(function(data) {
-		printGenericTask(data);
+function filtering(select) {
+	$(select).change(function() {
+		var $rows = $("#tableTasks").children('tbody').children('tr');
+
+		if ($(select + " option:selected").val() == "default") {
+			$.each($rows, function() {
+				$(this).show();
+			});
+
+		} else {
+			$.each($rows, function() {
+				var match = false;
+				$(this).children('td').each(function() {
+					if ($(this).text() == $(select).val())
+						match = true;
+				});
+
+				if (match)
+					$(this).show();
+				else
+					$(this).hide();
+			});
+		}
 	});
 }
 
-function printGenericTask(data) {
-	var template = _.template($("#genericTaskModal").html());
-	var genericTask = template({
-		"item" : data
-	});
-
-	$("#genericTaskListInfo").append(genericTask);
-}
-
-function filters() {
+function planesFilter() {
 	$.ajax({
 		url : "ws/planes",
 		type : "GET",
@@ -109,48 +155,42 @@ function filters() {
 			"item" : tab
 		});
 
-		$("#selectPlanes").append(plane);
+		$("#plane-filter").append(plane);
 		$(".selectpicker").selectpicker('refresh');
+
+		filtering("#plane-filter");
+	});
+}
+
+function mroFilter() {
+	$.ajax({
+		url : "ws/mro",
+		type : "GET",
+		dataType : "json"
+	}).done(function(data) {
+		var tab = _.uniq(_.map(data, function(item) {
+			return item.name;
+		}));
+
+		var template = _.template($("#listMROs").html());
+		var mro = template({
+			"item" : tab
+		});
+
+		$("#mro-filter").append(mro);
+		$(".selectpicker").selectpicker('refresh');
+
+		filtering("#mro-filter");
 	});
 }
 
 $(document).ready(function() {
 	getTasks();
 
-	filters();
-	$("#selectPlanes").change(function() {
-		var $rows = $("#tableTasks").children('tbody').children('tr');
+	planesFilter();
+	mroFilter();
 
-		if ($("#selectPlanes option:selected").val() == "default") {
-			$.each($rows, function() {
-				$(this).show();
-			});
-
-		} else {
-			$.each($rows, function() {
-				var match = false;
-				$(this).children('td').each(function() {
-					if ($(this).text() == $("#selectPlanes").val())
-						match = true;
-				});
-
-				if (match)
-					$(this).show();
-				else
-					$(this).hide();
-			});
-		}
-	});
-
-	// retrieve taskNumber
-	$("#tableTasks").on("click", "tr.tasks", function() {
-		getGenericTask($(this.cells[1]).text());
-	});
-
-	// remove <li> in modal when hidden
-	$("#genericTaskInfo").on("hidden.bs.modal", function() {
-		$(".modal-body > li").remove();
-	})
+	filtering();
 
 	// edit page
 	$("#tasks").on("click", "a.btn-info", function() {

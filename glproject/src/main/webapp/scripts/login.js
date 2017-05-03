@@ -1,36 +1,34 @@
-localStorage.clear();
+$(document).ready(function() {
+	localStorage.clear();
 
-$('#username, #password').on('input', function() {
-	if ($('#username').val() == "" || $('#password').val() == "")
-		$('#submit').prop("disabled", true);
-	// + COLORIER CHAMPS NON REMPLIS EN ROUGE PAR EXEMPLE
-	else
-		$('#submit').prop("disabled", false);
-});
+	$('#username, #password').on('input', function() {
+		if ($('#username').val() == "" || $('#password').val() == "")
+			$('#submit').prop("disabled", true);
+		else
+			$('#submit').prop("disabled", false);
+	});
 
-$('#submit').click(function() {
-	var login = $('#username').val();
-	var password = $('#password').val();
-	console.log(login + " " + password);
+	$('#submit').click(function() {
+		var login = $("#username").val();
+		var password = $("#password").val();
 
-	$.ajax({
-		url : "ws/staffs/" + login + '/' + password,
-		type : "POST",
-		dataType : "json",
+		$.ajax({
+			url : "ws/staffs/" + login + '/' + password,
+			type : "POST",
+			dataType : "json",
 
-		success : function(data) {
-			console.log(data);
-			
-			if(data) {
-				$.cookie('name', login);
-				localStorage.setItem(login,password);
-				location.href = "/plane_list.html";
-			} else
-				$("#span_con").html("ERREUR CHAMPS!!");
-		},
+			success : function(data) {
+				if (data) {
+					$.cookie('name', login);
+					localStorage.setItem(login, password);
+					location.href = "/plane_list.html";
+				} else
+					alert("Password is wrong");
+			},
 
-		error : function(resultat, statut, erreur) {
-			alert("ERROR !!!");
-		}
+			error : function(resultat, statut, erreur) {
+				alert("The specified login does not exist");
+			}
+		});
 	});
 });

@@ -6,26 +6,19 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 public class Staff {
-	private long id;
 	private String firstname, lastname;
 	private String login, password, salt;
 
 	public Staff() {
 	}
 
-	public Staff(long id, String firstname, String lastname, String login, String password)
-			throws NoSuchAlgorithmException {
+	public Staff(String firstname, String lastname, String login, String password) throws NoSuchAlgorithmException {
 		super();
-		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.login = login;
 		this.salt = generateSalt();
 		this.password = hashPass(password + salt);
-	}
-
-	public long getId() {
-		return id;
 	}
 
 	public String getFirstname() {
@@ -42,10 +35,6 @@ public class Staff {
 
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public String getLogin() {
@@ -68,7 +57,7 @@ public class Staff {
 		return this.salt;
 	}
 
-	public String hashPass(String pass) {
+	public static String hashPass(String pass) {
 		String passTmp = DigestUtils.sha512Hex(pass);
 		for (int i = 0; i < 10000; i++) {
 			passTmp = DigestUtils.sha512Hex(pass);
@@ -77,13 +66,10 @@ public class Staff {
 		return passTmp;
 	}
 
-	public String generateSalt() throws NoSuchAlgorithmException {
-		// Always use a SecureRandom generator
+	public static String generateSalt() throws NoSuchAlgorithmException {
 		SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
-		// Create array for salt
 		byte[] saltByte = new byte[32];
 		String salt = null;
-		// Get a random salt
 		sr.nextBytes(saltByte);
 		StringBuilder saltStringB = new StringBuilder();
 
@@ -97,7 +83,7 @@ public class Staff {
 
 	@Override
 	public String toString() {
-		return "Staff [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", login=" + login
-				+ ", password=" + password + "]";
+		return "Staff [firstname=" + firstname + ", lastname=" + lastname + ", login=" + login + ", password="
+				+ password + ", salt=" + salt + "]";
 	}
 }
