@@ -1,0 +1,59 @@
+#planes_mro {
+    height: 65%; /* 100% Full-height */
+    width: 30%; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: lightgrey; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 5px; /* Place content 60px from the top */
+}
+
+#planes_mro p {
+	text-align: center;
+	font-size: 20px;
+}
+
+/* The navigation menu links */
+#planes_mro a {
+    padding: 3px 3px 3px 3px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #111;
+    display: block;
+}
+
+#tasks_mro {
+    height: 65%; /* 100% Full-height */
+    width: 70%; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    right: 0;
+    background-color: lightblue; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 10px; /* Place content 60px from the top */
+
+}
+
+#tasks_mro p {
+	text-align: center;
+	font-size: 20px;
+}
+
+/* The navigation menu links */
+
+#tasks_mro a {
+    padding: 3px 3px 3px 3px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #111;
+    display: block;
+}
+
+
+#info_mro {
+	height: 40%;
+	width: 100%;
+}

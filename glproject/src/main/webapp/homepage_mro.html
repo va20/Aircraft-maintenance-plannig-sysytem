@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; connect-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" href="css/materialize.min.css">
+        <link rel="stylesheet" href="css/homepage_mro.css">
+
+        <!--
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="css/base.css" rel="stylesheet">
+        <link href="css/plane.css" rel="stylesheet">
+        <link rel="icon" href="img/avion.ico" />
+        -->
+
+        <title>Homepage</title>
+    </head>
+
+    <body>
+
+        <div id="planes_mro">
+
+            <!--
+            <p> Planes list </p>
+            <a href="#">Plane 1</a>
+            <a href="#">Plane 2</a>
+            <a href="#">Plane 3</a>
+            <a href="#">Plane 4</a>
+            -->
+
+        <div id="planes">
+            <script id="list_planes" type="text/html">
+                        <% _.each(item, function(item, index) { %>
+                            <% if(index % 4 == 0) { %>
+                                <div class="row row-centered">
+                            <% } %>
+                            <div class="col-lg-3 col-centered">
+                                <a id="<%= item.tailNumber %>" class="btn btn-lg btn-primary btn-block"> <i
+                                class="glyphicon glyphicon-plane pull-left"></i><span>
+                                <%= item.tailNumber %><%= item.id%></span>          
+                            <br>
+                                <small><%= item.type %>
+                                </small></a>
+                            </div>
+                            <% if(index % 4 == 3) { %>
+                                </div><br>
+                            <% } %>
+                        <% }); %>
+                </script>
+        </div>
+    </div>
+
+
+        </div>
+
+        <div id="tasks_mro">
+
+
+            <p> Tasks list </p>
+
+            <a href="logout_mro.html">Logout</a>
+            <ul>
+                <li> Task 1 </li>
+                <li> Task 2 </li>
+                <li> Task 3 </li>
+                <li> Task 4 </li>
+                <li> Task 5 </li>
+                <li> Task 6 </li>
+                <li> Task 7 </li>
+                <li> Task 8 </li>
+                <li> Task 9 </li>
+                <li> Task 10 </li>
+                <li> Task 11 </li>
+            </ul>
+
+        <!--
+        <div id="rcorners" class="container">
+        <div id="search" class="form-group has-feedback">
+            <input class="form-control searchbar" type="text"
+                placeholder="Search..."
+                onkeyup="w3.filterHTML('#tableTasks', '.tasks', this.value)"><i
+                class="glyphicon glyphicon-filter form-control-feedback"></i>
+        </div>
+
+        <div class="table-responsive">
+            <div class="alert alert-info" id="info">
+                <strong>Info!</strong> No tasks found.
+            </div>
+            <table class="table table-hover" id="tableTasks" data-toggle="table"
+                data-detail-view="true" data-detail-formatter="detailFormatter">
+                <thead>
+                    <tr id="thead_row">
+                        <th>Task number</th>
+                        <th>Airport</th>
+                        <th>MRO</th>
+                        <th>Deadline</th>
+                        <th>Type</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tasks">
+                    <script id="list_tasks" type="text/html">
+                        <% _.each(item, function(item, i) { %>
+                            <tr class="tasks">
+                                <td><%= item.taskNumber %></td>
+                                <td><%= item.airport %></td>
+                                <td class="<%= item.idMRO %>"><%= item.idMRO %></td>
+                                <td><%= moment(item.deadline).toISOString() %></td>
+                                <td><%= item.type %></td>
+                                <td class="text-center">
+                                <a class="btn btn-info btn-xs" href="#" id="<%= item.id %>">
+                                <span class="glyphicon glyphicon-edit"></a>
+                                <a href="" id="<%= item.id %>" class="btn btn-danger btn-xs">
+                                <span class="glyphicon glyphicon-remove"></a>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </script>
+                </tbody>
+            </table>
+        </div>
+        <button id="add" class="btn btn-primary" type="button">
+            <span class="glyphicon glyphicon-plus-sign"></span>
+        </button>
+    </div>
+    -->
+
+
+
+
+
+
+
+        </div>
+
+        <div id="info_mro">
+            <p> Informations </p>
+
+        </div>
+
+
+
+
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+ 		<script type="text/javascript" src="js/materialize.min.js"></script>
+
+
+
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/underscore-min.js"></script>
+    <script src="scripts/planes.js"></script>
+
+        <!--
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/underscore-min.js"></script>
+    <script src="scripts/moment.js"></script>
+    <script src="scripts/w3.js"></script>
+    <script src="scripts/menu.js"></script>
+    <script src="scripts/plane.js"></script>
+    -->
+
+    </body>
+</html>
