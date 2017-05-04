@@ -20,6 +20,11 @@
     </head>
 
     <body>
+    <script>
+        if(localStorage.length==0){
+            location.href="/login_mro.html"
+        }
+    </script>
 
         <div id="planes_mro">
 
@@ -31,37 +36,37 @@
             <a href="#">Plane 4</a>
             -->
 
-        <div id="planes">
-            <script id="list_planes" type="text/html">
-                        <% _.each(item, function(item, index) { %>
-                            <% if(index % 4 == 0) { %>
-                                <div class="row row-centered">
-                            <% } %>
-                            <div class="col-lg-3 col-centered">
-                                <a id="<%= item.tailNumber %>" class="btn btn-lg btn-primary btn-block"> <i
-                                class="glyphicon glyphicon-plane pull-left"></i><span>
-                                <%= item.tailNumber %><%= item.id%></span>          
-                            <br>
-                                <small><%= item.type %>
-                                </small></a>
-                            </div>
-                            <% if(index % 4 == 3) { %>
-                                </div><br>
-                            <% } %>
-                        <% }); %>
+            <div id="planes">
+                <script id="list_planes" type="text/html">
+                            <% _.each(item, function(item, index) { %>
+                                <% if(index % 4 == 0) { %>
+                                    <div class="row row-centered">
+                                <% } %>
+                                <div class="col-lg-3 col-centered">
+                                    <a id="<%= item.tailNumber %>" class="btn btn-lg btn-primary btn-block"> <i
+                                    class="glyphicon glyphicon-plane pull-left"></i><span>
+                                    <%= item.tailNumber %><%= item.id%></span>          
+                                <br>
+                                    <small><%= item.type %>
+                                    </small></a>
+                                </div>
+                                <% if(index % 4 == 3) { %>
+                                    </div><br>
+                                <% } %>
+                            <% }); %>
                 </script>
+            </div>
         </div>
-    </div>
 
 
         </div>
 
         <div id="tasks_mro">
 
+            <button><a href="logout_mro.html">Logout</a></button>
 
             <p> Tasks list </p>
 
-            <a href="logout_mro.html">Logout</a>
             <ul>
                 <li> Task 1 </li>
                 <li> Task 2 </li>
