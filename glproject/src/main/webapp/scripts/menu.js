@@ -1,4 +1,10 @@
 $(document).ready(function() {
+	var url = window.location;
+	$('ul.nav a a[href="' + url + '"]').parent().addClass("active");
+	$("ul.nav a").filter(function() {
+		return this.href == url;
+	}).parent().addClass("active");
+
 	$('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
 		event.preventDefault();
 		event.stopPropagation();
@@ -17,7 +23,7 @@ $(document).ready(function() {
 		var file = $("#upload")[0].files[0];
 
 		if (file.name.split(".")[1] != "xlsx")
-			alert("ERROR : WRONG FILE EXTENSION !");
+			alert("Error : wrong file extension.");
 		else {
 			var fd = new FormData();
 			fd.append("file", file);

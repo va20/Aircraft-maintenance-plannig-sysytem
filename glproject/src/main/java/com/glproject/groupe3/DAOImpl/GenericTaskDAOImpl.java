@@ -55,7 +55,7 @@ public class GenericTaskDAOImpl extends DAOImpl<GenericTask> implements GenericT
 
 			try {
 				genericTask = mapper.readValue(sh.sourceAsString(), GenericTask.class);
-				if (genericTask.getType().equals(type))
+				if (genericTask.getType().contains(type))
 					genericTasks.add(genericTask);
 
 			} catch (JsonParseException e) {

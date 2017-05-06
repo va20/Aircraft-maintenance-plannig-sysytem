@@ -12,53 +12,11 @@
 </head>
 
 <body>
-	<div class="body-wrap">
-		<div class="container">
-			<nav class="navbar navbar-inverse" role="navigation">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse"
-							data-target="#bs-example-navbar-collapse-1">
-							<span class="sr-only">Toggle navigation</span> <span
-								class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="#">MCC</a>
-					</div>
-
-					<div class="collapse navbar-collapse"
-						id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav">
-							<li><a href="plane_list.html">Planes</a></li>
-							<li><a href="flight_list.html">Flights</a></li>
-							<li><a href="maintenance_planning.html">Maintenance
-									Planning</a></li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown">Import <b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><input type="file" id="upload" style="display: none" /><a
-										href="" id="import">MPD</a></li>
-								</ul></li>
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="logout.html">Logout</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="w3-half">
-			<div class="w3-panel w3-border x">
-				<h1>Adding new task</h1>
-			</div>
-		</div>
-	</div>
+	<div w3-include-HTML="menu.html"></div>
 
 	<form id="msform">
 		<fieldset>
+			<h2 class="fs-title">Create a new task</h2>
 			<div class="bs-docs-example">
 				<div class="form-group">
 					<select id="planes" class="selectpicker show-tick"
@@ -126,6 +84,8 @@
 	<script src="scripts/bootstrap.min.js"></script>
 	<script src="scripts/bootstrap-select.min.js"></script>
 	<script src="scripts/underscore-min.js"></script>
+	<script src="scripts/w3.js"></script>
+	<script>w3.includeHTML();</script>
 	<script src="scripts/moment.js"></script>
 	<script src="scripts/menu.js"></script>
 	<script src="scripts/add.js"></script>

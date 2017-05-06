@@ -29,13 +29,13 @@ public class GenericTaskResource {
 		new SpreadsheetParser().importFile(input);
 	}
 
-	@GET
-	@Path("/{taskNumber}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public GenericTask getGenericTask(@PathParam("taskNumber") String taskNumber) {
-		return ((GenericTaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO())
-				.get(Constants.GENERIC_TASKS, String.valueOf(taskNumber));
-	}
+//	@GET
+//	@Path("/{taskNumber}")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public GenericTask getGenericTask(@PathParam("taskNumber") String taskNumber) {
+//		return ((GenericTaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO())
+//				.get(Constants.GENERIC_TASKS, String.valueOf(taskNumber));
+//	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -51,11 +51,12 @@ public class GenericTaskResource {
 				.add(genericTask, Constants.GENERIC_TASKS, String.valueOf(genericTask.getTaskNumber()));
 	}
 
-//	@GET
-//	@Path("/{typeOfGenericTask}")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public List<GenericTask> getMPDByTypeOfPlane(@PathParam("taskNumber") String typeOfGenericTask) {
-//		return ((GenericTaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO())
-//				.getMPDByTypeOfPlane(typeOfGenericTask);
-//	}
+	@GET
+	@Path("/{type}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<GenericTask> getMPDByTypeOfPlane(@PathParam("type") String type) {
+		System.out.println(type);
+		return ((GenericTaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO())
+				.getMPDByTypeOfPlane(type);
+	}
 }
