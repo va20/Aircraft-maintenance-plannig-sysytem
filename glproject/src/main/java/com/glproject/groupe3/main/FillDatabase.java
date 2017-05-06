@@ -17,7 +17,7 @@ public class FillDatabase {
 		addStaffs();
 		addPlanes();
 		addFlights();
-		//addGenericTasks();
+		addGenericTasks();
 		addTasks();
 		addMROs();
 	}

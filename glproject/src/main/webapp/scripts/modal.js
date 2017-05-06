@@ -14,6 +14,7 @@ function printGenericTask(data) {
 		"item" : data
 	});
 
+	console.log(genericTask);
 	$("#genericTaskListInfo").append(genericTask);
 }
 
