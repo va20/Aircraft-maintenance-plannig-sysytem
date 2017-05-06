@@ -193,7 +193,7 @@ $(document).ready(function() {
 	mroFilter();
 
 	// edit page
-	$("#tasks").on("click", "a.btn-info", function() {
+	$("#tasks").on("click", "a.btn-warning", function() {
 		var id = $(this).attr("id");
         var planeId = $("#plane").attr("class");
 		location.href = "edit_task.html?planeTailNumber="
