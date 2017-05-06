@@ -1,26 +1,15 @@
 package com.glproject.groupe3.main;
 
+import com.glproject.groupe3.DAO.AbstractDAOFactory;
+import com.glproject.groupe3.DAO.Factory;
+import com.glproject.groupe3.DAOImpl.*;
+import com.glproject.groupe3.businessobjects.*;
+import com.glproject.groupe3.util.Constants;
+import org.joda.time.DateTime;
+
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.joda.time.DateTime;
-
-import com.glproject.groupe3.DAO.AbstractDAOFactory;
-import com.glproject.groupe3.DAO.Factory;
-import com.glproject.groupe3.DAOImpl.FlightDAOImpl;
-import com.glproject.groupe3.DAOImpl.GenericTaskDAOImpl;
-import com.glproject.groupe3.DAOImpl.MRODAOImpl;
-import com.glproject.groupe3.DAOImpl.PlaneDAOImpl;
-import com.glproject.groupe3.DAOImpl.StaffDAOImpl;
-import com.glproject.groupe3.DAOImpl.TaskDAOImpl;
-import com.glproject.groupe3.businessobjects.Flight;
-import com.glproject.groupe3.businessobjects.GenericTask;
-import com.glproject.groupe3.businessobjects.MRO;
-import com.glproject.groupe3.businessobjects.Plane;
-import com.glproject.groupe3.businessobjects.Staff;
-import com.glproject.groupe3.businessobjects.Task;
-import com.glproject.groupe3.util.Constants;
 
 public class FillDatabase {
 

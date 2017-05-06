@@ -20,15 +20,21 @@ function fillFields() {
 		type : "GET",
 		dataType : "json"
 	}).done(function(data) {
-		console.log(tailNumber);
-		// A MODIFIER CAR NE MARCHE PAS
-		$('select[name=test]').val(1);
-		$('select[name=test]').change();
-		
-		$("#planes").val(tailNumber).change();
-		$("#tasks").text(data.taskNumber);
-		$("#mros").val(data.idMRO).change();
+	    console.log(data.id);
+	    console.log(tailNumber);
+		console.log(data.idPlane);
+        console.log(data.taskNumber);
+        console.log(data.idMRO);
+        console.log(data.deadline);
+
+
+
+        $("#planes").val(data.idPlane).prop('selected',true);
+
+		$("#tasks").val(data.taskNumber).prop('selected',true);
+		$("#mros").val(data.idMRO).prop('selected',true);
 		$("#deadline").val(data.deadline).change();
+        $(".selectpicker").selectpicker('refresh');
 
 		if (data.type == "base")
 			$("#radio2").prop('checked', true);
@@ -86,13 +92,12 @@ function printMROs(data) {
 $(document).ready(function() {
 	$("#plane_number").html(getURLParam("planeTailNumber"));
 
-	fillFields();
+    retrieveData("ws/planes");
+    retrieveData("ws/mpd");
+    retrieveData("ws/mro");
+    // **** UPDATE AU LIEU DE ADD ICI **** //
 
-	retrieveData("ws/mpd");
-//	retrieveData("ws/mro");
-
-	// **** UPDATE AU LIEU DE ADD ICI **** //
-
+    fillFields();
 	$("#add").click(function() {
 		var task = {
 			id : new Date().getUTCMilliseconds(),

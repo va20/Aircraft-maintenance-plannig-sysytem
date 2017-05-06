@@ -108,9 +108,11 @@ function deleteTask(idTask) {
 	$.ajax({
 		url : "ws/tasks/" + idTask,
 		type : "DELETE",
-		dataType : "json"
-	}).done(function() {
-		location.reload(true);
+		dataType : "json",
+        seccess: setTimeout(function () {
+            location.reload(true);
+        },1000)
+
 	});
 }
 
@@ -186,16 +188,19 @@ function mroFilter() {
 
 $(document).ready(function() {
 	getTasks();
-
 	planesFilter();
 	mroFilter();
-
 	filtering();
 
 	// edit page
 	$("#tasks").on("click", "a.btn-info", function() {
-		location.href = "edit_task.html";
-	});
+
+		var id = $(this).attr("id");
+        var planeId = $("#plane").attr("class");
+		location.href = "edit_task.html?planeTailNumber="
+			+ planeId.taskNumber + "&planeId="
+			+ planeId + "&task=" + id;
+        });
 
 	// confirm delete
 	$("#tasks").on("click", "a.btn-danger", function() {

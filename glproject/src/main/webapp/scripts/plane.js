@@ -67,9 +67,11 @@ function deleteTask(idTask) {
 	$.ajax({
 		url : "ws/tasks/" + idTask,
 		type : "DELETE",
-		dataType : "json"
-	}).done(function() {
-		location.reload(true);
+		dataType : "json",
+		seccess: setTimeout(function () {
+            location.reload(true);
+        },500)
+
 	});
 }
 
