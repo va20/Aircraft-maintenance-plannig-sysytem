@@ -77,7 +77,7 @@
 						title="Select a task" data-live-search="true">
 						<script id="listTasks" type="text/html">
 							<% _.each(item, function(item) { %>
-							<option><%= item.taskNumber %></option>
+							<option value="<%= item.taskNumber %>"><%= item.taskNumber %></option>
 							<% }); %>
 						</script>
 					</select>

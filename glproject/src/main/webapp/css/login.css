@@ -4,8 +4,7 @@ html, body {
 }
 
 body {
-	background-image: linear-gradient(rgb(90, 121, 127), #BABEC4);
-	background-size: cover;
+	background-image: "css/Images/sky.jpg";
 	font-size: 16px;
 	font-family: 'Lato', sans-serif;
 	font-weight: 300;
@@ -66,12 +65,7 @@ p.small {
 	margin: 0;
 }
 
-.top {
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	background-color: grey;
-}
+
 
 .login-box {
 	background-color: white;
