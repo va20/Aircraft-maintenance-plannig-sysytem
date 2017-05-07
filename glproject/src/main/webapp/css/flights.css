@@ -9,21 +9,13 @@ td, th {
 	padding: 5px;
 }
 
-#rcorners {
-	color: #665851;
-	border-radius: 7px;
-	background-color: #FFFFFF;
-	padding: 20px;
-	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-	-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-	position: relative;
-	z-index: 2;
-}
-
 #thead_row {
 	color: white;
 	opacity: 0.8;
 	background-color: #333;
 	opacity: 0.8;
+}
+
+.form-group {
+	margin-top: 10px;
 }

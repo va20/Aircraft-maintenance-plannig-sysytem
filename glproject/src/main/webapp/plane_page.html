@@ -11,51 +11,7 @@
 </head>
 
 <body>
-	<script>
-		if (localStorage.length == 0) {
-			location.href = "/login.html"
-		}
-	</script>
-	<div class="body-wrap">
-		<div class="container">
-			<nav class="navbar navbar-inverse" role="navigation">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse"
-							data-target="#bs-example-navbar-collapse-1">
-							<span class="sr-only">Toggle navigation</span> <span
-								class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="#">MCC</a>
-					</div>
-					<div class="collapse navbar-collapse"
-						id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav">
-							<li><a href="plane_list.html">Planes</a></li>
-							<li><a href="flight_list.html">Flights</a></li>
-							<li><a href="maintenance_planning.html">Maintenance
-									Planning</a></li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown">Import <b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><input type="file" id="upload" style="display: none" /><a
-										href="" id="import">MPD</a>
-									</li>
-									<li><input type="file" id="upload_flights" style="display: none"/>
-										<a href="" id="import_flights">Flights</a>
-									</li>
-								</ul></li>
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="logout.html">Logout</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</div>
-
+	<div w3-include-HTML="menu.html"></div>
 
 	<div class="container">
 		<div class="w3-half">
@@ -111,9 +67,11 @@
 				</tbody>
 			</table>
 		</div>
-		<button id="add" class="btn btn-primary" type="button">
-			<span class="glyphicon glyphicon-plus-sign"></span>
-		</button>
+		<div class="center">
+			<button id="add" class="btn btn-primary" type="button">
+				<span class="glyphicon glyphicon-plus"></span>
+			</button>
+		</div>
 	</div>
 
 	<!-- Modal -->
@@ -138,11 +96,16 @@
 		</div>
 	</div>
 
+	<script>
+		if (localStorage.length == 0)
+			location.href = "/login.html"
+	</script>
 	<script src="scripts/jquery-3.1.1.min.js"></script>
 	<script src="scripts/bootstrap.min.js"></script>
 	<script src="scripts/underscore-min.js"></script>
 	<script src="scripts/moment.js"></script>
 	<script src="scripts/w3.js"></script>
+	<script>w3.includeHTML();</script>
 	<script src="scripts/menu.js"></script>
 	<script src="scripts/plane.js"></script>
 	<script src="scripts/modal.js"></script>

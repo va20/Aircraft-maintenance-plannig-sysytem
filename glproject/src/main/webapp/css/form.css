@@ -67,7 +67,8 @@ bs-docs-example {
 	font-size: 15px;
 	text-transform: uppercase;
 	color: #665851;
-	margin-bottom: 10px;
+	margin-bottom: 25px;
+	font-weight: bold;
 }
 
 .custom-control-input {

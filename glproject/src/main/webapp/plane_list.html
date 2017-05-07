@@ -55,12 +55,9 @@
 		</div>
 	</div>
 
+	<div w3-include-HTML="menu.html"></div>
+	
 	<div class="container">
-		<div class="w3-half">
-			<div class="w3-panel w3-border x">
-				<h1>Planes</h1>
-			</div>
-		</div>
 		<div id="planes">
 			<script id="list_planes" type="text/html">
 						<% _.each(item, function(item, index) { %>
@@ -83,9 +80,15 @@
 		</div>
 	</div>
 
+	<script>
+		if (localStorage.length == 0)
+			location.href = "/login.html"
+	</script>
 	<script src="scripts/jquery-3.1.1.min.js"></script>
 	<script src="scripts/bootstrap.min.js"></script>
 	<script src="scripts/underscore-min.js"></script>
+	<script src="scripts/w3.js"></script>
+	<script>w3.includeHTML();</script>
 	<script src="scripts/menu.js"></script>
 	<script src="scripts/planes.js"></script>
 </body>

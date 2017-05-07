@@ -25,7 +25,8 @@ $(document).ready(function() {
 	})
 
 	// retrieve taskNumber
-	$("#tableTasks").on("click", "tr.tasks", function() {
-		getGenericTask($(this.cells[1]).text());
+	$("#tasks").on("click", "a.btn-info", function() {
+		var taskNumber = $(this).attr("id");
+		getGenericTask(taskNumber);
 	});
 });

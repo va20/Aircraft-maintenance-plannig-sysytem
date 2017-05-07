@@ -12,57 +12,11 @@
 </head>
 
 <body>
-	<div class="body-wrap">
-		<div class="container">
-			<nav class="navbar navbar-inverse" role="navigation">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse"
-							data-target="#bs-example-navbar-collapse-1">
-							<span class="sr-only">Toggle navigation</span> <span
-								class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="#">MCC</a>
-					</div>
-					<div class="collapse navbar-collapse"
-						id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav">
-							<li><a href="plane_list.html">Planes</a></li>
-							<li><a href="flight_list.html">Flights</a></li>
-							<li><a href="maintenance_planning.html">Maintenance
-									Planning</a></li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown">Import <b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><input type="file" id="upload" style="display: none" /><a
-										href="" id="import">MPD</a>
-									</li>
-									<li><input type="file" id="upload_flights" style="display: none"/>
-										<a href="" id="import_flights">Flights</a>
-									</li>
-								</ul></li>
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="logout.html">Logout</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="w3-half">
-			<div class="w3-panel w3-border x">
-				<h1>Maintenance planning</h1>
-			</div>
-		</div>
-	</div>
+	<div w3-include-HTML="menu.html"></div>
 
 	<div id="rcorners" class="container">
 		<div class="text-center">
-			<span><strong>Plane</strong></span> <select id="plane-filter"
+			<select id="plane-filter" title="Filter by plane"
 				class="selectpicker" data-size="auto">
 				<option value="default">Any</option>
 				<script id="listPlanes" type="text/html">
@@ -70,8 +24,8 @@
 									<option value="<%= item %>"><%= item %></option>
 								<% }); %>
 							</script>
-			</select> <span><strong>MRO</strong></span> <select id="mro-filter"
-				class="selectpicker" data-size="auto">
+			</select><select id="mro-filter" title="Filter by MRO" class="selectpicker"
+				data-size="auto">
 				<option value="default">Any</option>
 				<script id="listMROs" type="text/html">
 								<% _.each(item, function(item) { %>
@@ -90,7 +44,7 @@
 
 	<br>
 
-	<div id="rcorners" class="container">
+	<div id="rcorners-table" class="container">
 		<div class="table-responsive">
 			<table class="table table-hover" id="tableTasks">
 				<thead>
@@ -107,10 +61,7 @@
 				<tbody id="tasks">
 					<script id="list_tasks" type="text/html">
 						<% _.each(item, function(item, i) { %>
-                    		<tr class="tasks" data-toggle="modal" data-target="#genericTaskInfo"
-								data-task-id="<%= i %>"
-              					data-plane="<%= item.idPlane %>"
-              					data-mro="<%= item.idMRO %>">
+                    		<tr class="tasks">
 								<td id ="plane" class="<%= item.idPlane %>"></td>
                         		<td><%= item.taskNumber %></td>
 								<td><%= item.airport %></td>
@@ -118,22 +69,32 @@
                         		<td><%= moment(item.deadline).toISOString() %></td>
                         		<td id="type" class="<%= item.type %>"><%= item.type %></td>
 								<td class="text-center">
-								<a id="<%= item.id %>" class="btn btn-info btn-xs">
+								<a id="<%= item.taskNumber %>" class="btn btn-info btn-xs" data-toggle="modal" 
+								data-target="#genericTaskInfo">
+									<span class="glyphicon glyphicon-info-sign"></span></a>
+								<a id="<%= item.id %>" class="btn btn-warning btn-xs">
 									<span class="glyphicon glyphicon-edit"></span></a>
 								<a id="<%= item.id %>" class="btn btn-danger btn-xs">
 									<span class="glyphicon glyphicon-trash"></span></a>
+
 								</td>
                    		 	</tr>
 						<% }); %>
 					</script>
 				</tbody>
 			</table>
-			<div class="center">
-				<div class="paging-container pagination" id="tablePaging"></div>
-				<button id="add" class="btn btn-success" type="button">
-					<span class="glyphicon glyphicon-plus"></span>
-				</button>
-			</div>
+
+		</div>
+	</div>
+
+	<br>
+
+	<div id="rcorners" class="container">
+		<div class="center">
+			<div class="paging-container pagination" id="tablePaging"></div>
+			<!-- 			<button id="add" class="btn btn-success" type="button"> -->
+			<!-- 				<span class="glyphicon glyphicon-plus"></span> -->
+			<!-- 			</button> -->
 		</div>
 	</div>
 
@@ -159,11 +120,6 @@
 		</div>
 	</div>
 
-	<form action="add_task.html">
-		<input type="hidden" name="plane" value="" /> <input
-			type="submit" value="Envoyer les données">
-	</form>
-
 	<script>
 		if (localStorage.length == 0)
 			location.href = "/login.html"
@@ -174,6 +130,7 @@
 	<script src="scripts/underscore-min.js"></script>
 	<script src="scripts/jquery.modal.min.js"></script>
 	<script src="scripts/w3.js"></script>
+	<script>w3.includeHTML();</script>
 	<script src="scripts/pagination.js"></script>
 	<script src="scripts/moment.js"></script>
 	<script src="scripts/menu.js"></script>

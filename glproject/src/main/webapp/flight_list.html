@@ -66,6 +66,8 @@
 		</div>
 	</div>
 
+	<div w3-include-HTML="menu.html"></div>
+
 	<div id="rcorners" class="container">
 		<div class="form-group has-feedback">
 			<input class="form-control searchbar" type="text"
@@ -73,7 +75,11 @@
 				onkeyup="w3.filterHTML('#table_flights', '.flights', this.value)"><i
 				class="glyphicon glyphicon-filter form-control-feedback"></i>
 		</div>
+	</div>
 
+	<br>
+
+	<div id="rcorners-table" class="container">
 		<div class="table-responsive">
 			<table class="table table-hover" id="table_flights">
 				<thead>
@@ -106,11 +112,16 @@
 		</div>
 	</div>
 
+	<script>
+		if (localStorage.length == 0)
+			location.href = "/login.html"
+	</script>
 	<script src="scripts/jquery-3.1.1.min.js"></script>
 	<script src="scripts/bootstrap.min.js"></script>
 	<script src="scripts/underscore-min.js"></script>
 	<script src="scripts/moment.js"></script>
 	<script src="scripts/w3.js"></script>
+	<script>w3.includeHTML();</script>
 	<script src="scripts/menu.js"></script>
 	<script src="scripts/flights.js"></script>
 </body>

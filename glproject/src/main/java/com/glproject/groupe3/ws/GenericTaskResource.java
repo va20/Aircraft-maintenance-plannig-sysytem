@@ -52,10 +52,11 @@ public class GenericTaskResource {
 	}
 
 //	@GET
-//	@Path("/{typeOfGenericTask}")
+//	@Path("/{type}")
 //	@Produces(MediaType.APPLICATION_JSON)
-//	public List<GenericTask> getMPDByTypeOfPlane(@PathParam("taskNumber") String typeOfGenericTask) {
+//	public List<GenericTask> getMPDByTypeOfPlane(@PathParam("type") String type) {
+//		System.out.println(type);
 //		return ((GenericTaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO())
-//				.getMPDByTypeOfPlane(typeOfGenericTask);
+//				.getMPDByTypeOfPlane(type);
 //	}
 }

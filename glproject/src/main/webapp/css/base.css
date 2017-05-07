@@ -6,8 +6,20 @@ body, html {
 	font-family: Verdana, Geneva, sans-serif;
 }
 
+.navbar {
+	margin-bottom : 100px;
+}
+
 .marginBottom-0 {
 	margin-bottom: 0;
+}
+
+.dropdown {
+	cursor: pointer;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
 }
 
 .dropdown-submenu {
@@ -54,35 +66,24 @@ body, html {
 	border-radius: 6px 0 6px 6px;
 }
 
-.w3-panel {
-	padding: 0.01em 16px;
-	margin-top: 16px !important;
-	margin-bottom: 16px !important
+#rcorners-table {
+	color: #665851;
+	border-radius: 7px;
+	background-color: #FFFFFF;
+	padding: 20px 20px 0px 20px;
+	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	position: relative;
 }
 
-.w3-half {
-	float: left;
-	width: 100%
-}
-
-.x {
-	margin-bottom: 90px !important;
-	background-color: #333;
-	opacity: 0.8;
-	border: 4px solid #222 !important;
-	padding: 10px;
-	text-align: center;
-	vertical-align: middle;
-	font-size: 18px;
-	color: white;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
-		rgba(0, 0, 0, 0.19);
-}
-
-.x h1 {
-	font-size: 50px;
-}
-
-.w3-border {
-	border: 1px solid #ccc !important
+#rcorners {
+	color: #665851;
+	border-radius: 7px;
+	background-color: #FFFFFF;
+	padding: 10px 10px 0px 10px;
+	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	position: relative;
 }

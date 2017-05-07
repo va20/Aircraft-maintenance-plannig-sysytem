@@ -12,7 +12,7 @@ function retrieveData(ws) {
 		dataType : "json"
 	}).done(function(data) {
 		if (ws == "ws/planes")
-			printPlanes(data);
+			printPlanes(data)
 		else if (ws == "ws/mpd")
 			printGenericTasks(data);
 		else if (ws == "ws/mro")
