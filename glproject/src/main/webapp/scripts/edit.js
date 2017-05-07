@@ -20,21 +20,13 @@ function fillFields() {
 		type : "GET",
 		dataType : "json"
 	}).done(function(data) {
-	    console.log(data.id);
-	    console.log(tailNumber);
-		console.log(data.idPlane);
-        console.log(data.taskNumber);
-        console.log(data.idMRO);
-        console.log(data.deadline);
 
-
-
-        $("#planes").val(data.idPlane).prop('selected',true);
-
-		$("#tasks").val(data.taskNumber).prop('selected',true);
-		$("#mros").val(data.idMRO).prop('selected',true);
-		$("#deadline").val(data.deadline).change();
+        $("#planes").val(data.idPlane);
+		$("#tasks").val(data.taskNumber);
+		$("#mros").val(data.idMRO);
+		$("#deadline").val(data.deadline);
         $(".selectpicker").selectpicker('refresh');
+
 
 		if (data.type == "base")
 			$("#radio2").prop('checked', true);

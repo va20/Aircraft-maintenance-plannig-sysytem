@@ -16,8 +16,8 @@ public class FillDatabase {
 	public static void fill() throws NoSuchAlgorithmException {
 		addStaffs();
 		addPlanes();
-		addFlights();
-		addGenericTasks();
+		//addFlights();
+		//addGenericTasks();
 		addTasks();
 		addMROs();
 	}

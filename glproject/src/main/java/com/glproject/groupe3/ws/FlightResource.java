@@ -5,9 +5,12 @@ import com.glproject.groupe3.DAO.Factory;
 import com.glproject.groupe3.DAOImpl.FlightDAOImpl;
 import com.glproject.groupe3.businessobjects.Flight;
 import com.glproject.groupe3.util.Constants;
+import com.glproject.groupe3.util.SpreadsheetParser;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.io.InputStream;
 import java.util.List;
 
 @Path("/" + Constants.FLIGHTS)
@@ -34,6 +37,12 @@ public class FlightResource {
 	public void addFlight(Flight flight) {
 		((FlightDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getFlightDAO()).add(flight,
 				Constants.FLIGHTS, flight.getCommercial());
+	}
+
+	@PUT
+	@Consumes(MediaType.MULTIPART_FORM_DATA)
+	public void importFlights_list(@FormDataParam("file") InputStream input){
+		new SpreadsheetParser().importFlights(input);
 	}
 
 	@DELETE
