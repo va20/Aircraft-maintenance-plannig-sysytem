@@ -74,7 +74,7 @@ $(document).ready(function() {
 				processData: false,
 				contentType: false,
 				success: function(data){
-					alert("Flights list uploaded for "+flights_file.name.split(".")[0]);
+					alert("Flights list uploaded ");
 					location.href= "flight_list.html";
 				},
 				error: function(xhr,ajaxOptions,thrownError){

@@ -188,7 +188,7 @@ function mroFilter() {
 
 $(document).ready(function() {
 	getTasks();
-	
+
 	planesFilter();
 	mroFilter();
 
