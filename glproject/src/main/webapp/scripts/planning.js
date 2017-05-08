@@ -111,7 +111,7 @@ function deleteTask(idTask) {
 		dataType : "json",
         seccess: setTimeout(function () {
             location.reload(true);
-        },1000)
+        },400)
 
 	});
 }
@@ -197,7 +197,7 @@ $(document).ready(function() {
 		var id = $(this).attr("id");
         var planeId = $("#plane").attr("class");
 		location.href = "edit_task.html?planeTailNumber="
-			+ planeId.taskNumber + "&planeId="
+			+ $("#plane_number").html() + "&planeId="
 			+ planeId + "&task=" + id;
         });
 

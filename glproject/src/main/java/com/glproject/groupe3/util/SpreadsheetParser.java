@@ -108,19 +108,22 @@ public class SpreadsheetParser implements Parser {
 
 					switch (column) {
 						case 0:
-							flight.setCommercial(cell.getStringCellValue());
+							flight.setIdPlane((long) cell.getNumericCellValue());
 							break;
 						case 1:
-							flight.setDepAirport(cell.getStringCellValue());
+							flight.setCommercial(cell.getStringCellValue());
 							break;
 						case 2:
-							flight.setArrAirport(cell.getStringCellValue());
+							flight.setDepAirport(cell.getStringCellValue());
 							break;
 						case 3:
+							flight.setArrAirport(cell.getStringCellValue());
+							break;
+						case 4:
 							DateTime d=new DateTime(cell.getDateCellValue());
 							flight.setDepTime(d);
 							break;
-						case 4:
+						case 5:
 							DateTime date=new DateTime(cell.getDateCellValue());
 							flight.setArrTime(date);
 							break;

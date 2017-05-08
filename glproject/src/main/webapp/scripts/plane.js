@@ -70,7 +70,7 @@ function deleteTask(idTask) {
 		dataType : "json",
 		seccess: setTimeout(function () {
             location.reload(true);
-        },1000)
+        },400)
 
 	});
 }

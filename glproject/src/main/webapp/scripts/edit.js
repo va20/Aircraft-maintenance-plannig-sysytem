@@ -84,13 +84,15 @@ function printMROs(data) {
 $(document).ready(function() {
 	$("#plane_number").html(getURLParam("planeTailNumber"));
 
-    retrieveData("ws/planes");
     retrieveData("ws/mpd");
     retrieveData("ws/mro");
+    retrieveData("ws/planes");
     // **** UPDATE AU LIEU DE ADD ICI **** //
+    setTimeout(function () {
+        fillFields();
+    },100);
 
-    fillFields();
-	$("#add").click(function() {
+    $("#add").click(function() {
 		var task = {
 			id : new Date().getUTCMilliseconds(),
 			idPlane : $("#planes option:selected").val(),
