@@ -3,6 +3,15 @@ package com.glproject.groupe3.businessobjects;
 import org.joda.time.DateTime;
 
 public class Task {
+
+	public enum Status {
+		DONE, NDONE, ONGOING;
+	}
+	
+	public enum Warning {
+		NONE, GREEN, ORANGE, RED;
+	}
+
 	private long id;
 	private long idPlane;
 	private String airport;
@@ -10,11 +19,14 @@ public class Task {
 	private DateTime deadline;
 	private String taskNumber;
 	private String type;
+	private Status status;
+	private Warning warning;
 
 	public Task() {
 	}
 
-	public Task(long id, long idPlane, String airport, long idMRO, DateTime deadline, String taskNumber, String type) {
+	public Task(long id, long idPlane, String airport, long idMRO, DateTime deadline, String taskNumber, String type,
+			Status status, Warning warning) {
 		super();
 		this.id = id;
 		this.idPlane = idPlane;
@@ -23,6 +35,8 @@ public class Task {
 		this.deadline = deadline;
 		this.taskNumber = taskNumber;
 		this.type = type;
+		this.status = status;
+		this.warning = warning;
 	}
 
 	public long getId() {
@@ -81,9 +95,19 @@ public class Task {
 		this.type = type;
 	}
 
-	@Override
-	public String toString() {
-		return "Task [id=" + id + ", idPlane=" + idPlane + ", airport=" + airport + ", idMRO=" + idMRO + ", deadline="
-				+ deadline + ", taskNumber=" + taskNumber + ", type=" + type + "]";
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public Warning getWarning() {
+		return warning;
+	}
+
+	public void setWarning(Warning warning) {
+		this.warning = warning;
 	}
 }

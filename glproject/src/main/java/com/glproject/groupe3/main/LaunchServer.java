@@ -17,18 +17,11 @@ import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
-//TODO : 
-//ajouter logger a la place des printstackstrace
-//fichier de configuration database
-
 public class LaunchServer {
 
 	public static void main(String[] args) throws NoSuchAlgorithmException, FileNotFoundException {
 		// Initialize the server
 		Server server = new Server();
-
-		// new SpreadsheetParser().importFile(new
-		// FileInputStream("src/main/resources/Airbus A320.xlsx"));
 
 		// Add a connector
 		ServerConnector connector = new ServerConnector(server);

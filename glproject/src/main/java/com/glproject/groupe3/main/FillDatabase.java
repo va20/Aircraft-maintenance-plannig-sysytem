@@ -1,23 +1,36 @@
 package com.glproject.groupe3.main;
 
-import com.glproject.groupe3.DAO.AbstractDAOFactory;
-import com.glproject.groupe3.DAO.Factory;
-import com.glproject.groupe3.DAOImpl.*;
-import com.glproject.groupe3.businessobjects.*;
-import com.glproject.groupe3.util.Constants;
-import org.joda.time.DateTime;
-
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.joda.time.DateTime;
+
+import com.glproject.groupe3.DAO.AbstractDAOFactory;
+import com.glproject.groupe3.DAO.Factory;
+import com.glproject.groupe3.DAOImpl.FlightDAOImpl;
+import com.glproject.groupe3.DAOImpl.GenericTaskDAOImpl;
+import com.glproject.groupe3.DAOImpl.MRODAOImpl;
+import com.glproject.groupe3.DAOImpl.PlaneDAOImpl;
+import com.glproject.groupe3.DAOImpl.StaffDAOImpl;
+import com.glproject.groupe3.DAOImpl.TaskDAOImpl;
+import com.glproject.groupe3.businessobjects.Flight;
+import com.glproject.groupe3.businessobjects.GenericTask;
+import com.glproject.groupe3.businessobjects.MRO;
+import com.glproject.groupe3.businessobjects.Plane;
+import com.glproject.groupe3.businessobjects.Staff;
+import com.glproject.groupe3.businessobjects.Task;
+import com.glproject.groupe3.businessobjects.Task.Status;
+import com.glproject.groupe3.businessobjects.Task.Warning;
+import com.glproject.groupe3.util.Constants;
 
 public class FillDatabase {
 
 	public static void fill() throws NoSuchAlgorithmException {
 		addStaffs();
 		addPlanes();
-		//addFlights();
-		//addGenericTasks();
+		addFlights();
+		// addGenericTasks();
 		addTasks();
 		addMROs();
 	}
@@ -39,6 +52,7 @@ public class FillDatabase {
 		Staff staff7 = new Staff("vianel", "ebourefe", "vianel", "pwd");
 		Staff staff8 = new Staff("arnaud", "duhamel", "arnaud", "pwd");
 		Staff staff9 = new Staff("rayane", "mouaatarif", "rayane", "pwd");
+		Staff staff10 = new Staff("MCC", "m	cc", "mcc", "pwd");
 
 		list.add(staff1);
 		list.add(staff2);
@@ -49,8 +63,9 @@ public class FillDatabase {
 		list.add(staff7);
 		list.add(staff8);
 		list.add(staff9);
+		list.add(staff10);
 
-		for (int i = 0; i < 9; i++) {
+		for (int i = 0; i < list.size(); i++) {
 			((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).add(list.get(i),
 					Constants.STAFFS, String.valueOf(list.get(i).getLogin()));
 		}
@@ -132,38 +147,38 @@ public class FillDatabase {
 
 	public static void addTasks() {
 		List<Task> list = new ArrayList<Task>();
-		Task t1 = new Task(1, 2, "LFPA", 10, new DateTime(), "200001-01-1", "base");
-		Task t2 = new Task(2, 2, "LFPO", 11, new DateTime(), "200001-02-1", "inline");
-		Task t3 = new Task(3, 3, "LPPO", 11, new DateTime(), "200002-01-1", "inline");
-		Task t4 = new Task(4, 3, "MLPO", 13, new DateTime(), "200003-01-1", "base");
-		Task t5 = new Task(5, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline");
-
-		Task t6 = new Task(6, 2, "LFPA", 10, new DateTime(), "200001-01-1", "base");
-		Task t7 = new Task(7, 2, "LFPO", 11, new DateTime(), "200001-02-1", "inline");
-		Task t8 = new Task(8, 3, "LPPO", 11, new DateTime(), "200002-01-1", "inline");
-		Task t9 = new Task(9, 3, "MLPO", 13, new DateTime(), "200003-01-1", "base");
-		Task t10 = new Task(10, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline");
-
-		Task t11 = new Task(11, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline");
-		Task t12 = new Task(12, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline");
+		Task t1 = new Task(515412, 2, "LFPA", 10, new DateTime().minusSeconds(58), "200001-01-1", "base", Status.NDONE, Warning.NONE);
+		Task t2 = new Task(785757, 2, "LFPO", 11, new DateTime().minusSeconds(19), "200001-02-1", "inline", Status.NDONE, Warning.NONE);
+//		Task t3 = new Task(3, 3, "LPPO", 11, new DateTime(), "200002-01-1", "inline", Status.NDONE, null);
+//		Task t4 = new Task(4, 3, "MLPO", 13, new DateTime(), "200003-01-1", "base", Status.NDONE, null);
+//		Task t5 = new Task(5, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline", Status.NDONE, null);
+//
+//		Task t6 = new Task(6, 2, "LFPA", 10, new DateTime(), "200001-01-1", "base", Status.NDONE, null);
+//		Task t7 = new Task(7, 2, "LFPO", 11, new DateTime(), "200001-02-1", "inline", Status.NDONE, null);
+//		Task t8 = new Task(8, 3, "LPPO", 11, new DateTime(), "200002-01-1", "inline", Status.NDONE, null);
+//		Task t9 = new Task(9, 3, "MLPO", 13, new DateTime(), "200003-01-1", "base", Status.NDONE, null);
+//		Task t10 = new Task(10, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline", Status.NDONE, null);
+//
+//		Task t11 = new Task(11, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline", Status.NDONE, null);
+//		Task t12 = new Task(12, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline", Status.NDONE, null);
 
 		list.add(t1);
 		list.add(t2);
-		list.add(t3);
-		list.add(t4);
-		list.add(t5);
+//		list.add(t3);
+//		list.add(t4);
+//		list.add(t5);
+//
+//		// TEST PAGINATION //
+//		list.add(t6);
+//		list.add(t7);
+//		list.add(t8);
+//		list.add(t9);
+//		list.add(t10);
+//
+//		list.add(t11);
+//		list.add(t12);
 
-		// TEST PAGINATION //
-		list.add(t6);
-		list.add(t7);
-		list.add(t8);
-		list.add(t9);
-		list.add(t10);
-
-		list.add(t11);
-		list.add(t12);
-
-		for (int i = 0; i < list.size(); i++) {
+		for (int i = 0; i < 2; i++) {
 			((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).add(list.get(i),
 					Constants.TASKS, String.valueOf(list.get(i).getId()));
 		}

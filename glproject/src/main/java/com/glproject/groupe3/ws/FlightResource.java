@@ -41,7 +41,7 @@ public class FlightResource {
 
 	@PUT
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
-	public void importFlights_list(@FormDataParam("file") InputStream input){
+	public void importFlights(@FormDataParam("file") InputStream input){
 		new SpreadsheetParser().importFlights(input);
 	}
 

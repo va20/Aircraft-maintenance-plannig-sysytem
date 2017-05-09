@@ -20,7 +20,7 @@ import java.io.InputStream;
 import java.util.Iterator;
 
 public class SpreadsheetParser implements Parser {
-	ElasticSearchClient esc = ElasticSearchClient.getInstance();
+	private ElasticSearchClient esc = ElasticSearchClient.getInstance();
 
 	public void importFile(InputStream mpd) {
 		try {
@@ -85,9 +85,9 @@ public class SpreadsheetParser implements Parser {
 		}
 	}
 
-	public void importFlights(InputStream flight_file) {
+	public void importFlights(InputStream flightFile) {
 		try {
-			Workbook workbook = new XSSFWorkbook(flight_file);
+			Workbook workbook = new XSSFWorkbook(flightFile);
 			Sheet firstSheet = workbook.getSheetAt(0);
 			if (firstSheet == null)
 				return;
@@ -107,26 +107,26 @@ public class SpreadsheetParser implements Parser {
 					int column = cell.getColumnIndex();
 
 					switch (column) {
-						case 0:
-							flight.setIdPlane((long) cell.getNumericCellValue());
-							break;
-						case 1:
-							flight.setCommercial(cell.getStringCellValue());
-							break;
-						case 2:
-							flight.setDepAirport(cell.getStringCellValue());
-							break;
-						case 3:
-							flight.setArrAirport(cell.getStringCellValue());
-							break;
-						case 4:
-							DateTime d=new DateTime(cell.getDateCellValue());
-							flight.setDepTime(d);
-							break;
-						case 5:
-							DateTime date=new DateTime(cell.getDateCellValue());
-							flight.setArrTime(date);
-							break;
+					case 0:
+						flight.setIdPlane((long) cell.getNumericCellValue());
+						break;
+					case 1:
+						flight.setCommercial(cell.getStringCellValue());
+						break;
+					case 2:
+						flight.setDepAirport(cell.getStringCellValue());
+						break;
+					case 3:
+						flight.setArrAirport(cell.getStringCellValue());
+						break;
+					case 4:
+						DateTime d = new DateTime(cell.getDateCellValue());
+						flight.setDepTime(d);
+						break;
+					case 5:
+						DateTime date = new DateTime(cell.getDateCellValue());
+						flight.setArrTime(date);
+						break;
 					}
 				}
 
@@ -135,7 +135,7 @@ public class SpreadsheetParser implements Parser {
 				System.out.println(flight.toString());
 			}
 
-			flight_file.close();
+			flightFile.close();
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

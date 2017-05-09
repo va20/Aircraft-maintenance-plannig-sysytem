@@ -20,8 +20,29 @@ function printPlanes(data) {
 $(document).ready(function() {
 	getPlanes();
 
-	$("div").on("click", "a.btn", function(e) {
-		var tailNumber =  $(this).attr("id");
+	var tab = [];
+	var orange = [];
+
+	$.ajax({
+		url : "ws/tasks",
+		type : "GET",
+		dataType : "json"
+	}).done(function(data) {
+		tab = _.filter(data, function(item) {
+			return item.warning != "NONE";
+		});
+
+		_.each(tab, function(item) {
+			if (item.warning == "ORANGE") {
+				$("#" + item.idPlane).addClass("btn-orange");
+			} else if (item.warning == "RED") {
+				$("#" + item.idPlane).addClass("btn-red");
+			}
+		});
+	});
+
+	$("div").on("click", ".col-lg-3", function(e) {
+		var tailNumber = $(this).attr("id");
 		location.href = "plane_page.html?plane=" + tailNumber;
 	});
 });

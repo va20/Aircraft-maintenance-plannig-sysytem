@@ -65,8 +65,10 @@ public class TaskResource {
 	}
 
 	@POST
+	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void updateTask(Task task) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public Task updateTask(@PathParam("id") long id, Task task) {
 		ObjectMapper mapper = new ObjectMapper();
 		String json = null;
 
@@ -87,8 +89,10 @@ public class TaskResource {
 			e.printStackTrace();
 		}
 
-		ur.doc(mapper);
+		ur.doc(json);
 
 		((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).update(ur);
+
+		return task;
 	}
 }

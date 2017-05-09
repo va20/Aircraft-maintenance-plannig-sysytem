@@ -47,9 +47,9 @@ public class StaffResource {
 	}
 
 	@DELETE
-	@Path("/{id}")
-	public void deleteStaffs(@PathParam("id") long id) {
+	@Path("/{login}")
+	public void deleteStaffs(@PathParam("id") String login) {
 		((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).delete(Constants.STAFFS,
-				String.valueOf(id));
+				login);
 	}
 }

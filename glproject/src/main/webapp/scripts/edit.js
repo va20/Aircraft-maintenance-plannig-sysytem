@@ -21,18 +21,16 @@ function fillFields() {
 		dataType : "json"
 	}).done(function(data) {
 
-        $("#planes").val(data.idPlane);
+		$("#planes").val(data.idPlane);
 		$("#tasks").val(data.taskNumber);
 		$("#mros").val(data.idMRO);
 		$("#deadline").val(data.deadline);
-        $(".selectpicker").selectpicker('refresh');
-
+		$(".selectpicker").selectpicker('refresh');
 
 		if (data.type == "base")
 			$("#radio2").prop('checked', true);
 		else if (data.type == "inline")
 			$("#radio1").prop('checked', true);
-
 	});
 }
 
@@ -84,15 +82,15 @@ function printMROs(data) {
 $(document).ready(function() {
 	$("#plane_number").html(getURLParam("planeTailNumber"));
 
-    retrieveData("ws/mpd");
-    retrieveData("ws/mro");
-    retrieveData("ws/planes");
-    // **** UPDATE AU LIEU DE ADD ICI **** //
-    setTimeout(function () {
-        fillFields();
-    },100);
+	retrieveData("ws/mpd");
+	retrieveData("ws/mro");
+	retrieveData("ws/planes");
 
-    $("#add").click(function() {
+	setTimeout(function() {
+		fillFields();
+	}, 100);
+
+	$("#add").click(function() {
 		var task = {
 			id : new Date().getUTCMilliseconds(),
 			idPlane : $("#planes option:selected").val(),
@@ -105,7 +103,7 @@ $(document).ready(function() {
 		console.log(JSON.stringify(task));
 
 		$.ajax({
-			url : "ws/tasks",
+			url : "ws/tasks" + id,
 			type : "POST",
 			contentType : "application/json",
 			dataType : "json",

@@ -61,11 +61,11 @@
 				<tbody id="tasks">
 					<script id="list_tasks" type="text/html">
 						<% _.each(item, function(item, i) { %>
-                    		<tr class="tasks">
-								<td id ="plane" class="<%= item.idPlane %>"></td>
+                    		<tr id="<%= item.id %>" class="tasks">
+								<td id="plane" class="<%= item.idPlane %>"></td>
                         		<td><%= item.taskNumber %></td>
 								<td><%= item.airport %></td>
-                        		<td class="<%= item.idMRO %>"><%= item.idMRO %></td>
+                        		<td class="<%= item.idMRO %>"></td>
                         		<td><%= moment(item.deadline).toISOString() %></td>
                         		<td id="type" class="<%= item.type %>"><%= item.type %></td>
 								<td class="text-center">
@@ -130,7 +130,9 @@
 	<script src="scripts/underscore-min.js"></script>
 	<script src="scripts/jquery.modal.min.js"></script>
 	<script src="scripts/w3.js"></script>
-	<script>w3.includeHTML();</script>
+	<script>
+		w3.includeHTML();
+	</script>
 	<script src="scripts/pagination.js"></script>
 	<script src="scripts/moment.js"></script>
 	<script src="scripts/menu.js"></script>
