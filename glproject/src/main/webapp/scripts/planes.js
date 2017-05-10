@@ -5,13 +5,6 @@ function checkTasks() {
 		dataType : "json"
 	}).done(function(data) {
 		setTasks(data);
-
-		_.each(data, function(item) {
-			if (item.warning == "ORANGE")
-				$("#" + item.idPlane).addClass("btn-orange");
-			else if (item.warning == "RED")
-				$("#" + item.idPlane).addClass("btn-red");
-		});
 	});
 }
 
@@ -44,10 +37,12 @@ function setTasks(data) {
 						type : "POST",
 						contentType : "application/json",
 						dataType : "json",
-						data : JSON.stringify(task),
-
-						success : function(data) {
-						}
+						data : JSON.stringify(task)
+					}).done(function(data) {
+						if (data.warning == "ORANGE")
+							$("#" + data.idPlane).addClass("btn-orange");
+						else if (data.warning == "RED")
+							$("#" + data.idPlane).addClass("btn-red");
 					});
 				});
 			}
