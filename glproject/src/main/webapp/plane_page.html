@@ -31,7 +31,7 @@
 
 		<div class="table-responsive">
 			<div class="alert alert-info" id="info">
-				<strong>Info!</strong> No tasks found.
+				<strong>Info!</strong> No task found.
 			</div>
 			<table class="table table-hover" id="tableTasks" data-toggle="table"
 				data-detail-view="true" data-detail-formatter="detailFormatter">
@@ -48,15 +48,17 @@
 				<tbody id="tasks">
 					<script id="list_tasks" type="text/html">
 						<% _.each(item, function(item, i) { %>
-                    		<tr class="tasks" data-toggle="modal" data-target="#genericTaskInfo">
-                         		<td class="planeId" style="display: none;"><%= item.idPlane %></td>
+                    		<tr id="<%= item.id %>" class="tasks">
                          		<td><%= item.taskNumber %></td>
 								<td><%= item.airport %></td>
                         		<td class="<%= item.idMRO %>"><%= item.idMRO %></td>
                         		<td><%= moment(item.deadline).toISOString() %></td>
                         		<td><%= item.type %></td>
 								<td class="text-center">
-								<a id="<%= item.id %>" class="btn btn-info btn-xs">
+								<a id="<%= item.taskNumber %>" class="btn btn-info btn-xs" data-toggle="modal" 
+								data-target="#genericTaskInfo">
+									<span class="glyphicon glyphicon-info-sign"></span></a>
+								<a id="<%= item.id %>" class="btn btn-warning btn-xs">
 									<span class="glyphicon glyphicon-edit"></span></a>
 								<a id="<%= item.id %>" class="btn btn-danger btn-xs">
 									<span class="glyphicon glyphicon-remove"></span></a>

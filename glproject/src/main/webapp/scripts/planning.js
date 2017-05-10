@@ -1,6 +1,4 @@
 var tab = {};
-var orange = [];
-var red = [];
 
 function getPlane(id) {
 	$.ajax({
@@ -73,7 +71,7 @@ function printTasks(data) {
 	});
 
 	$("#tasks").append(task);
-	
+
 	_.each(data, function(task) {
 		if (task.warning == "ORANGE")
 			$("#" + task.id).css("background-color", "rgba(255, 110, 0, 0.4)");
@@ -178,9 +176,8 @@ $(document).ready(
 					function() {
 						var id = $(this).attr("id");
 						var planeId = $("#plane").attr("class");
-						location.href = "edit_task.html?planeTailNumber="
-								+ $("#plane_number").html() + "&planeId="
-								+ planeId + "&task=" + id;
+						location.href = "edit_task.html?plane="
+								+ $("#plane_number").html() + "&task=" + id;
 					});
 
 			// confirm delete

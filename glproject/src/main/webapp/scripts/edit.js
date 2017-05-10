@@ -2,21 +2,18 @@ function getURLParam(param) {
 	var pageURL = window.location.search.substring(1);
 	var variablesURL = pageURL.split('&');
 
-	if (param == "planeTailNumber")
+	if (param == "plane")
 		return variablesURL[0].split('=')[1];
-	else if (param == "planeId")
-		return variablesURL[1].split('=')[1];
 
-	return variablesURL[2].split('=')[1];
+	return variablesURL[1].split('=')[1];
 }
 
 function fillFields() {
-	var tailNumber = getURLParam("planeTailNumber");
-	var planeId = getURLParam("planeId");
+	var tailNumber = getURLParam("plane");
 	var taskId = getURLParam("task");
 
 	$.ajax({
-		url : "ws/tasks/" + planeId + "/" + taskId,
+		url : "ws/tasks/" + taskId,
 		type : "GET",
 		dataType : "json"
 	}).done(function(data) {
@@ -80,7 +77,7 @@ function printMROs(data) {
 }
 
 $(document).ready(function() {
-	$("#plane_number").html(getURLParam("planeTailNumber"));
+	$("#plane_number").html(getURLParam("plane"));
 
 	retrieveData("ws/mpd");
 	retrieveData("ws/mro");

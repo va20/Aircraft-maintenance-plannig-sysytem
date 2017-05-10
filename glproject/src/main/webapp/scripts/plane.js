@@ -19,10 +19,8 @@ function getPlaneTasks() {
 		url : "ws/planes",
 		type : "GET",
 		dataType : "json",
-
-		success : function(data) {
-			getTasks(data);
-		},
+	}).done(function(data) {
+		getTasks(data);
 	});
 }
 
@@ -34,7 +32,7 @@ function getTasks(data) {
 	planeId = plane[0].id;
 
 	$.ajax({
-		url : "ws/tasks/" + planeId,
+		url : "ws/planes/" + planeId + "/tasks",
 		type : "GET",
 		dataType : "json"
 	}).done(function(data) {
@@ -61,6 +59,13 @@ function printTasks(data) {
 	});
 
 	$("#tasks").append(task);
+
+	_.each(data, function(task) {
+		if (task.warning == "ORANGE")
+			$("#" + task.id).css("background-color", "rgba(255, 110, 0, 0.4)");
+		else if (task.warning == "RED")
+			$("#" + task.id).css("background-color", "rgba(255, 0, 0, 0.4)");
+	});
 }
 
 function deleteTask(idTask) {
@@ -68,9 +73,9 @@ function deleteTask(idTask) {
 		url : "ws/tasks/" + idTask,
 		type : "DELETE",
 		dataType : "json",
-		seccess: setTimeout(function () {
-            location.reload(true);
-        },400)
+		seccess : setTimeout(function() {
+			location.reload(true);
+		}, 400)
 
 	});
 }
@@ -81,6 +86,16 @@ $(document).ready(
 
 			getPlaneTasks();
 
+			// edit page
+			$("#tasks").on(
+					"click",
+					"a.btn-warning",
+					function() {
+						var id = $(this).attr("id");
+						location.href = "edit_task.html?plane="
+								+ $("#plane_number").html() + "&task=" + id;
+					});
+
 			// delete
 			$("#tasks").on("click", "a.btn-danger", function() {
 				var idTask = $(this).attr("id");
@@ -88,17 +103,6 @@ $(document).ready(
 					deleteTask(idTask);
 				}
 			});
-
-			// edit page
-			$("#tasks").on(
-					"click",
-					"a.btn-info",
-					function() {
-						var id = $(this).attr("id");
-						location.href = "edit_task.html?planeTailNumber="
-								+ $("#plane_number").html() + "&planeId="
-								+ planeId + "&task=" + id;
-					});
 
 			// add page
 			$("#add").click(function() {

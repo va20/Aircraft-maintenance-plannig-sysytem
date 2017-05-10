@@ -13,8 +13,12 @@ import javax.ws.rs.core.MediaType;
 
 import com.glproject.groupe3.DAO.AbstractDAOFactory;
 import com.glproject.groupe3.DAO.Factory;
+import com.glproject.groupe3.DAOImpl.GenericTaskDAOImpl;
 import com.glproject.groupe3.DAOImpl.PlaneDAOImpl;
+import com.glproject.groupe3.DAOImpl.TaskDAOImpl;
+import com.glproject.groupe3.businessobjects.GenericTask;
 import com.glproject.groupe3.businessobjects.Plane;
+import com.glproject.groupe3.businessobjects.Task;
 import com.glproject.groupe3.util.Constants;
 
 @Path("/" + Constants.PLANES)
@@ -33,6 +37,22 @@ public class PlaneResource {
 	public Plane getPlane(@PathParam("id") long id) {
 		return ((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO())
 				.get(Constants.PLANES, String.valueOf(id));
+	}
+
+	@GET
+	@Path("/{type}/mpd")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<GenericTask> getMPDByTypeOfPlane(@PathParam("type") String type) {
+		return ((GenericTaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO())
+				.getMPDByTypeOfPlane(type);
+	}
+
+	@GET
+	@Path("/{id}/tasks")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Task> getTasksByPlane(@PathParam("id") long id) {
+		return ((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO())
+				.getTasksByPlane(String.valueOf(id));
 	}
 
 	@PUT

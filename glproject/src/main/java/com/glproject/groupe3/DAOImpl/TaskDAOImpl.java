@@ -3,6 +3,7 @@ package com.glproject.groupe3.DAOImpl;
 import com.glproject.groupe3.DAO.DAOImpl;
 import com.glproject.groupe3.DAO.TaskDAO;
 import com.glproject.groupe3.businessobjects.Task;
+import com.glproject.groupe3.util.Constants;
 
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.JsonParseException;
@@ -27,35 +28,34 @@ public class TaskDAOImpl extends DAOImpl<Task> implements TaskDAO {
 		List<Task> tasks = new ArrayList<Task>();
 		ObjectMapper mapper = new ObjectMapper();
 
-		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes("task");
+		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch(Constants.GL).setTypes(Constants.TASKS);
 		SearchResponse searchResponse = requestBuilder.get();
 		SearchHit[] searchHits = searchResponse.getHits().getHits();
 
 		for (SearchHit sh : searchHits) {
 			Task task = null;
 
-			// try {
-			// task = mapper.readValue(sh.sourceAsString(), Task.class);
-			// MRO mro = task.getMro();
-			// if (mro.getId() == id) {
-			// tasks.add(task);
-			// }
-			// } catch (JsonParseException e) {
-			// e.printStackTrace();
-			// } catch (JsonMappingException e) {
-			// e.printStackTrace();
-			// } catch (IOException e) {
-			// e.printStackTrace();
-			// }
+			try {
+				task = mapper.readValue(sh.sourceAsString(), Task.class);
+				if (task.getIdMRO() == id)
+					tasks.add(task);
+
+			} catch (JsonParseException e) {
+				logger.error("Error" + e.toString());
+			} catch (JsonMappingException e) {
+				logger.error("Error" + e.toString());
+			} catch (IOException e) {
+				logger.error("Error" + e.toString());
+			}
 		}
 		return tasks;
 	}
 
-	public List<Task> getTasksByPlane(String idPlane, String type) {
+	public List<Task> getTasksByPlane(String idPlane) {
 		List<Task> tasks = new ArrayList<Task>();
 		ObjectMapper mapper = new ObjectMapper();
 
-		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch("gl").setTypes(type);
+		SearchRequestBuilder requestBuilder = esc.getClient().prepareSearch(Constants.GL).setTypes(Constants.TASKS);
 		SearchResponse searchResponse = requestBuilder.get();
 		SearchHit[] searchHits = searchResponse.getHits().getHits();
 

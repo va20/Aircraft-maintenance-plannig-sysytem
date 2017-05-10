@@ -8,5 +8,5 @@ public interface TaskDAO extends DAO<Task> {
 
 	List<Task> getTasksByMRO(long id);
 
-	List<Task> getTasksByPlane(String id, String type);
+	List<Task> getTasksByPlane(String id);
 }

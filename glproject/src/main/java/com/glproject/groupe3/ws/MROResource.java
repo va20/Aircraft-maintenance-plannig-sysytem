@@ -11,7 +11,9 @@ import javax.ws.rs.core.MediaType;
 import com.glproject.groupe3.DAO.AbstractDAOFactory;
 import com.glproject.groupe3.DAO.Factory;
 import com.glproject.groupe3.DAOImpl.MRODAOImpl;
+import com.glproject.groupe3.DAOImpl.TaskDAOImpl;
 import com.glproject.groupe3.businessobjects.MRO;
+import com.glproject.groupe3.businessobjects.Task;
 import com.glproject.groupe3.util.Constants;
 
 @Path("/" + Constants.MRO)
@@ -29,5 +31,12 @@ public class MROResource {
 	public MRO getMRO(@PathParam("id") long id) {
 		return ((MRODAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getMRODAO()).get(Constants.MRO,
 				String.valueOf(id));
+	}
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/{id}/tasks")
+	public List<Task> getTasksByMRO(@PathParam("id") long id) {
+		return ((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).getTasksByMRO(id);
 	}
 }

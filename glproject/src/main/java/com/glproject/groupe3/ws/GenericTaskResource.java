@@ -28,7 +28,7 @@ public class GenericTaskResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public GenericTask getGenericTask(@PathParam("taskNumber") String taskNumber) {
 		return ((GenericTaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO())
-				.get(Constants.GENERIC_TASKS, String.valueOf(taskNumber));
+				.get(Constants.GENERIC_TASKS, taskNumber);
 	}
 
 	@GET
@@ -50,15 +50,4 @@ public class GenericTaskResource {
 	public void importMPD(@FormDataParam("file") InputStream input) {
 		new SpreadsheetParser().importFile(input);
 	}
-
-	// @GET
-	// @Path("/{type}")
-	// @Produces(MediaType.APPLICATION_JSON)
-	// public List<GenericTask> getMPDByTypeOfPlane(@PathParam("type") String
-	// type) {
-	// System.out.println(type);
-	// return ((GenericTaskDAOImpl)
-	// AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getGenericTaskDAO())
-	// .getMPDByTypeOfPlane(type);
-	// }
 }

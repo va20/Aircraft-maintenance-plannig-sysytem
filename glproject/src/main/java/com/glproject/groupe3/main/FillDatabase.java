@@ -30,7 +30,7 @@ public class FillDatabase {
 		addStaffs();
 		addPlanes();
 		addFlights();
-		// addGenericTasks();
+		addGenericTasks();
 		addTasks();
 		addMROs();
 	}
@@ -147,36 +147,48 @@ public class FillDatabase {
 
 	public static void addTasks() {
 		List<Task> list = new ArrayList<Task>();
-		Task t1 = new Task(515412, 2, "LFPA", 10, new DateTime().minusSeconds(58), "200001-01-1", "base", Status.NDONE, Warning.NONE);
-		Task t2 = new Task(785757, 2, "LFPO", 11, new DateTime().minusSeconds(19), "200001-02-1", "inline", Status.NDONE, Warning.NONE);
-//		Task t3 = new Task(3, 3, "LPPO", 11, new DateTime(), "200002-01-1", "inline", Status.NDONE, null);
-//		Task t4 = new Task(4, 3, "MLPO", 13, new DateTime(), "200003-01-1", "base", Status.NDONE, null);
-//		Task t5 = new Task(5, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline", Status.NDONE, null);
-//
-//		Task t6 = new Task(6, 2, "LFPA", 10, new DateTime(), "200001-01-1", "base", Status.NDONE, null);
-//		Task t7 = new Task(7, 2, "LFPO", 11, new DateTime(), "200001-02-1", "inline", Status.NDONE, null);
-//		Task t8 = new Task(8, 3, "LPPO", 11, new DateTime(), "200002-01-1", "inline", Status.NDONE, null);
-//		Task t9 = new Task(9, 3, "MLPO", 13, new DateTime(), "200003-01-1", "base", Status.NDONE, null);
-//		Task t10 = new Task(10, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline", Status.NDONE, null);
-//
-//		Task t11 = new Task(11, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline", Status.NDONE, null);
-//		Task t12 = new Task(12, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline", Status.NDONE, null);
+		Task t1 = new Task(515412, 2, "LFPA", 10, new DateTime().minusSeconds(58), "200001-01-1", "base", Status.NDONE,
+				Warning.NONE);
+		Task t2 = new Task(785757, 2, "LFPO", 11, new DateTime().minusSeconds(19), "200001-02-1", "inline",
+				Status.NDONE, Warning.NONE);
+		// Task t3 = new Task(3, 3, "LPPO", 11, new DateTime(), "200002-01-1",
+		// "inline", Status.NDONE, null);
+		// Task t4 = new Task(4, 3, "MLPO", 13, new DateTime(), "200003-01-1",
+		// "base", Status.NDONE, null);
+		// Task t5 = new Task(5, 5, "LKPO", 10, new DateTime(), "200003-03-1",
+		// "inline", Status.NDONE, null);
+		//
+		// Task t6 = new Task(6, 2, "LFPA", 10, new DateTime(), "200001-01-1",
+		// "base", Status.NDONE, null);
+		// Task t7 = new Task(7, 2, "LFPO", 11, new DateTime(), "200001-02-1",
+		// "inline", Status.NDONE, null);
+		// Task t8 = new Task(8, 3, "LPPO", 11, new DateTime(), "200002-01-1",
+		// "inline", Status.NDONE, null);
+		// Task t9 = new Task(9, 3, "MLPO", 13, new DateTime(), "200003-01-1",
+		// "base", Status.NDONE, null);
+		// Task t10 = new Task(10, 5, "LKPO", 10, new DateTime(), "200003-03-1",
+		// "inline", Status.NDONE, null);
+		//
+		// Task t11 = new Task(11, 5, "LKPO", 10, new DateTime(), "200003-03-1",
+		// "inline", Status.NDONE, null);
+		// Task t12 = new Task(12, 5, "LKPO", 10, new DateTime(), "200003-03-1",
+		// "inline", Status.NDONE, null);
 
 		list.add(t1);
 		list.add(t2);
-//		list.add(t3);
-//		list.add(t4);
-//		list.add(t5);
-//
-//		// TEST PAGINATION //
-//		list.add(t6);
-//		list.add(t7);
-//		list.add(t8);
-//		list.add(t9);
-//		list.add(t10);
-//
-//		list.add(t11);
-//		list.add(t12);
+		// list.add(t3);
+		// list.add(t4);
+		// list.add(t5);
+		//
+		// // TEST PAGINATION //
+		// list.add(t6);
+		// list.add(t7);
+		// list.add(t8);
+		// list.add(t9);
+		// list.add(t10);
+		//
+		// list.add(t11);
+		// list.add(t12);
 
 		for (int i = 0; i < 2; i++) {
 			((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).add(list.get(i),

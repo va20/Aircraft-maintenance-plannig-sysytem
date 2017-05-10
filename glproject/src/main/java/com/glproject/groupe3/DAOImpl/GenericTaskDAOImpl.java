@@ -25,22 +25,6 @@ public class GenericTaskDAOImpl extends DAOImpl<GenericTask> implements GenericT
 		super(typeT);
 	}
 
-	// public void update(GenericTask gt) {
-	// try {
-	// esc.getClient().prepareUpdate("gl", "mpd", gt.getTaskNumber())
-	// .setDoc(XContentFactory.jsonBuilder().startObject().field("applicability",
-	// gt.getApplicability())
-	// .field("descr", gt.getDescr()).field("duration", gt.getDuration())
-	// .field("hangar", gt.isHangar()).field("men", gt.getMen())
-	// .field("periodicity", gt.getPeriodicity()).field("zone",
-	// gt.getZone()).endObject())
-	// .get();
-	//
-	// } catch (IOException e) {
-	// logger.error("Error" + e.toString());
-	// }
-	// }
-
 	public List<GenericTask> getMPDByTypeOfPlane(String type) {
 		List<GenericTask> genericTasks = new ArrayList<GenericTask>();
 		ObjectMapper mapper = new ObjectMapper();

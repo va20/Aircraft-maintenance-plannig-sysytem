@@ -35,19 +35,11 @@ public class TaskResource {
 	}
 
 	@GET
-	@Path("{planeId}/{idTask}")
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Task getTask(@PathParam("idTask") long id) {
+	public Task getTask(@PathParam("id") long id) {
 		return ((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).get(Constants.TASKS,
 				String.valueOf(id));
-	}
-
-	@GET
-	@Path("/{idPlane}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Task> getTasksByPlane(@PathParam("idPlane") long idPlane) {
-		return ((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO())
-				.getTasksByPlane(String.valueOf(idPlane), Constants.TASKS);
 	}
 
 	@DELETE
