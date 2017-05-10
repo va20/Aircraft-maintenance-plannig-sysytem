@@ -57,12 +57,11 @@ function getTasks() {
 }
 
 function printTasks(data) {
-
 	var template = _.template($("#list_tasks").html());
 	var task = template({
 		"item" : data
 	});
-	
+
 	// MRO name
 	_.each(data, function(item) {
 		getMRO(item.idMRO);
@@ -71,70 +70,16 @@ function printTasks(data) {
 	// Plane tailNumber
 	_.each(data, function(item) {
 		getPlane(item.idPlane);
-
-		if (_.indexOf(_.keys(tab), item.idPlane.toString()) != -1)
-			tab[item.idPlane].push(item);
-		else
-			tab[item.idPlane] = [ item ];
 	});
 
-	$.ajax({
-		url : "ws/flights",
-		type : "GET",
-		dataType : "json"
-	}).done(function(data) {
-		_.each(data,
-			function(flight) {
-				if (_.indexOf(_.keys(tab), flight.idPlane
-						.toString()) != -1) {
-					_.each(tab[flight.idPlane], function(task) {
-						var diff = flight.depTime - task.deadline
-						if (task.status == "NDONE" && $.now() > task.deadline) {
-							task.warning = "ORANGE";										
-							$("#" + task.id).css(
-									"background-color",
-									"rgba(255, 110, 0, 0.5)");		
-							
-							$.ajax({
-								url : "ws/tasks/" + task.id,
-								type : "POST",
-								contentType : "application/json",
-								dataType : "json",
-								data : JSON.stringify(task),
-
-								success : function(data) {
-								},
-								
-								error : function(res, stat, err) {
-								}
-							});
-							
-						} else if (task.status == "NDONE" && $.now() > task.deadline && (flight.depTime - $.now()) < 60000) {
-							task.warning = "RED";										
-							$("#" + task.id).css(
-									"background-color",
-									"rgba(255, 0, 0, 0.5)");
-							
-							$.ajax({
-								url : "ws/tasks/" + task.id,
-								type : "POST",
-								contentType : "application/json",
-								dataType : "json",
-								data : JSON.stringify(task),
-
-								success : function(data) {
-								},
-								
-								error : function(res, stat, err) {
-								}
-							});
-						}
-					});
-				}
-			});
-		});
-
 	$("#tasks").append(task);
+	
+	_.each(data, function(task) {
+		if (task.warning == "ORANGE")
+			$("#" + task.id).css("background-color", "rgba(255, 110, 0, 0.4)");
+		else if (task.warning == "RED")
+			$("#" + task.id).css("background-color", "rgba(255, 0, 0, 0.4)");
+	});
 }
 
 function deleteTask(idTask) {
