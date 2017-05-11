@@ -44,26 +44,20 @@ public class FillDatabase {
 	public static void addStaffs() throws NoSuchAlgorithmException {
 		List<Staff> list = new ArrayList<Staff>();
 		Staff staff1 = new Staff("chris", "dionisio", "chris", "pwd");
-		Staff staff2 = new Staff("ptitprince", "ali", "ali", "pwd");
 		Staff staff3 = new Staff("sisi", "sisi", "sisi", "pwd");
-		Staff staff4 = new Staff("saif", "al-qazweny", "saif", "pwd");
-		Staff staff5 = new Staff("hugues", "le lann", "ug", "pwd");
-		Staff staff6 = new Staff("wang", "pin", "wang", "pwd");
-		Staff staff7 = new Staff("vianel", "ebourefe", "vianel", "pwd");
-		Staff staff8 = new Staff("arnaud", "duhamel", "arnaud", "pwd");
-		Staff staff9 = new Staff("rayane", "mouaatarif", "rayane", "pwd");
 		Staff staff10 = new Staff("MCC", "m	cc", "mcc", "pwd");
+		Staff staff11 = new Staff("MRO1", "MRO1", "mro1", "pwd");
+		Staff staff12 = new Staff("MRO2", "MRO2", "mro2", "pwd");
+		Staff staff13 = new Staff("MRO3", "MRO3", "mro3", "pwd");
+		Staff staff14 = new Staff("MRO4", "MRO4", "mro4", "pwd");
+
 
 		list.add(staff1);
-		list.add(staff2);
 		list.add(staff3);
-		list.add(staff4);
-		list.add(staff5);
-		list.add(staff6);
-		list.add(staff7);
-		list.add(staff8);
-		list.add(staff9);
 		list.add(staff10);
+		list.add(staff11);
+		list.add(staff12);
+		list.add(staff13);
 
 		for (int i = 0; i < list.size(); i++) {
 			((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).add(list.get(i),
@@ -198,10 +192,10 @@ public class FillDatabase {
 
 	public static void addMROs() {
 		List<MRO> list = new ArrayList<MRO>();
-		MRO mro1 = new MRO(10, 2, "LFPO", "MRO1");
-		MRO mro2 = new MRO(11, 3, "LFPO", "MRO2");
-		MRO mro3 = new MRO(12, 1, "LFPA", "MRO3");
-		MRO mro4 = new MRO(13, 4, "MLPO", "MRO4");
+		MRO mro1 = new MRO(10, "LFPO", "MRO1");
+		MRO mro2 = new MRO(11, "LFPO", "MRO2");
+		MRO mro3 = new MRO(12, "LFPA", "MRO3");
+		MRO mro4 = new MRO(13, "MLPO", "MRO4");
 
 		list.add(mro1);
 		list.add(mro2);
