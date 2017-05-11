@@ -3,6 +3,7 @@ package com.glproject.groupe3.ws;
 import java.util.List;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -15,6 +16,7 @@ import com.glproject.groupe3.DAOImpl.TaskDAOImpl;
 import com.glproject.groupe3.businessobjects.MRO;
 import com.glproject.groupe3.businessobjects.Task;
 import com.glproject.groupe3.util.Constants;
+import com.glproject.groupe3.util.Util;
 
 @Path("/" + Constants.MRO)
 public class MROResource {
@@ -27,10 +29,10 @@ public class MROResource {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/{id}")
-	public MRO getMRO(@PathParam("id") long id) {
+	@Path("/{login}")
+	public MRO getMRO(@PathParam("login") String login) {
 		return ((MRODAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getMRODAO()).get(Constants.MRO,
-				String.valueOf(id));
+				login);
 	}
 
 	@GET
@@ -38,5 +40,18 @@ public class MROResource {
 	@Path("/{id}/tasks")
 	public List<Task> getTasksByMRO(@PathParam("id") long id) {
 		return ((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).getTasksByMRO(id);
+	}
+
+	@POST
+	@Path("/{login}/{password}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public MRO checkMRO(@PathParam("login") String login, @PathParam("password") String password) {
+		MRO mro = getMRO(login);
+		String hashPassword = Util.hashPass(password + mro.getSalt());
+
+		if (mro.getPassword().equals(hashPassword))
+			return mro;
+
+		return null;
 	}
 }

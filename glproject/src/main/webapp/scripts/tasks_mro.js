@@ -1,5 +1,3 @@
-var tab = {};
-
 function getPlane(id) {
 	$.ajax({
 		url : "ws/planes/" + id,
@@ -15,14 +13,13 @@ function getPlane(id) {
 
 function getTasks() {
 	$.ajax({
-		url : "ws/tasks",
+		url : "ws/mro/" + $.cookie("mroId") + "/tasks",
 		type : "GET",
 		dataType : "json"
-	}).done(
-			function(data) {
-				console.log(data);
-				printTasks(data);
-			});
+	}).done(function(data) {
+		console.log(data);
+		printTasks(data);
+	});
 }
 
 function printTasks(data) {
@@ -46,7 +43,10 @@ function printTasks(data) {
 	});
 }
 
-$(document).ready(
-		function() {
-			getTasks();
-			});
+$(document).ready(function() {
+	getTasks();
+
+	$("#tableTasks").on("click", "tr.tasks", function() {
+		getGenericTask($(this.cells[1]).text());
+	});
+});

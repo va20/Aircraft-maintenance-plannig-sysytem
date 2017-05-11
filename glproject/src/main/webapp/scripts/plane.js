@@ -76,7 +76,6 @@ function deleteTask(idTask) {
 		seccess : setTimeout(function() {
 			location.reload(true);
 		}, 400)
-
 	});
 }
 

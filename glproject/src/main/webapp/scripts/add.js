@@ -90,13 +90,8 @@ $(document).ready(function() {
 			contentType : "application/json",
 			dataType : "json",
 			data : JSON.stringify(task),
-
-			success : function(data) {
-				location.href = "plane_page.html?plane=" + tailNumber;
-			},
-			error : function(res, stat, err) {
-				alert("Error");
-			}
+		}).done(function(data) {
+			location.href = "plane_page.html?plane=" + tailNumber;
 		});
 	});
 });

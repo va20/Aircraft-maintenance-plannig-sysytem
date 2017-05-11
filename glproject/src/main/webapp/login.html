@@ -9,11 +9,7 @@
 </head>
 
 <body>
-	<script>
-    	if(localStorage.length!=0){
-        	location.href="/plane_list.html"
-    	}
-	</script>
+
 	<div class="container">
 		<div class="top">
 			<h1 id="title" class="hidden">
@@ -36,6 +32,10 @@
 		</div>
 	</div>
 
+	<script>
+		if (localStorage.length != 0)
+			location.href = "/plane_list.html"
+	</script>
 	<script src="scripts/jquery-3.1.1.min.js"></script>
 	<script src="scripts/bootstrap.min.js"></script>
 	<script src="scripts/jquery.cookie.js"></script>

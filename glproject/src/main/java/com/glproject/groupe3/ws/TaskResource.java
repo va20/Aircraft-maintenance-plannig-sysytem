@@ -42,13 +42,6 @@ public class TaskResource {
 				String.valueOf(id));
 	}
 
-	@DELETE
-	@Path("/{id}")
-	public void deleteTask(@PathParam("id") long id) {
-		((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).delete(Constants.TASKS,
-				String.valueOf(id));
-	}
-
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addTask(Task task) {
@@ -86,5 +79,12 @@ public class TaskResource {
 		((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).update(ur);
 
 		return task;
+	}
+
+	@DELETE
+	@Path("/{id}")
+	public void deleteTask(@PathParam("id") long id) {
+		((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).delete(Constants.TASKS,
+				String.valueOf(id));
 	}
 }
