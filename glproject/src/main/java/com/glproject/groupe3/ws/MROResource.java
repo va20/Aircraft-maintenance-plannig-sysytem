@@ -31,15 +31,14 @@ public class MROResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{login}")
 	public MRO getMRO(@PathParam("login") String login) {
-		return ((MRODAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getMRODAO()).get(Constants.MRO,
-				login);
+		return ((MRODAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getMRODAO()).get(Constants.MRO, login);
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/{id}/tasks")
-	public List<Task> getTasksByMRO(@PathParam("id") long id) {
-		return ((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).getTasksByMRO(id);
+	@Path("/{login}/tasks")
+	public List<Task> getTasksByMRO(@PathParam("login") String login) {
+		return ((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).getTasksByMRO(login);
 	}
 
 	@POST

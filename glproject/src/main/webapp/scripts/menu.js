@@ -55,7 +55,6 @@ $(document).ready(function() {
 	});
 
 	// upload flight list
-
 	$("#upload_flights").change(function() {
 		var flights_file = $("#upload_flights")[0].files[0];
 

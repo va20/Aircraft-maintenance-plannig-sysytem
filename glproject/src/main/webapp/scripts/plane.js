@@ -1,6 +1,7 @@
 function getURLParam(param) {
 	var pageURL = window.location.search.substring(1);
 	var variablesURL = pageURL.split('=');
+
 	return variablesURL[1];
 }
 
@@ -16,23 +17,7 @@ function getMRO(id) {
 
 function getPlaneTasks() {
 	$.ajax({
-		url : "ws/planes",
-		type : "GET",
-		dataType : "json",
-	}).done(function(data) {
-		getTasks(data);
-	});
-}
-
-function getTasks(data) {
-	var plane = _.filter(data, function(item) {
-		return item.tailNumber == getURLParam("plane");
-	});
-
-	planeId = plane[0].id;
-
-	$.ajax({
-		url : "ws/planes/" + planeId + "/tasks",
+		url : "ws/planes/" + $.cookie("planeId") + "/tasks",
 		type : "GET",
 		dataType : "json"
 	}).done(function(data) {
@@ -53,9 +38,8 @@ function printTasks(data) {
 		"item" : data
 	});
 
-	// MRO name
 	_.each(data, function(item) {
-		getMRO(item.idMRO);
+		getMRO(item.idMro);
 	});
 
 	$("#tasks").append(task);

@@ -7,7 +7,7 @@ public class Task {
 	public enum Status {
 		DONE, NDONE, ONGOING;
 	}
-	
+
 	public enum Warning {
 		NONE, GREEN, ORANGE, RED;
 	}
@@ -15,7 +15,7 @@ public class Task {
 	private long id;
 	private long idPlane;
 	private String airport;
-	private long idMRO;
+	private String idMro;
 	private DateTime deadline;
 	private String taskNumber;
 	private String type;
@@ -25,13 +25,13 @@ public class Task {
 	public Task() {
 	}
 
-	public Task(long id, long idPlane, String airport, long idMRO, DateTime deadline, String taskNumber, String type,
+	public Task(long id, long idPlane, String airport, String idMro, DateTime deadline, String taskNumber, String type,
 			Status status, Warning warning) {
 		super();
 		this.id = id;
 		this.idPlane = idPlane;
 		this.airport = airport;
-		this.idMRO = idMRO;
+		this.idMro = idMro;
 		this.deadline = deadline;
 		this.taskNumber = taskNumber;
 		this.type = type;
@@ -63,12 +63,12 @@ public class Task {
 		this.airport = airport;
 	}
 
-	public long getIdMRO() {
-		return idMRO;
+	public String getIdMro() {
+		return idMro;
 	}
 
-	public void setIdMRO(long idMRO) {
-		this.idMRO = idMRO;
+	public void setIdMro(String idMro) {
+		this.idMro = idMro;
 	}
 
 	public DateTime getDeadline() {

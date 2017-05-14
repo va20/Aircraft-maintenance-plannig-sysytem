@@ -13,11 +13,10 @@ function getPlane(id) {
 
 function getTasks() {
 	$.ajax({
-		url : "ws/mro/" + $.cookie("mroId") + "/tasks",
+		url : "ws/mro/" + $.cookie("login") + "/tasks",
 		type : "GET",
 		dataType : "json"
 	}).done(function(data) {
-		console.log(data);
 		printTasks(data);
 	});
 }

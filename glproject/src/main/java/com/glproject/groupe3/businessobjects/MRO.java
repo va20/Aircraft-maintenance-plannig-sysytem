@@ -6,7 +6,6 @@ import java.security.NoSuchAlgorithmException;
 import com.glproject.groupe3.util.Util;
 
 public class MRO {
-	private long id;
 	private String login, password, salt;
 	private String airport;
 	private String name;
@@ -14,23 +13,13 @@ public class MRO {
 	public MRO() {
 	}
 
-	public MRO(long id, String login, String password, String airport, String name) throws NoSuchAlgorithmException {
+	public MRO(String login, String password, String airport, String name) throws NoSuchAlgorithmException {
 		super();
-		this.id = id;
 		this.login = login;
-		this.password = password;
-		this.name = name;
 		this.airport = airport;
+		this.name = name;
 		this.salt = Util.generateSalt();
 		this.password = Util.hashPass(password + salt);
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public String getLogin() {
@@ -75,7 +64,7 @@ public class MRO {
 
 	@Override
 	public String toString() {
-		return "MRO [id=" + id + ", login=" + login + ", password=" + password + ", salt=" + salt + ", airport="
-				+ airport + ", name=" + name + "]";
+		return "MRO [login=" + login + ", password=" + password + ", salt=" + salt + ", airport=" + airport + ", name=" + name
+				+ "]";
 	}
 }
