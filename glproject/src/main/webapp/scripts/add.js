@@ -11,12 +11,10 @@ function retrieveData(ws) {
 		type : "GET",
 		dataType : "json"
 	}).done(function(data) {
-		if (ws == "ws/planes")
-			printPlanes(data)
-		else if (ws == "ws/mpd")
-			printGenericTasks(data);
-		else if (ws == "ws/mro")
+		if (ws == "ws/mro")
 			printMROs(data);
+		else
+			printGenericTasks(data);
 	});
 }
 
@@ -62,24 +60,15 @@ $(document).ready(function() {
 	var tailNumber = getURLParam("plane")
 	$("#planes option").html(tailNumber);
 
-	retrieveData("ws/planes");
-	retrieveData("ws/mpd");
+	retrieveData("ws/planes/" + $.cookie("planeType") + "/mpd");
 	retrieveData("ws/mro");
 
 	$("#add").on("click", function() {
-		var id;
-		$("#planes option").each(function() {
-			if ($(this).html() == tailNumber) {
-				id = $(this).val();
-				return;
-			}
-		});
-
 		var task = {
 			id : Math.round(new Date().getTime() + (Math.random() * 100)),
-			idPlane : id,
-			idMRO : $("#mros option:selected").val(),
-			deadline : moment($("#deadline").val()),
+			idPlane : $.cookie("planeId"),
+			idMro : $("#mros option:selected").val(),
+			deadline : moment($("#deadline").val()).valueOf(),
 			taskNumber : $("#tasks option:selected").text(),
 			type : $('input[name="radio"]:checked').val()
 		};

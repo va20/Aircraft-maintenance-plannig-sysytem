@@ -24,7 +24,7 @@ public class TaskDAOImpl extends DAOImpl<Task> implements TaskDAO {
 		super(typeT);
 	}
 
-	public List<Task> getTasksByMRO(long id) {
+	public List<Task> getTasksByMRO(String id) {
 		List<Task> tasks = new ArrayList<Task>();
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -37,7 +37,7 @@ public class TaskDAOImpl extends DAOImpl<Task> implements TaskDAO {
 
 			try {
 				task = mapper.readValue(sh.sourceAsString(), Task.class);
-				if (task.getIdMRO() == id)
+				if (task.getIdMro().equals(id))
 					tasks.add(task);
 
 			} catch (JsonParseException e) {

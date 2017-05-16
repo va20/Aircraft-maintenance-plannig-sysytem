@@ -6,7 +6,7 @@ import com.glproject.groupe3.businessobjects.Task;
 
 public interface TaskDAO extends DAO<Task> {
 
-	List<Task> getTasksByMRO(long id);
+	List<Task> getTasksByMRO(String id);
 
 	List<Task> getTasksByPlane(String id);
 }

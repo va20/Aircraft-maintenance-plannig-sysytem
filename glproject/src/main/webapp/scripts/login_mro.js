@@ -3,7 +3,6 @@ localStorage.clear();
 $('#username, #password').on('input', function() {
 	if ($('#username').val() == "" || $('#password').val() == "")
 		$('#submit').prop("disabled", true);
-	// + COLORIER CHAMPS NON REMPLIS EN ROUGE PAR EXEMPLE
 	else
 		$('#submit').prop("disabled", false);
 });
@@ -22,7 +21,6 @@ $('#submit').click(function() {
 			console.log(data);
 			if (data) {
 				$.cookie("login", login);
-				$.cookie("mroId", data.id);
 				localStorage.setItem(login, password);
 				location.href = "/homepage_mro.html";
 			} else

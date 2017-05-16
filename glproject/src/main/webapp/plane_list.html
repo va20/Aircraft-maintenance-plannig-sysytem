@@ -24,7 +24,7 @@
 								class="glyphicon glyphicon-plane pull-left"></i><span>
 								<%= item.tailNumber %><%= item.id%></span>			
 							<br>
-								<small><%= item.type %>
+								<small id="<%= item.type %>"><%= item.type %>
 								</small></a>
 							</div>
 							<% if(index % 4 == 3) { %>
@@ -42,6 +42,7 @@
 	<script src="scripts/jquery-3.1.1.min.js"></script>
 	<script src="scripts/bootstrap.min.js"></script>
 	<script src="scripts/underscore-min.js"></script>
+	<script src="scripts/jquery.cookie.js"></script>
 	<script src="scripts/w3.js"></script>
 	<script>w3.includeHTML();</script>
 	<script src="scripts/menu.js"></script>

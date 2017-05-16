@@ -62,7 +62,7 @@ function printTasks(data) {
 
 	// MRO name
 	_.each(data, function(item) {
-		getMRO(item.idMRO);
+		getMRO(item.idMro);
 	});
 
 	// Plane tailNumber

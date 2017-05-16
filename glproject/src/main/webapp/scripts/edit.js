@@ -20,7 +20,7 @@ function fillFields() {
 
 		$("#planes").val(data.idPlane);
 		$("#tasks").val(data.taskNumber);
-		$("#mros").val(data.idMRO);
+		$("#mros").val(data.idMro);
 		$("#deadline").val(data.deadline);
 		$(".selectpicker").selectpicker('refresh');
 
@@ -89,17 +89,15 @@ $(document).ready(function() {
 
 	$("#edit").click(function() {
 		var idTask = getURLParam("task");
-		
+
 		var task = {
 			id : idTask,
 			idPlane : $("#planes option:selected").val(),
-			idMRO : $("#mros option:selected").val(),
-			deadline : moment($("#deadline").val()),
+			idMro : $("#mros option:selected").val(),
+			deadline : moment($("#deadline").val()).valueOf(),
 			taskNumber : $("#tasks option:selected").text(),
 			type : $('input[name="radio"]:checked').val()
 		};
-
-		console.log(JSON.stringify(task));
 
 		$.ajax({
 			url : "ws/tasks/" + idTask,
@@ -109,8 +107,8 @@ $(document).ready(function() {
 			data : JSON.stringify(task),
 
 			success : function(data) {
-				var tailNumber = $("#planes option:selected").text();
-				location.href = "plane_page.html?plane=" + tailNumber;
+				//var tailNumber = $("#planes option:selected").text();
+				location.href = "maintenance_planning.html";
 			},
 			error : function(res, stat, err) {
 				alert("ERROR PUT TASK");
