@@ -1,9 +1,8 @@
 package com.glproject.groupe3.businessobjects;
 
-import org.apache.commons.codec.digest.DigestUtils;
-
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
+
+import com.glproject.groupe3.util.Util;
 
 public class Staff {
 	private String firstname, lastname;
@@ -17,8 +16,8 @@ public class Staff {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.login = login;
-		this.salt = generateSalt();
-		this.password = hashPass(password + salt);
+		this.salt = Util.generateSalt();
+		this.password = Util.hashPass(password + salt);
 	}
 
 	public String getFirstname() {
@@ -55,30 +54,6 @@ public class Staff {
 
 	public String getSalt() {
 		return this.salt;
-	}
-
-	public static String hashPass(String pass) {
-		String passTmp = DigestUtils.sha512Hex(pass);
-		for (int i = 0; i < 10000; i++) {
-			passTmp = DigestUtils.sha512Hex(pass);
-		}
-
-		return passTmp;
-	}
-
-	public static String generateSalt() throws NoSuchAlgorithmException {
-		SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
-		byte[] saltByte = new byte[32];
-		String salt = null;
-		sr.nextBytes(saltByte);
-		StringBuilder saltStringB = new StringBuilder();
-
-		for (int i = 0; i < saltByte.length; i++)
-			saltStringB.append(Integer.toString((saltByte[i] & 0xff) + 0x100, 16).substring(1));
-
-		salt = saltStringB.toString();
-
-		return salt;
 	}
 
 	@Override

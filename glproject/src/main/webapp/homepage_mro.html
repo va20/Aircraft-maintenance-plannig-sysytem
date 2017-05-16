@@ -1,81 +1,67 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; connect-src *">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" href="css/materialize.min.css">
-        <link rel="stylesheet" href="css/homepage_mro.css">
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="css/base.css" rel="stylesheet">
-        <link href="css/bootstrap-select.min.css" rel="stylesheet">
-        <link href="css/pagination.css" rel="stylesheet">
-        <link href="css/planning.css" rel="stylesheet">
-        <link rel="icon" href="img/avion.ico" />
+<head>
+<meta http-equiv="Content-Security-Policy"
+	content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; connect-src *">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+<link rel="stylesheet" href="css/materialize.min.css">
+<link rel="stylesheet" href="css/homepage_mro.css">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/base.css" rel="stylesheet">
+<link href="css/bootstrap-select.min.css" rel="stylesheet">
+<link href="css/planning.css" rel="stylesheet">
+<link rel="icon" href="img/avion.ico" />
+<title>Homepage</title>
+</head>
 
-        <!--
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href="css/base.css" rel="stylesheet">
-        <link href="css/plane.css" rel="stylesheet">
-        <link rel="icon" href="img/avion.ico" />
-        -->
+<body>
+	<button>
+		<a href="logout_mro.html">Logout</a>
+	</button>
 
-        <title>Homepage</title>
-    </head>
-
-    <body>
-    <script>
-        if(localStorage.length==0){
-            location.href="/login_mro.html"
-        }
-    </script>
-
-    
-            <button><a href="logout_mro.html">Logout</a></button>
-
-        <div id="tasks_mro">
-
-
-            <div id="rcorners" class="container">
-        <div class="text-center">
-            <select id="plane-filter" title="Filter by plane"
-                class="selectpicker" data-size="auto">
-                <option value="default">Any</option>
-                <script id="listPlanes" type="text/html">
+	<div id="tasks_mro">
+		<div id="rcorners" class="container">
+			<div class="text-center">
+				<select id="plane-filter" title="Filter by plane"
+					class="selectpicker" data-size="auto">
+					<option value="default">Any</option>
+					<script id="listPlanes" type="text/html">
                                 <% _.each(item, function(item) { %>
                                     <option value="<%= item %>"><%= item %></option>
                                 <% }); %>
                             </script>
-            </select>
-        </div>
-        <div class="form-group has-feedback">
-            <input class="form-control searchbar" type="text"
-                placeholder="Search..."
-                onkeyup="w3.filterHTML('#tableTasks', '.tasks', this.value)"><i
-                class="glyphicon glyphicon-filter form-control-feedback"></i>
-        </div>
-    </div>
+				</select>
+			</div>
+			<div class="form-group has-feedback">
+				<input class="form-control searchbar" type="text"
+					placeholder="Search..."
+					onkeyup="w3.filterHTML('#tableTasks', '.tasks', this.value)"><i
+					class="glyphicon glyphicon-filter form-control-feedback"></i>
+			</div>
+		</div>
 
-    <br>
+		<br>
 
-    <div id="rcorners-table" class="container">
-        <div class="table-responsive">
-            <table class="table table-hover" id="tableTasks">
-                <thead>
-                    <tr id="thead_row">
-                        <th>Plane</th>
-                        <th>Task number</th>
-                        <th>Airport</th>
-                        <th>Deadline</th>
-                        <th>Type</th>
-                    </tr>
-                </thead>
-                <tbody id="tasks">
-                    <script id="list_tasks" type="text/html">
+		<div id="rcorners-table" class="container">
+			<div class="table-responsive">
+				<table class="table table-hover" id="tableTasks">
+					<thead>
+						<tr id="thead_row">
+							<th>Plane</th>
+							<th>Task number</th>
+							<th>Airport</th>
+							<th>Deadline</th>
+							<th>Type</th>
+						</tr>
+					</thead>
+					<tbody id="tasks">
+						<script id="list_tasks" type="text/html">
                         <% _.each(item, function(item, i) { %>
-                            <tr id="<%= item.id %>" class="tasks">
+                            <tr id="<%= item.id %>" class="tasks " data-toggle="modal" 
+								data-target="#genericTaskInfo">
                                 <td id="plane" class="<%= item.idPlane %>"></td>
                                 <td><%= item.taskNumber %></td>
                                 <td><%= item.airport %></td>
@@ -85,86 +71,48 @@
                             </tr>
                         <% }); %>
                     </script>
-                </tbody>
-            </table>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 
-        </div>
-    </div>
+	<!-- Modal -->
+	<div class="modal fade" id="genericTaskInfo" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;
+					</button>
+					<h4 class="modal-title">More info</h4>
+				</div>
+				<div id="genericTaskListInfo" class="modal-body">
+					<ul class="list-group">
+						<script id="genericTaskModal" type="text/html">
+							<% _.each(item, function(item) { %>
+								<li class="list-group-item"><%= item %><span class="badge">item</span></li>
+							<% }); %>
+						</script>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 
-        <!--
-        <div id="rcorners" class="container">
-        <div id="search" class="form-group has-feedback">
-            <input class="form-control searchbar" type="text"
-                placeholder="Search..."
-                onkeyup="w3.filterHTML('#tableTasks', '.tasks', this.value)"><i
-                class="glyphicon glyphicon-filter form-control-feedback"></i>
-        </div>
-
-        <div class="table-responsive">
-            <div class="alert alert-info" id="info">
-                <strong>Info!</strong> No tasks found.
-            </div>
-            <table class="table table-hover" id="tableTasks" data-toggle="table"
-                data-detail-view="true" data-detail-formatter="detailFormatter">
-                <thead>
-                    <tr id="thead_row">
-                        <th>Task number</th>
-                        <th>Airport</th>
-                        <th>MRO</th>
-                        <th>Deadline</th>
-                        <th>Type</th>
-                        <th class="text-center">Action</th>
-                    </tr>
-                </thead>
-                <tbody id="tasks">
-                    <script id="list_tasks" type="text/html">
-                        <% _.each(item, function(item, i) { %>
-                            <tr class="tasks">
-                                <td><%= item.taskNumber %></td>
-                                <td><%= item.airport %></td>
-                                <td class="<%= item.idMRO %>"><%= item.idMRO %></td>
-                                <td><%= moment(item.deadline).toISOString() %></td>
-                                <td><%= item.type %></td>
-                                <td class="text-center">
-                                <a class="btn btn-info btn-xs" href="#" id="<%= item.id %>">
-                                <span class="glyphicon glyphicon-edit"></a>
-                                <a href="" id="<%= item.id %>" class="btn btn-danger btn-xs">
-                                <span class="glyphicon glyphicon-remove"></a>
-                                </td>
-                            </tr>
-                        <% }); %>
-                    </script>
-                </tbody>
-            </table>
-        </div>
-        <button id="add" class="btn btn-primary" type="button">
-            <span class="glyphicon glyphicon-plus-sign"></span>
-        </button>
-    </div>
-    -->
-
-
-
-
-
-
-
-        </div>
-
-
-
-
-      <!--  <script src="scripts/cordova.js"></script>  -->
-        <script src="scripts/index.js"></script>
-        <script src="scripts/jquery-3.1.1.min.js"></script>
-        <script src="scripts/materialize.min.js"></script>
-        <script src="scripts/bootstrap.min.js"></script>
-        <script src="scripts/jquery.cookie.js"></script>
-        <script src="scripts/underscore-min.js"></script>
-        <script src="scripts/w3.js"></script>
-        <script src="scripts/moment.js"></script>
-        <script src="scripts/login_mro.js"></script>
-        <script src="scripts/tasks_mro.js"></script>
-
-    </body>
+	<script>
+		if (localStorage.length == 0)
+			location.href = "/login_mro.html"
+	</script>
+	<!--  <script src="scripts/cordova.js"></script>  -->
+	<script src="scripts/index.js"></script>
+	<script src="scripts/jquery-3.1.1.min.js"></script>
+	<script src="scripts/materialize.min.js"></script>
+	<script src="scripts/bootstrap.min.js"></script>
+	<script src="scripts/jquery.cookie.js"></script>
+	<script src="scripts/underscore-min.js"></script>
+	<script src="scripts/w3.js"></script>
+	<script src="scripts/moment.js"></script>
+	<script src="scripts/tasks_mro.js"></script>
+	<script src="scripts/modal.js"></script>
+</body>
 </html>

@@ -15,6 +15,7 @@ import com.glproject.groupe3.DAO.Factory;
 import com.glproject.groupe3.DAOImpl.StaffDAOImpl;
 import com.glproject.groupe3.businessobjects.Staff;
 import com.glproject.groupe3.util.Constants;
+import com.glproject.groupe3.util.Util;
 
 @Path("/" + Constants.STAFFS)
 public class StaffResource {
@@ -27,23 +28,23 @@ public class StaffResource {
 				.get(Constants.STAFFS, String.valueOf(login));
 	}
 
-	@POST
-	@Path("/{login}/{password}")
-	public boolean checkStaff(@PathParam("login") String login, @PathParam("password") String password) {
-		Staff s = getStaff(login);
-		String hashPassword = Staff.hashPass(password + s.getSalt());
-
-		if (s.getPassword().equals(hashPassword))
-			return true;
-
-		return false;
-	}
-
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void addStaff(Staff s) {
 		((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).add(s, Constants.STAFFS,
 				String.valueOf(s.getLogin()));
+	}
+
+	@POST
+	@Path("/{login}/{password}")
+	public boolean checkStaff(@PathParam("login") String login, @PathParam("password") String password) {
+		Staff s = getStaff(login);
+		String hashPassword = Util.hashPass(password + s.getSalt());
+
+		if (s.getPassword().equals(hashPassword))
+			return true;
+
+		return false;
 	}
 
 	@DELETE

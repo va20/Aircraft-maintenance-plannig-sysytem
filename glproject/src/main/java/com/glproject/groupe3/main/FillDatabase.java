@@ -44,20 +44,12 @@ public class FillDatabase {
 	public static void addStaffs() throws NoSuchAlgorithmException {
 		List<Staff> list = new ArrayList<Staff>();
 		Staff staff1 = new Staff("chris", "dionisio", "chris", "pwd");
-		Staff staff3 = new Staff("sisi", "sisi", "sisi", "pwd");
-		Staff staff10 = new Staff("MCC", "m	cc", "mcc", "pwd");
-		Staff staff11 = new Staff("MRO1", "MRO1", "mro1", "pwd");
-		Staff staff12 = new Staff("MRO2", "MRO2", "mro2", "pwd");
-		Staff staff13 = new Staff("MRO3", "MRO3", "mro3", "pwd");
-		Staff staff14 = new Staff("MRO4", "MRO4", "mro4", "pwd");
-
+		Staff staff2 = new Staff("sisi", "sisi", "sisi", "pwd");
+		Staff staff3 = new Staff("MCC", "m	cc", "mcc", "pwd");
 
 		list.add(staff1);
+		list.add(staff2);
 		list.add(staff3);
-		list.add(staff10);
-		list.add(staff11);
-		list.add(staff12);
-		list.add(staff13);
 
 		for (int i = 0; i < list.size(); i++) {
 			((StaffDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getStaffDAO()).add(list.get(i),
@@ -141,32 +133,22 @@ public class FillDatabase {
 
 	public static void addTasks() {
 		List<Task> list = new ArrayList<Task>();
-		Task t1 = new Task(515412, 2, "LFPA", 10, new DateTime().minusSeconds(58), "200001-01-1", "base", Status.NDONE,
-				Warning.NONE);
-		Task t2 = new Task(785757, 2, "LFPO", 11, new DateTime().minusSeconds(19), "200001-02-1", "inline",
+		Task t1 = new Task(515412, 2, "LFPA", 7845165, new DateTime().minusSeconds(58), "200001-01-1", "base",
 				Status.NDONE, Warning.NONE);
-		// Task t3 = new Task(3, 3, "LPPO", 11, new DateTime(), "200002-01-1",
-		// "inline", Status.NDONE, null);
-		// Task t4 = new Task(4, 3, "MLPO", 13, new DateTime(), "200003-01-1",
-		// "base", Status.NDONE, null);
-		// Task t5 = new Task(5, 5, "LKPO", 10, new DateTime(), "200003-03-1",
-		// "inline", Status.NDONE, null);
-		//
-		// Task t6 = new Task(6, 2, "LFPA", 10, new DateTime(), "200001-01-1",
-		// "base", Status.NDONE, null);
-		// Task t7 = new Task(7, 2, "LFPO", 11, new DateTime(), "200001-02-1",
-		// "inline", Status.NDONE, null);
-		// Task t8 = new Task(8, 3, "LPPO", 11, new DateTime(), "200002-01-1",
-		// "inline", Status.NDONE, null);
-		// Task t9 = new Task(9, 3, "MLPO", 13, new DateTime(), "200003-01-1",
-		// "base", Status.NDONE, null);
-		// Task t10 = new Task(10, 5, "LKPO", 10, new DateTime(), "200003-03-1",
-		// "inline", Status.NDONE, null);
-		//
-		// Task t11 = new Task(11, 5, "LKPO", 10, new DateTime(), "200003-03-1",
-		// "inline", Status.NDONE, null);
-		// Task t12 = new Task(12, 5, "LKPO", 10, new DateTime(), "200003-03-1",
-		// "inline", Status.NDONE, null);
+		Task t2 = new Task(785757, 2, "LFPO", 7845165, new DateTime().minusSeconds(19), "200001-02-1", "inline",
+				Status.NDONE, Warning.NONE);
+		Task t3 = new Task(3, 3, "LPPO", 11, new DateTime(), "200002-01-1", "inline", Status.NDONE, null);
+		Task t4 = new Task(4, 3, "MLPO", 13, new DateTime(), "200003-01-1", "base", Status.NDONE, null);
+		Task t5 = new Task(5, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline", Status.NDONE, null);
+
+		Task t6 = new Task(6, 2, "LFPA", 10, new DateTime(), "200001-01-1", "base", Status.NDONE, null);
+		Task t7 = new Task(7, 2, "LFPO", 11, new DateTime(), "200001-02-1", "inline", Status.NDONE, null);
+		Task t8 = new Task(8, 3, "LPPO", 11, new DateTime(), "200002-01-1", "inline", Status.NDONE, null);
+		Task t9 = new Task(9, 3, "MLPO", 13, new DateTime(), "200003-01-1", "base", Status.NDONE, null);
+		Task t10 = new Task(10, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline", Status.NDONE, null);
+
+		Task t11 = new Task(11, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline", Status.NDONE, null);
+		Task t12 = new Task(12, 5, "LKPO", 10, new DateTime(), "200003-03-1", "inline", Status.NDONE, null);
 
 		list.add(t1);
 		list.add(t2);
@@ -190,21 +172,23 @@ public class FillDatabase {
 		}
 	}
 
-	public static void addMROs() {
+	public static void addMROs() throws NoSuchAlgorithmException {
 		List<MRO> list = new ArrayList<MRO>();
-		MRO mro1 = new MRO(10, "LFPO", "MRO1");
-		MRO mro2 = new MRO(11, "LFPO", "MRO2");
-		MRO mro3 = new MRO(12, "LFPA", "MRO3");
-		MRO mro4 = new MRO(13, "MLPO", "MRO4");
+		MRO mro0 = new MRO(7845165, "mro0", "pwd", "LFPO", "MRO0");
+		MRO mro1 = new MRO(7844578, "mro1", "pwd", "LFPA", "MRO1");
+		MRO mro2 = new MRO(7845124, "mro2", "pwd", "MLPO", "MRO2");
+		MRO mro3 = new MRO(7878547, "mro3", "pwd", "LFPA", "MRO3");
+		MRO mro4 = new MRO(7121645, "mro4", "pwd", "MLPO", "MRO4");
 
+		list.add(mro0);
 		list.add(mro1);
 		list.add(mro2);
 		list.add(mro3);
 		list.add(mro4);
 
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < list.size(); i++) {
 			((MRODAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getMRODAO()).add(list.get(i),
-					Constants.MRO, String.valueOf(list.get(i).getId()));
+					Constants.MRO, String.valueOf(list.get(i).getLogin()));
 		}
 	}
 }

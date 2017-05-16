@@ -14,23 +14,23 @@ $('#submit').click(function() {
 	console.log(login + " " + password);
 
 	$.ajax({
-		url : "ws/staffs/" + login + '/' + password,
+		url : "ws/mro/" + login + '/' + password,
 		type : "POST",
 		dataType : "json",
 
 		success : function(data) {
 			console.log(data);
-			
-			if(data) {
-				$.cookie('name', login);
-				localStorage.setItem(login,password);
+			if (data) {
+				$.cookie("login", login);
+				$.cookie("mroId", data.id);
+				localStorage.setItem(login, password);
 				location.href = "/homepage_mro.html";
 			} else
-				$("#span_con").html("ERREUR CHAMPS!!");
+				alert("Password is wrong");
 		},
 
 		error : function(resultat, statut, erreur) {
-			alert("ERROR !!!");
+			alert("The specified login does not exist");
 		}
 	});
 });

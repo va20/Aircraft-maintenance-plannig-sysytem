@@ -87,9 +87,11 @@ $(document).ready(function() {
 		fillFields();
 	}, 100);
 
-	$("#add").click(function() {
+	$("#edit").click(function() {
+		var idTask = getURLParam("task");
+		
 		var task = {
-			id : new Date().getUTCMilliseconds(),
+			id : idTask,
 			idPlane : $("#planes option:selected").val(),
 			idMRO : $("#mros option:selected").val(),
 			deadline : moment($("#deadline").val()),
@@ -100,7 +102,7 @@ $(document).ready(function() {
 		console.log(JSON.stringify(task));
 
 		$.ajax({
-			url : "ws/tasks" + id,
+			url : "ws/tasks/" + idTask,
 			type : "POST",
 			contentType : "application/json",
 			dataType : "json",

@@ -18,13 +18,11 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
 public class LaunchApp {
+	
 	public static void main(String[] args) throws NoSuchAlgorithmException, FileNotFoundException {
 		// Initialize the server
 		Server server = new Server();
-
-		// new SpreadsheetParser().importFile(new
-		// FileInputStream("src/main/resources/Airbus A320.xlsx"));
-
+		
 		// Add a connector
 		ServerConnector connector = new ServerConnector(server);
 		connector.setHost("0.0.0.0");
