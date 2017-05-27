@@ -24,32 +24,32 @@ public class DAOFactory extends AbstractDAOFactory {
 		private static final StaffDAO STAFF_DAO = new StaffDAOImpl(Staff.class);
 	}
 
-	public DAO getFlightDAO() {
+	public DAO<?> getFlightDAO() {
 		return DAOHolder.FLIGHT_DAO;
 	}
 
 	@Override
-	public DAO getPlaneDAO() {
+	public DAO<?> getPlaneDAO() {
 		return DAOHolder.PLANE_DAO;
 	}
 
 	@Override
-	public DAO getStaffDAO() {
+	public DAO<?> getStaffDAO() {
 		return DAOHolder.STAFF_DAO;
 	}
 
 	@Override
-	public DAO getGenericTaskDAO() {
+	public DAO<?> getGenericTaskDAO() {
 		return DAOHolder.GENERIC_TASK_DAO;
 	}
 
 	@Override
-	public DAO getTaskDAO() {
+	public DAO<?> getTaskDAO() {
 		return DAOHolder.TASK_DAO;
 	}
 
 	@Override
-	public DAO getMRODAO() {
+	public DAO<?> getMRODAO() {
 		return DAOHolder.MRO_DAO;
 	}
 }

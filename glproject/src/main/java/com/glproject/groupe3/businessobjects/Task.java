@@ -14,7 +14,6 @@ public class Task {
 
 	private long id;
 	private long idPlane;
-	private String airport;
 	private String idMro;
 	private DateTime deadline;
 	private String taskNumber;
@@ -25,12 +24,11 @@ public class Task {
 	public Task() {
 	}
 
-	public Task(long id, long idPlane, String airport, String idMro, DateTime deadline, String taskNumber, String type,
-			Status status, Warning warning) {
+	public Task(long id, long idPlane, String idMro, DateTime deadline, String taskNumber, String type, Status status,
+			Warning warning) {
 		super();
 		this.id = id;
 		this.idPlane = idPlane;
-		this.airport = airport;
 		this.idMro = idMro;
 		this.deadline = deadline;
 		this.taskNumber = taskNumber;
@@ -53,14 +51,6 @@ public class Task {
 
 	public void setIdPlane(long idPlane) {
 		this.idPlane = idPlane;
-	}
-
-	public String getAirport() {
-		return airport;
-	}
-
-	public void setAirport(String airport) {
-		this.airport = airport;
 	}
 
 	public String getIdMro() {

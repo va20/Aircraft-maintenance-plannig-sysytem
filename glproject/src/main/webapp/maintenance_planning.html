@@ -51,7 +51,6 @@
 					<tr id="thead_row">
 						<th>Plane</th>
 						<th>Task number</th>
-						<th>Airport</th>
 						<th>MRO</th>
 						<th>Deadline</th>
 						<th>Type</th>
@@ -64,7 +63,6 @@
                     		<tr id="<%= item.id %>" class="tasks">
 								<td id="plane" class="<%= item.idPlane %>"></td>
                         		<td><%= item.taskNumber %></td>
-								<td><%= item.airport %></td>
                         		<td class="<%= item.idMro %>"></td>
                         		<td><%= moment(item.deadline).toISOString() %></td>
                         		<td id="type" class="<%= item.type %>"><%= item.type %></td>

@@ -43,7 +43,7 @@
                     		<tr class="flights">
 								<td><strong><%= i %></strong></td>
                         		<td><%= item.commercial %></td>
-                        		<td><%= item.idPlane %></td>
+								<td class="<%= item.idPlane %>"></td>
                         		<td><%= item.depAirport %></td>
                         		<td><%= item.arrAirport %></td>
                         		<td><%= moment(item.depTime).toISOString() %></td>
@@ -65,7 +65,9 @@
 	<script src="scripts/underscore-min.js"></script>
 	<script src="scripts/moment.js"></script>
 	<script src="scripts/w3.js"></script>
-	<script>w3.includeHTML();</script>
+	<script>
+		w3.includeHTML();
+	</script>
 	<script src="scripts/menu.js"></script>
 	<script src="scripts/flights.js"></script>
 </body>
