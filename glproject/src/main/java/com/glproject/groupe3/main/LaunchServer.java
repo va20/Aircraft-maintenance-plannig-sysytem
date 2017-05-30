@@ -17,12 +17,11 @@ import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
-import com.glproject.groupe3.util.Util;
-
 public class LaunchServer {
 
 	public static void main(String[] args) throws NoSuchAlgorithmException, FileNotFoundException {
-		Util.mail("coucou ca va", "test");
+		// Util.mail("barak obama vous appelle a la maison blanche, venez le
+		// voir", "salut c est barak");
 
 		// Initialize the server
 		Server server = new Server();

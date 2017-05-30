@@ -18,66 +18,41 @@ function setTasks(data) {
 			tab[item.idPlane] = [ item ];
 	});
 
-	$
-			.ajax({
-				url : "ws/flights",
-				type : "GET",
-				dataType : "json"
-			})
-			.done(
-					function(data) {
-						_
-								.each(
-										data,
-										function(flight) {
-											if (_.indexOf(_.keys(tab),
-													flight.idPlane.toString()) != -1) {
-												_
-														.each(
-																tab[flight.idPlane],
-																function(task) {
-																	if (task.status == "NDONE"
-																			&& $
-																					.now() > task.deadline)
-																		task.warning = "ORANGE";
-																	else if (task.status == "NDONE"
-																			&& $
-																					.now() > task.deadline
-																			&& (flight.depTime - $
-																					.now()) < 60000)
-																		task.warning = "RED";
-
-																	$
-																			.ajax(
-																					{
-																						url : "ws/tasks/"
-																								+ task.id,
-																						type : "POST",
-																						contentType : "application/json",
-																						dataType : "json",
-																						data : JSON
-																								.stringify(task)
-																					})
-																			.done(
-																					function(
-																							data) {
-																						if (data.warning == "ORANGE")
-																							$(
-																									"#"
-																											+ data.idPlane)
-																									.addClass(
-																											"btn-orange");
-																						else if (data.warning == "RED")
-																							$(
-																									"#"
-																											+ data.idPlane)
-																									.addClass(
-																											"btn-red");
-																					});
-																});
-											}
-										});
+	$.ajax({
+		url : "ws/flights",
+		type : "GET",
+		dataType : "json"
+	}).done(function(data) {
+		_.each(data, function(flight) {
+			if (_.indexOf(_.keys(tab),
+					flight.idPlane.toString()) != -1) {
+				console.log($.now());
+				console.log((flight.depTime - $.now()));
+				console.log((flight.depTime - $.now()) < 60000);
+				_.each(tab[flight.idPlane], function(task) {
+					console.log(($.now() > task.deadline));
+					if (task.status == "NDONE" && $.now() > task.deadline)
+						task.warning = "ORANGE";
+					if (task.status == "NDONE" && $.now() > task.deadline && (flight.depTime - $ .now()) < 60000)
+						task.warning = "RED";
+					if(task.status == "DONE")
+						task.warning = "GREEN";
+					
+					$.ajax({
+						url : "ws/tasks/"+ task.id,
+						type : "POST",
+						contentType : "application/json",
+						dataType : "json",
+						data : JSON.stringify(task)
+					}).done(function(data) {
+						if (data.warning == "ORANGE")
+							$("#"+ data.idPlane).addClass("btn-orange");
+						else if (data.warning == "RED")
+							$("#"+ data.idPlane).addClass("btn-red");});
 					});
+				}
+			});
+	});
 }
 
 function getPlanes() {
