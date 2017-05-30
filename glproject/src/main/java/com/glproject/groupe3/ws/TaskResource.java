@@ -1,6 +1,5 @@
 package com.glproject.groupe3.ws;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -13,11 +12,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.elasticsearch.action.update.UpdateRequest;
-
-import com.fasterxml.jackson.core.JsonGenerationException;
 import com.glproject.groupe3.DAO.AbstractDAOFactory;
 import com.glproject.groupe3.DAO.Factory;
 import com.glproject.groupe3.DAOImpl.TaskDAOImpl;
@@ -54,29 +48,7 @@ public class TaskResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Task updateTask(@PathParam("id") long id, Task task) {
-		ObjectMapper mapper = new ObjectMapper();
-		String json = null;
-
-		UpdateRequest ur = new UpdateRequest();
-		ur.index(Constants.GL);
-		ur.type(Constants.TASKS);
-		ur.id(String.valueOf(task.getId()));
-
-		try {
-			json = mapper.writeValueAsString(task);
-			System.out.println(json);
-
-		} catch (JsonGenerationException e) {
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		ur.doc(json);
-
-		((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).update(ur);
+		((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).update(id, task);
 
 		return task;
 	}

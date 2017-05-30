@@ -1,26 +1,30 @@
 package com.glproject.groupe3.util;
 
-import com.glproject.groupe3.DAO.AbstractDAOFactory;
-import com.glproject.groupe3.DAO.Factory;
-import com.glproject.groupe3.DAOImpl.FlightDAOImpl;
-import com.glproject.groupe3.DAOImpl.GenericTaskDAOImpl;
-import com.glproject.groupe3.businessobjects.Flight;
-import com.glproject.groupe3.businessobjects.GenericTask;
-import com.glproject.groupe3.persistence.ElasticSearchClient;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Iterator;
+
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.joda.time.DateTime;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Iterator;
+import com.glproject.groupe3.DAO.AbstractDAOFactory;
+import com.glproject.groupe3.DAO.Factory;
+import com.glproject.groupe3.DAOImpl.FlightDAOImpl;
+import com.glproject.groupe3.DAOImpl.GenericTaskDAOImpl;
+import com.glproject.groupe3.businessobjects.Flight;
+import com.glproject.groupe3.businessobjects.GenericTask;
 
 public class SpreadsheetParser implements Parser {
-	private ElasticSearchClient esc = ElasticSearchClient.getInstance();
 
 	public void importFile(InputStream mpd) {
 		try {
@@ -89,6 +93,7 @@ public class SpreadsheetParser implements Parser {
 		try {
 			Workbook workbook = new XSSFWorkbook(flightFile);
 			Sheet firstSheet = workbook.getSheetAt(0);
+			CreationHelper createHelper = workbook.getCreationHelper();
 			if (firstSheet == null)
 				return;
 
@@ -120,12 +125,30 @@ public class SpreadsheetParser implements Parser {
 						flight.setArrAirport(cell.getStringCellValue());
 						break;
 					case 4:
-						DateTime d = new DateTime(cell.getDateCellValue());
+						CellStyle cellStyle = workbook.createCellStyle();
+						cellStyle.setDataFormat(createHelper.createDataFormat().getFormat("m/d/yy h:mm"));
+						cell = nextRow.createCell(1);
+						DateTime d = new DateTime();
+						cell.setCellValue(d.toDate());
+						cell.setCellStyle(cellStyle);
 						flight.setDepTime(d);
 						break;
 					case 5:
-						DateTime date = new DateTime(cell.getDateCellValue());
-						flight.setArrTime(date);
+						DataFormatter dataFormatter = new DataFormatter();
+						String cellStringValue = dataFormatter.formatCellValue(cell);
+
+						SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+						DateTime d2 = null;
+						
+						try {
+							d2 = new DateTime(dateFormat.parse(cellStringValue));
+
+						} catch (ParseException e) {
+							e.printStackTrace();
+						}
+						
+						cell.setCellValue(cellStringValue);
+						flight.setDepTime(d2);
 						break;
 					}
 				}

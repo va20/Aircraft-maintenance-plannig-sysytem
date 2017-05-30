@@ -64,7 +64,7 @@
 								<td id="plane" class="<%= item.idPlane %>"></td>
                         		<td><%= item.taskNumber %></td>
                         		<td class="<%= item.idMro %>"></td>
-                        		<td><%= moment(item.deadline).toISOString() %></td>
+                        		<td><%= moment(item.deadline).format() %></td>
                         		<td id="type" class="<%= item.type %>"><%= item.type %></td>
 								<td class="text-center">
 								<a id="<%= item.taskNumber %>" class="btn btn-info btn-xs" data-toggle="modal" 

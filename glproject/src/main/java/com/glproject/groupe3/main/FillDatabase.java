@@ -29,7 +29,7 @@ public class FillDatabase {
 	public static void fill() throws NoSuchAlgorithmException {
 		addStaffs();
 		addPlanes();
-		addFlights();
+		// addFlights();
 		// addGenericTasks();
 		addTasks();
 		addMROs();
@@ -82,7 +82,8 @@ public class FillDatabase {
 	public static void addFlights() {
 		List<Flight> list = new ArrayList<Flight>();
 		Flight flight1 = new Flight(1, "TVA1234", "LFPA", "LFPO", new DateTime(), new DateTime().plusHours(3));
-		Flight flight2 = new Flight(2, "GVF1224", "AGPW", "LFPA", new DateTime().plusHours(2), new DateTime().plusHours(5));
+		Flight flight2 = new Flight(2, "GVF1224", "AGPW", "LFPA", new DateTime().plusSeconds(90),
+				new DateTime().plusHours(5));
 		Flight flight3 = new Flight(3, "TVH1234", "LPPO", "MLPO", new DateTime(), new DateTime().plusHours(4));
 		Flight flight4 = new Flight(4, "TVF1439", "LFPO", "LPPO", new DateTime(), new DateTime().plusHours(12));
 		Flight flight5 = new Flight(5, "PVI1234", "MLPO", "AGPW", new DateTime(), new DateTime().plusHours(2));
@@ -133,9 +134,9 @@ public class FillDatabase {
 
 	public static void addTasks() {
 		List<Task> list = new ArrayList<Task>();
-		Task t1 = new Task(515412, 2, "mro0", new DateTime().plusHours(2).minusSeconds(70), "200001-01-1", "base", Status.NDONE,
-				Warning.NONE);
-		Task t2 = new Task(785757, 2, "mro1", new DateTime().minusSeconds(19), "200001-02-1", "inline", Status.NDONE,
+		Task t1 = new Task(515412, 2, "mro0", new DateTime().plusHours(2).minusSeconds(70), "200001-01-1", "base",
+				Status.NDONE, Warning.NONE);
+		Task t2 = new Task(785757, 2, "mro1", new DateTime().minusSeconds(70), "200001-02-1", "inline", Status.NDONE,
 				Warning.NONE);
 		// Task t3 = new Task(3, 3, "LPPO", 11, new DateTime(), "200002-01-1",
 		// "inline", Status.NDONE, null);

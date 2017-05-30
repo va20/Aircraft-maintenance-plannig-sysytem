@@ -1,6 +1,9 @@
 package com.glproject.groupe3.DAOImpl;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.glproject.groupe3.DAO.AbstractDAOFactory;
 import com.glproject.groupe3.DAO.DAOImpl;
+import com.glproject.groupe3.DAO.Factory;
 import com.glproject.groupe3.DAO.TaskDAO;
 import com.glproject.groupe3.businessobjects.Task;
 import com.glproject.groupe3.util.Constants;
@@ -11,6 +14,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.search.SearchHit;
 
 import java.io.IOException;
@@ -22,6 +26,32 @@ public class TaskDAOImpl extends DAOImpl<Task> implements TaskDAO {
 
 	public TaskDAOImpl(Class<Task> typeT) {
 		super(typeT);
+	}
+
+	public void update(long id, Task task) {
+		ObjectMapper mapper = new ObjectMapper();
+		String json = null;
+
+		UpdateRequest ur = new UpdateRequest();
+		ur.index(Constants.GL);
+		ur.type(Constants.TASKS);
+		ur.id(String.valueOf(task.getId()));
+
+		try {
+			json = mapper.writeValueAsString(task);
+			System.out.println(json);
+
+		} catch (JsonGenerationException e) {
+			logger.error("Error" + e.toString());
+		} catch (JsonMappingException e) {
+			logger.error("Error" + e.toString());
+		} catch (IOException e) {
+			logger.error("Error" + e.toString());
+		}
+
+		ur.doc(json);
+
+		((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).update(ur);
 	}
 
 	public List<Task> getTasksByMRO(String id) {
