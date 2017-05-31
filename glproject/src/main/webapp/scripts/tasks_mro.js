@@ -32,7 +32,8 @@ function printTasks(data) {
 		getPlane(item.idPlane);
 	});
 
-	$("#tasks").append(task);
+	//if (data.status != "DONE") 
+		$("#tasks").append(task);
 
 	_.each(data, function(task) {
 		if (task.warning == "ORANGE")
@@ -42,10 +43,57 @@ function printTasks(data) {
 	});
 }
 
+function deleteTask(id) {
+	$.ajax({
+		url : "ws/tasks/"+ id,
+		type : "DELETE",
+		dataType : "json"
+	}).done(function(data) {
+	});
+}
+
 $(document).ready(function() {
 	getTasks();
 
+	var idTask;
+	var plane;
+	var mro;
+	var dl;
+	var tn;
+	var typeTask;
+
 	$("#tableTasks").on("click", "tr.tasks", function() {
-		getGenericTask($(this.cells[1]).text());
+		getGenericTask($("#taskNumber").html());
+		idTask = $(this).attr("id");
+		plane = $("#planeId").html();
+		mro = $.cookie("login");
+		dl = $("#deadline").html();
+		tn = $("#taskNumber").html();
+		typeTask = $("#type").html();
+	});
+
+	$("#done").on("click", function() {
+		var task = {
+			id : idTask,
+			idPlane : plane,
+			idMro : mro,
+			deadline : dl,
+			taskNumber : tn,
+			type : typeTask,
+			status : "DONE"
+		}
+		
+		$.ajax({
+			url : "ws/tasks/" + idTask,
+			type : "POST",
+			contentType : "application/json",
+			dataType : "json",
+			data : JSON.stringify(task)
+		}).done(function(data) {
+			setTimeout(function(data) {
+            window.location.reload();
+        },500)
+			
+		});
 	});
 });
