@@ -17,6 +17,8 @@ import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
+import com.glproject.groupe3.util.MailAlert;
+
 public class LaunchServer {
 
 	public static void main(String[] args) throws NoSuchAlgorithmException, FileNotFoundException {
@@ -64,6 +66,7 @@ public class LaunchServer {
 
 		try {
 			server.start();
+			MailAlert mailAlert = new MailAlert();
 
 		} catch (Exception e) {
 			e.printStackTrace();

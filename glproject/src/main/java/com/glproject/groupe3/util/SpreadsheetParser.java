@@ -60,9 +60,9 @@ public class SpreadsheetParser implements Parser {
 					case 3:
 						gt.setDescr(cell.getStringCellValue());
 						break;
-					// case 4:
-					// gt.setPeriodicity(cell.getStringCellValue());
-					// break;
+					case 4:
+						gt.setPeriodicity(cell.getStringCellValue());
+						break;
 					case 5:
 						gt.setHangar(cell.getStringCellValue());
 						break;
@@ -139,14 +139,14 @@ public class SpreadsheetParser implements Parser {
 
 						SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 						DateTime d2 = null;
-						
+
 						try {
 							d2 = new DateTime(dateFormat.parse(cellStringValue));
 
 						} catch (ParseException e) {
 							e.printStackTrace();
 						}
-						
+
 						cell.setCellValue(cellStringValue);
 						flight.setDepTime(d2);
 						break;

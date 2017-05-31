@@ -1,85 +1,53 @@
 package com.glproject.groupe3.util;
 
-import org.joda.time.DateTime;
 import org.quartz.Job;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
-import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
+import org.quartz.SimpleScheduleBuilder;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
-import org.quartz.TriggerKey;
 import org.quartz.impl.StdSchedulerFactory;
-
-import com.glproject.groupe3.DAO.AbstractDAOFactory;
-import com.glproject.groupe3.DAO.Factory;
-import com.glproject.groupe3.DAOImpl.TaskDAOImpl;
-import com.glproject.groupe3.businessobjects.Flight;
-import com.glproject.groupe3.businessobjects.Task;
 
 public class MailAlert {
 	private Scheduler scheduler;
 
-	public MailAlert() {
-		try {
-			scheduler = new StdSchedulerFactory().getScheduler();
-			scheduler.start();
+	public MailAlert() throws SchedulerException {
+		JobDetail job = JobBuilder.newJob(Alert.class).withIdentity("dummyJobName", "group1").build();
 
-		} catch (SchedulerException e) {
-			e.printStackTrace();
-			System.exit(1);
-		}
+		// Quartz 1.6.3
+		// SimpleTrigger trigger = new SimpleTrigger();
+		// trigger.setStartTime(new Date(System.currentTimeMillis() + 1000));
+		// trigger.setRepeatCount(SimpleTrigger.REPEAT_INDEFINITELY);
+		// trigger.setRepeatInterval(30000);
+
+		// Trigger the job to run on the next round minute
+		Trigger trigger = TriggerBuilder.newTrigger().withIdentity("dummyTriggerName", "group1")
+				.withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(5).repeatForever()).build();
+
+		// schedule it
+		Scheduler scheduler = new StdSchedulerFactory().getScheduler();
+		scheduler.start();
+		scheduler.scheduleJob(job, trigger);
 	}
 
-	protected void scheduleJob(Class<? extends Job> jobClass, DateTime alertDate, String jobName, String groupName) {
-		Trigger trigger = TriggerBuilder.newTrigger().withIdentity(jobName, groupName).startAt(alertDate.toDate())
-				.build();
-
-		JobDetail job = JobBuilder.newJob(jobClass).withIdentity(jobName, groupName).build();
-
-		try {
-			scheduler.scheduleJob(job, trigger);
-
-		} catch (SchedulerException e) {
-			System.out.println("Failed to start the job " + jobName);
-			e.printStackTrace();
-		}
-	}
-
-	public void scheduleAlert(Task task) {
-		scheduleAlert(String.valueOf(task.getId()));
-	}
-
-	public void scheduleAlert(String taskId) {
-		Task task = ((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO())
-				.get(Constants.TASKS, String.valueOf(taskId));
-		if (task == null) {
-			System.out.println("Task " + taskId + " not found !");
-			return;
-		}
-
-		// DateTime alertDate = new DateTime(task.getDepDate().getTime() - 12 *
-		// 3600 * 1000);
-		// scheduleJob(Alert.class, alertDate, taskId, "alert");
-	}
-
-	private class Alert implements Job {
+	class Alert implements Job {
 
 		public void execute(JobExecutionContext arg0) throws JobExecutionException {
-			String taskId = arg0.getJobDetail().getKey().getName();
-
-			Task task = ((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO())
-					.get(Constants.TASKS, String.valueOf(taskId));
-			if (task == null) {
-				System.out.println("Task " + taskId + " not found !");
-				return;
-			}
+			System.out.println("ASJ?AOPZS JAOPIS JAIOPSJAIOPS JAOPSJ AOPI");
 
 			System.out.println("notify the MCC");
-			Util.mail("probleme avec la tache" + taskId, "Task Alert");
+			Util.mail("probleme avec la tache" + "", "Task Alert");
+
+			try {
+				scheduler.shutdown();
+
+			} catch (SchedulerException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

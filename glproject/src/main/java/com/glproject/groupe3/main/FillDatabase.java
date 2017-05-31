@@ -30,7 +30,7 @@ public class FillDatabase {
 		addStaffs();
 		addPlanes();
 		addFlights();
-		// addGenericTasks();
+		addGenericTasks();
 		addTasks();
 		addMROs();
 	}
@@ -67,6 +67,10 @@ public class FillDatabase {
 		Plane plane6 = new Plane(6, "Airbus A335-600", "FF649I");
 		Plane plane7 = new Plane(7, "Boeing 787", "Z56IFA");
 		Plane plane8 = new Plane(8, "Boeing 777", "PM484K");
+		Plane plane9 = new Plane(9, "MD-8", "PA787H");
+		Plane plane10 = new Plane(10, "Fokker 100", "QQ984K");
+		Plane plane11 = new Plane(11, "Embraer 190", "CV184F");
+		Plane plane12 = new Plane(12, "Boeing 747", "PC7830A");
 
 		list.add(plane1);
 		list.add(plane2);
@@ -76,6 +80,10 @@ public class FillDatabase {
 		list.add(plane6);
 		list.add(plane7);
 		list.add(plane8);
+		list.add(plane9);
+		list.add(plane10);
+		list.add(plane11);
+		list.add(plane12);
 
 		for (int i = 0; i < list.size(); i++) {
 			((PlaneDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getPlaneDAO()).add(list.get(i),
@@ -85,13 +93,21 @@ public class FillDatabase {
 
 	public static void addFlights() {
 		List<Flight> list = new ArrayList<Flight>();
-		Flight flight1 = new Flight(1, "TVA1234", "LFPA", "LFPO", new DateTime(), new DateTime().plusHours(3));
-		Flight flight2 = new Flight(2, "GVF1224", "AGPW", "LFPA", new DateTime().plusSeconds(90),
+		Flight flight1 = new Flight(7, "TVA1234", "LFPA", "LFPO", new DateTime(), new DateTime().plusHours(3));
+		Flight flight2 = new Flight(8, "GVF1224", "AGPW", "LFPA", new DateTime().plusSeconds(90),
 				new DateTime().plusHours(5));
-		Flight flight3 = new Flight(3, "TVH1234", "LPPO", "MLPO", new DateTime(), new DateTime().plusHours(4));
-		Flight flight4 = new Flight(4, "TVF1439", "LFPO", "LPPO", new DateTime(), new DateTime().plusHours(12));
-		Flight flight5 = new Flight(5, "PVI1234", "MLPO", "AGPW", new DateTime(), new DateTime().plusHours(2));
-		Flight flight6 = new Flight(6, "TSF1214", "LFPA", "LKPO", new DateTime(), new DateTime().plusHours(6));
+		Flight flight3 = new Flight(7, "TVH1234", "LPPO", "MLPO", new DateTime(),
+				new DateTime().plusHours(4).plusMinutes(45));
+		Flight flight4 = new Flight(9, "TVF1439", "LFPO", "LPPO", new DateTime(), new DateTime().plusHours(12));
+		Flight flight5 = new Flight(10, "PVI1234", "MLPO", "AGPW", new DateTime(),
+				new DateTime().plusHours(2).plusMinutes(30));
+		Flight flight6 = new Flight(11, "TSF1214", "LFPA", "LKPO", new DateTime(), new DateTime().plusHours(6));
+		Flight flight7 = new Flight(4, "APW4778", "MLPO", "AKPW", new DateTime().plusHours(9).plusMinutes(4),
+				new DateTime().plusHours(10).plusMinutes(50));
+		Flight flight8 = new Flight(2, "MAQ7844", "PALW", "SIOZ", new DateTime().plusSeconds(1900),
+				new DateTime().plusHours(6));
+		Flight flight9 = new Flight(12, "LOA6314", "WWAQ", "VZDE", new DateTime().plusSeconds(160),
+				new DateTime().plusHours(4).plusMinutes(12));
 
 		list.add(flight1);
 		list.add(flight2);
@@ -99,6 +115,9 @@ public class FillDatabase {
 		list.add(flight4);
 		list.add(flight5);
 		list.add(flight6);
+		list.add(flight7);
+		list.add(flight8);
+		list.add(flight9);
 
 		for (int i = 0; i < list.size(); i++) {
 			((FlightDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getFlightDAO()).add(list.get(i),
@@ -108,19 +127,19 @@ public class FillDatabase {
 
 	public static void addGenericTasks() {
 		List<GenericTask> list = new ArrayList<GenericTask>();
-		GenericTask gt1 = new GenericTask("200001-01-1", "Airbus A320", 571,
+		GenericTask gt1 = new GenericTask("300001-01-1", "Boeing 747", 571,
 				"HIRF/LIGHTNING PROTECTION-WING, CHECK BONDING MEASUREMENT OF CLAMPS WITH A LOOP MRB REFERENCE : TESTER FROM FUSELAGE TO RIB 9",
 				null, "truee", 1, "PRE 24943, (57-1086)");
-		GenericTask gt2 = new GenericTask("200001-02-1", "Airbus A320", 571,
+		GenericTask gt2 = new GenericTask("300001-02-1", "Boeing 747", 571,
 				"CHECK THAT THE CONNECTOR IS CORRECTLY TIGHTENED BY MEASUREMENT OF THE RESISTANCE WITH A LOOP TESTER: - 4005VC, 4007VC, 4009VC, 4011VC, LH SIDE - 4013VC, 4015VC, 4017VC, 4019VC, LH SIDE - 4006VC, 4008VC, 4010VC, 4012VC, RH SIDE - 4014VC, 4016VC, 4018VC, 4020VC, RH SIDE - ACCESS: 521EB 521GB 522AB",
 				null, "truee", 1, "ALL");
-		GenericTask gt3 = new GenericTask("200002-01-1", "Airbus A320", 334,
+		GenericTask gt3 = new GenericTask("300002-01-1", "Boeing 747", 334,
 				"GENERAL VISUAL INSPECTION OF ELEMENTS FITTED ON THE FOLLOWING HARNESSES: - 405VB, 406VB, 407VB, 408VB, 409VB, LH SIDE - - 400VB, 401VB, 402VB, 403VB, 404VB, RH SIDE - ACCESS: 334AB 334BB 334CB 334DB 334EB",
 				null, "truee", 1, "ALL");
-		GenericTask gt4 = new GenericTask("200003-01-1", "Airbus A320", 321,
+		GenericTask gt4 = new GenericTask("300003-01-1", "Boeing 747", 321,
 				"HIRF/LIGHTNING PROTECTION-VERTICAL FIN, GENERAL VISUAL INSPECTION OF ELEMENTS FITTED ON THE FOLLOWING HARNESSES: - 4202VB, 4204VB - ACCESS: 321AL",
 				null, "truee", 1, "ALL");
-		GenericTask gt5 = new GenericTask("200003-03-1", "Airbus A320", 324,
+		GenericTask gt5 = new GenericTask("300003-03-1", "Boeing 747", 324,
 				"HIRF/LIGHTNING PROTECTION-VERTICAL FIN, GENERAL VISUAL INSPECTION OF ELEMENTS FITTED ON THE FOLLOWING HARNESSES: - 4202VB, 4204VB - ACCESS: 324AT",
 				null, "truee", 1, "ALL");
 
@@ -138,29 +157,41 @@ public class FillDatabase {
 
 	public static void addTasks() {
 		List<Task> list = new ArrayList<Task>();
-		Task t1 = new Task(5154128, 2, "mro0", new DateTime(), "200001-01-1", "base", Status.NDONE, Warning.NONE);
-		Task t2 = new Task(7857577, 2, "mro1", new DateTime(), "200001-02-1", "inline", Status.NDONE, Warning.NONE);
-		Task t3 = new Task(1815125, 5, "mro1", new DateTime().plusHours(2), "200002-01-1", "inline", Status.NDONE,
+		Task t1 = new Task(5154128, 3, "mro0", new DateTime().plusHours(2), "300001-01-1", "base", Status.NDONE,
 				Warning.NONE);
-		Task t4 = new Task(1658165, 1, "mro2", new DateTime().plusMinutes(19), "200003-01-1", "base", Status.NDONE,
+		Task t2 = new Task(7857577, 3, "mro1", new DateTime().plusHours(2), "300001-02-1", "base", Status.NDONE,
 				Warning.NONE);
-		Task t5 = new Task(4654655, 5, "mro2", new DateTime(), "200003-03-1", "inline", Status.NDONE, Warning.NONE);
+		Task t3 = new Task(1815125, 4, "mro1", new DateTime().plusHours(2), "300002-01-1", "inline", Status.NDONE,
+				Warning.NONE);
+		Task t4 = new Task(1658165, 4, "mro2", new DateTime().plusMinutes(78), "300003-01-1", "base", Status.NDONE,
+				Warning.NONE);
+		Task t5 = new Task(4654655, 3, "mro1", new DateTime().plusDays(3).plusHours(2), "300001-01-1", "inline",
+				Status.NDONE, Warning.NONE);
+		Task t6 = new Task(7857866, 4, "mro2", new DateTime().plusMinutes(45), "300002-01-1", "inline", Status.NDONE,
+				Warning.NONE);
+		Task t7 = new Task(2452872, 3, "mro3", new DateTime().plusDays(1).plusHours(6), "300003-03-1", "base",
+				Status.NDONE, Warning.NONE);
+		Task t8 = new Task(7457085, 4, "mro1", new DateTime().plusHours(4).plusMinutes(45), "300001-02-1", "inline",
+				Status.NDONE, Warning.NONE);
+		Task t9 = new Task(7975545, 4, "mro4", new DateTime().plusMinutes(118), "300003-03-1", "base", Status.NDONE,
+				Warning.NONE);
+		Task t10 = new Task(1245775, 3, "mro1", new DateTime().plusHours(6), "300003-01-1", "inline", Status.NDONE,
+				Warning.NONE);
+		Task t11 = new Task(4747475, 12, "mro2", new DateTime().plusSeconds(20), "300003-02-1", "inline", Status.NDONE,
+				Warning.NONE);
 
 		list.add(t1);
 		list.add(t2);
 		list.add(t3);
 		list.add(t4);
 		list.add(t5);
-		
-		// // TEST PAGINATION //
-		// list.add(t6);
-		// list.add(t7);
-		// list.add(t8);
-		// list.add(t9);
-		// list.add(t10);
-		//
-		// list.add(t11);
-		// list.add(t12);
+
+		list.add(t6);
+		list.add(t7);
+		list.add(t8);
+		list.add(t9);
+		list.add(t10);
+		list.add(t11);
 
 		for (int i = 0; i < list.size(); i++) {
 			((TaskDAOImpl) AbstractDAOFactory.getFactory(Factory.ES_DAO_FACTORY).getTaskDAO()).add(list.get(i),
