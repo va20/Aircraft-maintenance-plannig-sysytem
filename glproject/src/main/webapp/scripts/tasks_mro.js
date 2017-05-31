@@ -32,7 +32,8 @@ function printTasks(data) {
 		getPlane(item.idPlane);
 	});
 
-	$("#tasks").append(task);
+	//if (data.status != "DONE") 
+		$("#tasks").append(task);
 
 	_.each(data, function(task) {
 		if (task.warning == "ORANGE")
@@ -89,7 +90,10 @@ $(document).ready(function() {
 			dataType : "json",
 			data : JSON.stringify(task)
 		}).done(function(data) {
-			deleteTask(data.id);
+			setTimeout(function(data) {
+            window.location.reload();
+        },500)
+			
 		});
 	});
 });
