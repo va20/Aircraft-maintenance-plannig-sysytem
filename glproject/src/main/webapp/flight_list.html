@@ -46,8 +46,8 @@
 								<td class="<%= item.idPlane %>"></td>
                         		<td><%= item.depAirport %></td>
                         		<td><%= item.arrAirport %></td>
-                        		<td><%= moment(item.depTime).toISOString() %></td>
-                        		<td><%= moment(item.arrTime).toISOString() %></td>
+                        		<td><%= moment(item.depTime).format() %></td>
+                        		<td><%= moment(item.arrTime).format() %></td>
                    		 	</tr>
 						<% }); %>
 					</script>

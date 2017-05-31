@@ -71,7 +71,7 @@ $(document).ready(function() {
 				cache : false,
 				processData : false,
 				contentType : false,
-				
+
 				success : function(data) {
 					alert("Flights list uploaded");
 					location.href = "flight_list.html";
