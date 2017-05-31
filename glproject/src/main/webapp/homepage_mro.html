@@ -52,7 +52,6 @@
 						<tr id="thead_row">
 							<th>Plane</th>
 							<th>Task number</th>
-							<th>Airport</th>
 							<th>Deadline</th>
 							<th>Type</th>
 						</tr>
@@ -60,12 +59,12 @@
 					<tbody id="tasks">
 						<script id="list_tasks" type="text/html">
                         <% _.each(item, function(item, i) { %>
-                            <tr id="<%= item.id %>" class="tasks " data-toggle="modal"
+                            <tr id="<%= item.id %>" class="tasks" data-toggle="modal"
 								data-target="#genericTaskInfo">
+								<td style="display:none" id="planeId"><%= item.idPlane %></td>
                                 <td id="plane" class="<%= item.idPlane %>"></td>
-                                <td><%= item.taskNumber %></td>
-                                <td><%= item.airport %></td>
-                                <td><%= moment(item.deadline).toISOString() %></td>
+                                <td id="taskNumber"><%= item.taskNumber %></td>
+                                <td id="deadline" ><%= moment(item.deadline).format() %></td>
                                 <td id="type" class="<%= item.type %>"><%= item.type %></td>
                                 <td class="text-center"></td>
                             </tr>
@@ -92,11 +91,13 @@
 							<% _.each(item, function(item) { %>
 								<li class="list-group-item"><%= item %><span class="badge">item</span></li>
 							<% }); %>
-						</br>
-							<button type="button" class="valide" id="done">Done</button>
 						</script>
+					</br>
+				</br>
 					</ul>
 				</div>
+							<button type="button" class="valide" id="done">Done</button>
+
 			</div>
 		</div>
 	</div>
