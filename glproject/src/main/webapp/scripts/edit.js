@@ -106,10 +106,11 @@ $(document).ready(function() {
 			dataType : "json",
 			data : JSON.stringify(task),
 
-			success : function(data) {
-				//var tailNumber = $("#planes option:selected").text();
-				location.href = "maintenance_planning.html";
-			},
+
+			success : setTimeout(function(data) {
+                    location.href = "maintenance_planning.html";
+                    //var tailNumber = $("#planes option:selected").text();
+			},500),
 			error : function(res, stat, err) {
 				alert("ERROR PUT TASK");
 			}

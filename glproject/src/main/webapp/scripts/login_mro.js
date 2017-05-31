@@ -24,7 +24,7 @@ $('#submit').click(function() {
 				localStorage.setItem(login, password);
 				location.href = "/homepage_mro.html";
 			} else
-				alert("Password is wrong");
+				alert(" Wrong password");
 		},
 
 		error : function(resultat, statut, erreur) {

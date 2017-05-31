@@ -65,6 +65,8 @@
                                 <td id="plane" class="<%= item.idPlane %>"></td>
                                 <td id="taskNumber"><%= item.taskNumber %></td>
                                 <td id="deadline" ><%= moment(item.deadline).format() %></td>
+                                <td><%= item.taskNumber %></td>
+                                <td><%= moment(item.deadline).toISOString() %></td>
                                 <td id="type" class="<%= item.type %>"><%= item.type %></td>
                                 <td class="text-center"></td>
                             </tr>
