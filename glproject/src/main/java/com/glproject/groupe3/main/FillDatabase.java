@@ -68,9 +68,8 @@ public class FillDatabase {
 		Plane plane7 = new Plane(7, "Boeing 787", "Z56IFA");
 		Plane plane8 = new Plane(8, "Boeing 777", "PM484K");
 		Plane plane9 = new Plane(9, "MD-8", "PA787H");
-		Plane plane10 = new Plane(10, "Fokker 100", "QQ984K");
-		Plane plane11 = new Plane(11, "Embraer 190", "CV184F");
-		Plane plane12 = new Plane(12, "Boeing 747", "PC7830A");
+		Plane plane10 = new Plane(11, "Fokker 100", "QQ984K");
+		Plane plane12 = new Plane(10, "Boeing 747", "PC7830A");
 
 		list.add(plane1);
 		list.add(plane2);
@@ -82,7 +81,6 @@ public class FillDatabase {
 		list.add(plane8);
 		list.add(plane9);
 		list.add(plane10);
-		list.add(plane11);
 		list.add(plane12);
 
 		for (int i = 0; i < list.size(); i++) {
@@ -99,21 +97,21 @@ public class FillDatabase {
 		Flight flight3 = new Flight(7, "TVH1234", "LPPO", "MLPO", new DateTime(),
 				new DateTime().plusHours(4).plusMinutes(45));
 		Flight flight4 = new Flight(9, "TVF1439", "LFPO", "LPPO", new DateTime(), new DateTime().plusHours(12));
-		Flight flight5 = new Flight(10, "PVI1234", "MLPO", "AGPW", new DateTime(),
-				new DateTime().plusHours(2).plusMinutes(30));
+//		Flight flight5 = new Flight(10, "PVI1234", "MLPO", "AGPW", new DateTime(),
+//				new DateTime().plusHours(2).plusMinutes(30));
 		Flight flight6 = new Flight(11, "TSF1214", "LFPA", "LKPO", new DateTime(), new DateTime().plusHours(6));
 		Flight flight7 = new Flight(4, "APW4778", "MLPO", "AKPW", new DateTime().plusHours(9).plusMinutes(4),
 				new DateTime().plusHours(10).plusMinutes(50));
 		Flight flight8 = new Flight(2, "MAQ7844", "PALW", "SIOZ", new DateTime().plusSeconds(1900),
 				new DateTime().plusHours(6));
-		Flight flight9 = new Flight(12, "LOA6314", "WWAQ", "VZDE", new DateTime().plusSeconds(160),
+		Flight flight9 = new Flight(10, "LOA6314", "WWAQ", "VZDE", new DateTime().plusSeconds(160),
 				new DateTime().plusHours(4).plusMinutes(12));
 
 		list.add(flight1);
 		list.add(flight2);
 		list.add(flight3);
 		list.add(flight4);
-		list.add(flight5);
+//		list.add(flight5);
 		list.add(flight6);
 		list.add(flight7);
 		list.add(flight8);
@@ -177,7 +175,7 @@ public class FillDatabase {
 				Warning.NONE);
 		Task t10 = new Task(1245775, 3, "mro1", new DateTime().plusHours(6), "300003-01-1", "inline", Status.NDONE,
 				Warning.NONE);
-		Task t11 = new Task(4747475, 12, "mro2", new DateTime().plusSeconds(20), "300003-02-1", "inline", Status.NDONE,
+		Task t11 = new Task(4747475, 10, "mro2", new DateTime().plusSeconds(20), "300003-03-1", "inline", Status.NDONE,
 				Warning.NONE);
 
 		list.add(t1);

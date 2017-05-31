@@ -57,7 +57,7 @@ public class LaunchApp {
 		contexts.setHandlers(new Handler[] { handlerWebServices, handlerPortalCtx });
 		server.setHandler(contexts);
 
-		FillDatabase.fill();
+		//FillDatabase.fill();
 
 		try {
 			server.start();

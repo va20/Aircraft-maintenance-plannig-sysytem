@@ -57,7 +57,8 @@ function printMROs(data) {
 }
 
 $(document).ready(function() {
-	var tailNumber = getURLParam("plane")
+	var tailNumber = getURLParam("plane");
+	console.log(tailNumber);
 	$("#planes option").html(tailNumber);
 
 	retrieveData("ws/planes/" + $.cookie("planeType") + "/mpd");

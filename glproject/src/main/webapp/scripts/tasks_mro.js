@@ -22,40 +22,28 @@ function getTasks() {
 }
 
 function printTasks(data) {
-	if (data.status != "DONE") {
-		var template = _.template($("#list_tasks").html());
-		var task = template({
-			"item" : data
-		});
-	
-		// Plane tailNumber
-		_.each(data, function(item) {
-			getPlane(item.idPlane);
-		});
-	
-		$("#tasks").append(task);
-	
-		_.each(data, function(task) {
-			if (task.warning == "ORANGE")
-				$("#" + task.id).css("background-color", "rgba(255, 110, 0, 0.4)");
-			else if (task.warning == "RED")
-				$("#" + task.id).css("background-color", "rgba(255, 0, 0, 0.4)");
-			else if (task.warning == "GREEN")
-			    $("#" + task.id).css("background-color", "rgba(144, 238, 144, 0.4)");
-			
-		});
-	}
-}
+	var template = _.template($("#list_tasks").html());
+	var task = template({
+		"item" : data
+	});
 
-function deleteTask(id) {
-	$.ajax({
-		url : "ws/tasks/"+ id,
-		type : "DELETE",
-		dataType : "json"
-	}).done(function(data) {
+	// Plane tailNumber
+	_.each(data, function(item) {
+		getPlane(item.idPlane);
+	});
+
+	$("#tasks").append(task);
+
+	_.each(data, function(task) {
+		if (task.warning == "ORANGE")
+			$("#" + task.id).css("background-color", "rgba(255, 110, 0, 0.4)");
+		else if (task.warning == "RED")
+			$("#" + task.id).css("background-color", "rgba(255, 0, 0, 0.4)");
+		else if (task.warning == "GREEN")
+		    $("#" + task.id).css("background-color", "rgba(144, 238, 144, 0.4)");
 	});
 }
-
+	
 $(document).ready(function() {
 	getTasks();
 
@@ -65,18 +53,22 @@ $(document).ready(function() {
 	var dl;
 	var tn;
 	var typeTask;
-
-	$("#tableTasks").on("click", "tr.tasks", function() {
-		getGenericTask($("#taskNumber").html());
+	
+	$("#tableTasks tbody").on("click", "tr", function() {
+		tn = $(this).find("td").eq(2).html();
+		getGenericTask(tn);
 		idTask = $(this).attr("id");
-		plane = $("#planeId").html();
+		plane = $(this).find("td").eq(0).html();
 		mro = $.cookie("login");
-		dl = $("#deadline").html();
-		tn = $("#taskNumber").html();
-		typeTask = $("#type").html();
+		dl = $(this).find("td").eq(3).html();
+		typeTask = $(this).find("td").eq(4).html();
+		console.log(tn);
 	});
 
 	$("#done").on("click", function() {
+	console.log(plane);
+		console.log(idTask);
+
 		var task = {
 			id : idTask,
 			idPlane : plane,
@@ -97,7 +89,7 @@ $(document).ready(function() {
 		}).done(function(data) {
 			setTimeout(function(data) {
             window.location.reload();
-        },500)
+        }, 500)
 			
 		});
 	});
