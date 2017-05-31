@@ -49,6 +49,8 @@ function printTasks(data) {
 			$("#" + task.id).css("background-color", "rgba(255, 110, 0, 0.4)");
 		else if (task.warning == "RED")
 			$("#" + task.id).css("background-color", "rgba(255, 0, 0, 0.4)");
+		else if (task.warning == "GREEN")
+			$("#" + task.id).css("background-color", "rgba(144, 238, 144, 0.4)");
 	});
 }
 

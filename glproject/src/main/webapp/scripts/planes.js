@@ -25,15 +25,14 @@ function setTasks(data) {
 	}).done(function(data) {
 		_.each(data, function(flight) {
 			if (_.indexOf(_.keys(tab), flight.idPlane.toString()) != -1) {
-				_.each(tab[flight.idPlane], function(task) {
+				_.each(tab[flight.idPlane], function(task) {					
+					if (task.status == "DONE")
+						task.warning = "GREEN";
+					
 					if (task.status == "NDONE") {
-						console.log(flight.depTime);
-						console.log("now : " + $.now());
-						if (task.status == "DONE")
-							task.warning = "GREEN";
-
 						if ($.now() > task.deadline)
 							task.warning = "ORANGE";
+							
 						if ((flight.depTime - $.now()) < 60000)
 							task.warning = "RED";
 					}

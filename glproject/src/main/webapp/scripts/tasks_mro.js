@@ -22,25 +22,29 @@ function getTasks() {
 }
 
 function printTasks(data) {
-	var template = _.template($("#list_tasks").html());
-	var task = template({
-		"item" : data
-	});
-
-	// Plane tailNumber
-	_.each(data, function(item) {
-		getPlane(item.idPlane);
-	});
-
-	//if (data.status != "DONE") 
+	if (data.status != "DONE") {
+		var template = _.template($("#list_tasks").html());
+		var task = template({
+			"item" : data
+		});
+	
+		// Plane tailNumber
+		_.each(data, function(item) {
+			getPlane(item.idPlane);
+		});
+	
 		$("#tasks").append(task);
-
-	_.each(data, function(task) {
-		if (task.warning == "ORANGE")
-			$("#" + task.id).css("background-color", "rgba(255, 110, 0, 0.4)");
-		else if (task.warning == "RED")
-			$("#" + task.id).css("background-color", "rgba(255, 0, 0, 0.4)");
-	});
+	
+		_.each(data, function(task) {
+			if (task.warning == "ORANGE")
+				$("#" + task.id).css("background-color", "rgba(255, 110, 0, 0.4)");
+			else if (task.warning == "RED")
+				$("#" + task.id).css("background-color", "rgba(255, 0, 0, 0.4)");
+			else if (task.warning == "GREEN")
+			    $("#" + task.id).css("background-color", "rgba(144, 238, 144, 0.4)");
+			
+		});
+	}
 }
 
 function deleteTask(id) {
@@ -80,7 +84,8 @@ $(document).ready(function() {
 			deadline : dl,
 			taskNumber : tn,
 			type : typeTask,
-			status : "DONE"
+			status : "DONE",
+			warning : "GREEN"
 		}
 		
 		$.ajax({
