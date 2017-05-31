@@ -80,7 +80,7 @@ $(document).ready(function() {
 			dataType : "json",
 			data : JSON.stringify(task),
 		}).done(function(data) {
-			location.href = "plane_page.html?plane=" + tailNumber;
+				location.href = "plane_page.html?plane=" + tailNumber;
 		});
 	});
 });
