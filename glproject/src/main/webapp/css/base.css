@@ -66,6 +66,37 @@ body, html {
 	border-radius: 6px 0 6px 6px;
 }
 
+.valide{
+	margin-top: 0px;
+	border: 0;
+	border-radius: 200px;
+	color: white;
+	padding: 10px;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 0.7em;
+	letter-spacing: 1px;
+	background-color: #665851;
+	cursor: pointer;
+	outline: none;
+}
+
+.logout{
+	margin-top: 0px;
+	border: 0;
+	border-radius: 200px;
+	color: white;
+	padding: 10px;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 0.7em;
+	letter-spacing: 1px;
+	background-color: #665851;
+	cursor: pointer;
+	outline: none;
+}
+
+
 #rcorners-table {
 	color: #665851;
 	border-radius: 7px;

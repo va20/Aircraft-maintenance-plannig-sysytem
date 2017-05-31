@@ -18,7 +18,7 @@
 </head>
 
 <body>
-	<button>
+	<button class="logout">
 		<a href="logout_mro.html">Logout</a>
 	</button>
 
@@ -60,7 +60,7 @@
 					<tbody id="tasks">
 						<script id="list_tasks" type="text/html">
                         <% _.each(item, function(item, i) { %>
-                            <tr id="<%= item.id %>" class="tasks " data-toggle="modal" 
+                            <tr id="<%= item.id %>" class="tasks " data-toggle="modal"
 								data-target="#genericTaskInfo">
                                 <td id="plane" class="<%= item.idPlane %>"></td>
                                 <td><%= item.taskNumber %></td>
@@ -92,6 +92,8 @@
 							<% _.each(item, function(item) { %>
 								<li class="list-group-item"><%= item %><span class="badge">item</span></li>
 							<% }); %>
+						</br>
+							<button type="button" class="valide" id="done">Done</button>
 						</script>
 					</ul>
 				</div>
